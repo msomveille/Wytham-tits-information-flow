@@ -37,7 +37,7 @@ for i = 1:n
    end
 end
 
-gamma = importdata('move_per_capita.csv'); % An n x n matrix.  The (i,j) entry represents the daily rate with which birds move from patch i to patch j (based from the probability that a bird seen in patch i will also be seen in patch j in the same day).  These values depend on the connectivity between patches
+gamma = importdata('move_per_capita.csv'); % An n x n matrix.  The (i,j) entry represents the daily rate with which birds move from patch i to patch j (based from the prob.  These values depend on the connectivity between patches
 
 %gamma1 = zeros(n,n);
 %for i = 1:n

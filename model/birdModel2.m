@@ -3,7 +3,7 @@ clear all
 close all
 
 global n;
-n = 16;  % This is the number of patches
+n = 65;  % This is the number of patches
 
 to = 0;  % This is the initial time
 tf = 20;  % This is the final time
@@ -16,25 +16,14 @@ r0 = zeros(n,1);  % I will fill this vector in as the initial values of R.  I wi
 
 
 % Set the initial state of the system
-u0(1) = 20;
-u0(2) = 60;
-u0(3) = 50;
-u0(4) = 30;
-u0(5) = 45;
-u0(6) = 20;
-u0(7) = 10;
-u0(8) = 25;
-u0(9) = 35;
-u0(10) = 38;
-u0(11) = 10;
-u0(12) = 20;
-u0(13) = 10;
-u0(14) = 25;
-u0(15) = 20;
-u0(16) = 45;
+initialState = importdata('Number_of_individuals_per_patch.csv');
 
-l0(3) = 2;
-r0(16) = 2;
+for i = 1:n
+    u0(i) = initialState(i);
+end
+
+l0(1) = 2;
+r0(65) = 2;
 
 yo = [u0; l0; r0]
 

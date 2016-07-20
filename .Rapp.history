@@ -1,0 +1,661 @@
+square
+matrix(square[1, ], ncol=2, byrow=TRUE)
+Polygon(matrix(square[1, ], ncol=2, byrow=TRUE))
+polys <- SpatialPolygons(list(#
+  Polygons(list(Polygon(matrix(square[1, ], ncol=2, byrow=TRUE))), ID[1]),#
+  Polygons(list(Polygon(matrix(square[2, ], ncol=2, byrow=TRUE))), ID[2])#
+))
+polys
+plot(plys)
+plot(polys)
+try <- read.csv("/Users/mariussomveille/Desktop/try.csv")
+try
+Polygon(try)
+plot(try)
+try <- read.csv("/Users/mariussomveille/Desktop/try.csv")
+plot(try)
+plot(polygon(try))
+plot(Polygon(try))
+plot(Polygon(matrix(square[1, ], ncol=2, byrow=TRUE)))
+SpatialPolygon(try)
+SpatialPolygons(Polygon(try))
+SpatialPolygons(list(Polygon(try)))
+SpatialPolygons(list(Polygons(list(Polygon(try)))))
+SpatialPolygons(list(Polygons(list(Polygon(try),1))))
+list(Polygon(try),1)
+Polygons(list(Polygon(try),1))
+?Polygons
+Polygons(list(Polygon(try),1)[[1]])
+Polygons(list(Polygon(try),1)[1])
+SpatialPolygons(list(Polygon(try),1))
+SpatialPolygons(list(Polygon(try)),1))
+SpatialPolygons(list(Polygon(try)),1)
+SpatialPolygons(Polygon(try),1)
+Polygons(Polygon(try),1)
+Polygons(list(Polygon(try)),1)
+SpatialPolygons(Polygons(list(Polygon(try)),1))
+SpatialPolygons(list(Polygons(list(Polygon(try)),1)))
+plot(SpatialPolygons(list(Polygons(list(Polygon(try)),1))))
+hexGrid <- read.csv("/Users/mariussomveille/Desktop/isea3h6.csv")
+dim(hexGrid)
+head(hexGrid)
+hexGrid[1:20,]
+hexGrid[1:30,]
+id=1#
+for(i in 1:dim(hexGrid)[1]){#
+	if(is.na(hexGrid[i,1]==T){#
+		hexGrid = hexGrid[-i,]#
+		id=id+1#
+	}else{#
+		hexGrid[i,3] = id#
+	}#
+}
+dim(hexGrid)[1]
+id=1#
+for(i in 1:dim(hexGrid)[1]){#
+	if(is.na(hexGrid[i,1]==T)){#
+		hexGrid = hexGrid[-i,]#
+		id=id+1#
+	}else{#
+		hexGrid[i,3] = id#
+	}#
+}
+i
+head(hexGrid)
+hexGrid[1:30,]
+hexGrid <- read.csv("/Users/mariussomveille/Desktop/isea3h6.csv")#
+#
+id=1#
+for(i in 1:dim(hexGrid)[1]){#
+	if(is.na(hexGrid[i,1]==T)){#
+		hexGrid = hexGrid[-i,]#
+		id=id+1#
+		hexGrid[i,3] = id#
+	}else{#
+		hexGrid[i,3] = id#
+	}#
+}
+i
+i/dim(hexGrid)[1]
+hexGrid[1:30,]
+length(which(hexGrid[,3]==IDs[1]))
+IDs <- c(1,2,3,4,5)
+length(which(hexGrid[,3]==IDs[1]))
+hexGrid[which(hexGrid[,3]==IDs[1]),1:2]
+polys <- SpatialPolygons(list(#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[1]),1:2])), IDs[1]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[2]),1:2])), IDs[2])#
+))
+plot(polys)
+polys <- SpatialPolygons(list(#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[1]),1:2])), IDs[1]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[2]),1:2])), IDs[2]),#
+))
+polys <- SpatialPolygons(list(#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[1]),1:2])), IDs[1]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[2]),1:2])), IDs[2]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[3]),1:2])), IDs[3]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[4]),1:2])), IDs[4]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[5]),1:2])), IDs[5])#
+))
+plot(polys)
+plot(hexGrid[which(hexGrid[,3]==IDs[3]),1:2])
+hexGrid[which(hexGrid[,3]==IDs[1]),1:2]
+hexGrid[which(hexGrid[,3]==IDs[3]),1:2]
+plot(hexGrid[which(hexGrid[,3]==IDs[4]),1:2])
+hexGrid[which(hexGrid[,3]==IDs[4]),1:2]
+plot(hexGrid[which(hexGrid[,3]==IDs[4]),1:2][-1,])
+IDs <- c(1,2,3,4,5)#
+#
+polys <- SpatialPolygons(list(#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[1]),1:2][-1,])), IDs[1]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[2]),1:2][-1,])), IDs[2]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[3]),1:2][-1,])), IDs[3]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[4]),1:2][-1,])), IDs[4]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[5]),1:2][-1,])), IDs[5])#
+))
+plot(polys)
+IDs <- c(1,2,3,4,5,6,7,8,9,10)#
+#
+polys <- SpatialPolygons(list(#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[1]),1:2][-1,])), IDs[1]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[2]),1:2][-1,])), IDs[2]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[3]),1:2][-1,])), IDs[3]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[4]),1:2][-1,])), IDs[4]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[5]),1:2][-1,])), IDs[5]),#
+))
+IDs <- c(1,2,3,4,5)#
+#
+polys <- SpatialPolygons(list(#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[1]),1:2][-1,])), IDs[1]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[2]),1:2][-1,])), IDs[2]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[3]),1:2][-1,])), IDs[3]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[4]),1:2][-1,])), IDs[4]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[5]),1:2][-1,])), IDs[5]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[6]),1:2][-1,])), IDs[6]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[7]),1:2][-1,])), IDs[7]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[8]),1:2][-1,])), IDs[8]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[9]),1:2][-1,])), IDs[9]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[10]),1:2][-1,])), IDs[10])#
+))
+IDs <- c(1,2,3,4,5,6,7,8,9,10)
+IDs <- c(1,2,3,4,5)#
+#
+polys <- SpatialPolygons(list(#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[1]),1:2][-1,])), IDs[1]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[2]),1:2][-1,])), IDs[2]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[3]),1:2][-1,])), IDs[3]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[4]),1:2][-1,])), IDs[4]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[5]),1:2][-1,])), IDs[5]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[6]),1:2][-1,])), IDs[6]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[7]),1:2][-1,])), IDs[7]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[8]),1:2][-1,])), IDs[8]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[9]),1:2][-1,])), IDs[9]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[10]),1:2][-1,])), IDs[10])#
+))
+IDs <- c(1,2,3,4,5,6,7,8,9,10)
+polys <- SpatialPolygons(list(#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[1]),1:2][-1,])), IDs[1]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[2]),1:2][-1,])), IDs[2]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[3]),1:2][-1,])), IDs[3]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[4]),1:2][-1,])), IDs[4]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[5]),1:2][-1,])), IDs[5]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[6]),1:2][-1,])), IDs[6]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[7]),1:2][-1,])), IDs[7]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[8]),1:2][-1,])), IDs[8]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[9]),1:2][-1,])), IDs[9]),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[10]),1:2][-1,])), IDs[10])#
+))
+plot(polys)
+polys <- SpatialPolygons(list(#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==1),1:2][-1,])), 1),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==2),1:2][-1,])), 2),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==3),1:2][-1,])), 3),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==4),1:2][-1,])), 4),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==5),1:2][-1,])), 5),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==6),1:2][-1,])), 6),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==7),1:2][-1,])), 7),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==8),1:2][-1,])), 8),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==9),1:2][-1,])), 9),#
+  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==10),1:2][-1,])), 10)#
+))
+plot(polys)
+polygon_list <- list()#
+for(i in 1:10){#
+	polygon_list[[i]] <- Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==i),1:2][-1,])), i)#
+}
+polys <- SpatialPolygons(polygon_list)
+plot(polys)
+polygon_list <- list()#
+for(i in 1:100){#
+	polygon_list[[i]] <- Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==i),1:2][-1,])), i)#
+}#
+polys <- SpatialPolygons(polygon_list)
+plot(polys)
+hexGrid <- read.csv("/Users/mariussomveille/Desktop/isea3h6.csv")#
+#
+id=1#
+for(i in 1:dim(hexGrid)[1]){#
+	if(is.na(hexGrid[i,1]==T)){#
+		hexGrid = hexGrid[-i,]#
+		id=id+1#
+		hexGrid[i,3] = id#
+	}else{#
+		hexGrid[i,3] = id#
+	}#
+}
+i
+length(unique(hexGrid[,3]))
+length(hexGrid[,3])
+hexGrid[1:50,]
+hexGrid[196750:196834,]
+hexGrid[190000:190050,]
+hexGrid[1000:1050,]
+hexGrid[10000:10050,]
+hexGrid[100000:100050,]
+hexGrid[150000:150050,]
+hexGrid[180000:180050,]
+hexGrid[188000:188050,]
+hexGrid[189000:189050,]
+hexGrid[189800:189850,]
+hexGrid[189600:189650,]
+hexGrid[189300:189350,]
+hexGrid[189400:189450,]
+hexGrid[189500:189550,]
+pts <- 1:196834
+hexGrid[,4] <- pts
+hexGrid[189500:189550,]
+hexGrid2 <- hexGrid[which(hexGrid[,4] <= 189543),]
+head(hexGrid2)
+dim(hexGrid2)
+hexGrid2[189500:189550,]
+hexGrid2 <- as.matrix(hexGrid)
+hexGrid2 <- hexGrid[which(hexGrid[,4] <= 189543),]
+hexGrid2 <- as.matrix(hexGrid2)
+dim()
+dim(hexGrid2)
+head(hexGrid2)
+polygon_list <- list()#
+for(i in 1:7292){#
+	polygon_list[[i]] <- Polygons(list(Polygon(hexGrid2[which(hexGrid2[,3]==i),1:2][-1,])), i)#
+}#
+polys <- SpatialPolygons(polygon_list)
+plot(polys)
+NDVI.2006.may.1 <- raster("/Users/mariussomveille/Desktop/NDVI_data/2006/May/06may15a.n17-VIg_data.tif")
+library(maps)#
+library(mapdata)#
+library(raster)#
+library(sp)#
+library(rgdal)#
+library(geosphere)
+NDVI.2006.may.1 <- raster("/Users/mariussomveille/Desktop/NDVI_data/2006/May/06may15a.n17-VIg_data.tif")
+NDVI.2006.may.1 <- calc(NDVI.2006.may.1, fun=function(x){ifelse(x < -5000, NA, x)})
+plot(NDVI.2006.may.1, add=T)
+ls()
+isea3h6_hexgrid <- polys
+hexGrid <- hexGrid2[,1:3]
+head(hexGrid)
+dim(hexGrid)
+colnames(hexGrid) <- c("Long", "Lat", "ID")
+head(hexGrid)
+colnames(hexGrid) <- c("Long", "Lat", "hexID")
+head(hexGrid)
+ls()
+rm(list=ls()[1:4])
+ls()
+rm(list=ls()[2:7])
+ls()
+rm(list=ls()[3:22])
+ls()
+hexGridPoints <- hexGrid
+ls()
+rm(list=ls()[1])
+ls
+ls()
+save.image("/Users/mariussomveille/Desktop/Hex_grid/isea3h6/isea3h6_hexgrid.RData")
+NDVI.2006.may.1 <- raster("/Users/mariussomveille/Desktop/NDVI_data/2006/May/06may15a.n17-VIg_data.tif")
+NDVI.2006.may.1 <- calc(NDVI.2006.may.1, fun=function(x){ifelse(x < -5000, NA, x)})
+aaa <- extract(NDVI.2006.may.1, isea3h6_hexgrid, mean)
+length(aaa)
+hex_centroids <- list()#
+for(i in 1:7292){#
+	hex_centroids[[i]] <- c(mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,1]), mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,1]))#
+}
+i
+head(hex_centroids <- list()#
+for(i in 1:7292){#
+	hex_centroids[[i]] <- c(mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,1]), mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,1]))#
+}#
+)
+head(hex_centroids)
+hex_centroids <- list()#
+for(i in 1:7292){#
+	hex_centroids[[i]] <- c(mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,1]), mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,2]))#
+}
+head(hex_centroids)
+hex_centroids <- list()#
+for(i in 1:7292){#
+	hex_centroids[[i]] <- c(mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,1]), mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,2]))#
+}
+extract(NDVI.2006.may.1, isea3h6_hexgrid, mean)
+aaa <- extract(NDVI.2006.may.1, isea3h6_hexgrid, mean)
+length(aaa)
+head(aaa)
+aaa
+length(which(is.na(aaa)==F))
+aaa2 <- which(is.na(aaa)==F))
+aaa2 <- which(is.na(aaa)==F)
+head(aaa2)
+plot(isea3h6_hexgrid[aaa2])
+length(which(aaa>400))
+length(which(aaa>500))
+plot(isea3h6_hexgrid[which(aaa>500)], add=T, col="green")
+plot(isea3h6_hexgrid[which(aaa>650)], add=T, col="dark green")
+mean(c(1,2,3,NA),na.rm=T)
+mean(c(1,2,3,NA))
+plot(isea3h6_hexgrid[which(aaa<350)], add=T, col="yellow")
+aaa <- extract(NDVI.2006.may.1, isea3h6_hexgrid, function(x) mean(x,na.rm=T)))
+aaa <- extract(NDVI.2006.may.1, isea3h6_hexgrid, function(x) mean(x,na.rm=T))
+aaa <- extract(NDVI.2006.may.1, isea3h6_hexgrid, mean(na.rm=T))
+aaa <- extract(NDVI.2006.may.1, isea3h6_hexgrid, mean(x,na.rm=T))
+aaa <- extract(NDVI.2006.may.1, isea3h6_hexgrid, function(x){mean(x,na.rm=T)})
+?extract
+aaa <- extract(NDVI.2006.may.1, isea3h6_hexgrid, mean, na.rm=T)
+aaa2 <- which(is.na(aaa)==F)
+length(aa2)
+length(aaa2)
+plot(isea3h6_hexgrid[aaa2])
+plot(isea3h6_hexgrid[which(aaa>650)], add=T, col="green")
+plot(isea3h6_hexgrid[which(aaa>550)], add=T, col="green")
+hex_centroids <- data.frame()#
+for(i in 1:7292){#
+	hex_centroids[i,] <- c(mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,1]), mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,2]))#
+}
+head(hex_centroids)
+hex_centroids <- matrix()#
+for(i in 1:7292){#
+	hex_centroids[i,] <- c(mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,1]), mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,2]))#
+}
+hex_centroids <- data.frame(nrow=7292, ncol=2)#
+for(i in 1:7292){#
+	hex_centroids[i,] <- c(mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,1]), mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,2]))#
+}
+i
+hex_centroids
+hex_centroids <- data.frame(nrow=7292, ncol=2)#
+for(i in 1:7292){#
+	hex_centroids[i,] <- c(mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,1]), mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,2]))#
+}
+head(hex_centroids)
+length(which(is.na(aaa)==F))
+length(which(hex_centroids[aaa2,1]<=-30))
+length(which(hex_centroids[aaa2,1]>-30))
+isea3h6_hexgrid_ndvi_WH <- isea3h6_hexgrid[aaa2][which(hex_centroids[aaa2,1]<=-30)]
+length(isea3h6_hexgrid_ndvi_WH)
+head(isea3h6_hexgrid_ndvi_WH)
+plot(isea3h6_hexgrid_ndvi_WH)
+isea3h6_hexgrid_ndvi_WH <- isea3h6_hexgrid[aaa2][which(hex_centroids[aaa2,1]<=-30 & hex_centroids[aaa2,1]>-150)]
+plot(isea3h6_hexgrid_ndvi_WH)
+isea3h6_hexgrid_ndvi_WH <- isea3h6_hexgrid[aaa2][which(hex_centroids[aaa2,1]<=-30 & hex_centroids[aaa2,1]>-120)]
+plot(isea3h6_hexgrid_ndvi_WH)
+isea3h6_hexgrid_ndvi_WH <- isea3h6_hexgrid[aaa2][which(hex_centroids[aaa2,1]<=-30 & hex_centroids[aaa2,1]>-120)]
+isea3h6_hexgrid_ndvi_WH <- isea3h6_hexgrid[aaa2][which(hex_centroids[aaa2,1]<=-30)]
+str(NDVI.2006.may.1)
+range(NDVI.2006.may.1@data@values)
+range(NDVI.2006.may.1@data@values, na.rm=T)
+plot(NDVI.2006.may.1[which(NDVI.2006.may.1@data@values < 0)], col="red")
+plot(NDVI.2006.may.1[which(NDVI.2006.may.1 < 0)], col="red")
+plot(NDVI.2006.may.1)
+years <- c("2000", "2001", "2002", "2003", "2004", "2005", "2006")
+years
+i=1
+paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/06jan15a.n17-VIg_data.tif")
+paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/06jan15a.n17-VIg_data.tif", sep="")
+NDVI.jan.1 <- raster(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/06jan15a.n17-VIg_data.tif", sep=""))#
+NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < 0, 0, x)})
+NDVI.jan.1 <- raster(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/00jan15a.n17-VIg_data.tif", sep=""))#
+NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < 0, 0, x)}
+list.files("/Users/mariussomveille/Desktop/NDVI_data/2000/January")
+paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep="")
+paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""))[1], sep="")
+NDVI.jan.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""))[1], sep=""))
+NDVI.jan.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""))[1], sep=""))
+NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < 0, 0, x)})
+plot(NDVI.jan.1)
+NDVI.ns <- list()#
+NDVI.nw <- list()#
+#
+for(i in 1:7){#
+#
+NDVI.jan.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""))[1], sep=""))#
+NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.jan.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""))[2], sep=""))#
+NDVI.jan.2 <- calc(NDVI.jan.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.jan.2 <- calc(NDVI.jan.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.feb.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February", sep=""))[1], sep=""))#
+NDVI.feb.1 <- calc(NDVI.feb.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.feb.1 <- calc(NDVI.feb.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.feb.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February", sep=""))[2], sep=""))#
+NDVI.feb.2 <- calc(NDVI.feb.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.feb.2 <- calc(NDVI.feb.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.mar.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March", sep=""))[1], sep=""))#
+NDVI.mar.1 <- calc(NDVI.mar.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.mar.1 <- calc(NDVI.mar.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.mar.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March", sep=""))[2], sep=""))#
+NDVI.mar.2 <- calc(NDVI.mar.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.mar.2 <- calc(NDVI.mar.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.apr.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April", sep=""))[1], sep=""))#
+NDVI.apr.1 <- calc(NDVI.apr.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.apr.1 <- calc(NDVI.apr.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.apr.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April", sep=""))[2], sep=""))#
+NDVI.apr.2 <- calc(NDVI.apr.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.apr.2 <- calc(NDVI.apr.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.may.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May", sep=""))[1], sep=""))#
+NDVI.may.1 <- calc(NDVI.may.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.may.1 <- calc(NDVI.may.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.may.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May", sep=""))[2], sep=""))#
+NDVI.may.2 <- calc(NDVI.may.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.may.2 <- calc(NDVI.may.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.jun.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June", sep=""))[1], sep=""))#
+NDVI.jun.1 <- calc(NDVI.jun.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.jun.1 <- calc(NDVI.jun.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.jun.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June", sep=""))[2], sep=""))#
+NDVI.jun.2 <- calc(NDVI.jun.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.jun.2 <- calc(NDVI.jun.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.jul.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July", sep=""))[1], sep=""))#
+NDVI.jul.1 <- calc(NDVI.jul.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.jul.1 <- calc(NDVI.jul.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.jul.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July", sep=""))[2], sep=""))#
+NDVI.jul.2 <- calc(NDVI.jul.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.jul.2 <- calc(NDVI.jul.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.aug.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August", sep=""))[1], sep=""))#
+NDVI.aug.1 <- calc(NDVI.aug.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.aug.1 <- calc(NDVI.aug.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.aug.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August", sep=""))[2], sep=""))#
+NDVI.aug.2 <- calc(NDVI.aug.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.aug.2 <- calc(NDVI.aug.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.sep.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September", sep=""))[1], sep=""))#
+NDVI.sep.1 <- calc(NDVI.sep.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.sep.1 <- calc(NDVI.sep.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.sep.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September", sep=""))[2], sep=""))#
+NDVI.sep.2 <- calc(NDVI.sep.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.sep.2 <- calc(NDVI.sep.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.oct.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October", sep=""))[1], sep=""))#
+NDVI.oct.1 <- calc(NDVI.oct.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.oct.1 <- calc(NDVI.oct.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.oct.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October", sep=""))[2], sep=""))#
+NDVI.oct.2 <- calc(NDVI.oct.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.oct.2 <- calc(NDVI.oct.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.nov.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November", sep=""))[1], sep=""))#
+NDVI.nov.1 <- calc(NDVI.nov.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.nov.1 <- calc(NDVI.nov.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.nov.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November", sep=""))[2], sep=""))#
+NDVI.nov.2 <- calc(NDVI.nov.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.nov.2 <- calc(NDVI.nov.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.dec.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December", sep=""))[1], sep=""))#
+NDVI.dec.1 <- calc(NDVI.dec.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.dec.1 <- calc(NDVI.dec.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.dec.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December", sep=""))[2], sep=""))#
+NDVI.dec.2 <- calc(NDVI.dec.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.dec.2 <- calc(NDVI.dec.2, fun=function(x){ifelse(x < 0, 0, x)})	#
+#
+NDVI.ns[[i]] <- NDVI.apr.1 + NDVI.apr.2 + NDVI.may.1 + NDVI.may.2 + NDVI.jun.1 + NDVI.jun.2 + NDVI.jul.1 + NDVI.jul.2 + NDVI.aug.1 + NDVI.aug.2 + NDVI.sep.1 + NDVI.sep.2#
+#
+NDVI.nw[[i]] <- NDVI.oct.1 + NDVI.oct.2 + NDVI.nov.1 + NDVI.nov.2 + NDVI.dec.1 + NDVI.dec.2 + NDVI.jan.1 + NDVI.jan.2 + NDVI.feb.1 + NDVI.feb.2 + NDVI.mar.1 + NDVI.mar.2#
+#
+}
+i
+NDVI.ns <- list()#
+NDVI.nw <- list()#
+#
+for(i in 1:7){#
+#
+NDVI.jan.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""))[1], sep=""))#
+NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.jan.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""))[2], sep=""))#
+NDVI.jan.2 <- calc(NDVI.jan.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.jan.2 <- calc(NDVI.jan.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.feb.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February", sep=""))[1], sep=""))#
+NDVI.feb.1 <- calc(NDVI.feb.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.feb.1 <- calc(NDVI.feb.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.feb.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February", sep=""))[2], sep=""))#
+NDVI.feb.2 <- calc(NDVI.feb.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.feb.2 <- calc(NDVI.feb.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.mar.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March", sep=""))[1], sep=""))#
+NDVI.mar.1 <- calc(NDVI.mar.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.mar.1 <- calc(NDVI.mar.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.mar.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March", sep=""))[2], sep=""))#
+NDVI.mar.2 <- calc(NDVI.mar.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.mar.2 <- calc(NDVI.mar.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.apr.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April", sep=""))[1], sep=""))#
+NDVI.apr.1 <- calc(NDVI.apr.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.apr.1 <- calc(NDVI.apr.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.apr.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April", sep=""))[2], sep=""))#
+NDVI.apr.2 <- calc(NDVI.apr.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.apr.2 <- calc(NDVI.apr.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.may.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May", sep=""))[1], sep=""))#
+NDVI.may.1 <- calc(NDVI.may.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.may.1 <- calc(NDVI.may.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.may.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May", sep=""))[2], sep=""))#
+NDVI.may.2 <- calc(NDVI.may.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.may.2 <- calc(NDVI.may.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.jun.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June", sep=""))[1], sep=""))#
+NDVI.jun.1 <- calc(NDVI.jun.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.jun.1 <- calc(NDVI.jun.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.jun.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June", sep=""))[2], sep=""))#
+NDVI.jun.2 <- calc(NDVI.jun.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.jun.2 <- calc(NDVI.jun.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.jul.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July", sep=""))[1], sep=""))#
+NDVI.jul.1 <- calc(NDVI.jul.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.jul.1 <- calc(NDVI.jul.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.jul.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July", sep=""))[2], sep=""))#
+NDVI.jul.2 <- calc(NDVI.jul.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.jul.2 <- calc(NDVI.jul.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.aug.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August", sep=""))[1], sep=""))#
+NDVI.aug.1 <- calc(NDVI.aug.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.aug.1 <- calc(NDVI.aug.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.aug.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August", sep=""))[2], sep=""))#
+NDVI.aug.2 <- calc(NDVI.aug.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.aug.2 <- calc(NDVI.aug.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.sep.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September", sep=""))[1], sep=""))#
+NDVI.sep.1 <- calc(NDVI.sep.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.sep.1 <- calc(NDVI.sep.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.sep.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September", sep=""))[2], sep=""))#
+NDVI.sep.2 <- calc(NDVI.sep.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.sep.2 <- calc(NDVI.sep.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.oct.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October", sep=""))[1], sep=""))#
+NDVI.oct.1 <- calc(NDVI.oct.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.oct.1 <- calc(NDVI.oct.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.oct.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October", sep=""))[2], sep=""))#
+NDVI.oct.2 <- calc(NDVI.oct.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.oct.2 <- calc(NDVI.oct.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.nov.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November", sep=""))[1], sep=""))#
+NDVI.nov.1 <- calc(NDVI.nov.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.nov.1 <- calc(NDVI.nov.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.nov.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November", sep=""))[2], sep=""))#
+NDVI.nov.2 <- calc(NDVI.nov.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.nov.2 <- calc(NDVI.nov.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.dec.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December", sep=""))[1], sep=""))#
+NDVI.dec.1 <- calc(NDVI.dec.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.dec.1 <- calc(NDVI.dec.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.dec.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December", sep=""))[2], sep=""))#
+NDVI.dec.2 <- calc(NDVI.dec.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.dec.2 <- calc(NDVI.dec.2, fun=function(x){ifelse(x < 0, 0, x)})	#
+#
+NDVI.ns[[i]] <- (NDVI.apr.1 + NDVI.apr.2 + NDVI.may.1 + NDVI.may.2 + NDVI.jun.1 + NDVI.jun.2 + NDVI.jul.1 + NDVI.jul.2 + NDVI.aug.1 + NDVI.aug.2 + NDVI.sep.1 + NDVI.sep.2) / 12#
+#
+NDVI.nw[[i]] <- (NDVI.oct.1 + NDVI.oct.2 + NDVI.nov.1 + NDVI.nov.2 + NDVI.dec.1 + NDVI.dec.2 + NDVI.jan.1 + NDVI.jan.2 + NDVI.feb.1 + NDVI.feb.2 + NDVI.mar.1 + NDVI.mar.2) / 12#
+#
+}
+i
+for(i in 4:7){#
+#
+NDVI.jan.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""))[1], sep=""))#
+NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.jan.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""))[2], sep=""))#
+NDVI.jan.2 <- calc(NDVI.jan.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.jan.2 <- calc(NDVI.jan.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.feb.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February", sep=""))[1], sep=""))#
+NDVI.feb.1 <- calc(NDVI.feb.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.feb.1 <- calc(NDVI.feb.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.feb.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February", sep=""))[2], sep=""))#
+NDVI.feb.2 <- calc(NDVI.feb.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.feb.2 <- calc(NDVI.feb.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.mar.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March", sep=""))[1], sep=""))#
+NDVI.mar.1 <- calc(NDVI.mar.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.mar.1 <- calc(NDVI.mar.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.mar.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March", sep=""))[2], sep=""))#
+NDVI.mar.2 <- calc(NDVI.mar.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.mar.2 <- calc(NDVI.mar.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.apr.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April", sep=""))[1], sep=""))#
+NDVI.apr.1 <- calc(NDVI.apr.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.apr.1 <- calc(NDVI.apr.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.apr.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April", sep=""))[2], sep=""))#
+NDVI.apr.2 <- calc(NDVI.apr.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.apr.2 <- calc(NDVI.apr.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.may.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May", sep=""))[1], sep=""))#
+NDVI.may.1 <- calc(NDVI.may.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.may.1 <- calc(NDVI.may.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.may.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May", sep=""))[2], sep=""))#
+NDVI.may.2 <- calc(NDVI.may.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.may.2 <- calc(NDVI.may.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.jun.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June", sep=""))[1], sep=""))#
+NDVI.jun.1 <- calc(NDVI.jun.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.jun.1 <- calc(NDVI.jun.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.jun.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June", sep=""))[2], sep=""))#
+NDVI.jun.2 <- calc(NDVI.jun.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.jun.2 <- calc(NDVI.jun.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.jul.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July", sep=""))[1], sep=""))#
+NDVI.jul.1 <- calc(NDVI.jul.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.jul.1 <- calc(NDVI.jul.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.jul.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July", sep=""))[2], sep=""))#
+NDVI.jul.2 <- calc(NDVI.jul.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.jul.2 <- calc(NDVI.jul.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.aug.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August", sep=""))[1], sep=""))#
+NDVI.aug.1 <- calc(NDVI.aug.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.aug.1 <- calc(NDVI.aug.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.aug.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August", sep=""))[2], sep=""))#
+NDVI.aug.2 <- calc(NDVI.aug.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.aug.2 <- calc(NDVI.aug.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.sep.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September", sep=""))[1], sep=""))#
+NDVI.sep.1 <- calc(NDVI.sep.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.sep.1 <- calc(NDVI.sep.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.sep.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September", sep=""))[2], sep=""))#
+NDVI.sep.2 <- calc(NDVI.sep.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.sep.2 <- calc(NDVI.sep.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.oct.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October", sep=""))[1], sep=""))#
+NDVI.oct.1 <- calc(NDVI.oct.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.oct.1 <- calc(NDVI.oct.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.oct.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October", sep=""))[2], sep=""))#
+NDVI.oct.2 <- calc(NDVI.oct.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.oct.2 <- calc(NDVI.oct.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.nov.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November", sep=""))[1], sep=""))#
+NDVI.nov.1 <- calc(NDVI.nov.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.nov.1 <- calc(NDVI.nov.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.nov.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November", sep=""))[2], sep=""))#
+NDVI.nov.2 <- calc(NDVI.nov.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.nov.2 <- calc(NDVI.nov.2, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.dec.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December", sep=""))[1], sep=""))#
+NDVI.dec.1 <- calc(NDVI.dec.1, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.dec.1 <- calc(NDVI.dec.1, fun=function(x){ifelse(x < 0, 0, x)})#
+NDVI.dec.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December", sep=""))[2], sep=""))#
+NDVI.dec.2 <- calc(NDVI.dec.2, fun=function(x){ifelse(x < -5000, NA, x)})#
+NDVI.dec.2 <- calc(NDVI.dec.2, fun=function(x){ifelse(x < 0, 0, x)})	#
+#
+NDVI.ns[[i]] <- (NDVI.apr.1 + NDVI.apr.2 + NDVI.may.1 + NDVI.may.2 + NDVI.jun.1 + NDVI.jun.2 + NDVI.jul.1 + NDVI.jul.2 + NDVI.aug.1 + NDVI.aug.2 + NDVI.sep.1 + NDVI.sep.2) / 12#
+#
+NDVI.nw[[i]] <- (NDVI.oct.1 + NDVI.oct.2 + NDVI.nov.1 + NDVI.nov.2 + NDVI.dec.1 + NDVI.dec.2 + NDVI.jan.1 + NDVI.jan.2 + NDVI.feb.1 + NDVI.feb.2 + NDVI.mar.1 + NDVI.mar.2) / 12#
+#
+}
+i
+plot(NDVI.ns[[1]])
+NDVI.NorthernSummer <- (NDVI.ns[[1]] + NDVI.ns[[2]] + NDVI.ns[[3]] + NDVI.ns[[4]] + NDVI.ns[[5]] + NDVI.ns[[6]] + NDVI.ns[[7]]) / 7#
+NDVI.NorthernWinter <- (NDVI.nw[[1]] + NDVI.nw[[2]] + NDVI.nw[[3]] + NDVI.nw[[4]] + NDVI.nw[[5]] + NDVI.nw[[6]] + NDVI.nw[[7]]) / 7
+plot(NDVI.NorthernSummer)
+plot(NDVI.NorthernWinter)
+isea3h6_hexgrid_ndvi_WH <- isea3h6_hexgrid[which(hex_centroids[,1]<=-30)]#
+isea3h6_hexgrid_ndvi_EH <- isea3h6_hexgrid[which(hex_centroids[,1]>-30)]
+isea3h6_hexgrid_WH <- isea3h6_hexgrid[which(hex_centroids[,1]<=-30)]#
+isea3h6_hexgrid_EH <- isea3h6_hexgrid[which(hex_centroids[,1]>-30)]
+hex_ns_WH <- extract(NDVI.NorthernSummer, isea3h6_hexgrid_WH, mean, na.rm=T)#
+hex_nw_WH <- extract(NDVI.NorthernWinter, isea3h6_hexgrid_WH, mean, na.rm=T)
+land_ns_WH <- which(is.na(hex_ns_WH)==F)#
+land_nw_WH <- which(is.na(hex_nw_WH)==F)
+ls()
+rm(list=ls()[1:2])
+ls()
+rm(list=ls()[5])
+ls()
+rm(list=ls()[7:8])
+ls()
+rm(list=ls()[10:28])
+ls()
+rm(list=ls()[12:20])
+ls()
+save.image("/Users/mariussomveille/Desktop/Hex_grid/isea3h6/isea3h6_hexgrid_ndvi.RData")

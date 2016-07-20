@@ -1,5 +1,7 @@
 function birdModelDEs2 = birdModelDEs2(t,y)
 
+% This line just tests whether GitHub works
+
 global n;
 
 U = y(1:n);

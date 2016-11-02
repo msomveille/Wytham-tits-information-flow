@@ -15,15 +15,19 @@ library(igraph)
 
 setwd("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-information-flow")
 
+## Import and process the data
+
 load("bird_movement/movements_data.RData")
 resultsModel <- read.csv("model/resultsModel.csv")
 loggers_coords <- read.csv("Wytham_loggers_coordinates.csv")
 model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])
 model_res_list <- as.list(as.data.frame(t(model_res)))
 
-wyt <-readOGR("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/wytham/EllaCole", "perimeter poly with clearings_region")
+wyt <-readOGR("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-information-flow", "perimeter poly with clearings_region")
 poly.sp<-SpatialPolygons(list(wyt@polygons[[1]]))
 poly.owin<-as(poly.sp,"owin")
+
+## Plot the map
 
 plot(poly.owin)
 for(i in 1:65){
@@ -44,7 +48,7 @@ plot(feeders_graph, vertex.size = loggers[,5]/5, vertex.label=NA, vertex.shape="
 
 
 
-## Plot the dynamic over time
+## Plot the dynamic over time for the feeders from Lucy's paper
 
 # T3
 nonsolvers = as.matrix(resultsModel)[1:20,11]
@@ -104,7 +108,7 @@ points(1:20, prop, col="green3", pch=8)
 
 
 
-## Plot the observed map after 20 days from Aplin et al (2015)
+## Plot the observed map after 20 days from Lucy's paper
 
 obs_props <- cbind(rep(0,65), rep(0,65), rep(0,65))
 

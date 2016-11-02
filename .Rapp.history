@@ -1,661 +1,1251 @@
-square
-matrix(square[1, ], ncol=2, byrow=TRUE)
-Polygon(matrix(square[1, ], ncol=2, byrow=TRUE))
-polys <- SpatialPolygons(list(#
-  Polygons(list(Polygon(matrix(square[1, ], ncol=2, byrow=TRUE))), ID[1]),#
-  Polygons(list(Polygon(matrix(square[2, ], ncol=2, byrow=TRUE))), ID[2])#
-))
-polys
-plot(plys)
-plot(polys)
-try <- read.csv("/Users/mariussomveille/Desktop/try.csv")
-try
-Polygon(try)
-plot(try)
-try <- read.csv("/Users/mariussomveille/Desktop/try.csv")
-plot(try)
-plot(polygon(try))
-plot(Polygon(try))
-plot(Polygon(matrix(square[1, ], ncol=2, byrow=TRUE)))
-SpatialPolygon(try)
-SpatialPolygons(Polygon(try))
-SpatialPolygons(list(Polygon(try)))
-SpatialPolygons(list(Polygons(list(Polygon(try)))))
-SpatialPolygons(list(Polygons(list(Polygon(try),1))))
-list(Polygon(try),1)
-Polygons(list(Polygon(try),1))
-?Polygons
-Polygons(list(Polygon(try),1)[[1]])
-Polygons(list(Polygon(try),1)[1])
-SpatialPolygons(list(Polygon(try),1))
-SpatialPolygons(list(Polygon(try)),1))
-SpatialPolygons(list(Polygon(try)),1)
-SpatialPolygons(Polygon(try),1)
-Polygons(Polygon(try),1)
-Polygons(list(Polygon(try)),1)
-SpatialPolygons(Polygons(list(Polygon(try)),1))
-SpatialPolygons(list(Polygons(list(Polygon(try)),1)))
-plot(SpatialPolygons(list(Polygons(list(Polygon(try)),1))))
-hexGrid <- read.csv("/Users/mariussomveille/Desktop/isea3h6.csv")
-dim(hexGrid)
-head(hexGrid)
-hexGrid[1:20,]
-hexGrid[1:30,]
-id=1#
-for(i in 1:dim(hexGrid)[1]){#
-	if(is.na(hexGrid[i,1]==T){#
-		hexGrid = hexGrid[-i,]#
-		id=id+1#
-	}else{#
-		hexGrid[i,3] = id#
-	}#
+length(estiv_expl)
+estiv_expl
+estiv_expl <- estiv_expl[-c(49,102,103)]
+distance_travelled_drailles <- vector()#
+for(i in 1:length(estiv_expl)){#
+	distance_travelled_drailles[i] <- sum(drailles@data$longueur_m[which(drailles@data[,i+2] == 1)])#
 }
-dim(hexGrid)[1]
-id=1#
-for(i in 1:dim(hexGrid)[1]){#
-	if(is.na(hexGrid[i,1]==T)){#
-		hexGrid = hexGrid[-i,]#
-		id=id+1#
-	}else{#
-		hexGrid[i,3] = id#
-	}#
+distance_travelled_greatCircle <- vector()#
+for(i in 1:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
 }
-i
-head(hexGrid)
-hexGrid[1:30,]
-hexGrid <- read.csv("/Users/mariussomveille/Desktop/isea3h6.csv")#
-#
-id=1#
-for(i in 1:dim(hexGrid)[1]){#
-	if(is.na(hexGrid[i,1]==T)){#
-		hexGrid = hexGrid[-i,]#
-		id=id+1#
-		hexGrid[i,3] = id#
-	}else{#
-		hexGrid[i,3] = id#
-	}#
-}
-i
-i/dim(hexGrid)[1]
-hexGrid[1:30,]
-length(which(hexGrid[,3]==IDs[1]))
-IDs <- c(1,2,3,4,5)
-length(which(hexGrid[,3]==IDs[1]))
-hexGrid[which(hexGrid[,3]==IDs[1]),1:2]
-polys <- SpatialPolygons(list(#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[1]),1:2])), IDs[1]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[2]),1:2])), IDs[2])#
-))
-plot(polys)
-polys <- SpatialPolygons(list(#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[1]),1:2])), IDs[1]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[2]),1:2])), IDs[2]),#
-))
-polys <- SpatialPolygons(list(#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[1]),1:2])), IDs[1]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[2]),1:2])), IDs[2]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[3]),1:2])), IDs[3]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[4]),1:2])), IDs[4]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[5]),1:2])), IDs[5])#
-))
-plot(polys)
-plot(hexGrid[which(hexGrid[,3]==IDs[3]),1:2])
-hexGrid[which(hexGrid[,3]==IDs[1]),1:2]
-hexGrid[which(hexGrid[,3]==IDs[3]),1:2]
-plot(hexGrid[which(hexGrid[,3]==IDs[4]),1:2])
-hexGrid[which(hexGrid[,3]==IDs[4]),1:2]
-plot(hexGrid[which(hexGrid[,3]==IDs[4]),1:2][-1,])
-IDs <- c(1,2,3,4,5)#
-#
-polys <- SpatialPolygons(list(#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[1]),1:2][-1,])), IDs[1]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[2]),1:2][-1,])), IDs[2]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[3]),1:2][-1,])), IDs[3]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[4]),1:2][-1,])), IDs[4]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[5]),1:2][-1,])), IDs[5])#
-))
-plot(polys)
-IDs <- c(1,2,3,4,5,6,7,8,9,10)#
-#
-polys <- SpatialPolygons(list(#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[1]),1:2][-1,])), IDs[1]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[2]),1:2][-1,])), IDs[2]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[3]),1:2][-1,])), IDs[3]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[4]),1:2][-1,])), IDs[4]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[5]),1:2][-1,])), IDs[5]),#
-))
-IDs <- c(1,2,3,4,5)#
-#
-polys <- SpatialPolygons(list(#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[1]),1:2][-1,])), IDs[1]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[2]),1:2][-1,])), IDs[2]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[3]),1:2][-1,])), IDs[3]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[4]),1:2][-1,])), IDs[4]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[5]),1:2][-1,])), IDs[5]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[6]),1:2][-1,])), IDs[6]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[7]),1:2][-1,])), IDs[7]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[8]),1:2][-1,])), IDs[8]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[9]),1:2][-1,])), IDs[9]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[10]),1:2][-1,])), IDs[10])#
-))
-IDs <- c(1,2,3,4,5,6,7,8,9,10)
-IDs <- c(1,2,3,4,5)#
-#
-polys <- SpatialPolygons(list(#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[1]),1:2][-1,])), IDs[1]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[2]),1:2][-1,])), IDs[2]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[3]),1:2][-1,])), IDs[3]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[4]),1:2][-1,])), IDs[4]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[5]),1:2][-1,])), IDs[5]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[6]),1:2][-1,])), IDs[6]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[7]),1:2][-1,])), IDs[7]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[8]),1:2][-1,])), IDs[8]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[9]),1:2][-1,])), IDs[9]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[10]),1:2][-1,])), IDs[10])#
-))
-IDs <- c(1,2,3,4,5,6,7,8,9,10)
-polys <- SpatialPolygons(list(#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[1]),1:2][-1,])), IDs[1]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[2]),1:2][-1,])), IDs[2]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[3]),1:2][-1,])), IDs[3]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[4]),1:2][-1,])), IDs[4]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[5]),1:2][-1,])), IDs[5]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[6]),1:2][-1,])), IDs[6]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[7]),1:2][-1,])), IDs[7]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[8]),1:2][-1,])), IDs[8]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[9]),1:2][-1,])), IDs[9]),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==IDs[10]),1:2][-1,])), IDs[10])#
-))
-plot(polys)
-polys <- SpatialPolygons(list(#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==1),1:2][-1,])), 1),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==2),1:2][-1,])), 2),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==3),1:2][-1,])), 3),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==4),1:2][-1,])), 4),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==5),1:2][-1,])), 5),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==6),1:2][-1,])), 6),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==7),1:2][-1,])), 7),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==8),1:2][-1,])), 8),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==9),1:2][-1,])), 9),#
-  Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==10),1:2][-1,])), 10)#
-))
-plot(polys)
-polygon_list <- list()#
-for(i in 1:10){#
-	polygon_list[[i]] <- Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==i),1:2][-1,])), i)#
-}
-polys <- SpatialPolygons(polygon_list)
-plot(polys)
-polygon_list <- list()#
-for(i in 1:100){#
-	polygon_list[[i]] <- Polygons(list(Polygon(hexGrid[which(hexGrid[,3]==i),1:2][-1,])), i)#
+plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
+head(estiv_expl)
+head(estiv_expl2)
+head(estiv_expl)
+estiv_expl[90:100]
+estiv_expl2[90:100,]
+estiv_expl <- colnames(drailles@data)[3:109]#
+estiv_expl2 <- matrix(ncol=2, nrow=length(estiv_expl))#
+for(i in 1:length(estiv_expl)){#
+	estiv_expl2[i,1] <- substr(estiv_expl[i], 1, 3)#
+	estiv_expl2[i,2] <- substr(estiv_expl[i], 4, 6)#
 }#
-polys <- SpatialPolygons(polygon_list)
-plot(polys)
-hexGrid <- read.csv("/Users/mariussomveille/Desktop/isea3h6.csv")#
+estiv_expl2 <- estiv_expl2[-c(49,102,103),]#
+estiv_expl <- estiv_expl[-c(49,102,103)]#
 #
-id=1#
-for(i in 1:dim(hexGrid)[1]){#
-	if(is.na(hexGrid[i,1]==T)){#
-		hexGrid = hexGrid[-i,]#
-		id=id+1#
-		hexGrid[i,3] = id#
-	}else{#
-		hexGrid[i,3] = id#
-	}#
-}
-i
-length(unique(hexGrid[,3]))
-length(hexGrid[,3])
-hexGrid[1:50,]
-hexGrid[196750:196834,]
-hexGrid[190000:190050,]
-hexGrid[1000:1050,]
-hexGrid[10000:10050,]
-hexGrid[100000:100050,]
-hexGrid[150000:150050,]
-hexGrid[180000:180050,]
-hexGrid[188000:188050,]
-hexGrid[189000:189050,]
-hexGrid[189800:189850,]
-hexGrid[189600:189650,]
-hexGrid[189300:189350,]
-hexGrid[189400:189450,]
-hexGrid[189500:189550,]
-pts <- 1:196834
-hexGrid[,4] <- pts
-hexGrid[189500:189550,]
-hexGrid2 <- hexGrid[which(hexGrid[,4] <= 189543),]
-head(hexGrid2)
-dim(hexGrid2)
-hexGrid2[189500:189550,]
-hexGrid2 <- as.matrix(hexGrid)
-hexGrid2 <- hexGrid[which(hexGrid[,4] <= 189543),]
-hexGrid2 <- as.matrix(hexGrid2)
-dim()
-dim(hexGrid2)
-head(hexGrid2)
-polygon_list <- list()#
-for(i in 1:7292){#
-	polygon_list[[i]] <- Polygons(list(Polygon(hexGrid2[which(hexGrid2[,3]==i),1:2][-1,])), i)#
+distance_travelled_drailles <- vector()#
+for(i in 1:length(estiv_expl)){#
+	distance_travelled_drailles[i] <- sum(drailles@data$longueur_m[which(drailles@data[,i+2] == 1)])#
 }#
-polys <- SpatialPolygons(polygon_list)
-plot(polys)
-NDVI.2006.may.1 <- raster("/Users/mariussomveille/Desktop/NDVI_data/2006/May/06may15a.n17-VIg_data.tif")
-library(maps)#
-library(mapdata)#
+#
+distance_travelled_greatCircle <- vector()#
+for(i in 1:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
+}#
+#
+plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
+estiv_expl <- colnames(drailles@data)[3:109]#
+estiv_expl2 <- matrix(ncol=2, nrow=length(estiv_expl))#
+for(i in 1:length(estiv_expl)){#
+	estiv_expl2[i,1] <- substr(estiv_expl[i], 1, 3)#
+	estiv_expl2[i,2] <- substr(estiv_expl[i], 4, 6)#
+}#
+distance_travelled_drailles <- vector()#
+for(i in 1:length(estiv_expl)){#
+	distance_travelled_drailles[i] <- sum(drailles@data$longueur_m[which(drailles@data[,i+2] == 1)])#
+}#
+#
+distance_travelled_greatCircle <- vector()#
+for(i in 1:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
+}#
+#
+plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
+distance_travelled_greatCircle <- vector()#
+for(i in 50:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
+}
+distance_travelled_greatCircle <- vector()#
+for(i in 104:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
+}
+plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
+distance_travelled_drailles
+distance_travelled_greatCircle
+distance_travelled_greatCircle <- vector()#
+for(i in 1:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
+}
+for(i in 50:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
+}
+for(i in 104:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
+}
+distance_travelled_greatCircle
+plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
+cbind(distance_travelled_drailles, distance_travelled_greatCircle)
+estiv_expl <- colnames(drailles@data)[3:109]#
+estiv_expl2 <- matrix(ncol=2, nrow=length(estiv_expl))#
+for(i in 1:length(estiv_expl)){#
+	estiv_expl2[i,1] <- substr(estiv_expl[i], 1, 3)#
+	estiv_expl2[i,2] <- substr(estiv_expl[i], 4, 6)#
+}#
+estiv_expl2 <- estiv_expl2[-c(49,102,103),]#
+estiv_expl <- estiv_expl[-c(49,102,103)]#
+#
+distance_travelled_drailles <- vector()#
+for(i in 1:length(estiv_expl)){#
+	distance_travelled_drailles[i] <- sum(drailles@data$longueur_m[which(drailles@data[,i+2] == 1)])#
+}#
+#
+distance_travelled_greatCircle <- vector()#
+for(i in 1:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
+}#
+#
+plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
+cbind(distance_travelled_drailles, distance_travelled_greatCircle)
+estiv_expl <- colnames(drailles@data)[3:109]#
+estiv_expl2 <- matrix(ncol=2, nrow=length(estiv_expl))#
+for(i in 1:length(estiv_expl)){#
+	estiv_expl2[i,1] <- substr(estiv_expl[i], 1, 3)#
+	estiv_expl2[i,2] <- substr(estiv_expl[i], 4, 6)#
+}#
+estiv_expl2 <- estiv_expl2[-c(49,102,103),]#
+#
+distance_travelled_drailles <- vector()#
+for(i in 1:length(estiv_expl)){#
+	distance_travelled_drailles[i] <- sum(drailles@data$longueur_m[which(drailles@data[,i+2] == 1)])#
+}#
+#
+distance_travelled_drailles[-c(49,102,103)]#
+#
+estiv_expl <- estiv_expl[-c(49,102,103)]#
+distance_travelled_greatCircle <- vector()#
+for(i in 1:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
+}#
+#
+plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
+length(distance_travelled_drailles)
+estiv_expl <- colnames(drailles@data)[3:109]#
+estiv_expl2 <- matrix(ncol=2, nrow=length(estiv_expl))#
+for(i in 1:length(estiv_expl)){#
+	estiv_expl2[i,1] <- substr(estiv_expl[i], 1, 3)#
+	estiv_expl2[i,2] <- substr(estiv_expl[i], 4, 6)#
+}#
+estiv_expl2 <- estiv_expl2[-c(49,102,103),]#
+#
+distance_travelled_drailles <- vector()#
+for(i in 1:length(estiv_expl)){#
+	distance_travelled_drailles[i] <- sum(drailles@data$longueur_m[which(drailles@data[,i+2] == 1)])#
+}#
+#
+distance_travelled_drailles <- distance_travelled_drailles[-c(49,102,103)]#
+#
+estiv_expl <- estiv_expl[-c(49,102,103)]#
+distance_travelled_greatCircle <- vector()#
+for(i in 1:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
+}#
+#
+plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
+distance_travelled_greatCircle_pairwise <- matrix(ncol=length(estiv_expl), nrow=length(estiv_expl))#
+for(i in 1:length(estiv_expl)){#
+	for(j in 1:length(estiv_expl)){#
+		distance_travelled_greatCircle_pairwise[i,j] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[j,2]),]))#
+		}#
+}
+dim(distance_travelled_greatCircle_pairwise)
+distance_travelled_greatCircle_pairwise[1:5,1:5]
+i=1
+j=1
+dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[j,2]),]))
+estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt
+estiv_expl2[i,1])]]@Polygons[[1]]@labpt
+estiv_expl2[i,1]
+estiv_expl2[1,1]
+estiv_expl2[2,1]
+estiv_expl2[3,1]
+estiv_expl2[4,1]
+estiv_expl2[5,1]
+estiv_expl2[6,1]
+xx = seq(0,1,0.01)
+yy = 1 / (1+exp(-15*(xx - 0.5)))
+plot(xx,yy)
+library(spatstat)#
+library(spdep)#
+library(maptools)#
+library(rgdal)#
+library(ncf)#
+library(png)#
 library(raster)#
 library(sp)#
+library(sna)#
+library(mapplots)#
+library(igraph)#
+#
+## Plot the flow of information in wytham woods (i.e. results of the model)#
+#
+setwd("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-information-flow")#
+#
+load("bird_movement/movements_data.RData")#
+resultsModel <- read.csv("model/resultsModel.csv")#
+loggers_coords <- read.csv("Wytham_loggers_coordinates.csv")#
+model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+wyt <-readOGR("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/wytham/EllaCole", "perimeter poly with clearings_region")#
+poly.sp<-SpatialPolygons(list(wyt@polygons[[1]]))#
+poly.owin<-as(poly.sp,"owin")#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+library(spatstat)#
+library(spdep)#
+library(maptools)#
 library(rgdal)#
-library(geosphere)
-NDVI.2006.may.1 <- raster("/Users/mariussomveille/Desktop/NDVI_data/2006/May/06may15a.n17-VIg_data.tif")
-NDVI.2006.may.1 <- calc(NDVI.2006.may.1, fun=function(x){ifelse(x < -5000, NA, x)})
-plot(NDVI.2006.may.1, add=T)
-ls()
-isea3h6_hexgrid <- polys
-hexGrid <- hexGrid2[,1:3]
-head(hexGrid)
-dim(hexGrid)
-colnames(hexGrid) <- c("Long", "Lat", "ID")
-head(hexGrid)
-colnames(hexGrid) <- c("Long", "Lat", "hexID")
-head(hexGrid)
-ls()
-rm(list=ls()[1:4])
-ls()
-rm(list=ls()[2:7])
-ls()
-rm(list=ls()[3:22])
-ls()
-hexGridPoints <- hexGrid
-ls()
-rm(list=ls()[1])
-ls
-ls()
-save.image("/Users/mariussomveille/Desktop/Hex_grid/isea3h6/isea3h6_hexgrid.RData")
-NDVI.2006.may.1 <- raster("/Users/mariussomveille/Desktop/NDVI_data/2006/May/06may15a.n17-VIg_data.tif")
-NDVI.2006.may.1 <- calc(NDVI.2006.may.1, fun=function(x){ifelse(x < -5000, NA, x)})
-aaa <- extract(NDVI.2006.may.1, isea3h6_hexgrid, mean)
-length(aaa)
-hex_centroids <- list()#
-for(i in 1:7292){#
-	hex_centroids[[i]] <- c(mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,1]), mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,1]))#
+library(ncf)#
+library(png)#
+library(raster)#
+library(sp)#
+library(sna)#
+library(mapplots)#
+library(igraph)#
+#
+## Plot the flow of information in wytham woods (i.e. results of the model)#
+#
+setwd("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-information-flow")#
+#
+load("bird_movement/movements_data.RData")#
+resultsModel <- read.csv("model/resultsModel.csv")#
+loggers_coords <- read.csv("Wytham_loggers_coordinates.csv")#
+model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+wyt <-readOGR("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/wytham/EllaCole", "perimeter poly with clearings_region")#
+poly.sp<-SpatialPolygons(list(wyt@polygons[[1]]))#
+poly.owin<-as(poly.sp,"owin")#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
 }
-i
-head(hex_centroids <- list()#
-for(i in 1:7292){#
-	hex_centroids[[i]] <- c(mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,1]), mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,1]))#
-}#
-)
-head(hex_centroids)
-hex_centroids <- list()#
-for(i in 1:7292){#
-	hex_centroids[[i]] <- c(mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,1]), mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,2]))#
+load("bird_movement/movements_data.RData")#
+resultsModel <- read.csv("model/resultsModel3.csv")#
+loggers_coords <- read.csv("Wytham_loggers_coordinates.csv")#
+model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+wyt <-readOGR("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/wytham/EllaCole", "perimeter poly with clearings_region")#
+poly.sp<-SpatialPolygons(list(wyt@polygons[[1]]))#
+poly.owin<-as(poly.sp,"owin")#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
 }
-head(hex_centroids)
-hex_centroids <- list()#
-for(i in 1:7292){#
-	hex_centroids[[i]] <- c(mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,1]), mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,2]))#
+load("bird_movement/movements_data.RData")#
+resultsModel <- read.csv("model/resultsModel2.csv")#
+loggers_coords <- read.csv("Wytham_loggers_coordinates.csv")#
+model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+wyt <-readOGR("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/wytham/EllaCole", "perimeter poly with clearings_region")#
+poly.sp<-SpatialPolygons(list(wyt@polygons[[1]]))#
+poly.owin<-as(poly.sp,"owin")#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
 }
-extract(NDVI.2006.may.1, isea3h6_hexgrid, mean)
-aaa <- extract(NDVI.2006.may.1, isea3h6_hexgrid, mean)
-length(aaa)
-head(aaa)
-aaa
-length(which(is.na(aaa)==F))
-aaa2 <- which(is.na(aaa)==F))
-aaa2 <- which(is.na(aaa)==F)
-head(aaa2)
-plot(isea3h6_hexgrid[aaa2])
-length(which(aaa>400))
-length(which(aaa>500))
-plot(isea3h6_hexgrid[which(aaa>500)], add=T, col="green")
-plot(isea3h6_hexgrid[which(aaa>650)], add=T, col="dark green")
-mean(c(1,2,3,NA),na.rm=T)
-mean(c(1,2,3,NA))
-plot(isea3h6_hexgrid[which(aaa<350)], add=T, col="yellow")
-aaa <- extract(NDVI.2006.may.1, isea3h6_hexgrid, function(x) mean(x,na.rm=T)))
-aaa <- extract(NDVI.2006.may.1, isea3h6_hexgrid, function(x) mean(x,na.rm=T))
-aaa <- extract(NDVI.2006.may.1, isea3h6_hexgrid, mean(na.rm=T))
-aaa <- extract(NDVI.2006.may.1, isea3h6_hexgrid, mean(x,na.rm=T))
-aaa <- extract(NDVI.2006.may.1, isea3h6_hexgrid, function(x){mean(x,na.rm=T)})
-?extract
-aaa <- extract(NDVI.2006.may.1, isea3h6_hexgrid, mean, na.rm=T)
-aaa2 <- which(is.na(aaa)==F)
-length(aa2)
-length(aaa2)
-plot(isea3h6_hexgrid[aaa2])
-plot(isea3h6_hexgrid[which(aaa>650)], add=T, col="green")
-plot(isea3h6_hexgrid[which(aaa>550)], add=T, col="green")
-hex_centroids <- data.frame()#
-for(i in 1:7292){#
-	hex_centroids[i,] <- c(mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,1]), mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,2]))#
+load("bird_movement/movements_data.RData")#
+resultsModel <- read.csv("model/resultsModel3.csv")#
+loggers_coords <- read.csv("Wytham_loggers_coordinates.csv")#
+model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+wyt <-readOGR("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/wytham/EllaCole", "perimeter poly with clearings_region")#
+poly.sp<-SpatialPolygons(list(wyt@polygons[[1]]))#
+poly.owin<-as(poly.sp,"owin")#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
 }
-head(hex_centroids)
-hex_centroids <- matrix()#
-for(i in 1:7292){#
-	hex_centroids[i,] <- c(mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,1]), mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,2]))#
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
 }
-hex_centroids <- data.frame(nrow=7292, ncol=2)#
-for(i in 1:7292){#
-	hex_centroids[i,] <- c(mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,1]), mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,2]))#
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
 }
-i
-hex_centroids
-hex_centroids <- data.frame(nrow=7292, ncol=2)#
-for(i in 1:7292){#
-	hex_centroids[i,] <- c(mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,1]), mean(hexGridPoints[which(hexGridPoints[,3]==i),1:2][-1,][,2]))#
-}
-head(hex_centroids)
-length(which(is.na(aaa)==F))
-length(which(hex_centroids[aaa2,1]<=-30))
-length(which(hex_centroids[aaa2,1]>-30))
-isea3h6_hexgrid_ndvi_WH <- isea3h6_hexgrid[aaa2][which(hex_centroids[aaa2,1]<=-30)]
-length(isea3h6_hexgrid_ndvi_WH)
-head(isea3h6_hexgrid_ndvi_WH)
-plot(isea3h6_hexgrid_ndvi_WH)
-isea3h6_hexgrid_ndvi_WH <- isea3h6_hexgrid[aaa2][which(hex_centroids[aaa2,1]<=-30 & hex_centroids[aaa2,1]>-150)]
-plot(isea3h6_hexgrid_ndvi_WH)
-isea3h6_hexgrid_ndvi_WH <- isea3h6_hexgrid[aaa2][which(hex_centroids[aaa2,1]<=-30 & hex_centroids[aaa2,1]>-120)]
-plot(isea3h6_hexgrid_ndvi_WH)
-isea3h6_hexgrid_ndvi_WH <- isea3h6_hexgrid[aaa2][which(hex_centroids[aaa2,1]<=-30 & hex_centroids[aaa2,1]>-120)]
-isea3h6_hexgrid_ndvi_WH <- isea3h6_hexgrid[aaa2][which(hex_centroids[aaa2,1]<=-30)]
-str(NDVI.2006.may.1)
-range(NDVI.2006.may.1@data@values)
-range(NDVI.2006.may.1@data@values, na.rm=T)
-plot(NDVI.2006.may.1[which(NDVI.2006.may.1@data@values < 0)], col="red")
-plot(NDVI.2006.may.1[which(NDVI.2006.may.1 < 0)], col="red")
-plot(NDVI.2006.may.1)
-years <- c("2000", "2001", "2002", "2003", "2004", "2005", "2006")
-years
+resultsModel
+model_res
+obs_props <- cbind(rep(NA,65), rep(NA,65), rep(NA,65))
+plot(poly.owin)
 i=1
-paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/06jan15a.n17-VIg_data.tif")
-paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/06jan15a.n17-VIg_data.tif", sep="")
-NDVI.jan.1 <- raster(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/06jan15a.n17-VIg_data.tif", sep=""))#
-NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < 0, 0, x)})
-NDVI.jan.1 <- raster(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/00jan15a.n17-VIg_data.tif", sep=""))#
-NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < 0, 0, x)}
-list.files("/Users/mariussomveille/Desktop/NDVI_data/2000/January")
-paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep="")
-paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""))[1], sep="")
-NDVI.jan.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""))[1], sep=""))
-NDVI.jan.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""))[1], sep=""))
-NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < 0, 0, x)})
-plot(NDVI.jan.1)
-NDVI.ns <- list()#
-NDVI.nw <- list()#
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=2
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=3
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=4
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=5
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=6
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=7
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=8
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=9
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=10
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=11
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=12
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=13
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=14
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=15
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=16
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=17
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=18
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=19
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=20
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=21
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=22
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=23
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=24
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=25
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=26
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=27
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=28
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=29
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=30
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=31
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=32
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=33
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=34
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=35
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=36
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=37
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=38
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=39
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=40
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=41
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=42
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=43
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=44
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=45
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=46
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=47
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=48
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=49
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=50
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=51
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=52
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=53
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=54
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=55
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=56
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=57
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=58
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=59
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=60
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=61
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=62
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=63
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=64
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+i=65
+add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+obs_props[52,] <-
+obs_props[10,1] <- 30#
+obs_props[10,2] <- 67#
+obs_props[10,3] <- 3#
+obs_props[11,1] <- 30#
+obs_props[11,2] <- 67#
+obs_props[11,3] <- 3#
+obs_props[12,1] <- 30#
+obs_props[12,2] <- 67#
+obs_props[12,3] <- 3#
+# T4#
+obs_props[58,1] <- 28#
+obs_props[58,2] <- 67#
+obs_props[58,3] <- 5#
+obs_props[59,1] <- 28#
+obs_props[59,2] <- 67#
+obs_props[59,3] <- 5#
+obs_props[60,1] <- 28#
+obs_props[60,2] <- 67#
+obs_props[60,3] <- 5#
+# T5#
+obs_props[52,1] <- 26#
+obs_props[52,2] <- 68#
+obs_props[52,3] <- 6#
+obs_props[51,1] <- 26#
+obs_props[51,2] <- 68#
+obs_props[51,3] <- 6#
+obs_props[50,1] <- 26#
+obs_props[50,2] <- 68#
+obs_props[50,3] <- 6#
 #
-for(i in 1:7){#
+# Blue – right#
+# T1#
+obs_props[4,1] <- 15#
+obs_props[4,2] <- 9#
+obs_props[4,3] <- 76#
+obs_props[3,1] <- 15#
+obs_props[3,2] <- 9#
+obs_props[3,3] <- 76#
+obs_props[2,1] <- 15#
+obs_props[2,2] <- 9#
+obs_props[2,3] <- 76#
+# T2#
+obs_props[22,1] <- 32#
+obs_props[22,2] <- 2#
+obs_props[22,3] <- 66#
+obs_props[7,1] <- 32#
+obs_props[7,2] <- 2#
+obs_props[7,3] <- 66#
+obs_props[8,1] <- 32#
+obs_props[8,2] <- 2#
+obs_props[8,3] <- 66#
 #
-NDVI.jan.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""))[1], sep=""))#
-NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.jan.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""))[2], sep=""))#
-NDVI.jan.2 <- calc(NDVI.jan.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.jan.2 <- calc(NDVI.jan.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.feb.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February", sep=""))[1], sep=""))#
-NDVI.feb.1 <- calc(NDVI.feb.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.feb.1 <- calc(NDVI.feb.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.feb.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February", sep=""))[2], sep=""))#
-NDVI.feb.2 <- calc(NDVI.feb.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.feb.2 <- calc(NDVI.feb.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.mar.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March", sep=""))[1], sep=""))#
-NDVI.mar.1 <- calc(NDVI.mar.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.mar.1 <- calc(NDVI.mar.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.mar.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March", sep=""))[2], sep=""))#
-NDVI.mar.2 <- calc(NDVI.mar.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.mar.2 <- calc(NDVI.mar.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.apr.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April", sep=""))[1], sep=""))#
-NDVI.apr.1 <- calc(NDVI.apr.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.apr.1 <- calc(NDVI.apr.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.apr.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April", sep=""))[2], sep=""))#
-NDVI.apr.2 <- calc(NDVI.apr.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.apr.2 <- calc(NDVI.apr.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.may.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May", sep=""))[1], sep=""))#
-NDVI.may.1 <- calc(NDVI.may.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.may.1 <- calc(NDVI.may.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.may.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May", sep=""))[2], sep=""))#
-NDVI.may.2 <- calc(NDVI.may.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.may.2 <- calc(NDVI.may.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.jun.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June", sep=""))[1], sep=""))#
-NDVI.jun.1 <- calc(NDVI.jun.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.jun.1 <- calc(NDVI.jun.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.jun.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June", sep=""))[2], sep=""))#
-NDVI.jun.2 <- calc(NDVI.jun.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.jun.2 <- calc(NDVI.jun.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.jul.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July", sep=""))[1], sep=""))#
-NDVI.jul.1 <- calc(NDVI.jul.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.jul.1 <- calc(NDVI.jul.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.jul.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July", sep=""))[2], sep=""))#
-NDVI.jul.2 <- calc(NDVI.jul.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.jul.2 <- calc(NDVI.jul.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.aug.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August", sep=""))[1], sep=""))#
-NDVI.aug.1 <- calc(NDVI.aug.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.aug.1 <- calc(NDVI.aug.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.aug.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August", sep=""))[2], sep=""))#
-NDVI.aug.2 <- calc(NDVI.aug.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.aug.2 <- calc(NDVI.aug.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.sep.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September", sep=""))[1], sep=""))#
-NDVI.sep.1 <- calc(NDVI.sep.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.sep.1 <- calc(NDVI.sep.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.sep.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September", sep=""))[2], sep=""))#
-NDVI.sep.2 <- calc(NDVI.sep.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.sep.2 <- calc(NDVI.sep.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.oct.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October", sep=""))[1], sep=""))#
-NDVI.oct.1 <- calc(NDVI.oct.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.oct.1 <- calc(NDVI.oct.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.oct.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October", sep=""))[2], sep=""))#
-NDVI.oct.2 <- calc(NDVI.oct.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.oct.2 <- calc(NDVI.oct.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.nov.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November", sep=""))[1], sep=""))#
-NDVI.nov.1 <- calc(NDVI.nov.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.nov.1 <- calc(NDVI.nov.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.nov.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November", sep=""))[2], sep=""))#
-NDVI.nov.2 <- calc(NDVI.nov.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.nov.2 <- calc(NDVI.nov.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.dec.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December", sep=""))[1], sep=""))#
-NDVI.dec.1 <- calc(NDVI.dec.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.dec.1 <- calc(NDVI.dec.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.dec.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December", sep=""))[2], sep=""))#
-NDVI.dec.2 <- calc(NDVI.dec.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.dec.2 <- calc(NDVI.dec.2, fun=function(x){ifelse(x < 0, 0, x)})	#
-#
-NDVI.ns[[i]] <- NDVI.apr.1 + NDVI.apr.2 + NDVI.may.1 + NDVI.may.2 + NDVI.jun.1 + NDVI.jun.2 + NDVI.jul.1 + NDVI.jul.2 + NDVI.aug.1 + NDVI.aug.2 + NDVI.sep.1 + NDVI.sep.2#
-#
-NDVI.nw[[i]] <- NDVI.oct.1 + NDVI.oct.2 + NDVI.nov.1 + NDVI.nov.2 + NDVI.dec.1 + NDVI.dec.2 + NDVI.jan.1 + NDVI.jan.2 + NDVI.feb.1 + NDVI.feb.2 + NDVI.mar.1 + NDVI.mar.2#
-#
+# controls#
+# C1#
+obs_props[37,1] <- 90#
+obs_props[37,2] <- 6#
+obs_props[37,3] <- 4#
+obs_props[36,1] <- 90#
+obs_props[36,2] <- 6#
+obs_props[36,3] <- 4#
+obs_props[35,1] <- 90#
+obs_props[35,2] <- 6#
+obs_props[35,3] <- 4#
+# C2#
+obs_props[32,1] <- 45#
+obs_props[32,2] <- 25#
+obs_props[32,3] <- 30#
+obs_props[34,1] <- 45#
+obs_props[34,2] <- 25#
+obs_props[34,3] <- 30#
+obs_props[43,1] <- 45#
+obs_props[43,2] <- 25#
+obs_props[43,3] <- 30#
+# C3#
+obs_props[44,1] <- 70#
+obs_props[44,2] <- 24#
+obs_props[44,3] <- 6#
+obs_props[45,1] <- 70#
+obs_props[45,2] <- 24#
+obs_props[45,3] <- 6#
+obs_props[46,1] <- 70#
+obs_props[46,2] <- 24#
+obs_props[46,3] <- 6
+obs_props
+obs_props_list <- as.list(as.data.frame(t(obs_props)))
+obs_props_list[[1]]
+obs_props_list[[50]]
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=obs_props_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
 }
-i
-NDVI.ns <- list()#
-NDVI.nw <- list()#
+obs_props <- cbind(rep(0,65), rep(0,65), rep(0,65))#
 #
-for(i in 1:7){#
+# Red – left#
+# T3#
+obs_props[10,1] <- 30#
+obs_props[10,2] <- 67#
+obs_props[10,3] <- 3#
+obs_props[11,1] <- 30#
+obs_props[11,2] <- 67#
+obs_props[11,3] <- 3#
+obs_props[12,1] <- 30#
+obs_props[12,2] <- 67#
+obs_props[12,3] <- 3#
+# T4#
+obs_props[58,1] <- 28#
+obs_props[58,2] <- 67#
+obs_props[58,3] <- 5#
+obs_props[59,1] <- 28#
+obs_props[59,2] <- 67#
+obs_props[59,3] <- 5#
+obs_props[60,1] <- 28#
+obs_props[60,2] <- 67#
+obs_props[60,3] <- 5#
+# T5#
+obs_props[52,1] <- 26#
+obs_props[52,2] <- 68#
+obs_props[52,3] <- 6#
+obs_props[51,1] <- 26#
+obs_props[51,2] <- 68#
+obs_props[51,3] <- 6#
+obs_props[50,1] <- 26#
+obs_props[50,2] <- 68#
+obs_props[50,3] <- 6#
 #
-NDVI.jan.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""))[1], sep=""))#
-NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.jan.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""))[2], sep=""))#
-NDVI.jan.2 <- calc(NDVI.jan.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.jan.2 <- calc(NDVI.jan.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.feb.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February", sep=""))[1], sep=""))#
-NDVI.feb.1 <- calc(NDVI.feb.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.feb.1 <- calc(NDVI.feb.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.feb.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February", sep=""))[2], sep=""))#
-NDVI.feb.2 <- calc(NDVI.feb.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.feb.2 <- calc(NDVI.feb.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.mar.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March", sep=""))[1], sep=""))#
-NDVI.mar.1 <- calc(NDVI.mar.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.mar.1 <- calc(NDVI.mar.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.mar.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March", sep=""))[2], sep=""))#
-NDVI.mar.2 <- calc(NDVI.mar.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.mar.2 <- calc(NDVI.mar.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.apr.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April", sep=""))[1], sep=""))#
-NDVI.apr.1 <- calc(NDVI.apr.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.apr.1 <- calc(NDVI.apr.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.apr.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April", sep=""))[2], sep=""))#
-NDVI.apr.2 <- calc(NDVI.apr.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.apr.2 <- calc(NDVI.apr.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.may.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May", sep=""))[1], sep=""))#
-NDVI.may.1 <- calc(NDVI.may.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.may.1 <- calc(NDVI.may.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.may.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May", sep=""))[2], sep=""))#
-NDVI.may.2 <- calc(NDVI.may.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.may.2 <- calc(NDVI.may.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.jun.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June", sep=""))[1], sep=""))#
-NDVI.jun.1 <- calc(NDVI.jun.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.jun.1 <- calc(NDVI.jun.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.jun.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June", sep=""))[2], sep=""))#
-NDVI.jun.2 <- calc(NDVI.jun.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.jun.2 <- calc(NDVI.jun.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.jul.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July", sep=""))[1], sep=""))#
-NDVI.jul.1 <- calc(NDVI.jul.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.jul.1 <- calc(NDVI.jul.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.jul.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July", sep=""))[2], sep=""))#
-NDVI.jul.2 <- calc(NDVI.jul.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.jul.2 <- calc(NDVI.jul.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.aug.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August", sep=""))[1], sep=""))#
-NDVI.aug.1 <- calc(NDVI.aug.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.aug.1 <- calc(NDVI.aug.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.aug.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August", sep=""))[2], sep=""))#
-NDVI.aug.2 <- calc(NDVI.aug.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.aug.2 <- calc(NDVI.aug.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.sep.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September", sep=""))[1], sep=""))#
-NDVI.sep.1 <- calc(NDVI.sep.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.sep.1 <- calc(NDVI.sep.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.sep.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September", sep=""))[2], sep=""))#
-NDVI.sep.2 <- calc(NDVI.sep.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.sep.2 <- calc(NDVI.sep.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.oct.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October", sep=""))[1], sep=""))#
-NDVI.oct.1 <- calc(NDVI.oct.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.oct.1 <- calc(NDVI.oct.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.oct.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October", sep=""))[2], sep=""))#
-NDVI.oct.2 <- calc(NDVI.oct.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.oct.2 <- calc(NDVI.oct.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.nov.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November", sep=""))[1], sep=""))#
-NDVI.nov.1 <- calc(NDVI.nov.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.nov.1 <- calc(NDVI.nov.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.nov.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November", sep=""))[2], sep=""))#
-NDVI.nov.2 <- calc(NDVI.nov.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.nov.2 <- calc(NDVI.nov.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.dec.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December", sep=""))[1], sep=""))#
-NDVI.dec.1 <- calc(NDVI.dec.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.dec.1 <- calc(NDVI.dec.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.dec.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December", sep=""))[2], sep=""))#
-NDVI.dec.2 <- calc(NDVI.dec.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.dec.2 <- calc(NDVI.dec.2, fun=function(x){ifelse(x < 0, 0, x)})	#
+# Blue – right#
+# T1#
+obs_props[4,1] <- 15#
+obs_props[4,2] <- 9#
+obs_props[4,3] <- 76#
+obs_props[3,1] <- 15#
+obs_props[3,2] <- 9#
+obs_props[3,3] <- 76#
+obs_props[2,1] <- 15#
+obs_props[2,2] <- 9#
+obs_props[2,3] <- 76#
+# T2#
+obs_props[22,1] <- 32#
+obs_props[22,2] <- 2#
+obs_props[22,3] <- 66#
+obs_props[7,1] <- 32#
+obs_props[7,2] <- 2#
+obs_props[7,3] <- 66#
+obs_props[8,1] <- 32#
+obs_props[8,2] <- 2#
+obs_props[8,3] <- 66#
 #
-NDVI.ns[[i]] <- (NDVI.apr.1 + NDVI.apr.2 + NDVI.may.1 + NDVI.may.2 + NDVI.jun.1 + NDVI.jun.2 + NDVI.jul.1 + NDVI.jul.2 + NDVI.aug.1 + NDVI.aug.2 + NDVI.sep.1 + NDVI.sep.2) / 12#
+# controls#
+# C1#
+obs_props[37,1] <- 90#
+obs_props[37,2] <- 6#
+obs_props[37,3] <- 4#
+obs_props[36,1] <- 90#
+obs_props[36,2] <- 6#
+obs_props[36,3] <- 4#
+obs_props[35,1] <- 90#
+obs_props[35,2] <- 6#
+obs_props[35,3] <- 4#
+# C2#
+obs_props[32,1] <- 45#
+obs_props[32,2] <- 25#
+obs_props[32,3] <- 30#
+obs_props[34,1] <- 45#
+obs_props[34,2] <- 25#
+obs_props[34,3] <- 30#
+obs_props[43,1] <- 45#
+obs_props[43,2] <- 25#
+obs_props[43,3] <- 30#
+# C3#
+obs_props[44,1] <- 70#
+obs_props[44,2] <- 24#
+obs_props[44,3] <- 6#
+obs_props[45,1] <- 70#
+obs_props[45,2] <- 24#
+obs_props[45,3] <- 6#
+obs_props[46,1] <- 70#
+obs_props[46,2] <- 24#
+obs_props[46,3] <- 6#
 #
-NDVI.nw[[i]] <- (NDVI.oct.1 + NDVI.oct.2 + NDVI.nov.1 + NDVI.nov.2 + NDVI.dec.1 + NDVI.dec.2 + NDVI.jan.1 + NDVI.jan.2 + NDVI.feb.1 + NDVI.feb.2 + NDVI.mar.1 + NDVI.mar.2) / 12#
+obs_props_list <- as.list(as.data.frame(t(obs_props)))#
 #
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=obs_props_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
 }
-i
-for(i in 4:7){#
-#
-NDVI.jan.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""))[1], sep=""))#
-NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.jan.1 <- calc(NDVI.jan.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.jan.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/January", sep=""))[2], sep=""))#
-NDVI.jan.2 <- calc(NDVI.jan.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.jan.2 <- calc(NDVI.jan.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.feb.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February", sep=""))[1], sep=""))#
-NDVI.feb.1 <- calc(NDVI.feb.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.feb.1 <- calc(NDVI.feb.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.feb.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/February", sep=""))[2], sep=""))#
-NDVI.feb.2 <- calc(NDVI.feb.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.feb.2 <- calc(NDVI.feb.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.mar.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March", sep=""))[1], sep=""))#
-NDVI.mar.1 <- calc(NDVI.mar.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.mar.1 <- calc(NDVI.mar.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.mar.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/March", sep=""))[2], sep=""))#
-NDVI.mar.2 <- calc(NDVI.mar.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.mar.2 <- calc(NDVI.mar.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.apr.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April", sep=""))[1], sep=""))#
-NDVI.apr.1 <- calc(NDVI.apr.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.apr.1 <- calc(NDVI.apr.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.apr.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/April", sep=""))[2], sep=""))#
-NDVI.apr.2 <- calc(NDVI.apr.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.apr.2 <- calc(NDVI.apr.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.may.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May", sep=""))[1], sep=""))#
-NDVI.may.1 <- calc(NDVI.may.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.may.1 <- calc(NDVI.may.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.may.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/May", sep=""))[2], sep=""))#
-NDVI.may.2 <- calc(NDVI.may.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.may.2 <- calc(NDVI.may.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.jun.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June", sep=""))[1], sep=""))#
-NDVI.jun.1 <- calc(NDVI.jun.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.jun.1 <- calc(NDVI.jun.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.jun.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/June", sep=""))[2], sep=""))#
-NDVI.jun.2 <- calc(NDVI.jun.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.jun.2 <- calc(NDVI.jun.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.jul.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July", sep=""))[1], sep=""))#
-NDVI.jul.1 <- calc(NDVI.jul.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.jul.1 <- calc(NDVI.jul.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.jul.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/July", sep=""))[2], sep=""))#
-NDVI.jul.2 <- calc(NDVI.jul.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.jul.2 <- calc(NDVI.jul.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.aug.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August", sep=""))[1], sep=""))#
-NDVI.aug.1 <- calc(NDVI.aug.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.aug.1 <- calc(NDVI.aug.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.aug.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/August", sep=""))[2], sep=""))#
-NDVI.aug.2 <- calc(NDVI.aug.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.aug.2 <- calc(NDVI.aug.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.sep.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September", sep=""))[1], sep=""))#
-NDVI.sep.1 <- calc(NDVI.sep.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.sep.1 <- calc(NDVI.sep.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.sep.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/September", sep=""))[2], sep=""))#
-NDVI.sep.2 <- calc(NDVI.sep.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.sep.2 <- calc(NDVI.sep.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.oct.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October", sep=""))[1], sep=""))#
-NDVI.oct.1 <- calc(NDVI.oct.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.oct.1 <- calc(NDVI.oct.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.oct.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/October", sep=""))[2], sep=""))#
-NDVI.oct.2 <- calc(NDVI.oct.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.oct.2 <- calc(NDVI.oct.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.nov.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November", sep=""))[1], sep=""))#
-NDVI.nov.1 <- calc(NDVI.nov.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.nov.1 <- calc(NDVI.nov.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.nov.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/November", sep=""))[2], sep=""))#
-NDVI.nov.2 <- calc(NDVI.nov.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.nov.2 <- calc(NDVI.nov.2, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.dec.1 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December", sep=""))[1], sep=""))#
-NDVI.dec.1 <- calc(NDVI.dec.1, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.dec.1 <- calc(NDVI.dec.1, fun=function(x){ifelse(x < 0, 0, x)})#
-NDVI.dec.2 <- raster(paste(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December/", sep=""), list.files(paste("/Users/mariussomveille/Desktop/NDVI_data/", years[i], "/December", sep=""))[2], sep=""))#
-NDVI.dec.2 <- calc(NDVI.dec.2, fun=function(x){ifelse(x < -5000, NA, x)})#
-NDVI.dec.2 <- calc(NDVI.dec.2, fun=function(x){ifelse(x < 0, 0, x)})	#
-#
-NDVI.ns[[i]] <- (NDVI.apr.1 + NDVI.apr.2 + NDVI.may.1 + NDVI.may.2 + NDVI.jun.1 + NDVI.jun.2 + NDVI.jul.1 + NDVI.jul.2 + NDVI.aug.1 + NDVI.aug.2 + NDVI.sep.1 + NDVI.sep.2) / 12#
-#
-NDVI.nw[[i]] <- (NDVI.oct.1 + NDVI.oct.2 + NDVI.nov.1 + NDVI.nov.2 + NDVI.dec.1 + NDVI.dec.2 + NDVI.jan.1 + NDVI.jan.2 + NDVI.feb.1 + NDVI.feb.2 + NDVI.mar.1 + NDVI.mar.2) / 12#
-#
+obs_props_list[[i]]
+plot(poly.owin)#
+for(i in 1:65){#
+	if(sum(obs_props_list[[i]]) > 0){#
+			add.pie(z=obs_props_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+	}#
 }
-i
-plot(NDVI.ns[[1]])
-NDVI.NorthernSummer <- (NDVI.ns[[1]] + NDVI.ns[[2]] + NDVI.ns[[3]] + NDVI.ns[[4]] + NDVI.ns[[5]] + NDVI.ns[[6]] + NDVI.ns[[7]]) / 7#
-NDVI.NorthernWinter <- (NDVI.nw[[1]] + NDVI.nw[[2]] + NDVI.nw[[3]] + NDVI.nw[[4]] + NDVI.nw[[5]] + NDVI.nw[[6]] + NDVI.nw[[7]]) / 7
-plot(NDVI.NorthernSummer)
-plot(NDVI.NorthernWinter)
-isea3h6_hexgrid_ndvi_WH <- isea3h6_hexgrid[which(hex_centroids[,1]<=-30)]#
-isea3h6_hexgrid_ndvi_EH <- isea3h6_hexgrid[which(hex_centroids[,1]>-30)]
-isea3h6_hexgrid_WH <- isea3h6_hexgrid[which(hex_centroids[,1]<=-30)]#
-isea3h6_hexgrid_EH <- isea3h6_hexgrid[which(hex_centroids[,1]>-30)]
-hex_ns_WH <- extract(NDVI.NorthernSummer, isea3h6_hexgrid_WH, mean, na.rm=T)#
-hex_nw_WH <- extract(NDVI.NorthernWinter, isea3h6_hexgrid_WH, mean, na.rm=T)
-land_ns_WH <- which(is.na(hex_ns_WH)==F)#
-land_nw_WH <- which(is.na(hex_nw_WH)==F)
-ls()
-rm(list=ls()[1:2])
-ls()
-rm(list=ls()[5])
-ls()
-rm(list=ls()[7:8])
-ls()
-rm(list=ls()[10:28])
-ls()
-rm(list=ls()[12:20])
-ls()
-save.image("/Users/mariussomveille/Desktop/Hex_grid/isea3h6/isea3h6_hexgrid_ndvi.RData")
+plot(poly.owin, main="")#
+for(i in 1:65){#
+	if(sum(obs_props_list[[i]]) > 0){#
+			add.pie(z=obs_props_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+	}#
+}
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+dim(resultsModel)
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+yy2 = 1 / (1+exp(-10*(xx - 0.5)))
+plot(xx,yy)
+plot(xx,yy2)
+yy2 = 1 / (1+exp(-10*(xx - 1)))
+plot(xx,yy2)
+yy2 = 1 / (1+exp(-5*(xx - 0.5)))
+plot(xx,yy2)
+yy2 = 1 / (1+exp(-10*(xx - 1)))
+plot(xx,yy2)
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+quartz()
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+resultsModel <- read.csv("model/resultsModel4.csv")#
+model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
+model_res_list <- as.list(as.data.frame(t(model_res)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+}
+dim(resultsModel)
+resultsModel[1:20,10]
+resultsModel[1:20,65+10]
+plot(1:20, resultsModel[1:20,65+10])
+plot(1:20, resultsModel[1:20,65+10] + resultsModel[1:20,130+10])
+obs_props <- cbind(rep(0,65), rep(0,65), rep(0,65))#
+#
+# Red – left#
+# T3#
+obs_props[10,1] <- 30#
+obs_props[10,2] <- 65#
+obs_props[10,3] <- 5#
+obs_props[11,1] <- 30#
+obs_props[11,2] <- 65#
+obs_props[11,3] <- 5#
+obs_props[12,1] <- 30#
+obs_props[12,2] <- 65#
+obs_props[12,3] <- 5#
+# T4#
+obs_props[58,1] <- 28#
+obs_props[58,2] <- 70#
+obs_props[58,3] <- 2#
+obs_props[59,1] <- 28#
+obs_props[59,2] <- 70#
+obs_props[59,3] <- 2#
+obs_props[60,1] <- 28#
+obs_props[60,2] <- 70#
+obs_props[60,3] <- 2#
+# T5#
+obs_props[52,1] <- 26#
+obs_props[52,2] <- 72#
+obs_props[52,3] <- 2#
+obs_props[51,1] <- 26#
+obs_props[51,2] <- 72#
+obs_props[51,3] <- 2#
+obs_props[50,1] <- 26#
+obs_props[50,2] <- 72#
+obs_props[50,3] <- 2#
+#
+# Blue – right#
+# T1#
+obs_props[4,1] <- 15#
+obs_props[4,2] <- 9#
+obs_props[4,3] <- 76#
+obs_props[3,1] <- 15#
+obs_props[3,2] <- 9#
+obs_props[3,3] <- 76#
+obs_props[2,1] <- 15#
+obs_props[2,2] <- 9#
+obs_props[2,3] <- 76#
+# T2#
+obs_props[22,1] <- 32#
+obs_props[22,2] <- 1#
+obs_props[22,3] <- 67#
+obs_props[7,1] <- 32#
+obs_props[7,2] <- 1#
+obs_props[7,3] <- 67#
+obs_props[8,1] <- 32#
+obs_props[8,2] <- 1#
+obs_props[8,3] <- 67#
+#
+# controls#
+# C1#
+obs_props[37,1] <- 90#
+obs_props[37,2] <- 6#
+obs_props[37,3] <- 4#
+obs_props[36,1] <- 90#
+obs_props[36,2] <- 6#
+obs_props[36,3] <- 4#
+obs_props[35,1] <- 90#
+obs_props[35,2] <- 6#
+obs_props[35,3] <- 4#
+# C2#
+obs_props[32,1] <- 45#
+obs_props[32,2] <- 25#
+obs_props[32,3] <- 30#
+obs_props[34,1] <- 45#
+obs_props[34,2] <- 25#
+obs_props[34,3] <- 30#
+obs_props[43,1] <- 45#
+obs_props[43,2] <- 25#
+obs_props[43,3] <- 30#
+# C3#
+obs_props[44,1] <- 70#
+obs_props[44,2] <- 24#
+obs_props[44,3] <- 6#
+obs_props[45,1] <- 70#
+obs_props[45,2] <- 24#
+obs_props[45,3] <- 6#
+obs_props[46,1] <- 70#
+obs_props[46,2] <- 24#
+obs_props[46,3] <- 6#
+#
+obs_props_list <- as.list(as.data.frame(t(obs_props)))#
+#
+plot(poly.owin)#
+for(i in 1:65){#
+	if(sum(obs_props_list[[i]]) > 0){#
+			add.pie(z=obs_props_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+	}#
+}
+obs_props <- cbind(rep(0,65), rep(0,65), rep(0,65))#
+#
+# Red – left#
+# T3#
+obs_props[10,1] <- 30#
+obs_props[10,2] <- 65#
+obs_props[10,3] <- 5#
+obs_props[11,1] <- 30#
+obs_props[11,2] <- 65#
+obs_props[11,3] <- 5#
+obs_props[12,1] <- 30#
+obs_props[12,2] <- 65#
+obs_props[12,3] <- 5#
+# T4#
+obs_props[58,1] <- 28#
+obs_props[58,2] <- 70#
+obs_props[58,3] <- 2#
+obs_props[59,1] <- 28#
+obs_props[59,2] <- 70#
+obs_props[59,3] <- 2#
+obs_props[60,1] <- 28#
+obs_props[60,2] <- 70#
+obs_props[60,3] <- 2#
+# T5#
+obs_props[52,1] <- 26#
+obs_props[52,2] <- 72#
+obs_props[52,3] <- 2#
+obs_props[51,1] <- 26#
+obs_props[51,2] <- 72#
+obs_props[51,3] <- 2#
+obs_props[50,1] <- 26#
+obs_props[50,2] <- 72#
+obs_props[50,3] <- 2#
+#
+# Blue – right#
+# T1#
+obs_props[4,1] <- 15#
+obs_props[4,2] <- 9#
+obs_props[4,3] <- 76#
+obs_props[3,1] <- 15#
+obs_props[3,2] <- 9#
+obs_props[3,3] <- 76#
+obs_props[2,1] <- 15#
+obs_props[2,2] <- 9#
+obs_props[2,3] <- 76#
+# T2#
+obs_props[22,1] <- 32#
+obs_props[22,2] <- 1#
+obs_props[22,3] <- 67#
+obs_props[7,1] <- 32#
+obs_props[7,2] <- 1#
+obs_props[7,3] <- 67#
+obs_props[8,1] <- 32#
+obs_props[8,2] <- 1#
+obs_props[8,3] <- 67#
+#
+# controls#
+# C1#
+obs_props[37,1] <- 90#
+obs_props[37,2] <- 6#
+obs_props[37,3] <- 4#
+obs_props[36,1] <- 90#
+obs_props[36,2] <- 6#
+obs_props[36,3] <- 4#
+obs_props[35,1] <- 90#
+obs_props[35,2] <- 6#
+obs_props[35,3] <- 4#
+# C2#
+obs_props[32,1] <- 45#
+obs_props[32,2] <- 25#
+obs_props[32,3] <- 30#
+obs_props[34,1] <- 45#
+obs_props[34,2] <- 25#
+obs_props[34,3] <- 30#
+obs_props[43,1] <- 45#
+obs_props[43,2] <- 25#
+obs_props[43,3] <- 30#
+# C3#
+obs_props[44,1] <- 70#
+obs_props[44,2] <- 24#
+obs_props[44,3] <- 6#
+obs_props[45,1] <- 70#
+obs_props[45,2] <- 24#
+obs_props[45,3] <- 6#
+obs_props[46,1] <- 70#
+obs_props[46,2] <- 24#
+obs_props[46,3] <- 6#
+#
+obs_props_list <- as.list(as.data.frame(t(obs_props)))#
+#
+plot(poly.owin, main="")#
+for(i in 1:65){#
+	if(sum(obs_props_list[[i]]) > 0){#
+			add.pie(z=obs_props_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+	}#
+}
+nonsolvers = as.matrix(resultsModel)[1:20,11]#
+left = as.matrix(resultsModel)[1:20,65+11]#
+right = as.matrix(resultsModel)[1:20,130+11]#
+prop = (left + right) / (nonsolvers + left + right)#
+#
+plot(1:20, prop, col="red", pch=1)
+plot(1:20, prop, col="red", pch=2, xlab="Time (1–20 days)", ylab="Proportion of solvers", ylim=c(0,1))
+plot(1:20, prop, col="red", pch=3, xlab="Time (1–20 days)", ylab="Proportion of solvers", ylim=c(0,1))
+nonsolvers = as.matrix(resultsModel)[1:20,59]#
+left = as.matrix(resultsModel)[1:20,65+59]#
+right = as.matrix(resultsModel)[1:20,130+59]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="red", pch=4)
+nonsolvers = as.matrix(resultsModel)[1:20,2]#
+left = as.matrix(resultsModel)[1:20,65+2]#
+right = as.matrix(resultsModel)[1:20,130+2]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="red", pch=5)
+nonsolvers = as.matrix(resultsModel)[1:20,11]#
+left = as.matrix(resultsModel)[1:20,65+11]#
+right = as.matrix(resultsModel)[1:20,130+11]#
+prop = (left + right) / (nonsolvers + left + right)#
+plot(1:20, prop, col="red", pch=3, xlab="Time (1–20 days)", ylab="Proportion of solvers", ylim=c(0,1))#
+#
+# T4#
+nonsolvers = as.matrix(resultsModel)[1:20,59]#
+left = as.matrix(resultsModel)[1:20,65+59]#
+right = as.matrix(resultsModel)[1:20,130+59]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="red", pch=4)#
+#
+# T5#
+nonsolvers = as.matrix(resultsModel)[1:20,51]#
+left = as.matrix(resultsModel)[1:20,65+51]#
+right = as.matrix(resultsModel)[1:20,130+51]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="red", pch=5)#
+#
+# T1#
+nonsolvers = as.matrix(resultsModel)[1:20,3]#
+left = as.matrix(resultsModel)[1:20,65+3]#
+right = as.matrix(resultsModel)[1:20,130+3]#
+prop = (left + right) / (nonsolvers + left + right)#
+plot(1:20, prop, col="blue", pch=2)#
+#
+# T2#
+nonsolvers = as.matrix(resultsModel)[1:20,7]#
+left = as.matrix(resultsModel)[1:20,65+7]#
+right = as.matrix(resultsModel)[1:20,130+7]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="blue", pch=1)
+nonsolvers = as.matrix(resultsModel)[1:20,11]#
+left = as.matrix(resultsModel)[1:20,65+11]#
+right = as.matrix(resultsModel)[1:20,130+11]#
+prop = (left + right) / (nonsolvers + left + right)#
+plot(1:20, prop, col="red", pch=3, xlab="Time (1–20 days)", ylab="Proportion of solvers", ylim=c(0,1))#
+#
+# T4#
+nonsolvers = as.matrix(resultsModel)[1:20,59]#
+left = as.matrix(resultsModel)[1:20,65+59]#
+right = as.matrix(resultsModel)[1:20,130+59]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="red", pch=4)#
+#
+# T5#
+nonsolvers = as.matrix(resultsModel)[1:20,51]#
+left = as.matrix(resultsModel)[1:20,65+51]#
+right = as.matrix(resultsModel)[1:20,130+51]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="red", pch=5)#
+#
+# T1#
+nonsolvers = as.matrix(resultsModel)[1:20,3]#
+left = as.matrix(resultsModel)[1:20,65+3]#
+right = as.matrix(resultsModel)[1:20,130+3]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="blue", pch=2)#
+#
+# T2#
+nonsolvers = as.matrix(resultsModel)[1:20,7]#
+left = as.matrix(resultsModel)[1:20,65+7]#
+right = as.matrix(resultsModel)[1:20,130+7]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="blue", pch=1)
+# C1#
+nonsolvers = as.matrix(resultsModel)[1:20,36]#
+left = as.matrix(resultsModel)[1:20,65+36]#
+right = as.matrix(resultsModel)[1:20,130+36]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="green", pch=2)#
+#
+# C2#
+nonsolvers = as.matrix(resultsModel)[1:20,34]#
+left = as.matrix(resultsModel)[1:20,65+34]#
+right = as.matrix(resultsModel)[1:20,130+34]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="green", pch=1)#
+#
+# C3#
+nonsolvers = as.matrix(resultsModel)[1:20,45]#
+left = as.matrix(resultsModel)[1:20,65+45]#
+right = as.matrix(resultsModel)[1:20,130+45]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="green", pch=1)
+nonsolvers = as.matrix(resultsModel)[1:20,11]#
+left = as.matrix(resultsModel)[1:20,65+11]#
+right = as.matrix(resultsModel)[1:20,130+11]#
+prop = (left + right) / (nonsolvers + left + right)#
+plot(1:20, prop, col="red", pch=3, xlab="Time (1–20 days)", ylab="Proportion of solvers", ylim=c(0,1))#
+#
+# T4#
+nonsolvers = as.matrix(resultsModel)[1:20,59]#
+left = as.matrix(resultsModel)[1:20,65+59]#
+right = as.matrix(resultsModel)[1:20,130+59]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="red", pch=4)#
+#
+# T5#
+nonsolvers = as.matrix(resultsModel)[1:20,51]#
+left = as.matrix(resultsModel)[1:20,65+51]#
+right = as.matrix(resultsModel)[1:20,130+51]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="red", pch=5)#
+#
+# T1#
+nonsolvers = as.matrix(resultsModel)[1:20,3]#
+left = as.matrix(resultsModel)[1:20,65+3]#
+right = as.matrix(resultsModel)[1:20,130+3]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="blue", pch=2)#
+#
+# T2#
+nonsolvers = as.matrix(resultsModel)[1:20,7]#
+left = as.matrix(resultsModel)[1:20,65+7]#
+right = as.matrix(resultsModel)[1:20,130+7]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="blue", pch=1)#
+#
+# C1#
+nonsolvers = as.matrix(resultsModel)[1:20,36]#
+left = as.matrix(resultsModel)[1:20,65+36]#
+right = as.matrix(resultsModel)[1:20,130+36]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="dark green", pch=6)#
+#
+# C2#
+nonsolvers = as.matrix(resultsModel)[1:20,34]#
+left = as.matrix(resultsModel)[1:20,65+34]#
+right = as.matrix(resultsModel)[1:20,130+34]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="dark green", pch=7)#
+#
+# C3#
+nonsolvers = as.matrix(resultsModel)[1:20,45]#
+left = as.matrix(resultsModel)[1:20,65+45]#
+right = as.matrix(resultsModel)[1:20,130+45]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="dark green", pch=8)
+nonsolvers = as.matrix(resultsModel)[1:20,11]#
+left = as.matrix(resultsModel)[1:20,65+11]#
+right = as.matrix(resultsModel)[1:20,130+11]#
+prop = (left + right) / (nonsolvers + left + right)#
+plot(1:20, prop, col="red", pch=3, xlab="Time (1–20 days)", ylab="Proportion of solvers", ylim=c(0,1))#
+#
+# T4#
+nonsolvers = as.matrix(resultsModel)[1:20,59]#
+left = as.matrix(resultsModel)[1:20,65+59]#
+right = as.matrix(resultsModel)[1:20,130+59]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="red", pch=4)#
+#
+# T5#
+nonsolvers = as.matrix(resultsModel)[1:20,51]#
+left = as.matrix(resultsModel)[1:20,65+51]#
+right = as.matrix(resultsModel)[1:20,130+51]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="red", pch=5)#
+#
+# T1#
+nonsolvers = as.matrix(resultsModel)[1:20,3]#
+left = as.matrix(resultsModel)[1:20,65+3]#
+right = as.matrix(resultsModel)[1:20,130+3]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="blue", pch=2)#
+#
+# T2#
+nonsolvers = as.matrix(resultsModel)[1:20,7]#
+left = as.matrix(resultsModel)[1:20,65+7]#
+right = as.matrix(resultsModel)[1:20,130+7]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="blue", pch=1)#
+#
+# C1#
+nonsolvers = as.matrix(resultsModel)[1:20,36]#
+left = as.matrix(resultsModel)[1:20,65+36]#
+right = as.matrix(resultsModel)[1:20,130+36]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="green2", pch=6)
+nonsolvers = as.matrix(resultsModel)[1:20,34]#
+left = as.matrix(resultsModel)[1:20,65+34]#
+right = as.matrix(resultsModel)[1:20,130+34]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="green3", pch=7)
+nonsolvers = as.matrix(resultsModel)[1:20,11]#
+left = as.matrix(resultsModel)[1:20,65+11]#
+right = as.matrix(resultsModel)[1:20,130+11]#
+prop = (left + right) / (nonsolvers + left + right)#
+plot(1:20, prop, col="red", pch=3, xlab="Time (1–20 days)", ylab="Proportion of solvers", ylim=c(0,1))#
+#
+# T4#
+nonsolvers = as.matrix(resultsModel)[1:20,59]#
+left = as.matrix(resultsModel)[1:20,65+59]#
+right = as.matrix(resultsModel)[1:20,130+59]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="red", pch=4)#
+#
+# T5#
+nonsolvers = as.matrix(resultsModel)[1:20,51]#
+left = as.matrix(resultsModel)[1:20,65+51]#
+right = as.matrix(resultsModel)[1:20,130+51]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="red", pch=5)#
+#
+# T1#
+nonsolvers = as.matrix(resultsModel)[1:20,3]#
+left = as.matrix(resultsModel)[1:20,65+3]#
+right = as.matrix(resultsModel)[1:20,130+3]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="blue", pch=2)#
+#
+# T2#
+nonsolvers = as.matrix(resultsModel)[1:20,7]#
+left = as.matrix(resultsModel)[1:20,65+7]#
+right = as.matrix(resultsModel)[1:20,130+7]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="blue", pch=1)#
+#
+# C1#
+nonsolvers = as.matrix(resultsModel)[1:20,36]#
+left = as.matrix(resultsModel)[1:20,65+36]#
+right = as.matrix(resultsModel)[1:20,130+36]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="green3", pch=6)#
+#
+# C2#
+nonsolvers = as.matrix(resultsModel)[1:20,34]#
+left = as.matrix(resultsModel)[1:20,65+34]#
+right = as.matrix(resultsModel)[1:20,130+34]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="green3", pch=7)#
+#
+# C3#
+nonsolvers = as.matrix(resultsModel)[1:20,45]#
+left = as.matrix(resultsModel)[1:20,65+45]#
+right = as.matrix(resultsModel)[1:20,130+45]#
+prop = (left + right) / (nonsolvers + left + right)#
+points(1:20, prop, col="green3", pch=8)

@@ -57,10 +57,10 @@ for i = 1:n
     birdModels2(i) = -alpha(i)*L(i)*U(i) - beta(i)*R(i)*U(i) - sum(gamma(i,:))*U(i) + sum(gamma(:,i).*U);  % The differential equations for U.  The term sum(gamma(i,:))*U(i) adds up all the rates at which susceptible birds leave patch i to go to another patch, and sum(gamma(:,i).*U) is the rate at which susceptible birds in other patches leave to go to patch i
 end
 for i = 1:n
-    birdModels2(n + i) = alpha(i)*L(i)*U(i) - epsilon1(i)*beta(i)*R(i)*L(i) + epsilon2(i)*alpha(i)*L(i)*R(i) - sum(gamma(i,:))*L(i) + sum(gamma(:,i).*L);  % The differential equations for L
+    birdModels2(n + i) = alpha(i)*L(i)*U(i) - epsilon1(i)*R(i)*L(i) + epsilon2(i)*L(i)*R(i) - sum(gamma(i,:))*L(i) + sum(gamma(:,i).*L);  % The differential equations for L
 end
 for i = 1:n
-    birdModels2(2*n + i) = beta(i)*R(i)*U(i) - epsilon2(i)*alpha(i)*L(i)*R(i) + epsilon1(i)*beta(i)*R(i)*L(i) - sum(gamma(i,:))*R(i) + sum(gamma(:,i).*R);  % The differential equations for R
+    birdModels2(2*n + i) = beta(i)*R(i)*U(i) - epsilon2(i)*L(i)*R(i) + epsilon1(i)*R(i)*L(i) - sum(gamma(i,:))*R(i) + sum(gamma(:,i).*R);  % The differential equations for R
 end
 
 

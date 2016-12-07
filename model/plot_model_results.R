@@ -18,9 +18,9 @@ setwd("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-infor
 ## Import and process the data
 
 load("bird_movement/movements_data.RData")
-resultsModel <- read.csv("model/resultsModel.csv")
+resultsModel <- read.csv("model/resultsModel4.csv")
 loggers_coords <- read.csv("Wytham_loggers_coordinates.csv")
-model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])
+model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])
 model_res_list <- as.list(as.data.frame(t(model_res)))
 
 wyt <-readOGR("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-information-flow", "perimeter poly with clearings_region")

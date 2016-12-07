@@ -1,3 +1,210 @@
+plot(800000, 630000, pch=20, cex=2)
+plot(exploitations[which(exploitations@data$NoExploita == estiv_expl2[1,2]),], col= "red", pch =20, add=T)
+r#
+plot(drailles)
+plot(800000, 630000, pch=20, cex=2, add=T)
+exploitations
+coords(estives)
+estives@coords
+estive
+estivse
+estives
+estives@coord
+exploitations@coords
+estives@coords
+estives
+library(maptools)
+allcoordinates(estives)
+library(proj4)
+project(estives, proj="CRS")
+estives
+exploitations
+estives@polygons[[2]]@Polygons[[1]]@coords
+estives@polygons
+length(estives@polygons)
+estives@polygons[[1]]
+estives@polygons[[1]]$ID
+estives@polygons[[1]]@ID
+estives@polygons[[1]]@labpt
+plot(estives@polygons[[1]]@labpt)
+dim(estives@polygons[[1]]@coords)
+estives@polygons[[1]]@coords
+estives@polygons[[1]]@ area
+estives@polygons[[1]]@area
+estives@polygons[[1]]@coords
+estives@polygons[[1]]polygons[[2]]@coords
+estives@polygons[[1]]@Polygons
+estives@polygons[[1]]@Polygons[[1]]
+estives@polygons[[1]]@Polygons[[1]]@labpt
+estives@polygons[[1]]@Polygons[[1]]@coords
+mean(estives@polygons[[1]]@Polygons[[1]]@coords[,1])
+mean(estives@polygons[[1]]@Polygons[[1]]@coords[,2])
+estives@polygons[[1]]@Polygons[[1]]@labpt
+exploitations@coords
+exploitations@coords[1,]
+dist(rbind(estives@polygons[[1]]@Polygons[[1]]@labpt, exploitations@coords[1,]))
+head(estiv_expl2)
+which(estives@data$CODE_ESTIV == estiv_expl2[1,1])
+estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[1,1])]]@Polygons[[1]]@labpt
+exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[1,2]),]
+distance_travelled_greatCircle <- vector()#
+for(i in 1:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
+}
+i
+distance_travelled_greatCircle
+distance_travelled_drailles
+estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt
+exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]
+estiv_expl2[i,2]
+estiv_expl2
+which(exploitations@data$NoExploita == estiv_expl2[i,2])
+estiv_expl2[49]
+estiv_expl2[49,]
+estiv_expl2[49,2]
+exploitations@data$NoExploita
+hist(exploitations@data$NoExploita)
+for(i in 50:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
+}
+i
+for(i in 103:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
+}
+i
+for(i in 104:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
+}
+i
+distance_travelled_greatCircle
+plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
+library(geosphere)#
+library(fields)#
+library(raster)#
+library(sp)#
+library(rgdal)#
+library(ncdf4)#
+library(raster)#
+###  Load hexagon grid#
+#
+estives <- readOGR("/Users/mariussomveille/Desktop/Project ideas/Transhumance/donnees_transhumance", "estives_collectives_ovines", verbose=FALSE)#
+exploitations <- readOGR("/Users/mariussomveille/Desktop/Project ideas/Transhumance/donnees_transhumance", "sieges_exploitation", verbose=FALSE)#
+drailles <- readOGR("/Users/mariussomveille/Desktop/Project ideas/Transhumance/donnees_transhumance", "drailles_troncons", verbose=FALSE)#
+### Plot the system in geo space#
+#
+rbPal <- colorRampPalette(c("yellow", "red"))#
+datcol <- rbPal(5)[as.numeric(cut(drailles@data$NB_BREBIS, breaks=c(-0.1,1000,2000,3000,4000,6000)))]#
+plot(drailles, col= datcol)#
+rbPal <- colorRampPalette(c("yellow3", "dark green"))#
+datcol <- rbPal(5)[as.numeric(cut(estives@data$NbBrebis, breaks=c(-0.1,400,800,1200,1600,2500)))]#
+plot(estives, col= datcol, border=datcol, add=T)#
+plot(exploitations, pch=20, col="blue", cex=0.6, add=T)
+estiv_expl <- colnames(drailles@data)[3:109]#
+estiv_expl2 <- matrix(ncol=2, nrow=length(estiv_expl))#
+for(i in 1:length(estiv_expl)){#
+	estiv_expl2[i,1] <- substr(estiv_expl[i], 1, 3)#
+	estiv_expl2[i,2] <- substr(estiv_expl[i], 4, 6)#
+}#
+#
+distance_travelled_drailles <- vector()#
+for(i in 1:length(estiv_expl)){#
+	distance_travelled_drailles[i] <- sum(drailles@data$longueur_m[which(drailles@data[,i+2] == 1)])#
+}#
+#
+distance_travelled_greatCircle <- vector()#
+for(i in 1:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
+}#
+#
+plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
+i
+for(i in 50:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
+}
+i
+for(i in 103:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
+}
+i
+for(i in 104:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
+}
+plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
+library(maps)
+estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt
+exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]`
+exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]
+i=1
+inter <- gcIntermediate(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),], n=50, addStartEnd=T)
+lines(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),])
+plot(exploitations, pch=20, col="blue", cex=0.6)
+rbPal <- colorRampPalette(c("yellow3", "dark green"))#
+datcol <- rbPal(5)[as.numeric(cut(estives@data$NbBrebis, breaks=c(-0.1,400,800,1200,1600,2500)))]#
+plot(estives, col= datcol, border=datcol, add=T)
+lines(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),])
+estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt
+?lines
+i
+lines(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[2,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[2,2]),])
+exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[2,2]),]
+lines(x=estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[2,1])]]@Polygons[[1]]@labpt, y=exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[2,2]),])
+lines(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[2,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[2,2]),]))
+plot(exploitations, pch=20, col="blue", cex=0.6)#
+rbPal <- colorRampPalette(c("yellow3", "dark green"))#
+datcol <- rbPal(5)[as.numeric(cut(estives@data$NbBrebis, breaks=c(-0.1,400,800,1200,1600,2500)))]#
+plot(estives, col= datcol, border=datcol, add=T)#
+for(i in 1:length(estiv_expl)){#
+	lines(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]), col="red")#
+	}
+elevation=raster("/Users/mariussomveille/Desktop/GDEM-10km-BW.TIFF")
+elevation
+plot(elevation)
+plot(elevation, xlim=c(0,20), ylim=c(40,50))
+plot(elevation, xlim=c(0,8), ylim=c(40,46))
+plot(elevation, xlim=c(0,8), ylim=c(42,46))
+plot(exploitations, pch=20, col="blue", cex=0.6, add=T)
+distance_travelled_greatCircle_pairwise <- matrix(ncol=length(estiv_expl), nrow=length(estiv_expl))#
+for(i in 1:length(estiv_expl)){#
+	for(j in 1:length(estiv_expl)){#
+		distance_travelled_greatCircle[i,j] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[j,2]),]))#
+		}#
+}
+distance_travelled_greatCircle_pairwise <- matrix(ncol=length(estiv_expl), nrow=length(estiv_expl))#
+for(i in 1:length(estiv_expl)){#
+	for(j in 1:length(estiv_expl)){#
+		distance_travelled_greatCircle_pairwise[i,j] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[j,2]),]))#
+		}#
+}
+i
+j
+rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),])
+dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))
+distance_travelled_greatCircle
+distance_travelled_greatCircle <- vector()#
+for(i in 1:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
+}
+i
+dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))
+rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),])
+exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]
+which(exploitations@data$NoExploita == estiv_expl2[i,2])
+if(which(exploitations@data$NoExploita == estiv_expl2[i,2]) == 0)
+which(exploitations@data$NoExploita == estiv_expl2[i,2]) == 0
+if(which(exploitations@data$NoExploita == estiv_expl2[i,2]) == 0)head(estiv_expl2)
+estiv_expl2
+exploitations@data$NoExploita
+length(exploitations@data$NoExploita)
+for(i in 50:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
+}
+i
+estiv_expl2 <- estiv_expl2[-c(49,102,103),]
+distance_travelled_greatCircle <- vector()#
+for(i in 1:length(estiv_expl)){#
+	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
+}
+i
 length(estiv_expl)
 estiv_expl
 estiv_expl <- estiv_expl[-c(49,102,103)]
@@ -162,9 +369,111 @@ estiv_expl2[3,1]
 estiv_expl2[4,1]
 estiv_expl2[5,1]
 estiv_expl2[6,1]
-xx = seq(0,1,0.01)
-yy = 1 / (1+exp(-15*(xx - 0.5)))
-plot(xx,yy)
+Oxford
+library(geosphere)#
+library(fields)#
+library(raster)#
+library(sp)#
+library(rgdal)#
+library(ncdf4)#
+library(raster)#
+data.chloro <- nc_open("/Users/mariussomveille/Desktop/TMHchlaSmday_20080716120000_x0_X360_y-90_Y90_nx2147483647_ny2147483647.nc")#
+chloro <- ncvar_get(data.chloro, varid="MHchla")#
+data.chloro$dim$lon$val[which(data.chloro$dim$lon$val > 180)] <- data.chloro$dim$lon$val[which(data.chloro$dim$lon$val > 180)] - 360#
+rownames(chloro) <- as.character(data.chloro$dim$lon$val)#
+colnames(chloro) <- as.character(data.chloro$dim$lat$val)#
+chloro <- chloro[sort(as.numeric(data.chloro$dim$lon$val)),]#
+chloro2 <- rbind(chloro[4321:8640,], chloro[1:4320,])#
+chloro2 <- chloro2[rev(1:8640),]#
+#
+chloro.rast <- raster(ncols=length(data.chloro$dim$lat$val), nrows=data.chloro$dim$lon$val)#
+extent(chloro.rast) <- extent(c(-180, 180, -90, 90))#
+chloro3 <- as.data.frame(as.table(chloro2))#
+chloro3[,1] <- as.numeric(as.vector(chloro3[,1]))#
+chloro3[,2] <- as.numeric(as.vector(chloro3[,2]))#
+chloro.july <- rasterize(x=chloro3[,1:2], y= chloro.rast, field=chloro3[,3], fun=mean, na.rm=T)
+hexgrid <- readOGR("/Users/mariussomveille/Desktop/Hex_grid", "isea3h7_analyses_clean", verbose=FALSE)#
+hexgrid <- hexgrid[,c(1,2,15,16)]
+?exctract
+?extract
+aaa <- extract(chloro.july, hexgrid)
+length(aaa)
+aaa <- extract(chloro.july, hexgrid, cellnumbers=T)
+length(aaa)
+aaa[1]
+aaa[2]
+aaa[3]
+aaa[4]
+dim(chloro.july)
+dim(chloro.july@data)
+chloro.july[1:5,1:5]
+chloro.july
+plot(chloro.july)
+length(data.chloro$dim$lat$val)
+length(data.chloro$dim$lon$val)
+chloro.rast <- raster(ncols=length(data.chloro$dim$lat$val), nrows=length(data.chloro$dim$lon$val))#
+extent(chloro.rast) <- extent(c(-180, 180, -90, 90))#
+chloro3 <- as.data.frame(as.table(chloro2))#
+chloro3[,1] <- as.numeric(as.vector(chloro3[,1]))#
+chloro3[,2] <- as.numeric(as.vector(chloro3[,2]))#
+chloro.july <- rasterize(x=chloro3[,1:2], y= chloro.rast, field=chloro3[,3], fun=mean, na.rm=T)
+plot(chloro.july)
+dim(chloro2)
+dim(chloro.july)
+chloro2[1:5,1:5]
+chloro.july[1:5,1:5]
+chloro2[100:105,100:105]
+chloro2[1000:1005,1000:1005]
+chloro2[1000:1050,1000:1050]
+chloro2[1000:1050,1000:1005]
+chloro2[1000:1050,1040:1050]
+chloro.july[1000:1050,1040:1050]
+dim(data.chloro$dim$lon$val)
+length(data.chloro$dim$lon$val)
+length(data.chloro$dim$lat$val)
+dim(chloro2)
+?matrix
+?inv
+?inverse
+?rev
+chloro <- ncvar_get(data.chloro, varid="MHchla")#
+data.chloro$dim$lon$val[which(data.chloro$dim$lon$val > 180)] <- data.chloro$dim$lon$val[which(data.chloro$dim$lon$val > 180)] - 360#
+rownames(chloro) <- as.character(data.chloro$dim$lon$val)#
+colnames(chloro) <- as.character(data.chloro$dim$lat$val)#
+chloro <- transpose(chloro)
+?transpose
+chloro <- t(chloro)
+dim(chloro)
+chloro[1:51:5]
+chloro[1:5,1:5]
+chloro2 <- cbind(chloro[,4321:8640], chloro[,1:4320])#
+chloro2 <- chloro2[,rev(1:8640)]
+chloro2[1:5,1:5]
+chloro2 <- cbind(chloro[,4321:8640], chloro[,1:4320])
+chloro2[1:5,1:5]
+dim(chloro2)
+chloro2 <- chloro2[rev(1:4320),]
+dim(chloro2)
+chloro2[1:5,1:5]
+chloro.rast <- raster(ncols=dim(chloro2)[2], nrows=dim(chloro2)[1])#
+extent(chloro.rast) <- extent(c(-180, 180, -90, 90))#
+chloro3 <- as.data.frame(as.table(chloro2))#
+chloro3[,1] <- as.numeric(as.vector(chloro3[,1]))#
+chloro3[,2] <- as.numeric(as.vector(chloro3[,2]))#
+chloro.july <- rasterize(x=chloro3[,1:2], y= chloro.rast, field=chloro3[,3], fun=mean, na.rm=T)
+dim(chloro.july)
+plot(chloro.july)
+dim(chloro3)
+head(chloro3)
+colnames(chloro2)
+rownames(chloro2)
+write.csv(chloro2, "/Users/mariussomveille/Desktop/chlorophyl_july_2008.csv")
+766+395+420
+1/1.1232
+1/1.12
+397/3
+rm(list=ls())
+ls()
 library(spatstat)#
 library(spdep)#
 library(maptools)#
@@ -175,11 +484,10 @@ library(raster)#
 library(sp)#
 library(sna)#
 library(mapplots)#
-library(igraph)#
-#
-## Plot the flow of information in wytham woods (i.e. results of the model)#
-#
+library(igraph)
 setwd("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-information-flow")#
+#
+## Import and process the data#
 #
 load("bird_movement/movements_data.RData")#
 resultsModel <- read.csv("model/resultsModel.csv")#
@@ -187,446 +495,11 @@ loggers_coords <- read.csv("Wytham_loggers_coordinates.csv")#
 model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])#
 model_res_list <- as.list(as.data.frame(t(model_res)))#
 #
-wyt <-readOGR("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/wytham/EllaCole", "perimeter poly with clearings_region")#
+wyt <-readOGR("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-information-flow", "perimeter poly with clearings_region")#
 poly.sp<-SpatialPolygons(list(wyt@polygons[[1]]))#
 poly.owin<-as(poly.sp,"owin")#
 #
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-library(spatstat)#
-library(spdep)#
-library(maptools)#
-library(rgdal)#
-library(ncf)#
-library(png)#
-library(raster)#
-library(sp)#
-library(sna)#
-library(mapplots)#
-library(igraph)#
-#
-## Plot the flow of information in wytham woods (i.e. results of the model)#
-#
-setwd("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-information-flow")#
-#
-load("bird_movement/movements_data.RData")#
-resultsModel <- read.csv("model/resultsModel.csv")#
-loggers_coords <- read.csv("Wytham_loggers_coordinates.csv")#
-model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
-#
-wyt <-readOGR("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/wytham/EllaCole", "perimeter poly with clearings_region")#
-poly.sp<-SpatialPolygons(list(wyt@polygons[[1]]))#
-poly.owin<-as(poly.sp,"owin")#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-load("bird_movement/movements_data.RData")#
-resultsModel <- read.csv("model/resultsModel3.csv")#
-loggers_coords <- read.csv("Wytham_loggers_coordinates.csv")#
-model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
-#
-wyt <-readOGR("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/wytham/EllaCole", "perimeter poly with clearings_region")#
-poly.sp<-SpatialPolygons(list(wyt@polygons[[1]]))#
-poly.owin<-as(poly.sp,"owin")#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-load("bird_movement/movements_data.RData")#
-resultsModel <- read.csv("model/resultsModel2.csv")#
-loggers_coords <- read.csv("Wytham_loggers_coordinates.csv")#
-model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
-#
-wyt <-readOGR("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/wytham/EllaCole", "perimeter poly with clearings_region")#
-poly.sp<-SpatialPolygons(list(wyt@polygons[[1]]))#
-poly.owin<-as(poly.sp,"owin")#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-load("bird_movement/movements_data.RData")#
-resultsModel <- read.csv("model/resultsModel3.csv")#
-loggers_coords <- read.csv("Wytham_loggers_coordinates.csv")#
-model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
-#
-wyt <-readOGR("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/wytham/EllaCole", "perimeter poly with clearings_region")#
-poly.sp<-SpatialPolygons(list(wyt@polygons[[1]]))#
-poly.owin<-as(poly.sp,"owin")#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-resultsModel
-model_res
-obs_props <- cbind(rep(NA,65), rep(NA,65), rep(NA,65))
-plot(poly.owin)
-i=1
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=2
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=3
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=4
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=5
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=6
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=7
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=8
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=9
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=10
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=11
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=12
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=13
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=14
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=15
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=16
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=17
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=18
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=19
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=20
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=21
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=22
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=23
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=24
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=25
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=26
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=27
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=28
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=29
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=30
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=31
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=32
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=33
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=34
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=35
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=36
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=37
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=38
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=39
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=40
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=41
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=42
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=43
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=44
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=45
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=46
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=47
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=48
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=49
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=50
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=51
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=52
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=53
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=54
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=55
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=56
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=57
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=58
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=59
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=60
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=61
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=62
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=63
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=64
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-i=65
-add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
-obs_props[52,] <-
-obs_props[10,1] <- 30#
-obs_props[10,2] <- 67#
-obs_props[10,3] <- 3#
-obs_props[11,1] <- 30#
-obs_props[11,2] <- 67#
-obs_props[11,3] <- 3#
-obs_props[12,1] <- 30#
-obs_props[12,2] <- 67#
-obs_props[12,3] <- 3#
-# T4#
-obs_props[58,1] <- 28#
-obs_props[58,2] <- 67#
-obs_props[58,3] <- 5#
-obs_props[59,1] <- 28#
-obs_props[59,2] <- 67#
-obs_props[59,3] <- 5#
-obs_props[60,1] <- 28#
-obs_props[60,2] <- 67#
-obs_props[60,3] <- 5#
-# T5#
-obs_props[52,1] <- 26#
-obs_props[52,2] <- 68#
-obs_props[52,3] <- 6#
-obs_props[51,1] <- 26#
-obs_props[51,2] <- 68#
-obs_props[51,3] <- 6#
-obs_props[50,1] <- 26#
-obs_props[50,2] <- 68#
-obs_props[50,3] <- 6#
-#
-# Blue – right#
-# T1#
-obs_props[4,1] <- 15#
-obs_props[4,2] <- 9#
-obs_props[4,3] <- 76#
-obs_props[3,1] <- 15#
-obs_props[3,2] <- 9#
-obs_props[3,3] <- 76#
-obs_props[2,1] <- 15#
-obs_props[2,2] <- 9#
-obs_props[2,3] <- 76#
-# T2#
-obs_props[22,1] <- 32#
-obs_props[22,2] <- 2#
-obs_props[22,3] <- 66#
-obs_props[7,1] <- 32#
-obs_props[7,2] <- 2#
-obs_props[7,3] <- 66#
-obs_props[8,1] <- 32#
-obs_props[8,2] <- 2#
-obs_props[8,3] <- 66#
-#
-# controls#
-# C1#
-obs_props[37,1] <- 90#
-obs_props[37,2] <- 6#
-obs_props[37,3] <- 4#
-obs_props[36,1] <- 90#
-obs_props[36,2] <- 6#
-obs_props[36,3] <- 4#
-obs_props[35,1] <- 90#
-obs_props[35,2] <- 6#
-obs_props[35,3] <- 4#
-# C2#
-obs_props[32,1] <- 45#
-obs_props[32,2] <- 25#
-obs_props[32,3] <- 30#
-obs_props[34,1] <- 45#
-obs_props[34,2] <- 25#
-obs_props[34,3] <- 30#
-obs_props[43,1] <- 45#
-obs_props[43,2] <- 25#
-obs_props[43,3] <- 30#
-# C3#
-obs_props[44,1] <- 70#
-obs_props[44,2] <- 24#
-obs_props[44,3] <- 6#
-obs_props[45,1] <- 70#
-obs_props[45,2] <- 24#
-obs_props[45,3] <- 6#
-obs_props[46,1] <- 70#
-obs_props[46,2] <- 24#
-obs_props[46,3] <- 6
-obs_props
-obs_props_list <- as.list(as.data.frame(t(obs_props)))
-obs_props_list[[1]]
-obs_props_list[[50]]
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=obs_props_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-obs_props <- cbind(rep(0,65), rep(0,65), rep(0,65))#
-#
-# Red – left#
-# T3#
-obs_props[10,1] <- 30#
-obs_props[10,2] <- 67#
-obs_props[10,3] <- 3#
-obs_props[11,1] <- 30#
-obs_props[11,2] <- 67#
-obs_props[11,3] <- 3#
-obs_props[12,1] <- 30#
-obs_props[12,2] <- 67#
-obs_props[12,3] <- 3#
-# T4#
-obs_props[58,1] <- 28#
-obs_props[58,2] <- 67#
-obs_props[58,3] <- 5#
-obs_props[59,1] <- 28#
-obs_props[59,2] <- 67#
-obs_props[59,3] <- 5#
-obs_props[60,1] <- 28#
-obs_props[60,2] <- 67#
-obs_props[60,3] <- 5#
-# T5#
-obs_props[52,1] <- 26#
-obs_props[52,2] <- 68#
-obs_props[52,3] <- 6#
-obs_props[51,1] <- 26#
-obs_props[51,2] <- 68#
-obs_props[51,3] <- 6#
-obs_props[50,1] <- 26#
-obs_props[50,2] <- 68#
-obs_props[50,3] <- 6#
-#
-# Blue – right#
-# T1#
-obs_props[4,1] <- 15#
-obs_props[4,2] <- 9#
-obs_props[4,3] <- 76#
-obs_props[3,1] <- 15#
-obs_props[3,2] <- 9#
-obs_props[3,3] <- 76#
-obs_props[2,1] <- 15#
-obs_props[2,2] <- 9#
-obs_props[2,3] <- 76#
-# T2#
-obs_props[22,1] <- 32#
-obs_props[22,2] <- 2#
-obs_props[22,3] <- 66#
-obs_props[7,1] <- 32#
-obs_props[7,2] <- 2#
-obs_props[7,3] <- 66#
-obs_props[8,1] <- 32#
-obs_props[8,2] <- 2#
-obs_props[8,3] <- 66#
-#
-# controls#
-# C1#
-obs_props[37,1] <- 90#
-obs_props[37,2] <- 6#
-obs_props[37,3] <- 4#
-obs_props[36,1] <- 90#
-obs_props[36,2] <- 6#
-obs_props[36,3] <- 4#
-obs_props[35,1] <- 90#
-obs_props[35,2] <- 6#
-obs_props[35,3] <- 4#
-# C2#
-obs_props[32,1] <- 45#
-obs_props[32,2] <- 25#
-obs_props[32,3] <- 30#
-obs_props[34,1] <- 45#
-obs_props[34,2] <- 25#
-obs_props[34,3] <- 30#
-obs_props[43,1] <- 45#
-obs_props[43,2] <- 25#
-obs_props[43,3] <- 30#
-# C3#
-obs_props[44,1] <- 70#
-obs_props[44,2] <- 24#
-obs_props[44,3] <- 6#
-obs_props[45,1] <- 70#
-obs_props[45,2] <- 24#
-obs_props[45,3] <- 6#
-obs_props[46,1] <- 70#
-obs_props[46,2] <- 24#
-obs_props[46,3] <- 6#
-#
-obs_props_list <- as.list(as.data.frame(t(obs_props)))#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=obs_props_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-obs_props_list[[i]]
-plot(poly.owin)#
-for(i in 1:65){#
-	if(sum(obs_props_list[[i]]) > 0){#
-			add.pie(z=obs_props_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-	}#
-}
-plot(poly.owin, main="")#
-for(i in 1:65){#
-	if(sum(obs_props_list[[i]]) > 0){#
-			add.pie(z=obs_props_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-	}#
-}
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
+## Plot the map#
 #
 plot(poly.owin)#
 for(i in 1:65){#
@@ -641,72 +514,7 @@ for(i in 1:65){#
 	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
 }
 dim(resultsModel)
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-yy2 = 1 / (1+exp(-10*(xx - 0.5)))
-plot(xx,yy)
-plot(xx,yy2)
-yy2 = 1 / (1+exp(-10*(xx - 1)))
-plot(xx,yy2)
-yy2 = 1 / (1+exp(-5*(xx - 0.5)))
-plot(xx,yy2)
-yy2 = 1 / (1+exp(-10*(xx - 1)))
-plot(xx,yy2)
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-quartz()
+resultsModel[1:5,1:5]
 resultsModel <- read.csv("model/resultsModel4.csv")#
 model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
 model_res_list <- as.list(as.data.frame(t(model_res)))#
@@ -747,505 +555,3 @@ plot(poly.owin)#
 for(i in 1:65){#
 	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
 }
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-dim(resultsModel)
-resultsModel[1:20,10]
-resultsModel[1:20,65+10]
-plot(1:20, resultsModel[1:20,65+10])
-plot(1:20, resultsModel[1:20,65+10] + resultsModel[1:20,130+10])
-obs_props <- cbind(rep(0,65), rep(0,65), rep(0,65))#
-#
-# Red – left#
-# T3#
-obs_props[10,1] <- 30#
-obs_props[10,2] <- 65#
-obs_props[10,3] <- 5#
-obs_props[11,1] <- 30#
-obs_props[11,2] <- 65#
-obs_props[11,3] <- 5#
-obs_props[12,1] <- 30#
-obs_props[12,2] <- 65#
-obs_props[12,3] <- 5#
-# T4#
-obs_props[58,1] <- 28#
-obs_props[58,2] <- 70#
-obs_props[58,3] <- 2#
-obs_props[59,1] <- 28#
-obs_props[59,2] <- 70#
-obs_props[59,3] <- 2#
-obs_props[60,1] <- 28#
-obs_props[60,2] <- 70#
-obs_props[60,3] <- 2#
-# T5#
-obs_props[52,1] <- 26#
-obs_props[52,2] <- 72#
-obs_props[52,3] <- 2#
-obs_props[51,1] <- 26#
-obs_props[51,2] <- 72#
-obs_props[51,3] <- 2#
-obs_props[50,1] <- 26#
-obs_props[50,2] <- 72#
-obs_props[50,3] <- 2#
-#
-# Blue – right#
-# T1#
-obs_props[4,1] <- 15#
-obs_props[4,2] <- 9#
-obs_props[4,3] <- 76#
-obs_props[3,1] <- 15#
-obs_props[3,2] <- 9#
-obs_props[3,3] <- 76#
-obs_props[2,1] <- 15#
-obs_props[2,2] <- 9#
-obs_props[2,3] <- 76#
-# T2#
-obs_props[22,1] <- 32#
-obs_props[22,2] <- 1#
-obs_props[22,3] <- 67#
-obs_props[7,1] <- 32#
-obs_props[7,2] <- 1#
-obs_props[7,3] <- 67#
-obs_props[8,1] <- 32#
-obs_props[8,2] <- 1#
-obs_props[8,3] <- 67#
-#
-# controls#
-# C1#
-obs_props[37,1] <- 90#
-obs_props[37,2] <- 6#
-obs_props[37,3] <- 4#
-obs_props[36,1] <- 90#
-obs_props[36,2] <- 6#
-obs_props[36,3] <- 4#
-obs_props[35,1] <- 90#
-obs_props[35,2] <- 6#
-obs_props[35,3] <- 4#
-# C2#
-obs_props[32,1] <- 45#
-obs_props[32,2] <- 25#
-obs_props[32,3] <- 30#
-obs_props[34,1] <- 45#
-obs_props[34,2] <- 25#
-obs_props[34,3] <- 30#
-obs_props[43,1] <- 45#
-obs_props[43,2] <- 25#
-obs_props[43,3] <- 30#
-# C3#
-obs_props[44,1] <- 70#
-obs_props[44,2] <- 24#
-obs_props[44,3] <- 6#
-obs_props[45,1] <- 70#
-obs_props[45,2] <- 24#
-obs_props[45,3] <- 6#
-obs_props[46,1] <- 70#
-obs_props[46,2] <- 24#
-obs_props[46,3] <- 6#
-#
-obs_props_list <- as.list(as.data.frame(t(obs_props)))#
-#
-plot(poly.owin)#
-for(i in 1:65){#
-	if(sum(obs_props_list[[i]]) > 0){#
-			add.pie(z=obs_props_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-	}#
-}
-obs_props <- cbind(rep(0,65), rep(0,65), rep(0,65))#
-#
-# Red – left#
-# T3#
-obs_props[10,1] <- 30#
-obs_props[10,2] <- 65#
-obs_props[10,3] <- 5#
-obs_props[11,1] <- 30#
-obs_props[11,2] <- 65#
-obs_props[11,3] <- 5#
-obs_props[12,1] <- 30#
-obs_props[12,2] <- 65#
-obs_props[12,3] <- 5#
-# T4#
-obs_props[58,1] <- 28#
-obs_props[58,2] <- 70#
-obs_props[58,3] <- 2#
-obs_props[59,1] <- 28#
-obs_props[59,2] <- 70#
-obs_props[59,3] <- 2#
-obs_props[60,1] <- 28#
-obs_props[60,2] <- 70#
-obs_props[60,3] <- 2#
-# T5#
-obs_props[52,1] <- 26#
-obs_props[52,2] <- 72#
-obs_props[52,3] <- 2#
-obs_props[51,1] <- 26#
-obs_props[51,2] <- 72#
-obs_props[51,3] <- 2#
-obs_props[50,1] <- 26#
-obs_props[50,2] <- 72#
-obs_props[50,3] <- 2#
-#
-# Blue – right#
-# T1#
-obs_props[4,1] <- 15#
-obs_props[4,2] <- 9#
-obs_props[4,3] <- 76#
-obs_props[3,1] <- 15#
-obs_props[3,2] <- 9#
-obs_props[3,3] <- 76#
-obs_props[2,1] <- 15#
-obs_props[2,2] <- 9#
-obs_props[2,3] <- 76#
-# T2#
-obs_props[22,1] <- 32#
-obs_props[22,2] <- 1#
-obs_props[22,3] <- 67#
-obs_props[7,1] <- 32#
-obs_props[7,2] <- 1#
-obs_props[7,3] <- 67#
-obs_props[8,1] <- 32#
-obs_props[8,2] <- 1#
-obs_props[8,3] <- 67#
-#
-# controls#
-# C1#
-obs_props[37,1] <- 90#
-obs_props[37,2] <- 6#
-obs_props[37,3] <- 4#
-obs_props[36,1] <- 90#
-obs_props[36,2] <- 6#
-obs_props[36,3] <- 4#
-obs_props[35,1] <- 90#
-obs_props[35,2] <- 6#
-obs_props[35,3] <- 4#
-# C2#
-obs_props[32,1] <- 45#
-obs_props[32,2] <- 25#
-obs_props[32,3] <- 30#
-obs_props[34,1] <- 45#
-obs_props[34,2] <- 25#
-obs_props[34,3] <- 30#
-obs_props[43,1] <- 45#
-obs_props[43,2] <- 25#
-obs_props[43,3] <- 30#
-# C3#
-obs_props[44,1] <- 70#
-obs_props[44,2] <- 24#
-obs_props[44,3] <- 6#
-obs_props[45,1] <- 70#
-obs_props[45,2] <- 24#
-obs_props[45,3] <- 6#
-obs_props[46,1] <- 70#
-obs_props[46,2] <- 24#
-obs_props[46,3] <- 6#
-#
-obs_props_list <- as.list(as.data.frame(t(obs_props)))#
-#
-plot(poly.owin, main="")#
-for(i in 1:65){#
-	if(sum(obs_props_list[[i]]) > 0){#
-			add.pie(z=obs_props_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-	}#
-}
-nonsolvers = as.matrix(resultsModel)[1:20,11]#
-left = as.matrix(resultsModel)[1:20,65+11]#
-right = as.matrix(resultsModel)[1:20,130+11]#
-prop = (left + right) / (nonsolvers + left + right)#
-#
-plot(1:20, prop, col="red", pch=1)
-plot(1:20, prop, col="red", pch=2, xlab="Time (1–20 days)", ylab="Proportion of solvers", ylim=c(0,1))
-plot(1:20, prop, col="red", pch=3, xlab="Time (1–20 days)", ylab="Proportion of solvers", ylim=c(0,1))
-nonsolvers = as.matrix(resultsModel)[1:20,59]#
-left = as.matrix(resultsModel)[1:20,65+59]#
-right = as.matrix(resultsModel)[1:20,130+59]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="red", pch=4)
-nonsolvers = as.matrix(resultsModel)[1:20,2]#
-left = as.matrix(resultsModel)[1:20,65+2]#
-right = as.matrix(resultsModel)[1:20,130+2]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="red", pch=5)
-nonsolvers = as.matrix(resultsModel)[1:20,11]#
-left = as.matrix(resultsModel)[1:20,65+11]#
-right = as.matrix(resultsModel)[1:20,130+11]#
-prop = (left + right) / (nonsolvers + left + right)#
-plot(1:20, prop, col="red", pch=3, xlab="Time (1–20 days)", ylab="Proportion of solvers", ylim=c(0,1))#
-#
-# T4#
-nonsolvers = as.matrix(resultsModel)[1:20,59]#
-left = as.matrix(resultsModel)[1:20,65+59]#
-right = as.matrix(resultsModel)[1:20,130+59]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="red", pch=4)#
-#
-# T5#
-nonsolvers = as.matrix(resultsModel)[1:20,51]#
-left = as.matrix(resultsModel)[1:20,65+51]#
-right = as.matrix(resultsModel)[1:20,130+51]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="red", pch=5)#
-#
-# T1#
-nonsolvers = as.matrix(resultsModel)[1:20,3]#
-left = as.matrix(resultsModel)[1:20,65+3]#
-right = as.matrix(resultsModel)[1:20,130+3]#
-prop = (left + right) / (nonsolvers + left + right)#
-plot(1:20, prop, col="blue", pch=2)#
-#
-# T2#
-nonsolvers = as.matrix(resultsModel)[1:20,7]#
-left = as.matrix(resultsModel)[1:20,65+7]#
-right = as.matrix(resultsModel)[1:20,130+7]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="blue", pch=1)
-nonsolvers = as.matrix(resultsModel)[1:20,11]#
-left = as.matrix(resultsModel)[1:20,65+11]#
-right = as.matrix(resultsModel)[1:20,130+11]#
-prop = (left + right) / (nonsolvers + left + right)#
-plot(1:20, prop, col="red", pch=3, xlab="Time (1–20 days)", ylab="Proportion of solvers", ylim=c(0,1))#
-#
-# T4#
-nonsolvers = as.matrix(resultsModel)[1:20,59]#
-left = as.matrix(resultsModel)[1:20,65+59]#
-right = as.matrix(resultsModel)[1:20,130+59]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="red", pch=4)#
-#
-# T5#
-nonsolvers = as.matrix(resultsModel)[1:20,51]#
-left = as.matrix(resultsModel)[1:20,65+51]#
-right = as.matrix(resultsModel)[1:20,130+51]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="red", pch=5)#
-#
-# T1#
-nonsolvers = as.matrix(resultsModel)[1:20,3]#
-left = as.matrix(resultsModel)[1:20,65+3]#
-right = as.matrix(resultsModel)[1:20,130+3]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="blue", pch=2)#
-#
-# T2#
-nonsolvers = as.matrix(resultsModel)[1:20,7]#
-left = as.matrix(resultsModel)[1:20,65+7]#
-right = as.matrix(resultsModel)[1:20,130+7]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="blue", pch=1)
-# C1#
-nonsolvers = as.matrix(resultsModel)[1:20,36]#
-left = as.matrix(resultsModel)[1:20,65+36]#
-right = as.matrix(resultsModel)[1:20,130+36]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="green", pch=2)#
-#
-# C2#
-nonsolvers = as.matrix(resultsModel)[1:20,34]#
-left = as.matrix(resultsModel)[1:20,65+34]#
-right = as.matrix(resultsModel)[1:20,130+34]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="green", pch=1)#
-#
-# C3#
-nonsolvers = as.matrix(resultsModel)[1:20,45]#
-left = as.matrix(resultsModel)[1:20,65+45]#
-right = as.matrix(resultsModel)[1:20,130+45]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="green", pch=1)
-nonsolvers = as.matrix(resultsModel)[1:20,11]#
-left = as.matrix(resultsModel)[1:20,65+11]#
-right = as.matrix(resultsModel)[1:20,130+11]#
-prop = (left + right) / (nonsolvers + left + right)#
-plot(1:20, prop, col="red", pch=3, xlab="Time (1–20 days)", ylab="Proportion of solvers", ylim=c(0,1))#
-#
-# T4#
-nonsolvers = as.matrix(resultsModel)[1:20,59]#
-left = as.matrix(resultsModel)[1:20,65+59]#
-right = as.matrix(resultsModel)[1:20,130+59]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="red", pch=4)#
-#
-# T5#
-nonsolvers = as.matrix(resultsModel)[1:20,51]#
-left = as.matrix(resultsModel)[1:20,65+51]#
-right = as.matrix(resultsModel)[1:20,130+51]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="red", pch=5)#
-#
-# T1#
-nonsolvers = as.matrix(resultsModel)[1:20,3]#
-left = as.matrix(resultsModel)[1:20,65+3]#
-right = as.matrix(resultsModel)[1:20,130+3]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="blue", pch=2)#
-#
-# T2#
-nonsolvers = as.matrix(resultsModel)[1:20,7]#
-left = as.matrix(resultsModel)[1:20,65+7]#
-right = as.matrix(resultsModel)[1:20,130+7]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="blue", pch=1)#
-#
-# C1#
-nonsolvers = as.matrix(resultsModel)[1:20,36]#
-left = as.matrix(resultsModel)[1:20,65+36]#
-right = as.matrix(resultsModel)[1:20,130+36]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="dark green", pch=6)#
-#
-# C2#
-nonsolvers = as.matrix(resultsModel)[1:20,34]#
-left = as.matrix(resultsModel)[1:20,65+34]#
-right = as.matrix(resultsModel)[1:20,130+34]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="dark green", pch=7)#
-#
-# C3#
-nonsolvers = as.matrix(resultsModel)[1:20,45]#
-left = as.matrix(resultsModel)[1:20,65+45]#
-right = as.matrix(resultsModel)[1:20,130+45]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="dark green", pch=8)
-nonsolvers = as.matrix(resultsModel)[1:20,11]#
-left = as.matrix(resultsModel)[1:20,65+11]#
-right = as.matrix(resultsModel)[1:20,130+11]#
-prop = (left + right) / (nonsolvers + left + right)#
-plot(1:20, prop, col="red", pch=3, xlab="Time (1–20 days)", ylab="Proportion of solvers", ylim=c(0,1))#
-#
-# T4#
-nonsolvers = as.matrix(resultsModel)[1:20,59]#
-left = as.matrix(resultsModel)[1:20,65+59]#
-right = as.matrix(resultsModel)[1:20,130+59]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="red", pch=4)#
-#
-# T5#
-nonsolvers = as.matrix(resultsModel)[1:20,51]#
-left = as.matrix(resultsModel)[1:20,65+51]#
-right = as.matrix(resultsModel)[1:20,130+51]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="red", pch=5)#
-#
-# T1#
-nonsolvers = as.matrix(resultsModel)[1:20,3]#
-left = as.matrix(resultsModel)[1:20,65+3]#
-right = as.matrix(resultsModel)[1:20,130+3]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="blue", pch=2)#
-#
-# T2#
-nonsolvers = as.matrix(resultsModel)[1:20,7]#
-left = as.matrix(resultsModel)[1:20,65+7]#
-right = as.matrix(resultsModel)[1:20,130+7]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="blue", pch=1)#
-#
-# C1#
-nonsolvers = as.matrix(resultsModel)[1:20,36]#
-left = as.matrix(resultsModel)[1:20,65+36]#
-right = as.matrix(resultsModel)[1:20,130+36]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="green2", pch=6)
-nonsolvers = as.matrix(resultsModel)[1:20,34]#
-left = as.matrix(resultsModel)[1:20,65+34]#
-right = as.matrix(resultsModel)[1:20,130+34]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="green3", pch=7)
-nonsolvers = as.matrix(resultsModel)[1:20,11]#
-left = as.matrix(resultsModel)[1:20,65+11]#
-right = as.matrix(resultsModel)[1:20,130+11]#
-prop = (left + right) / (nonsolvers + left + right)#
-plot(1:20, prop, col="red", pch=3, xlab="Time (1–20 days)", ylab="Proportion of solvers", ylim=c(0,1))#
-#
-# T4#
-nonsolvers = as.matrix(resultsModel)[1:20,59]#
-left = as.matrix(resultsModel)[1:20,65+59]#
-right = as.matrix(resultsModel)[1:20,130+59]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="red", pch=4)#
-#
-# T5#
-nonsolvers = as.matrix(resultsModel)[1:20,51]#
-left = as.matrix(resultsModel)[1:20,65+51]#
-right = as.matrix(resultsModel)[1:20,130+51]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="red", pch=5)#
-#
-# T1#
-nonsolvers = as.matrix(resultsModel)[1:20,3]#
-left = as.matrix(resultsModel)[1:20,65+3]#
-right = as.matrix(resultsModel)[1:20,130+3]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="blue", pch=2)#
-#
-# T2#
-nonsolvers = as.matrix(resultsModel)[1:20,7]#
-left = as.matrix(resultsModel)[1:20,65+7]#
-right = as.matrix(resultsModel)[1:20,130+7]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="blue", pch=1)#
-#
-# C1#
-nonsolvers = as.matrix(resultsModel)[1:20,36]#
-left = as.matrix(resultsModel)[1:20,65+36]#
-right = as.matrix(resultsModel)[1:20,130+36]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="green3", pch=6)#
-#
-# C2#
-nonsolvers = as.matrix(resultsModel)[1:20,34]#
-left = as.matrix(resultsModel)[1:20,65+34]#
-right = as.matrix(resultsModel)[1:20,130+34]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="green3", pch=7)#
-#
-# C3#
-nonsolvers = as.matrix(resultsModel)[1:20,45]#
-left = as.matrix(resultsModel)[1:20,65+45]#
-right = as.matrix(resultsModel)[1:20,130+45]#
-prop = (left + right) / (nonsolvers + left + right)#
-points(1:20, prop, col="green3", pch=8)

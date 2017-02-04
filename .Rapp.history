@@ -1,557 +1,1008 @@
-plot(800000, 630000, pch=20, cex=2)
-plot(exploitations[which(exploitations@data$NoExploita == estiv_expl2[1,2]),], col= "red", pch =20, add=T)
-r#
-plot(drailles)
-plot(800000, 630000, pch=20, cex=2, add=T)
-exploitations
-coords(estives)
-estives@coords
-estive
-estivse
-estives
-estives@coord
-exploitations@coords
-estives@coords
-estives
-library(maptools)
-allcoordinates(estives)
-library(proj4)
-project(estives, proj="CRS")
-estives
-exploitations
-estives@polygons[[2]]@Polygons[[1]]@coords
-estives@polygons
-length(estives@polygons)
-estives@polygons[[1]]
-estives@polygons[[1]]$ID
-estives@polygons[[1]]@ID
-estives@polygons[[1]]@labpt
-plot(estives@polygons[[1]]@labpt)
-dim(estives@polygons[[1]]@coords)
-estives@polygons[[1]]@coords
-estives@polygons[[1]]@ area
-estives@polygons[[1]]@area
-estives@polygons[[1]]@coords
-estives@polygons[[1]]polygons[[2]]@coords
-estives@polygons[[1]]@Polygons
-estives@polygons[[1]]@Polygons[[1]]
-estives@polygons[[1]]@Polygons[[1]]@labpt
-estives@polygons[[1]]@Polygons[[1]]@coords
-mean(estives@polygons[[1]]@Polygons[[1]]@coords[,1])
-mean(estives@polygons[[1]]@Polygons[[1]]@coords[,2])
-estives@polygons[[1]]@Polygons[[1]]@labpt
-exploitations@coords
-exploitations@coords[1,]
-dist(rbind(estives@polygons[[1]]@Polygons[[1]]@labpt, exploitations@coords[1,]))
-head(estiv_expl2)
-which(estives@data$CODE_ESTIV == estiv_expl2[1,1])
-estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[1,1])]]@Polygons[[1]]@labpt
-exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[1,2]),]
-distance_travelled_greatCircle <- vector()#
-for(i in 1:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}
-i
-distance_travelled_greatCircle
-distance_travelled_drailles
-estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt
-exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]
-estiv_expl2[i,2]
-estiv_expl2
-which(exploitations@data$NoExploita == estiv_expl2[i,2])
-estiv_expl2[49]
-estiv_expl2[49,]
-estiv_expl2[49,2]
-exploitations@data$NoExploita
-hist(exploitations@data$NoExploita)
-for(i in 50:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}
-i
-for(i in 103:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}
-i
-for(i in 104:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}
-i
-distance_travelled_greatCircle
-plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
-library(geosphere)#
-library(fields)#
-library(raster)#
-library(sp)#
-library(rgdal)#
-library(ncdf4)#
-library(raster)#
-###  Load hexagon grid#
+FI = matrix(0, ncol=P, nrow=N)  # Matrix of number of events previously attended by each individual in each patch#
 #
-estives <- readOGR("/Users/mariussomveille/Desktop/Project ideas/Transhumance/donnees_transhumance", "estives_collectives_ovines", verbose=FALSE)#
-exploitations <- readOGR("/Users/mariussomveille/Desktop/Project ideas/Transhumance/donnees_transhumance", "sieges_exploitation", verbose=FALSE)#
-drailles <- readOGR("/Users/mariussomveille/Desktop/Project ideas/Transhumance/donnees_transhumance", "drailles_troncons", verbose=FALSE)#
-### Plot the system in geo space#
+CI = matrix(0, ncol=N, nrow=N)  # Matrix of number of contact that each individual had with each other individual#
 #
-rbPal <- colorRampPalette(c("yellow", "red"))#
-datcol <- rbPal(5)[as.numeric(cut(drailles@data$NB_BREBIS, breaks=c(-0.1,1000,2000,3000,4000,6000)))]#
-plot(drailles, col= datcol)#
-rbPal <- colorRampPalette(c("yellow3", "dark green"))#
-datcol <- rbPal(5)[as.numeric(cut(estives@data$NbBrebis, breaks=c(-0.1,400,800,1200,1600,2500)))]#
-plot(estives, col= datcol, border=datcol, add=T)#
-plot(exploitations, pch=20, col="blue", cex=0.6, add=T)
-estiv_expl <- colnames(drailles@data)[3:109]#
-estiv_expl2 <- matrix(ncol=2, nrow=length(estiv_expl))#
-for(i in 1:length(estiv_expl)){#
-	estiv_expl2[i,1] <- substr(estiv_expl[i], 1, 3)#
-	estiv_expl2[i,2] <- substr(estiv_expl[i], 4, 6)#
-}#
-#
-distance_travelled_drailles <- vector()#
-for(i in 1:length(estiv_expl)){#
-	distance_travelled_drailles[i] <- sum(drailles@data$longueur_m[which(drailles@data[,i+2] == 1)])#
-}#
-#
-distance_travelled_greatCircle <- vector()#
-for(i in 1:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}#
-#
-plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
-i
-for(i in 50:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}
-i
-for(i in 103:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}
-i
-for(i in 104:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}
-plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
-library(maps)
-estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt
-exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]`
-exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]
-i=1
-inter <- gcIntermediate(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),], n=50, addStartEnd=T)
-lines(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),])
-plot(exploitations, pch=20, col="blue", cex=0.6)
-rbPal <- colorRampPalette(c("yellow3", "dark green"))#
-datcol <- rbPal(5)[as.numeric(cut(estives@data$NbBrebis, breaks=c(-0.1,400,800,1200,1600,2500)))]#
-plot(estives, col= datcol, border=datcol, add=T)
-lines(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),])
-estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt
-?lines
-i
-lines(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[2,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[2,2]),])
-exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[2,2]),]
-lines(x=estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[2,1])]]@Polygons[[1]]@labpt, y=exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[2,2]),])
-lines(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[2,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[2,2]),]))
-plot(exploitations, pch=20, col="blue", cex=0.6)#
-rbPal <- colorRampPalette(c("yellow3", "dark green"))#
-datcol <- rbPal(5)[as.numeric(cut(estives@data$NbBrebis, breaks=c(-0.1,400,800,1200,1600,2500)))]#
-plot(estives, col= datcol, border=datcol, add=T)#
-for(i in 1:length(estiv_expl)){#
-	lines(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]), col="red")#
+D = dist(loggers_coords[,2:3], upper=T, diag=T) # Matrix of distances between each pair of patches
+attending.ind <- vector()#
+	for(ind in 1:contact.events.table[event,1]){#
+		# compute the probability of attending the event for each individual#
+		weights.ij <- vector()#
+		for(i in 1:N){#
+			weight.ij = 0#
+			if(length(attending.ind) > 0){#
+				for(j in 1:length(attending.ind)){ #
+					if(sum(CI[i,]) > 0){#
+						weight.ij = weight.ij + (CI[i,j]/sum(CI[i,]))#
+					}#
+				}#
+			}#
+			weights.ij[i] = weight.ij#
+		}#
+		PiEpt = exp(-( (a/(1+weights.ip)) + (b/(1+weights.ij)) ))#
+		PiEpt = PiEpt / sum(PiEpt)#
+		attending.ind[ind] <- sample(1:N, 1, prob=PiEpt)	#
 	}
-elevation=raster("/Users/mariussomveille/Desktop/GDEM-10km-BW.TIFF")
-elevation
-plot(elevation)
-plot(elevation, xlim=c(0,20), ylim=c(40,50))
-plot(elevation, xlim=c(0,8), ylim=c(40,46))
-plot(elevation, xlim=c(0,8), ylim=c(42,46))
-plot(exploitations, pch=20, col="blue", cex=0.6, add=T)
-distance_travelled_greatCircle_pairwise <- matrix(ncol=length(estiv_expl), nrow=length(estiv_expl))#
-for(i in 1:length(estiv_expl)){#
-	for(j in 1:length(estiv_expl)){#
-		distance_travelled_greatCircle[i,j] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[j,2]),]))#
+attending.ind
+contact.events.table[event,1]
+head(contact.events.table)
+attending.ind <- vector()#
+	for(ind in 1:contact.events.table[event,2]){#
+		# compute the probability of attending the event for each individual#
+		weights.ij <- vector()#
+		for(i in 1:N){#
+			weight.ij = 0#
+			if(length(attending.ind) > 0){#
+				for(j in 1:length(attending.ind)){ #
+					if(sum(CI[i,]) > 0){#
+						weight.ij = weight.ij + (CI[i,j]/sum(CI[i,]))#
+					}#
+				}#
+			}#
+			weights.ij[i] = weight.ij#
 		}#
-}
-distance_travelled_greatCircle_pairwise <- matrix(ncol=length(estiv_expl), nrow=length(estiv_expl))#
-for(i in 1:length(estiv_expl)){#
-	for(j in 1:length(estiv_expl)){#
-		distance_travelled_greatCircle_pairwise[i,j] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[j,2]),]))#
+		PiEpt = exp(-( (a/(1+weights.ip)) + (b/(1+weights.ij)) ))#
+		PiEpt = PiEpt / sum(PiEpt)#
+		attending.ind[ind] <- sample(1:N, 1, prob=PiEpt)	#
+	}
+attending.ind
+attending.individuals[[event]] <- attending.ind
+v
+attending.individuals
+FI[attending.ind, p]
+FI[attending.ind, p] <- FI[attending.ind, p] + 1
+FI[attending.ind, p]
+FI
+CI[attending.ind, attending.ind]
+CI[attending.ind, attending.ind] + 1
+CI[attending.ind, attending.ind]
+CI[attending.ind, attending.ind] <- CI[attending.ind, attending.ind] + 1
+diag(CI)
+diag(CI) <- 0
+diag(CI)
+attending.individuals <- list()#
+for(event in 1:10){#
+	p = contact.events.table[event,1]  # in which patch does the event occur#
+	weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + (FI[i,k]/sum(FI[i,])) / (1+(c*D[p,k])) #
+			}#
 		}#
-}
-i
-j
-rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),])
-dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))
-distance_travelled_greatCircle
-distance_travelled_greatCircle <- vector()#
-for(i in 1:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}
-i
-dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))
-rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),])
-exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]
-which(exploitations@data$NoExploita == estiv_expl2[i,2])
-if(which(exploitations@data$NoExploita == estiv_expl2[i,2]) == 0)
-which(exploitations@data$NoExploita == estiv_expl2[i,2]) == 0
-if(which(exploitations@data$NoExploita == estiv_expl2[i,2]) == 0)head(estiv_expl2)
-estiv_expl2
-exploitations@data$NoExploita
-length(exploitations@data$NoExploita)
-for(i in 50:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}
-i
-estiv_expl2 <- estiv_expl2[-c(49,102,103),]
-distance_travelled_greatCircle <- vector()#
-for(i in 1:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}
-i
-length(estiv_expl)
-estiv_expl
-estiv_expl <- estiv_expl[-c(49,102,103)]
-distance_travelled_drailles <- vector()#
-for(i in 1:length(estiv_expl)){#
-	distance_travelled_drailles[i] <- sum(drailles@data$longueur_m[which(drailles@data[,i+2] == 1)])#
-}
-distance_travelled_greatCircle <- vector()#
-for(i in 1:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}
-plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
-head(estiv_expl)
-head(estiv_expl2)
-head(estiv_expl)
-estiv_expl[90:100]
-estiv_expl2[90:100,]
-estiv_expl <- colnames(drailles@data)[3:109]#
-estiv_expl2 <- matrix(ncol=2, nrow=length(estiv_expl))#
-for(i in 1:length(estiv_expl)){#
-	estiv_expl2[i,1] <- substr(estiv_expl[i], 1, 3)#
-	estiv_expl2[i,2] <- substr(estiv_expl[i], 4, 6)#
-}#
-estiv_expl2 <- estiv_expl2[-c(49,102,103),]#
-estiv_expl <- estiv_expl[-c(49,102,103)]#
-#
-distance_travelled_drailles <- vector()#
-for(i in 1:length(estiv_expl)){#
-	distance_travelled_drailles[i] <- sum(drailles@data$longueur_m[which(drailles@data[,i+2] == 1)])#
-}#
-#
-distance_travelled_greatCircle <- vector()#
-for(i in 1:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}#
-#
-plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
-estiv_expl <- colnames(drailles@data)[3:109]#
-estiv_expl2 <- matrix(ncol=2, nrow=length(estiv_expl))#
-for(i in 1:length(estiv_expl)){#
-	estiv_expl2[i,1] <- substr(estiv_expl[i], 1, 3)#
-	estiv_expl2[i,2] <- substr(estiv_expl[i], 4, 6)#
-}#
-distance_travelled_drailles <- vector()#
-for(i in 1:length(estiv_expl)){#
-	distance_travelled_drailles[i] <- sum(drailles@data$longueur_m[which(drailles@data[,i+2] == 1)])#
-}#
-#
-distance_travelled_greatCircle <- vector()#
-for(i in 1:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}#
-#
-plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
-distance_travelled_greatCircle <- vector()#
-for(i in 50:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}
-distance_travelled_greatCircle <- vector()#
-for(i in 104:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}
-plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
-distance_travelled_drailles
-distance_travelled_greatCircle
-distance_travelled_greatCircle <- vector()#
-for(i in 1:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}
-for(i in 50:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}
-for(i in 104:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}
-distance_travelled_greatCircle
-plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
-cbind(distance_travelled_drailles, distance_travelled_greatCircle)
-estiv_expl <- colnames(drailles@data)[3:109]#
-estiv_expl2 <- matrix(ncol=2, nrow=length(estiv_expl))#
-for(i in 1:length(estiv_expl)){#
-	estiv_expl2[i,1] <- substr(estiv_expl[i], 1, 3)#
-	estiv_expl2[i,2] <- substr(estiv_expl[i], 4, 6)#
-}#
-estiv_expl2 <- estiv_expl2[-c(49,102,103),]#
-estiv_expl <- estiv_expl[-c(49,102,103)]#
-#
-distance_travelled_drailles <- vector()#
-for(i in 1:length(estiv_expl)){#
-	distance_travelled_drailles[i] <- sum(drailles@data$longueur_m[which(drailles@data[,i+2] == 1)])#
-}#
-#
-distance_travelled_greatCircle <- vector()#
-for(i in 1:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}#
-#
-plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
-cbind(distance_travelled_drailles, distance_travelled_greatCircle)
-estiv_expl <- colnames(drailles@data)[3:109]#
-estiv_expl2 <- matrix(ncol=2, nrow=length(estiv_expl))#
-for(i in 1:length(estiv_expl)){#
-	estiv_expl2[i,1] <- substr(estiv_expl[i], 1, 3)#
-	estiv_expl2[i,2] <- substr(estiv_expl[i], 4, 6)#
-}#
-estiv_expl2 <- estiv_expl2[-c(49,102,103),]#
-#
-distance_travelled_drailles <- vector()#
-for(i in 1:length(estiv_expl)){#
-	distance_travelled_drailles[i] <- sum(drailles@data$longueur_m[which(drailles@data[,i+2] == 1)])#
-}#
-#
-distance_travelled_drailles[-c(49,102,103)]#
-#
-estiv_expl <- estiv_expl[-c(49,102,103)]#
-distance_travelled_greatCircle <- vector()#
-for(i in 1:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}#
-#
-plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
-length(distance_travelled_drailles)
-estiv_expl <- colnames(drailles@data)[3:109]#
-estiv_expl2 <- matrix(ncol=2, nrow=length(estiv_expl))#
-for(i in 1:length(estiv_expl)){#
-	estiv_expl2[i,1] <- substr(estiv_expl[i], 1, 3)#
-	estiv_expl2[i,2] <- substr(estiv_expl[i], 4, 6)#
-}#
-estiv_expl2 <- estiv_expl2[-c(49,102,103),]#
-#
-distance_travelled_drailles <- vector()#
-for(i in 1:length(estiv_expl)){#
-	distance_travelled_drailles[i] <- sum(drailles@data$longueur_m[which(drailles@data[,i+2] == 1)])#
-}#
-#
-distance_travelled_drailles <- distance_travelled_drailles[-c(49,102,103)]#
-#
-estiv_expl <- estiv_expl[-c(49,102,103)]#
-distance_travelled_greatCircle <- vector()#
-for(i in 1:length(estiv_expl)){#
-	distance_travelled_greatCircle[i] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[i,2]),]))#
-}#
-#
-plot(distance_travelled_drailles, distance_travelled_greatCircle, pch=20)
-distance_travelled_greatCircle_pairwise <- matrix(ncol=length(estiv_expl), nrow=length(estiv_expl))#
-for(i in 1:length(estiv_expl)){#
-	for(j in 1:length(estiv_expl)){#
-		distance_travelled_greatCircle_pairwise[i,j] <- dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[j,2]),]))#
+		weights.ip[i] = weight.ip#
+	}#
+	attending.ind <- vector()#
+	for(ind in 1:contact.events.table[event,2]){#
+		# compute the probability of attending the event for each individual#
+		weights.ij <- vector()#
+		for(i in 1:N){#
+			weight.ij = 0#
+			if(length(attending.ind) > 0){#
+				for(j in 1:length(attending.ind)){ #
+					if(sum(CI[i,]) > 0){#
+						weight.ij = weight.ij + (CI[i,j]/sum(CI[i,]))#
+					}#
+				}#
+			}#
+			weights.ij[i] = weight.ij#
 		}#
+		PiEpt = exp(-( (a/(1+weights.ip)) + (b/(1+weights.ij)) ))#
+		PiEpt = PiEpt / sum(PiEpt)#
+		attending.ind[ind] <- sample(1:N, 1, prob=PiEpt)	#
+	}#
+	attending.individuals[[event]] <- attending.ind#
+	FI[attending.ind, p] <- FI[attending.ind, p] + 1#
+	CI[attending.ind, attending.ind] <- CI[attending.ind, attending.ind] + 1#
+	diag(CI) <- 0#
 }
-dim(distance_travelled_greatCircle_pairwise)
-distance_travelled_greatCircle_pairwise[1:5,1:5]
+dim(D)
+class(D)
+D = dist(loggers_coords[,2:3], upper=T, diag=T)
+class(D)
+D[1:5,1:5]
+D = as.matrix(dist(loggers_coords[,2:3], upper=T, diag=T))
+D[1:5,1:5]
+D = as.matrix(dist(loggers_coords[,2:3], upper=T, diag=T)) # Matrix of distances between each pair of patches
+attending.individuals <- list()#
+for(event in 1:10){#
+	p = contact.events.table[event,1]  # in which patch does the event occur#
+	weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + (FI[i,k]/sum(FI[i,])) / (1+(c*D[p,k])) #
+			}#
+		}#
+		weights.ip[i] = weight.ip#
+	}#
+	attending.ind <- vector()#
+	for(ind in 1:contact.events.table[event,2]){#
+		# compute the probability of attending the event for each individual#
+		weights.ij <- vector()#
+		for(i in 1:N){#
+			weight.ij = 0#
+			if(length(attending.ind) > 0){#
+				for(j in 1:length(attending.ind)){ #
+					if(sum(CI[i,]) > 0){#
+						weight.ij = weight.ij + (CI[i,j]/sum(CI[i,]))#
+					}#
+				}#
+			}#
+			weights.ij[i] = weight.ij#
+		}#
+		PiEpt = exp(-( (a/(1+weights.ip)) + (b/(1+weights.ij)) ))#
+		PiEpt = PiEpt / sum(PiEpt)#
+		attending.ind[ind] <- sample(1:N, 1, prob=PiEpt)	#
+	}#
+	attending.individuals[[event]] <- attending.ind#
+	FI[attending.ind, p] <- FI[attending.ind, p] + 1#
+	CI[attending.ind, attending.ind] <- CI[attending.ind, attending.ind] + 1#
+	diag(CI) <- 0#
+}
+attending.individuals
+attending.individuals <- list()#
+for(event in 1:dim(contact.events.table)[1]){#
+	p = contact.events.table[event,1]  # in which patch does the event occur#
+	weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + (FI[i,k]/sum(FI[i,])) / (1+(c*D[p,k])) #
+			}#
+		}#
+		weights.ip[i] = weight.ip#
+	}#
+	attending.ind <- vector()#
+	for(ind in 1:contact.events.table[event,2]){#
+		# compute the probability of attending the event for each individual#
+		weights.ij <- vector()#
+		for(i in 1:N){#
+			weight.ij = 0#
+			if(length(attending.ind) > 0){#
+				for(j in 1:length(attending.ind)){ #
+					if(sum(CI[i,]) > 0){#
+						weight.ij = weight.ij + (CI[i,j]/sum(CI[i,]))#
+					}#
+				}#
+			}#
+			weights.ij[i] = weight.ij#
+		}#
+		PiEpt = exp(-( (a/(1+weights.ip)) + (b/(1+weights.ij)) ))#
+		PiEpt = PiEpt / sum(PiEpt)#
+		attending.ind[ind] <- sample(1:N, 1, prob=PiEpt)	#
+	}#
+	attending.individuals[[event]] <- attending.ind#
+	FI[attending.ind, p] <- FI[attending.ind, p] + 1#
+	CI[attending.ind, attending.ind] <- CI[attending.ind, attending.ind] + 1#
+	diag(CI) <- 0#
+}
+event
+length(attending.individuals)
+head(attending.individuals)
+CI[1:20,1:20]
+CI[1:50,1:15]
+FI[1:50,1:15]
+apply(FI, 1, sum)
+a = 0.1#
+b = 1#
+c = 1#
+# Run the model#
+#
+attending.individuals <- list()#
+for(event in 1:dim(contact.events.table)[1]){#
+	p = contact.events.table[event,1]  # in which patch does the event occur#
+	weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + (FI[i,k]/sum(FI[i,])) / (1+(c*D[p,k])) #
+			}#
+		}#
+		weights.ip[i] = weight.ip#
+	}#
+	attending.ind <- vector()#
+	for(ind in 1:contact.events.table[event,2]){#
+		# compute the probability of attending the event for each individual#
+		weights.ij <- vector()#
+		for(i in 1:N){#
+			weight.ij = 0#
+			if(length(attending.ind) > 0){#
+				for(j in 1:length(attending.ind)){ #
+					if(sum(CI[i,]) > 0){#
+						weight.ij = weight.ij + (CI[i,j]/sum(CI[i,]))#
+					}#
+				}#
+			}#
+			weights.ij[i] = weight.ij#
+		}#
+		PiEpt = exp(-( (a/(1+weights.ip)) + (b/(1+weights.ij)) ))#
+		PiEpt = PiEpt / sum(PiEpt)#
+		attending.ind[ind] <- sample(1:N, 1, prob=PiEpt)	#
+	}#
+	attending.individuals[[event]] <- attending.ind#
+	FI[attending.ind, p] <- FI[attending.ind, p] + 1#
+	CI[attending.ind, attending.ind] <- CI[attending.ind, attending.ind] + 1#
+	diag(CI) <- 0#
+}
+event
+FI[1:50,1:15]
+apply(FI, 1, sum)
+apply(FI, 1, max-min)
+apply(FI, 1, function(x) max(x)-min(x))
+FI = matrix(0, ncol=P, nrow=N)  # Matrix of number of events previously attended by each individual in each patch#
+#
+CI = matrix(0, ncol=N, nrow=N)  # Matrix of number of contact that each individual had with each other individual#
+#
+D = as.matrix(dist(loggers_coords[,2:3], upper=T, diag=T)) # Matrix of distances between each pair of patches#
+# Parameter values#
+#
+a = 0.1#
+b = 1#
+c = 1#
+# Run the model#
+#
+attending.individuals <- list()#
+for(event in 1:dim(contact.events.table)[1]){#
+	p = contact.events.table[event,1]  # in which patch does the event occur#
+	weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + (FI[i,k]/sum(FI[i,])) / (1+(c*D[p,k])) #
+			}#
+		}#
+		weights.ip[i] = weight.ip#
+	}#
+	attending.ind <- vector()#
+	for(ind in 1:contact.events.table[event,2]){#
+		# compute the probability of attending the event for each individual#
+		weights.ij <- vector()#
+		for(i in 1:N){#
+			weight.ij = 0#
+			if(length(attending.ind) > 0){#
+				for(j in 1:length(attending.ind)){ #
+					if(sum(CI[i,]) > 0){#
+						weight.ij = weight.ij + (CI[i,j]/sum(CI[i,]))#
+					}#
+				}#
+			}#
+			weights.ij[i] = weight.ij#
+		}#
+		PiEpt = exp(-( (a/(1+weights.ip)) + (b/(1+weights.ij)) ))#
+		PiEpt = PiEpt / sum(PiEpt)#
+		attending.ind[ind] <- sample(1:N, 1, prob=PiEpt)	#
+	}#
+	attending.individuals[[event]] <- attending.ind#
+	FI[attending.ind, p] <- FI[attending.ind, p] + 1#
+	CI[attending.ind, attending.ind] <- CI[attending.ind, attending.ind] + 1#
+	diag(CI) <- 0#
+}
+event
+apply(FI, 1, function(x) max(x)-min(x))
+apply(FI, 1, sum)
+FI[1:50,1:15]
+FI = matrix(0, ncol=P, nrow=N)  # Matrix of number of events previously attended by each individual in each patch#
+#
+CI = matrix(0, ncol=N, nrow=N)  # Matrix of number of contact that each individual had with each other individual#
+#
+D = as.matrix(dist(loggers_coords[,2:3], upper=T, diag=T)) # Matrix of distances between each pair of patches#
+# Parameter values#
+#
+a = 0.01#
+b = 1#
+c = 10#
+# Run the model#
+#
+attending.individuals <- list()#
+for(event in 1:dim(contact.events.table)[1]){#
+	p = contact.events.table[event,1]  # in which patch does the event occur#
+	weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + (FI[i,k]/sum(FI[i,])) / (1+(c*D[p,k])) #
+			}#
+		}#
+		weights.ip[i] = weight.ip#
+	}#
+	attending.ind <- vector()#
+	for(ind in 1:contact.events.table[event,2]){#
+		# compute the probability of attending the event for each individual#
+		weights.ij <- vector()#
+		for(i in 1:N){#
+			weight.ij = 0#
+			if(length(attending.ind) > 0){#
+				for(j in 1:length(attending.ind)){ #
+					if(sum(CI[i,]) > 0){#
+						weight.ij = weight.ij + (CI[i,j]/sum(CI[i,]))#
+					}#
+				}#
+			}#
+			weights.ij[i] = weight.ij#
+		}#
+		PiEpt = exp(-( (a/(1+weights.ip)) + (b/(1+weights.ij)) ))#
+		PiEpt = PiEpt / sum(PiEpt)#
+		attending.ind[ind] <- sample(1:N, 1, prob=PiEpt)	#
+	}#
+	attending.individuals[[event]] <- attending.ind#
+	FI[attending.ind, p] <- FI[attending.ind, p] + 1#
+	CI[attending.ind, attending.ind] <- CI[attending.ind, attending.ind] + 1#
+	diag(CI) <- 0#
+}
+event
+FI[1:50,1:15]
+apply(FI, 1, sum)
+e-(1/0.1)
+exp(-(1/0.1))
+exp(-(1/1))
+FI = matrix(0, ncol=P, nrow=N)  # Matrix of number of events previously attended by each individual in each patch#
+#
+CI = matrix(0, ncol=N, nrow=N)  # Matrix of number of contact that each individual had with each other individual#
+#
+D = as.matrix(dist(loggers_coords[,2:3], upper=T, diag=T)) # Matrix of distances between each pair of patches#
+# Parameter values#
+#
+a = 0.0001#
+b = 0#
+c = 0.01#
+# Run the model#
+#
+attending.individuals <- list()#
+for(event in 1:dim(contact.events.table)[1]){#
+	p = contact.events.table[event,1]  # in which patch does the event occur#
+	weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + (FI[i,k]/sum(FI[i,])) / (1+(c*D[p,k])) #
+			}#
+		}#
+		weights.ip[i] = weight.ip#
+	}#
+	attending.ind <- vector()#
+	for(ind in 1:contact.events.table[event,2]){#
+		# compute the probability of attending the event for each individual#
+		weights.ij <- vector()#
+		for(i in 1:N){#
+			weight.ij = 0#
+			if(length(attending.ind) > 0){#
+				for(j in 1:length(attending.ind)){ #
+					if(sum(CI[i,]) > 0){#
+						weight.ij = weight.ij + (CI[i,j]/sum(CI[i,]))#
+					}#
+				}#
+			}#
+			weights.ij[i] = weight.ij#
+		}#
+		PiEpt = exp(-( (a/(1+weights.ip)) + (b/(1+weights.ij)) ))#
+		PiEpt = PiEpt / sum(PiEpt)#
+		attending.ind[ind] <- sample(1:N, 1, prob=PiEpt)	#
+	}#
+	attending.individuals[[event]] <- attending.ind#
+	FI[attending.ind, p] <- FI[attending.ind, p] + 1#
+	CI[attending.ind, attending.ind] <- CI[attending.ind, attending.ind] + 1#
+	diag(CI) <- 0#
+}
+event
+FI[1:50,1:15]
+p = contact.events.table[event,1]
+p
+weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + (FI[i,k]/sum(FI[i,])) / (1+(c*D[p,k])) #
+			}#
+		}#
+		weights.ip[i] = weight.ip#
+	}
+weights.ip
+weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + (FI[i,k]/sum(FI[i,])) / (1+(100*D[p,k])) #
+			}#
+		}#
+		weights.ip[i] = weight.ip#
+	}
+weights.ip
+weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + (FI[i,k]/sum(FI[i,])) / (1+(0*D[p,k])) #
+			}#
+		}#
+		weights.ip[i] = weight.ip#
+	}
+weights.ip
 i=1
-j=1
-dist(rbind(estives@polygons[[which(estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt, exploitations@coords[which(exploitations@data$NoExploita == estiv_expl2[j,2]),]))
-estives@data$CODE_ESTIV == estiv_expl2[i,1])]]@Polygons[[1]]@labpt
-estiv_expl2[i,1])]]@Polygons[[1]]@labpt
-estiv_expl2[i,1]
-estiv_expl2[1,1]
-estiv_expl2[2,1]
-estiv_expl2[3,1]
-estiv_expl2[4,1]
-estiv_expl2[5,1]
-estiv_expl2[6,1]
-Oxford
-library(geosphere)#
-library(fields)#
-library(raster)#
-library(sp)#
-library(rgdal)#
-library(ncdf4)#
-library(raster)#
-data.chloro <- nc_open("/Users/mariussomveille/Desktop/TMHchlaSmday_20080716120000_x0_X360_y-90_Y90_nx2147483647_ny2147483647.nc")#
-chloro <- ncvar_get(data.chloro, varid="MHchla")#
-data.chloro$dim$lon$val[which(data.chloro$dim$lon$val > 180)] <- data.chloro$dim$lon$val[which(data.chloro$dim$lon$val > 180)] - 360#
-rownames(chloro) <- as.character(data.chloro$dim$lon$val)#
-colnames(chloro) <- as.character(data.chloro$dim$lat$val)#
-chloro <- chloro[sort(as.numeric(data.chloro$dim$lon$val)),]#
-chloro2 <- rbind(chloro[4321:8640,], chloro[1:4320,])#
-chloro2 <- chloro2[rev(1:8640),]#
+FI[i,]
+P
+sum(FI[i,])
+2/30
+D[p,]
+weight.ip = 0#
++ 		for(k in 1:P){#
++ 			if(sum(FI[i,]) > 0){#
++ 				weight.ip = weight.ip + (FI[i,k]/sum(FI[i,])) / (1+(0*D[p,k])) #
++ 			}#
++ 		}
+weight.ip = 0#
++ 	for(k in 1:P){#
++ 		if(sum(FI[i,]) > 0){#
++ 			weight.ip = weight.ip + (FI[i,k]/sum(FI[i,])) / (1+(0*D[p,k])) #
++ 		}#
++ 	}
+weight.ip = 0#
+ 	for(k in 1:P){#
 #
-chloro.rast <- raster(ncols=length(data.chloro$dim$lat$val), nrows=data.chloro$dim$lon$val)#
-extent(chloro.rast) <- extent(c(-180, 180, -90, 90))#
-chloro3 <- as.data.frame(as.table(chloro2))#
-chloro3[,1] <- as.numeric(as.vector(chloro3[,1]))#
-chloro3[,2] <- as.numeric(as.vector(chloro3[,2]))#
-chloro.july <- rasterize(x=chloro3[,1:2], y= chloro.rast, field=chloro3[,3], fun=mean, na.rm=T)
-hexgrid <- readOGR("/Users/mariussomveille/Desktop/Hex_grid", "isea3h7_analyses_clean", verbose=FALSE)#
-hexgrid <- hexgrid[,c(1,2,15,16)]
-?exctract
-?extract
-aaa <- extract(chloro.july, hexgrid)
-length(aaa)
-aaa <- extract(chloro.july, hexgrid, cellnumbers=T)
-length(aaa)
-aaa[1]
-aaa[2]
-aaa[3]
-aaa[4]
-dim(chloro.july)
-dim(chloro.july@data)
-chloro.july[1:5,1:5]
-chloro.july
-plot(chloro.july)
-length(data.chloro$dim$lat$val)
-length(data.chloro$dim$lon$val)
-chloro.rast <- raster(ncols=length(data.chloro$dim$lat$val), nrows=length(data.chloro$dim$lon$val))#
-extent(chloro.rast) <- extent(c(-180, 180, -90, 90))#
-chloro3 <- as.data.frame(as.table(chloro2))#
-chloro3[,1] <- as.numeric(as.vector(chloro3[,1]))#
-chloro3[,2] <- as.numeric(as.vector(chloro3[,2]))#
-chloro.july <- rasterize(x=chloro3[,1:2], y= chloro.rast, field=chloro3[,3], fun=mean, na.rm=T)
-plot(chloro.july)
-dim(chloro2)
-dim(chloro.july)
-chloro2[1:5,1:5]
-chloro.july[1:5,1:5]
-chloro2[100:105,100:105]
-chloro2[1000:1005,1000:1005]
-chloro2[1000:1050,1000:1050]
-chloro2[1000:1050,1000:1005]
-chloro2[1000:1050,1040:1050]
-chloro.july[1000:1050,1040:1050]
-dim(data.chloro$dim$lon$val)
-length(data.chloro$dim$lon$val)
-length(data.chloro$dim$lat$val)
-dim(chloro2)
-?matrix
-?inv
-?inverse
-?rev
-chloro <- ncvar_get(data.chloro, varid="MHchla")#
-data.chloro$dim$lon$val[which(data.chloro$dim$lon$val > 180)] <- data.chloro$dim$lon$val[which(data.chloro$dim$lon$val > 180)] - 360#
-rownames(chloro) <- as.character(data.chloro$dim$lon$val)#
-colnames(chloro) <- as.character(data.chloro$dim$lat$val)#
-chloro <- transpose(chloro)
-?transpose
-chloro <- t(chloro)
-dim(chloro)
-chloro[1:51:5]
-chloro[1:5,1:5]
-chloro2 <- cbind(chloro[,4321:8640], chloro[,1:4320])#
-chloro2 <- chloro2[,rev(1:8640)]
-chloro2[1:5,1:5]
-chloro2 <- cbind(chloro[,4321:8640], chloro[,1:4320])
-chloro2[1:5,1:5]
-dim(chloro2)
-chloro2 <- chloro2[rev(1:4320),]
-dim(chloro2)
-chloro2[1:5,1:5]
-chloro.rast <- raster(ncols=dim(chloro2)[2], nrows=dim(chloro2)[1])#
-extent(chloro.rast) <- extent(c(-180, 180, -90, 90))#
-chloro3 <- as.data.frame(as.table(chloro2))#
-chloro3[,1] <- as.numeric(as.vector(chloro3[,1]))#
-chloro3[,2] <- as.numeric(as.vector(chloro3[,2]))#
-chloro.july <- rasterize(x=chloro3[,1:2], y= chloro.rast, field=chloro3[,3], fun=mean, na.rm=T)
-dim(chloro.july)
-plot(chloro.july)
-dim(chloro3)
-head(chloro3)
-colnames(chloro2)
-rownames(chloro2)
-write.csv(chloro2, "/Users/mariussomveille/Desktop/chlorophyl_july_2008.csv")
-766+395+420
-1/1.1232
-1/1.12
-397/3
-rm(list=ls())
-ls()
-library(spatstat)#
-library(spdep)#
-library(maptools)#
-library(rgdal)#
-library(ncf)#
-library(png)#
-library(raster)#
-library(sp)#
-library(sna)#
-library(mapplots)#
-library(igraph)
-setwd("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-information-flow")#
+ 			weight.ip = weight.ip + (FI[i,k]/sum(FI[i,])) / (1+(0*D[p,k])) #
 #
-## Import and process the data#
+ 	}
+weight.ip
+weight.ip = 0#
+ 	for(k in 1:P){#
 #
-load("bird_movement/movements_data.RData")#
-resultsModel <- read.csv("model/resultsModel.csv")#
-loggers_coords <- read.csv("Wytham_loggers_coordinates.csv")#
-model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
+ 			weight.ip = weight.ip + ((FI[i,k]/sum(FI[i,])) / (1+(0*D[p,k])))#
 #
-wyt <-readOGR("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-information-flow", "perimeter poly with clearings_region")#
-poly.sp<-SpatialPolygons(list(wyt@polygons[[1]]))#
-poly.owin<-as(poly.sp,"owin")#
+ 	}
+weight.ip
+weight.ip = 0#
+ 	for(k in 1:P){#
 #
-## Plot the map#
+ 			weight.ip = weight.ip + (FI[i,k]/sum(FI[i,]))#
 #
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+ 	}
+weight.ip
+i
+k
+k=1
+(FI[i,k]/sum(FI[i,]))
+weight.ip = 0#
+ 	for(k in 1:P){#
+#
+ 			weight.ip = weight.ip + (FI[i,k])#
+#
+ 	}
+(FI[i,k]/sum(FI[i,]))
+weight.ip = 0#
++ 		for(k in 1:P){#
++ 			if(sum(FI[i,]) > 0){#
++ 				weight.ip = weight.ip + (FI[i,k]) / (1+(1*D[p,k])) #
++ 			}#
++ 		}
+weight.ip = 0#
+ 		for(k in 1:P){#
+ 			if(sum(FI[i,]) > 0){#
+ 				weight.ip = weight.ip + (FI[i,k]) / (1+(1*D[p,k])) #
+ 			}#
+ 		}
+weight.ip
+2/3/9
+1/3/9
+1/3/90
+D[1:5,1:5]
+(((1+1)^2)/(1+1)) / (1+2)
+(((1+1)^2)/(1+1)) / (1+4)
+(((1+1)^2)/(1+1)) / (1+6)
+(((1+1)^2)/(1+1)) / (1+8)
+(((1+1)^2)/(1+1)) / (1+200)
+(((1+1)^2)/(1+1)) / (1+400)
+(((1+1)^2)/(1+1)) / (1+600)
+(((1+1)^2)/(1+1)) / (1+0)
+exp(-(1/2))
+exp(-(1/0.009950249))
+exp(-(1/0.6666667))
+(((1+1)^2)/(1+1)) / (1+20)
+exp(-(1/0.0952381))
+(((1+0)^2)/(1+1)) / (1+20)
+(((1+0)^2)/(1+0)) / (1+20)
+exp(-(1/  ((((1+0)^2)/(1+1)) / (1+20))  ))
+exp(-(1/  ((((1+0)^2)/(1+1)) / (1+40))  ))
+exp(-(1/  ((((1+0)^2)/(1+1)) / (1+0))  ))
+exp(-(1/  ((((1+1)^2)/(1+1)) / (1+0))  ))
+exp(-(10/  ((((1+1)^2)/(1+1)) / (1+0))  ))
+exp(-(10/  ((((1+0)^2)/(1+1)) / (1+0))  ))
+exp(-(2/  ((((1+1)^2)/(1+1)) / (1+0))  ))
+exp(-(2/  ((((1+0)^2)/(1+1)) / (1+0))  ))
+exp(-(2/  ((((1+0)^2)/(1+1)) / (1+20))  ))
+exp(-(2/  ((((1+1)^2)/(1+1)) / (1+20))  ))
+exp(-(1.5/  ((((1+1)^2)/(1+1)) / (1+20))  ))
+exp(-(1/  ((((1+1)^2)/(1+1)) / (1+20))  ))
+exp(-(1/  ((((1+1)^10)/(1+1)) / (1+20))  ))
+exp(-(2/  ((((1+1)^10)/(1+1)) / (1+20))  ))
+exp(-(2/  ((((1+0)^10)/(1+1)) / (1+20))  ))
+exp(-(2/  ((((1+1)^10)/(1+1)) / (1+0))  ))
+exp(-(2/  ((((1+1)^4)/(1+1)) / (1+20))  ))
+exp(-(2/  ((((1+1)^4)/(1+1)) / (1+0))  ))
+exp(-(2/  ((((1+1)^5)/(1+1)) / (1+20))  ))
+exp(-(2/  ((((1+1)^4)/(1+1)) / (1+0))  ))
+exp(-(2/  ((((1+1)^5)/(1+1)) / (1+0))  ))
+exp(-(2/  ((((1+0)^5)/(1+1)) / (1+0))  ))
+exp(-(2/  ((((1+0)^5)/(1+1)) / (1+20))  ))
+exp(-(2/  ((((1+0)^5)/(1+1)) / (1+40))  ))
+exp(-(2/  ((((1+1)^5)/(1+1)) / (1+0))  ))
+exp(-(2/  ((((1+1)^5)/(1+1)) / (1+20))  ))
+exp(-(2/  ((((1+1)^5)/(1+1)) / (1+40))  ))
+exp(-(2/  ( ((((1+1)^5)/(1+1)) / (1+0)) + ((((1+0)^5)/(1+1)) / (1+20)) + ((((1+0)^5)/(1+1)) / (1+40)) )  ))
+exp(-(2/  ( ((((1+0)^5)/(1+1)) / (1+0)) + ((((1+0)^5)/(1+1)) / (1+20)) + ((((1+0)^5)/(1+1)) / (1+40)) )  ))
+exp(-(2/  ( ((((1+0)^5)/(1+0)) / (1+0)) + ((((1+0)^5)/(1+0)) / (1+20)) + ((((1+0)^5)/(1+0)) / (1+40)) )  ))
+exp(-(2/  ( ((((1+0)^5)/(1+1)) / (1+0)) + ((((1+1)^5)/(1+1)) / (1+20)) + ((((1+0)^5)/(1+1)) / (1+40)) )  ))
+exp(-(2/  ( ((((1+0)^5)/(1+1)) / (1+0)) + ((((1+0)^5)/(1+1)) / (1+20)) + ((((1+1)^5)/(1+1)) / (1+40)) )  ))
+exp(-(2/  ( ((((1+0)^5)/(1+1)) / (1+0)) + ((((1+0)^5)/(1+1)) / (1+20)) + ((((1+1)^5)/(1+1)) / (1+100)) )  ))
+exp(-(2/  ( ((((1+2)^5)/(1+2)) / (1+0)) + ((((1+0)^5)/(1+2)) / (1+20)) + ((((1+0)^5)/(1+2)) / (1+40)) )  ))
+exp(-(2/  ( ((((0+2)^5)/(1+2)) / (1+0)) + ((((1+0)^5)/(1+2)) / (1+20)) + ((((1+0)^5)/(1+2)) / (1+40)) )  ))
+exp(-(2/  ( ((((1+0)^5)/(1+2)) / (1+0)) + ((((1+0)^5)/(1+2)) / (1+20)) + ((((1+0)^5)/(1+2)) / (1+40)) )  ))
+exp(-(2/  ( ((((1+0)^5)/(1+2)) / (1+0)) + ((((1+0)^5)/(1+2)) / (1+20)) + ((((1+0)^5)/(1+2)) / (1+100)) )  ))
+exp(-(2/  ( ((((1+0)^5)/(1+2)) / (1+0)) + ((((1+0)^5)/(1+2)) / (1+20)) + ((((1+2)^5)/(1+2)) / (1+100)) )  ))
+FI = matrix(0, ncol=P, nrow=N)  # Matrix of number of events previously attended by each individual in each patch#
+#
+CI = matrix(0, ncol=N, nrow=N)  # Matrix of number of contact that each individual had with each other individual#
+#
+D = as.matrix(dist(loggers_coords[,2:3], upper=T, diag=T)) # Matrix of distances between each pair of patches#
+# Parameter values#
+#
+a = 2#
+b = 0#
+c = 0.1
+attending.individuals <- list()
+event=1
+p = contact.events.table[event,1]  # in which patch does the event occur#
+	weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + ( ((1+FI[i,k])^2)/(1+sum(FI[i,]))) / (1+(c*D[p,k])) #
+			}#
+		}#
+		weights.ip[i] = weight.ip#
+	}
+weights.ip
+weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			#if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + ( ((1+FI[i,k])^2)/(1+sum(FI[i,]))) / (1+(c*D[p,k])) #
+			#}#
+		}#
+		weights.ip[i] = weight.ip#
+	}
+weights.ip
+a = 2#
+b = 0#
+c = 0.1#
+# Run the model#
+#
+attending.individuals <- list()#
+for(event in 1:dim(contact.events.table)[1]){#
+	p = contact.events.table[event,1]  # in which patch does the event occur#
+	weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			#if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + ( ((1+FI[i,k])^2)/(1+sum(FI[i,]))) / (1+(c*D[p,k])) #
+			#}#
+		}#
+		weights.ip[i] = weight.ip#
+	}#
+	attending.ind <- vector()#
+	for(ind in 1:contact.events.table[event,2]){#
+		# compute the probability of attending the event for each individual#
+		weights.ij <- vector()#
+		for(i in 1:N){#
+			weight.ij = 0#
+			if(length(attending.ind) > 0){#
+				for(j in 1:length(attending.ind)){ #
+					if(sum(CI[i,]) > 0){#
+						weight.ij = weight.ij + (CI[i,j]/sum(CI[i,]))#
+					}#
+				}#
+			}#
+			weights.ij[i] = weight.ij#
+		}#
+		PiEpt = exp(-( (a/weights.ip) + (b/(1+weights.ij)) ))#
+		PiEpt = PiEpt / sum(PiEpt)#
+		attending.ind[ind] <- sample(1:N, 1, prob=PiEpt)	#
+	}#
+	attending.individuals[[event]] <- attending.ind#
+	FI[attending.ind, p] <- FI[attending.ind, p] + 1#
+	CI[attending.ind, attending.ind] <- CI[attending.ind, attending.ind] + 1#
+	diag(CI) <- 0#
 }
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[40,1:65], as.matrix(resultsModel)[40,66:130], as.matrix(resultsModel)[40,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
+event
+FI[1:50,1:15]
+p = contact.events.table[event,1]
+p
+i=1
+weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			#if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + ( ((1+FI[i,k])^2)/(1+sum(FI[i,]))) / (1+(c*D[p,k])) #
+			#}#
+		}#
+		weights.ip[i] = weight.ip#
+	}
+weights.ip
+hist(weights.ip)
+FI[i,]
+i
+FI[,p]
+c*D[p,]
+PiEpt = exp(-( (a/weights.ip) ))
+PiEpt
+PiEpt = PiEpt / sum(PiEpt)
+PiEpt
+weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			#if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + ( ((1+FI[i,k])^2)/(1+sum(FI[i,]))) / (1+(0.01*D[p,k])) #
+			#}#
+		}#
+		weights.ip[i] = weight.ip#
+	}
+PiEpt = exp(-( (a/weights.ip) ))
+PiEpt
+weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			#if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + ( ((1+FI[i,k])^2)/(1+sum(FI[i,]))) / (1+(10*D[p,k])) #
+			#}#
+		}#
+		weights.ip[i] = weight.ip#
+	}
+PiEpt = exp(-( (a/weights.ip) ))
+PiEpt
+PiEpt = exp(-( (4/weights.ip) ))
+PiEpt
+PiEpt = exp(-( (0.1/weights.ip) ))
+PiEpt
+PiEpt = exp(-( (10/weights.ip) ))
+PiEpt
+PiEpt = PiEpt / sum(PiEpt)
+PiEpt
+1.709382e-03
+8.408371e-08
+weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			#if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + ( ((1+FI[i,k])^b)/(1+sum(FI[i,]))) / (1+(c*D[p,k])) #
+			#}#
+		}#
+		weights.ip[i] = weight.ip#
+	}
+weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			#if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + ( ((1+FI[i,k])^b)/(1+sum(FI[i,]))) / (1+(c*D[p,k])) #
+			#}#
+		}#
+		weights.ip[i] = weight.ip#
+	}
+weights.ip
+c = 1
+a = 10#
+b = 5#
+c = 1
+weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			#if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + ( ((1+FI[i,k])^b)/(1+sum(FI[i,]))) / (1+(c*D[p,k])) #
+			#}#
+		}#
+		weights.ip[i] = weight.ip#
+	}
+weights.ip
+PiEpt = exp(-( (10/weights.ip) ))
+PiEpt
+a = 10#
+b = 5#
+c = 1
+weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			#if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + ( ((1+FI[i,k])^b)/(1+sum(FI[i,]))) / (1+(c*D[p,k])) #
+			#}#
+		}#
+		weights.ip[i] = weight.ip#
+	}
+weights.ip
+b
+a = 10#
+b = 10#
+c = 1
+weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			#if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + ( ((1+FI[i,k])^b)/(1+sum(FI[i,]))) / (1+(c*D[p,k])) #
+			#}#
+		}#
+		weights.ip[i] = weight.ip#
+	}
+weights.ip
+a = 10#
+b = 2#
+c = 1
+weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			#if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + ( ((1+FI[i,k])^b)/(1+sum(FI[i,]))) / (1+(c*D[p,k])) #
+			#}#
+		}#
+		weights.ip[i] = weight.ip#
+	}
+weights.ip
+b
+a = 10#
+b = 5#
+c = 1#
+# Run the model#
 #
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+attending.individuals <- list()#
+for(event in 1:dim(contact.events.table)[1]){#
+	p = contact.events.table[event,1]  # in which patch does the event occur#
+	weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			#if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + ( ((1+FI[i,k])^b)/(1+sum(FI[i,]))) / (1+(c*D[p,k])) #
+			#}#
+		}#
+		weights.ip[i] = weight.ip#
+	}#
+	attending.ind <- vector()#
+	for(ind in 1:contact.events.table[event,2]){#
+		# compute the probability of attending the event for each individual#
+		weights.ij <- vector()#
+		for(i in 1:N){#
+			weight.ij = 0#
+			if(length(attending.ind) > 0){#
+				for(j in 1:length(attending.ind)){ #
+					if(sum(CI[i,]) > 0){#
+						weight.ij = weight.ij + (CI[i,j]/sum(CI[i,]))#
+					}#
+				}#
+			}#
+			weights.ij[i] = weight.ij#
+		}#
+		PiEpt = exp(-( (a/weights.ip) + (b/(1+weights.ij)) ))#
+		PiEpt = PiEpt / sum(PiEpt)#
+		attending.ind[ind] <- sample(1:N, 1, prob=PiEpt)	#
+	}#
+	attending.individuals[[event]] <- attending.ind#
+	FI[attending.ind, p] <- FI[attending.ind, p] + 1#
+	CI[attending.ind, attending.ind] <- CI[attending.ind, attending.ind] + 1#
+	diag(CI) <- 0#
 }
-dim(resultsModel)
-resultsModel[1:5,1:5]
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
+FI = matrix(0, ncol=P, nrow=N)  # Matrix of number of events previously attended by each individual in each patch#
 #
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
+CI = matrix(0, ncol=N, nrow=N)  # Matrix of number of contact that each individual had with each other individual#
 #
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
+D = as.matrix(dist(loggers_coords[,2:3], upper=T, diag=T)) # Matrix of distances between each pair of patches#
+# Parameter values#
 #
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
+a = 10#
+b = 5#
+c = 1#
+d = 0#
 #
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
-}
-resultsModel <- read.csv("model/resultsModel4.csv")#
-model_res <- cbind(as.matrix(resultsModel)[20,1:65], as.matrix(resultsModel)[20,66:130], as.matrix(resultsModel)[20,131:195])#
-model_res_list <- as.list(as.data.frame(t(model_res)))#
+# Run the model#
 #
-plot(poly.owin)#
-for(i in 1:65){#
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))#
+attending.individuals <- list()#
+for(event in 1:dim(contact.events.table)[1]){#
+	p = contact.events.table[event,1]  # in which patch does the event occur#
+	weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			#if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + ( ((1+FI[i,k])^b)/(1+sum(FI[i,]))) / (1+(c*D[p,k])) #
+			#}#
+		}#
+		weights.ip[i] = weight.ip#
+	}#
+	attending.ind <- vector()#
+	for(ind in 1:contact.events.table[event,2]){#
+		# compute the probability of attending the event for each individual#
+		weights.ij <- vector()#
+		for(i in 1:N){#
+			weight.ij = 0#
+			if(length(attending.ind) > 0){#
+				for(j in 1:length(attending.ind)){ #
+					if(sum(CI[i,]) > 0){#
+						weight.ij = weight.ij + (CI[i,j]/sum(CI[i,]))#
+					}#
+				}#
+			}#
+			weights.ij[i] = weight.ij#
+		}#
+		PiEpt = exp(-( (a/weights.ip) + (d/(1+weights.ij)) ))#
+		PiEpt = PiEpt / sum(PiEpt)#
+		attending.ind[ind] <- sample(1:N, 1, prob=PiEpt)	#
+	}#
+	attending.individuals[[event]] <- attending.ind#
+	FI[attending.ind, p] <- FI[attending.ind, p] + 1#
+	CI[attending.ind, attending.ind] <- CI[attending.ind, attending.ind] + 1#
+	diag(CI) <- 0#
 }
+event
+FI[1:50,1:15]
+event
+p = contact.events.table[event,1]
+p
+event = 2497
+p = contact.events.table[event,1]
+p
+weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			#if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + ( ((1+FI[i,k])^b)/(1+sum(FI[i,]))) / (1+(c*D[p,k])) #
+			#}#
+		}#
+		weights.ip[i] = weight.ip#
+	}
+weights.ip
+PiEpt = exp(-( (a/weights.ip) + (d/(1+weights.ij)) ))
+PiEpt = PiEpt / sum(PiEpt)
+PiEpt
+FI[,p]
+sample(1:N, 1, prob=PiEpt)
+FI[,p][sample(1:N, 1, prob=PiEpt)	]
+FI[,p][sample(1:N, 1, prob=PiEpt)	]
+FI[,p][sample(1:N, 1, prob=PiEpt)	]
+FI[,p][sample(1:N, 1, prob=PiEpt)	]
+FI[,p][sample(1:N, 1, prob=PiEpt)	]
+FI[,p][sample(1:N, 1, prob=PiEpt)	]
+FI[,p][sample(1:N, 1, prob=PiEpt)	]
+FI[,p][sample(1:N, 1, prob=PiEpt)	]
+FI[,p][sample(1:N, 1, prob=PiEpt)	]
+FI[,p][sample(1:N, 1, prob=PiEpt)	]
+FI[,p][sample(1:N, 1, prob=PiEpt)	]
+FI[,p][sample(1:N, 1, prob=PiEpt)	]
+FI[,p][sample(1:N, 1, prob=PiEpt)	]
+FI[,p][sample(1:N, 1, prob=PiEpt)	]
+FI[,p][sample(1:N, 1, prob=PiEpt)	]
+FI[,p][sample(1:N, 1, prob=PiEpt)	]
+FI = matrix(0, ncol=P, nrow=N)  # Matrix of number of events previously attended by each individual in each patch#
+#
+CI = matrix(0, ncol=N, nrow=N)  # Matrix of number of contact that each individual had with each other individual#
+#
+D = as.matrix(dist(loggers_coords[,2:3], upper=T, diag=T)) # Matrix of distances between each pair of patches#
+# Parameter values#
+#
+a = 15#
+b = 10#
+c = 10#
+d = 0#
+#
+# Run the model#
+#
+attending.individuals <- list()#
+for(event in 1:dim(contact.events.table)[1]){#
+	p = contact.events.table[event,1]  # in which patch does the event occur#
+	weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			#if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + ( ((1+FI[i,k])^b)/(1+sum(FI[i,]))) / (1+(c*D[p,k])) #
+			#}#
+		}#
+		weights.ip[i] = weight.ip#
+	}#
+	attending.ind <- vector()#
+	for(ind in 1:contact.events.table[event,2]){#
+		# compute the probability of attending the event for each individual#
+		weights.ij <- vector()#
+		for(i in 1:N){#
+			weight.ij = 0#
+			if(length(attending.ind) > 0){#
+				for(j in 1:length(attending.ind)){ #
+					if(sum(CI[i,]) > 0){#
+						weight.ij = weight.ij + (CI[i,j]/sum(CI[i,]))#
+					}#
+				}#
+			}#
+			weights.ij[i] = weight.ij#
+		}#
+		PiEpt = exp(-( (a/weights.ip) + (d/(1+weights.ij)) ))#
+		PiEpt = PiEpt / sum(PiEpt)#
+		attending.ind[ind] <- sample(1:N, 1, prob=PiEpt)	#
+	}#
+	attending.individuals[[event]] <- attending.ind#
+	FI[attending.ind, p] <- FI[attending.ind, p] + 1#
+	CI[attending.ind, attending.ind] <- CI[attending.ind, attending.ind] + 1#
+	diag(CI) <- 0#
+}
+event
+FI[1:50,1:15]
+FI
+FI = matrix(0, ncol=P, nrow=N)  # Matrix of number of events previously attended by each individual in each patch#
+#
+CI = matrix(0, ncol=N, nrow=N)  # Matrix of number of contact that each individual had with each other individual#
+#
+D = as.matrix(dist(loggers_coords[,2:3], upper=T, diag=T)) # Matrix of distances between each pair of patches#
+# Parameter values#
+#
+a = 50#
+b = 100#
+c = 10#
+d = 0#
+#
+# Run the model#
+#
+attending.individuals <- list()#
+for(event in 1:dim(contact.events.table)[1]){#
+	p = contact.events.table[event,1]  # in which patch does the event occur#
+	weights.ip <- vector()#
+	for(i in 1:N){#
+		weight.ip = 0#
+		for(k in 1:P){#
+			#if(sum(FI[i,]) > 0){#
+				weight.ip = weight.ip + ( ((1+FI[i,k])^b)/(1+sum(FI[i,]))) / (1+(c*D[p,k])) #
+			#}#
+		}#
+		weights.ip[i] = weight.ip#
+	}#
+	attending.ind <- vector()#
+	for(ind in 1:contact.events.table[event,2]){#
+		# compute the probability of attending the event for each individual#
+		weights.ij <- vector()#
+		for(i in 1:N){#
+			weight.ij = 0#
+			if(length(attending.ind) > 0){#
+				for(j in 1:length(attending.ind)){ #
+					if(sum(CI[i,]) > 0){#
+						weight.ij = weight.ij + (CI[i,j]/sum(CI[i,]))#
+					}#
+				}#
+			}#
+			weights.ij[i] = weight.ij#
+		}#
+		PiEpt = exp(-( (a/weights.ip) + (d/(1+weights.ij)) ))#
+		PiEpt = PiEpt / sum(PiEpt)#
+		attending.ind[ind] <- sample(1:N, 1, prob=PiEpt)	#
+	}#
+	attending.individuals[[event]] <- attending.ind#
+	FI[attending.ind, p] <- FI[attending.ind, p] + 1#
+	CI[attending.ind, attending.ind] <- CI[attending.ind, attending.ind] + 1#
+	diag(CI) <- 0#
+}
+event
+FI[1:50,1:15]
+FI

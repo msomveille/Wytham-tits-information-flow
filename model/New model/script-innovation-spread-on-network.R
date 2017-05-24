@@ -1,4 +1,17 @@
 
+library(spatstat)
+library(spdep)
+library(maptools)
+library(rgdal)
+library(ncf)
+library(png)
+library(raster)
+library(sp)
+library(sna)
+library(mapplots)
+library(igraph)
+library(MASS)
+
 
 setwd("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-information-flow")
 
@@ -95,7 +108,6 @@ Nb.patches.per.ind <- vector()
 for(i in 1:dim(group_by_individual)[2]){
 	Nb.patches.per.ind[i] <- length(unique(group_data[which(group_by_individual[,i] == 1),1]))
 }
-
 
 ## Number of contact per patch
 Nb.contacts.per.patch <- vector()
@@ -206,7 +218,11 @@ colnames(contact.events.table) <- c("Feeder", "No of individuals")
 
 
 
-# For each event Ept (occuring in patch p at time t), compute the probability of each individual i being sampled to attend
+
+
+
+# Run the model
+
 
 N = 729  # total number of individuals 
 P = 65  # total number of patches
@@ -218,14 +234,117 @@ CI = matrix(0, ncol=N, nrow=N)  # Matrix of number of contact that each individu
 D = as.matrix(dist(loggers_coords[,2:3], upper=T, diag=T)) # Matrix of distances between each pair of patches
 
 
-# Parameter values
+a = 4
+b = 0.1
+c = 1
 
-a = 50
-b = 100
-c = 10
-d = 0
+# For each event Ept (occuring in patch p at time t), compute the probability of each individual i being sampled to attend
+attending.individuals <- list()
+for(event in 1:dim(contact.events.table)[1]){
+	
+	p = contact.events.table[event,1]  # in which patch does the event occur
+	
+	weights.ip <- vector()
+	for(i in 1:N){
+		weights.ip[i] = ((1 + FI[i,p])^a) / (1 + sum(FI[i,] * (b*D[p,])))
+	}
+	
+	attending.ind <- vector()
+	for(ind in 1:contact.events.table[event,2]){
+		weights.ij <- vector()
+		for(i in 1:N){
+			weight.ij = 0
+			if(length(attending.ind) > 0){
+				for(j in 1:length(attending.ind)){ 
+					weight.ij = weight.ij + CI[i,j]
+				}
+			}
+			weights.ij[i] = weight.ij
+		}
+		PiEpt = weights.ip + (c * weights.ij)  
+		PiEpt = PiEpt / sum(PiEpt)
+		PiEpt[attending.ind] = 0	
+		attending.ind[ind] <- sample(1:N, 1, prob=PiEpt)	
+	}
 
-# Run the model
+	attending.individuals[[event]] <- attending.ind
+	
+	FI[attending.ind, p] <- FI[attending.ind, p] + 1
+	CI[attending.ind, attending.ind] <- CI[attending.ind, attending.ind] + 1
+	diag(CI) <- 0
+}
+
+
+
+
+## Comparing the observed networks with the simulated ones
+
+### Bipartite individuals-patches graph
+# Observed
+Nb.patches.per.ind <- vector()
+for(i in 1:dim(group_by_individual)[2]){
+	Nb.patches.per.ind[i] <- length(unique(group_data[which(group_by_individual[,i] == 1),1]))
+}
+k.obs = 1:max(Nb.patches.per.ind)
+Pk.obs = sapply(k.obs, function(x) length(which(Nb.patches.per.ind == x)))
+Pk.obs = Pk.obs / sum(Pk.obs)
+plot(log(k.obs,base=10), log(Pk.obs,base=10), col="black", pch=20)
+# Simulated
+Nb.patches.per.ind.simu = apply(FI, 1, function(x) length(which(x>0)))
+k.sim = 1:max(Nb.patches.per.ind.simu)
+Pk.sim = sapply(k.sim, function(x) length(which(Nb.patches.per.ind.simu == x)))
+Pk.sim = Pk.sim / sum(Pk.sim)
+points(log(k.sim,base=10), log(Pk.sim,base=10), col="red", pch=20)
+
+#Pk.sim.powerlaw = k.sim^-2
+#lines(log(k.sim,base=10), log(Pk.sim.powerlaw,base=10), col="red")
+
+
+### Social network
+# Observed
+Nb.friends.per.ind <- vector()
+for(i in 1:dim(group_by_individual)[2]){
+	if(length(which(group_by_individual[,i] == 1)) > 1){
+		Nb.friends.per.ind[i] = length(which(apply(group_by_individual[which(group_by_individual[,i] == 1),-i], 2, sum) > 0))
+	}else{
+		Nb.friends.per.ind[i] = 0
+	}
+}
+
+k.obs = 1:max(Nb.patches.per.ind)
+Pk.obs = sapply(k.obs, function(x) length(which(Nb.patches.per.ind == x)))
+Pk.obs = Pk.obs / sum(Pk.obs)
+plot(log(k.obs,base=10), log(Pk.obs,base=10), col="black", pch=20)
+# Simulated
+Nb.friends.per.ind.simu = apply(CI, 1, function(x) length(which(x>0)))
+k.sim = 1:max(Nb.friends.per.ind.simu)
+Pk.sim = sapply(k.sim, function(x) length(which(Nb.friends.per.ind.simu == x)))
+Pk.sim = Pk.sim / sum(Pk.sim)
+points(log(k.sim,base=10), log(Pk.sim,base=10), col="red", pch=20)
+
+
+
+# Spatial network
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# old
 
 attending.individuals <- list()
 for(event in 1:dim(contact.events.table)[1]){

@@ -1,36 +1,26 @@
-
-library(spatstat)
-library(spdep)
-library(maptools)
-library(rgdal)
-library(ncf)
-library(png)
-library(raster)
+#Load required libraries
 library(sp)
-library(sna)
-library(mapplots)
+library(rgdal)
+library(spatstat)
+library(maptools)
 library(igraph)
+library(tnet)
 library(MASS)
+library(mapplots)
 
+setwd("~/Wytham-tits-information-flow")
 
-setwd("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-information-flow")
-
-# Load data
-
-load("Group_by_individual_all_winter_2013.RData")
-load("Group_by_individual_data_all_winter_2013.RData")
-
-loggers_coords <- read.csv("Wytham_loggers_coordinates.csv")
-
-wyt <-readOGR("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-information-flow", "perimeter poly with clearings_region")
+#Load data
+load("data/Group_by_individual_all_winter_2013.RData")
+load("data/Group_by_individual_data_all_winter_2013.RData")
+load("data/movements_data.RData")
+loggers_coords <- read.csv("data/Wytham_loggers_coordinates.csv")
+wyt <-readOGR("~/Wytham-tits-information-flow/data", "perimeter poly with clearings_region")
 poly.sp<-SpatialPolygons(list(wyt@polygons[[1]]))
 poly.owin<-as(poly.sp,"owin")
 
-
-# Change site label to match loggers coordinates
-
+#Change site label to match loggers coordinates
 group_data[,1] <- as.character(group_data[,1])
-
 group_data$Location[which(group_data$Location == "1A")] <- "1a"
 group_data$Location[which(group_data$Location == "1B")] <- "1b"
 group_data$Location[which(group_data$Location == "1C")] <- "1c"
@@ -96,105 +86,131 @@ group_data$Location[which(group_data$Location == "8C")] <- "8c"
 group_data$Location[which(group_data$Location == "8D")] <- "8d"
 group_data$Location[which(group_data$Location == "8")] <- "8e"
 group_data$Location[which(group_data$Location == "8F")] <- "8f"
+group_by_individual = group_by_individual[do.call(order, group_data),] # A 1/0 table with feeding events in row (68057) and individuals in column (729)
+group_data = group_data[do.call(order, group_data),]  # A table giving details for each feeding events (location, date and duration)
+feeders.id <- unique(group_data[,1])
 
-group_by_individual = group_by_individual[do.call(order, group_data),]
-group_data = group_data[do.call(order, group_data),]
 
+##  Analyse empirical data  ##
 
-Nb.contacts.per.ind <- apply(group_by_individual, 2, sum)
-Nb.ind.per.contacts <- apply(group_by_individual, 1, sum)
+#Get the duration of feeding events in seconds (and remove feeding events whose duration is 0)
+feeding.duration.obs <- group_data[,4] - group_data[,3]
+group_data <- group_data[-which(feeding.duration.obs == 0),]
+group_by_individual <- group_by_individual[-which(feeding.duration.obs == 0),]
+feeding.duration.obs <- feeding.duration.obs[-which(feeding.duration.obs == 0)]
 
-Nb.patches.per.ind <- vector()
-for(i in 1:dim(group_by_individual)[2]){
-	Nb.patches.per.ind[i] <- length(unique(group_data[which(group_by_individual[,i] == 1),1]))
-}
+#Get the total number of feeding events attended by each individual and the number of individuals per feeding event
+Nb.events.per.ind <- as.vector(apply(group_by_individual, 2, sum))
+Nb.inds.per.event <- as.vector(apply(group_by_individual, 1, sum))
 
-## Number of contact per patch
-Nb.contacts.per.patch <- vector()
+#Get the number of feeding events per feeder
+Nb.events.per.feeder <- vector()
 for(i in 1:length(unique(group_data$Location))){
-	Nb.contacts.per.patch[i] <- length(which(group_data$Location == unique(group_data$Location)[i]))
+	Nb.events.per.feeder[i] <- length(which(group_data$Location == unique(group_data$Location)[i]))
 }
-Nb.contacts.per.patch <- data.frame(unique(group_data$Location), as.numeric(Nb.contacts.per.patch))
-#Nb.contacts.per.patch = Nb.contacts.per.patch[do.call(order, Nb.contacts.per.patch),]
+Nb.events.per.feeder <- data.frame(unique(group_data$Location), as.numeric(Nb.events.per.feeder))
 
-
-## Number of individual per contact in each patch
-Nb.ind.per.contact.per.patch <- list()
+##Get the number of individuals per feeding events for each feeder 
+Nb.inds.per.event.per.feeder <- list()
 for(i in 1:length(unique(group_data$Location))){
-	Nb.ind.per.contact.per.patch[[i]] <- Nb.ind.per.contacts[which(group_data$Location == unique(group_data$Location)[i])]
-}
-hist(unlist(lapply(Nb.ind.per.contact.per.patch, mean)))
-
-
-## Proportion of contact spent per patch for each individual (1)
-Prop.patches.per.ind <- list()
-for(i in 1:dim(group_by_individual)[2]){
-	aaa <- vector()
-	for(j in 1:length(unique(group_data$Location[which(group_by_individual[,i] == 1)]))){
-		aaa[j] <- length(which(group_data$Location[which(group_by_individual[,i] == 1)] == unique(group_data$Location[which(group_by_individual[,i] == 1)])[j])) / length(group_data$Location[which(group_by_individual[,i] == 1)])
-}
-Prop.patches.per.ind[[i]] <- aaa
+	Nb.inds.per.event.per.feeder[[i]] <- Nb.inds.per.event[which(group_data$Location == unique(group_data$Location)[i])]
 }
 
-hist(unlist(lapply(Prop.patches.per.ind, max)), xlim=c(0,1))
+#Get the distance between each pair of feeder 
+feeders.dists = as.matrix(dist(loggers_coords[,2:3], upper=T, diag=T))
 
+#Get the number of feeding events per day and per week-end
+daily.number.of.events <- vector()
+for(i in 1:length(unique(group_data$Date))){
+	daily.number.of.events[i] <- length(which(group_data$Date == unique(group_data$Date)[i]))
+}
+weekend.number.of.events <- daily.number.of.events[seq(1, 28, 2)] + daily.number.of.events[seq(2, 28, 2)]
+weekend.id <- c(1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12,13,13,14,14)
 
-## Proportion of contact spent with other individuals for each individual (2)
-Prop.ind.per.ind <- list() #matrix(ncol=dim(group_by_individual)[2], nrow=dim(group_by_individual)[2])
-for(i in 1:dim(group_by_individual)[2]){
-	if(length(which(group_by_individual[,i] == 1)) > 1){
-		Prop.ind.per.ind[[i]] <- apply(group_by_individual[which(group_by_individual[,i] == 1),], 2, sum) / length(which(group_by_individual[,i] == 1))	
-	}else{
-		Prop.ind.per.ind[[i]] <- rep(0,dim(group_by_individual)[2])
-		Prop.ind.per.ind[[i]][i] <- 1
+#Compute the summary statistics (clustering coeficient of the weighted social network, and weigthed average distance on the spatial network) for the empirical data
+summary.statistic.social.obs <- vector()
+summary.statistic.spatial.obs <- vector()
+for(w in 1:14){
+	dates <- unique(group_data$Date)[which(weekend.id == w)]
+	group_data_weekend <- group_data[which(group_data$Date == dates[1] | group_data$Date == dates[2]),]
+	group_by_individual_weekend <- group_by_individual[which(group_data$Date == dates[1] | group_data$Date == dates[2]),]	
+	#weighted spatial network	
+	number.of.events.per.ind <- as.vector(apply(group_by_individual_weekend, 2, sum))	
+	intersection.between.inds <- matrix(0, ncol=length(number.of.events.per.ind), nrow=length(number.of.events.per.ind)) 
+	for(i in 1:length(number.of.events.per.ind)){
+		if(length(which(group_by_individual_weekend[,i] == 1)) > 1){
+			intersection.between.inds[i,] <- as.vector(apply(group_by_individual_weekend[which(group_by_individual_weekend[,i] == 1), ], 2, sum))
+		}else if(length(which(group_by_individual_weekend[,i] == 1)) == 1){
+			intersection.between.inds[i,] <- as.vector(group_by_individual_weekend[which(group_by_individual_weekend[,i] == 1), ])
 		}
-}
-
-hist(unlist(lapply(Prop.ind.per.ind, sum)) / unlist(lapply(Prop.ind.per.ind, function(x) length(which(x>0)))))
-
-
-## Is there a correlation between (1) and (2) and patches id (i.e. do individuals who move more have less close friends? And is there an effect of the spatial location on this relationship?)
-
-
-
-
-
-
-plot(poly.owin)
-for(i in 1:65){
-	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=Nb.contacts.per.patch[i,2]/15, col=c("light grey", "red", "blue"))
-}
-
-
-
-
-
-
-### THE MODEL
-
-# Modelling the frequency and "size" of contact events at each feeder
-
-# 1 weekend = 1350 minutes, and there are 14 week-ends
-
-contact.events <- list()
-for(i in 1:length(Nb.contacts.per.patch[,1])){
-	contact.events[[i]] <- unique(round(runif(Nb.contacts.per.patch[i,2], 0, 1350*14)))
-}
-ind.per.contact <- list()
-for(i in 1:length(contact.events)){
-	ipc <- rep(0,length(contact.events[[i]]))
-	for(j in 1:length(contact.events[[i]])){
-		while(ipc[j] < 1){
-			ipc[j] <- rpois(1, fitdistr(Nb.ind.per.contact.per.patch[[i]], "Poisson")$estimate)
+	}	
+	union.between.inds <- matrix(0, ncol=length(number.of.events.per.ind), nrow=length(number.of.events.per.ind)) 
+	for(i in 1:length(number.of.events.per.ind)){
+		for(j in 1:length(number.of.events.per.ind)){
+			union.between.inds[i,j] <- number.of.events.per.ind[i] + number.of.events.per.ind[j] - intersection.between.inds[i,j]
+		}
+	}	
+	overlap.between.inds <- intersection.between.inds / union.between.inds
+	diag(overlap.between.inds) <- 0	
+	overlap.between.inds[which(overlap.between.inds == "NaN")] <- 0
+	g <- graph.adjacency(overlap.between.inds, weighted=T)
+	net <- get.data.frame(g)
+	summary.statistic.social.obs[w] <- clustering_w(net, measure="am")
+	
+	#weighted spatial network
+	inds.per.feeder <- list()
+	for(i in 1:length(feeders.id)){
+		indss <- vector()
+		if(length(group_by_individual_weekend[which(group_data_weekend[,1] == feeders.id[i]),1]) > 0){
+			for(j in 1:length(group_by_individual_weekend[which(group_data_weekend[,1] == feeders.id[i]),1])){
+				indss <- c(indss, which(group_by_individual_weekend[which(group_data_weekend[,1] == feeders.id[i]),][j,] == 1))
+			}
+			inds.per.feeder[[i]] <- as.vector(indss)
+		}
+	}	
+	inds.per.feeder.unique <- lapply(inds.per.feeder, unique)
+	feeder.size <- unlist(lapply(inds.per.feeder.unique, length))
+	intersection.between.feeders <- matrix(0, ncol=length(inds.per.feeder.unique), nrow=length(inds.per.feeder.unique)) 
+	for(i in 1:length(inds.per.feeder.unique)){
+		for(j in 1:length(inds.per.feeder.unique)){
+			intersection.between.feeders[i,j] <- length(which(match(inds.per.feeder.unique[[i]], inds.per.feeder.unique[[j]], nomatch=0) != 0))
 		}
 	}
-	ind.per.contact[[i]] <- ipc
+	union.between.feeders <- matrix(0, ncol=length(inds.per.feeder), nrow=length(inds.per.feeder)) 
+	for(i in 1:length(inds.per.feeder)){
+		for(j in 1:length(inds.per.feeder)){
+			union.between.feeders[i,j] <- feeder.size[i] + feeder.size[j] - intersection.between.feeders[i,j]
+		}
+	}
+	overlap.between.feeders <- intersection.between.feeders / union.between.feeders
+	diag(overlap.between.feeders) <- 0
+	overlap.between.feeders[which(overlap.between.feeders == "NaN")] <- 0
+	summary.statistic.spatial.obs[w] <- (sum(apply(D * overlap.between.feeders, 1, sum)) / 2) / (sum(apply(overlap.between.feeders, 1, sum)) / 2)
 }
 
-contact.events.feeder <- vector()
-contact.events.numberindividuals <- vector()
-for(i in 1:max(unlist(contact.events))){
-	events.locations <- unlist(lapply(contact.events, function(x) match(i, x)))
+
+
+##  The model  ##
+
+#Modelling the frequency, size and duration of feeding events at each feeder over the simulation period (1 week-end = 1350 minutes, and there are 14 week-ends)
+feeding.events <- list()
+for(i in 1:length(Nb.events.per.feeder[,1])){
+	feeding.events[[i]] <- unique(round(runif(Nb.events.per.feeder[i,2], 0, 1350*14)))
+}
+inds.per.event <- list()
+for(i in 1:length(feeding.events)){
+	ipc <- rep(0,length(feeding.events[[i]]))
+	for(j in 1:length(feeding.events[[i]])){
+		while(ipc[j] < 1){
+			ipc[j] <- rpois(1, fitdistr(Nb.inds.per.event.per.feeder[[i]], "Poisson")$estimate)
+		}
+	}
+	inds.per.event[[i]] <- ipc
+}
+events.feederlocation <- vector()
+events.numberindividuals <- vector()
+for(i in 1:max(unlist(feeding.events))){
+	events.locations <- unlist(lapply(feeding.events, function(x) match(i, x)))
 	
 	if(length(which(events.locations > 0)) > 1){
 		events.feeder <- sample(which(events.locations > 0))
@@ -203,202 +219,185 @@ for(i in 1:max(unlist(contact.events))){
 	}
 	
 	if(length(events.feeder > 0)){
-		events.numberindividuals <- vector()
+		events.nb.ind <- vector()
 		for(j in 1:length(events.feeder)){
-			events.numberindividuals[j] <- ind.per.contact[[events.feeder[j]]][events.locations[events.feeder[j]]]
+			events.nb.ind[j] <- inds.per.event[[events.feeder[j]]][events.locations[events.feeder[j]]]
 		}
-		contact.events.feeder <- c(contact.events.feeder, events.feeder)
-		contact.events.numberindividuals <- c(contact.events.numberindividuals, events.numberindividuals)
+		events.feederlocation <- c(events.feederlocation, events.feeder)
+		events.numberindividuals <- c(events.numberindividuals, events.nb.ind)
 	}
 }
-contact.events.table <- data.frame(contact.events.feeder, contact.events.numberindividuals)
-colnames(contact.events.table) <- c("Feeder", "No of individuals")
-
-# unique(group_data$Location)[contact.events.table[,1]]
-
-
-
-
-
-
-# Run the model
+events.table <- data.frame(events.feederlocation, events.numberindividuals)
+colnames(events.table) <- c("Feeder", "No_individuals")
+events.table[,3] <- rep(0, length(events.table[,1]))
+colnames(events.table)[3] <- "Duration"
+for(i in 1:length(events.table$Duration)){
+	events.table[i,3] <- sample(feeding.duration.obs[which(Nb.inds.per.event==events.table[i,2])], 1)
+}
 
 
-N = 729  # total number of individuals 
-P = 65  # total number of patches
-
-FI = matrix(0, ncol=P, nrow=N)  # Matrix of number of events previously attended by each individual in each patch
-
-CI = matrix(0, ncol=N, nrow=N)  # Matrix of number of contact that each individual had with each other individual
-
-D = as.matrix(dist(loggers_coords[,2:3], upper=T, diag=T)) # Matrix of distances between each pair of patches
+#Parameters
+alpha = 0.017  # Related to the movement of birds  
+beta = 0.001   # Related to the infection rate    
 
 
-a = 4
-b = 0.1
-c = 1
+#Initiation: match every individual to a feeder
+inds = 1:729  # individuals
+feeders = 1:length(feeders.id) # feeders
+inds.feeder = round(unlist(lapply(Nb.inds.per.event.per.feeder, sum)) / sum(unlist(lapply(Nb.inds.per.event.per.feeder, sum))) * length(inds))
+N = sum(inds.feeder) # total number of individuals
+EI = matrix(0, ncol=N, nrow=dim(events.table)[1])  # Table of 1/0 with feeding event in row (in simulation order) and individual in column
+FI = matrix(0, ncol=length(feeders), nrow=N)  # Table of number of feeding events previously attended by each individual at each feeder
+inds2 <- 1:N
+for(i in 1:length(inds.feeder)){
+	ind.sampled <- sample(inds2, inds.feeder[i])
+	FI[ind.sampled, i] <- 1
+	inds2 <- inds2[-match(ind.sampled, inds2)]
+}
 
-# For each event Ept (occuring in patch p at time t), compute the probability of each individual i being sampled to attend
-attending.individuals <- list()
-for(event in 1:dim(contact.events.table)[1]){
+#All individuals set to susceptible
+individual.status <- rep("S", N)
+
+#Release some Ls and some Rs
+individual.status[sample(which(FI[,3] == 1), 2)] <- "R"
+individual.status[sample(which(FI[,7] == 1), 2)] <- "R"
+individual.status[sample(which(FI[,11] == 1), 2)] <- "L"
+individual.status[sample(which(FI[,50] == 1), 2)] <- "L"
+individual.status[sample(which(FI[,59] == 1), 2)] <- "L"
+
+
+# For each feeding event e, compute the probability of each individual i being sampled to attend
+for(event in 1:dim(events.table)[1]){
 	
-	p = contact.events.table[event,1]  # in which patch does the event occur
+	f = events.table[event,1]  # at which feeder does the event take place
 	
-	weights.ip <- vector()
+	Pie <- vector()
 	for(i in 1:N){
-		weights.ip[i] = ((1 + FI[i,p])^a) / (1 + sum(FI[i,] * (b*D[p,])))
+		Pie[i] = sum(exp( - alpha * sum(FI[i,]*(1+feeders.dists[f,])) / sum(FI[i,]) ))
 	}
+	Pie = Pie / sum(Pie)
+	attending.inds <- sample(1:N, events.table[event,2], prob=Pie)	
+	FI[attending.inds, f] <- FI[attending.inds, f] + 1
 	
-	attending.ind <- vector()
-	for(ind in 1:contact.events.table[event,2]){
-		weights.ij <- vector()
-		for(i in 1:N){
-			weight.ij = 0
-			if(length(attending.ind) > 0){
-				for(j in 1:length(attending.ind)){ 
-					weight.ij = weight.ij + CI[i,j]
-				}
-			}
-			weights.ij[i] = weight.ij
-		}
-		PiEpt = weights.ip + (c * weights.ij)  
-		PiEpt = PiEpt / sum(PiEpt)
-		PiEpt[attending.ind] = 0	
-		attending.ind[ind] <- sample(1:N, 1, prob=PiEpt)	
-	}
-
-	attending.individuals[[event]] <- attending.ind
-	
-	FI[attending.ind, p] <- FI[attending.ind, p] + 1
-	CI[attending.ind, attending.ind] <- CI[attending.ind, attending.ind] + 1
-	diag(CI) <- 0
-}
-
-
-
-
-## Comparing the observed networks with the simulated ones
-
-### Bipartite individuals-patches graph
-# Observed
-Nb.patches.per.ind <- vector()
-for(i in 1:dim(group_by_individual)[2]){
-	Nb.patches.per.ind[i] <- length(unique(group_data[which(group_by_individual[,i] == 1),1]))
-}
-k.obs = 1:max(Nb.patches.per.ind)
-Pk.obs = sapply(k.obs, function(x) length(which(Nb.patches.per.ind == x)))
-Pk.obs = Pk.obs / sum(Pk.obs)
-plot(log(k.obs,base=10), log(Pk.obs,base=10), col="black", pch=20)
-# Simulated
-Nb.patches.per.ind.simu = apply(FI, 1, function(x) length(which(x>0)))
-k.sim = 1:max(Nb.patches.per.ind.simu)
-Pk.sim = sapply(k.sim, function(x) length(which(Nb.patches.per.ind.simu == x)))
-Pk.sim = Pk.sim / sum(Pk.sim)
-points(log(k.sim,base=10), log(Pk.sim,base=10), col="red", pch=20)
-
-#Pk.sim.powerlaw = k.sim^-2
-#lines(log(k.sim,base=10), log(Pk.sim.powerlaw,base=10), col="red")
-
-
-### Social network
-# Observed
-Nb.friends.per.ind <- vector()
-for(i in 1:dim(group_by_individual)[2]){
-	if(length(which(group_by_individual[,i] == 1)) > 1){
-		Nb.friends.per.ind[i] = length(which(apply(group_by_individual[which(group_by_individual[,i] == 1),-i], 2, sum) > 0))
+	#Spread of information
+	Pr.nothing.happens = exp(- beta * ((sum(individual.status[attending.inds] == "L") + sum(individual.status[attending.inds] == "R")) * events.table[event,3]) / (sum(individual.status[attending.inds] == "L") + sum(individual.status[attending.inds] == "R") + sum(individual.status[attending.inds] == "S")))
+	if(Pr.nothing.happens < 1){
+		Pr.becomes.L = (sum(individual.status[attending.inds] == "L") / (sum(individual.status[attending.inds] == "L") + sum(individual.status[attending.inds] == "R"))) * (1-Pr.nothing.happens)
+		Pr.becomes.R = (sum(individual.status[attending.inds] == "R") / (sum(individual.status[attending.inds] == "L") + sum(individual.status[attending.inds] == "R"))) * (1-Pr.nothing.happens)
 	}else{
-		Nb.friends.per.ind[i] = 0
+		Pr.becomes.L = 0
+		Pr.becomes.R = 0
 	}
+	for(a in length(attending.inds)){
+		individual.status[attending.inds[a]] <- sample(c(individual.status[attending.inds[a]], "L", "R"), 1, prob=c(Pr.nothing.happens, Pr.becomes.L, Pr.becomes.R))
+	}
+	
+	EI[event,attending.inds] <- individual.status[attending.inds]
 }
 
-k.obs = 1:max(Nb.patches.per.ind)
-Pk.obs = sapply(k.obs, function(x) length(which(Nb.patches.per.ind == x)))
-Pk.obs = Pk.obs / sum(Pk.obs)
-plot(log(k.obs,base=10), log(Pk.obs,base=10), col="black", pch=20)
-# Simulated
-Nb.friends.per.ind.simu = apply(CI, 1, function(x) length(which(x>0)))
-k.sim = 1:max(Nb.friends.per.ind.simu)
-Pk.sim = sapply(k.sim, function(x) length(which(Nb.friends.per.ind.simu == x)))
-Pk.sim = Pk.sim / sum(Pk.sim)
-points(log(k.sim,base=10), log(Pk.sim,base=10), col="red", pch=20)
 
 
 
-# Spatial network
+##  Analyse model outputs  ##
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# old
-
-attending.individuals <- list()
-for(event in 1:dim(contact.events.table)[1]){
-	
-	p = contact.events.table[event,1]  # in which patch does the event occur
-	
-	weights.ip <- vector()
-	for(i in 1:N){
-		weight.ip = 0
-		for(k in 1:P){
-			#if(sum(FI[i,]) > 0){
-				weight.ip = weight.ip + ( ((1+FI[i,k])^b)/(1+sum(FI[i,]))) / (1+(c*D[p,k])) 
-			#}
+contact = 1
+summary.statistic.social.sim <- vector()
+summary.statistic.spatial.sim <- vector()
+SLR.results <- list()
+for(w in 1:14){
+	group_by_individual_weekend <- EI[contact:(contact+weekend.number.of.events[w]),]
+		
+	#Weighted social network	
+	ind.number.of.events <- as.vector(apply(group_by_individual_weekend, 2, function(x) length(which(x != "0"))))	
+	intersection.between.inds <- matrix(0, ncol=dim(EI)[2], nrow=dim(EI)[2]) 
+	for(i in 1:dim(EI)[2]){
+		if(length(which(group_by_individual_weekend[,i] != "0")) > 1){
+			intersection.between.inds[i,] <- as.vector(apply(group_by_individual_weekend[which(group_by_individual_weekend[,i] != "0"), ], 2, function(x) length(which(x != "0"))))
+		}else if(length(which(group_by_individual_weekend[,i] != "0")) == 1){
+			int <- group_by_individual_weekend[which(group_by_individual_weekend[,i] != "0"), ]
+			int[which(int != "0")] <- "1"
+			intersection.between.inds[i,] <- as.numeric(int)
 		}
-		weights.ip[i] = weight.ip
 	}
-	
+	union.between.inds <- matrix(0, ncol=dim(EI)[2], nrow=dim(EI)[2]) 
+	for(i in 1:dim(EI)[2]){
+		for(j in 1:dim(EI)[2]){
+			union.between.inds[i,j] <- ind.number.of.events[i] + ind.number.of.events[j] - intersection.between.inds[i,j]
+		}
+	}	
+	overlap.between.inds <- intersection.between.inds / union.between.inds
+	diag(overlap.between.inds) <- 0	
+	overlap.between.inds[which(overlap.between.inds == "NaN")] <- 0
+	g <- graph.adjacency(overlap.between.inds, weighted=T)
+	net <- get.data.frame(g)
+	summary.statistic.social.sim[w] <- clustering_w(net, measure="am")
 
-	attending.ind <- vector()
-	for(ind in 1:contact.events.table[event,2]){
-		
-		# compute the probability of attending the event for each individual
-		
-		weights.ij <- vector()
-		for(i in 1:N){
-			weight.ij = 0
-			if(length(attending.ind) > 0){
-				for(j in 1:length(attending.ind)){ 
-					if(sum(CI[i,]) > 0){
-						weight.ij = weight.ij + (CI[i,j]/sum(CI[i,]))
-					}
-				}
+	#Weighted spatial network
+	event.location.weekend <- events.table[contact:(contact+weekend.number.of.events[w]),1]
+	inds.per.feeder.sim <- list()
+	for(i in 1:length(feeders)){
+		indss <- vector()
+		if(length(which(event.location.weekend == i)) > 0){
+			for(j in 1:length(which(event.location.weekend == i))){
+				indss <- c(indss, which(group_by_individual_weekend[which(event.location.weekend == i),][j,] != "0"))
 			}
-			weights.ij[i] = weight.ij
+			inds.per.feeder.sim[[i]] <- as.vector(indss)
 		}
-		
-		PiEpt = exp(-( (a/weights.ip) + (d/(1+weights.ij)) ))
-		PiEpt = PiEpt / sum(PiEpt)
-		
-		attending.ind[ind] <- sample(1:N, 1, prob=PiEpt)	
+	}	
+	inds.per.feeder.sim.unique <- lapply(inds.per.feeder.sim, unique)
+	feeder.size.sim <- unlist(lapply(inds.per.feeder.sim.unique, length))
+	intersection.between.feeders <- matrix(0, ncol=length(inds.per.feeder.sim.unique), nrow=length(inds.per.feeder.sim.unique)) 
+	for(i in 1:length(inds.per.feeder.sim.unique)){
+		for(j in 1:length(inds.per.feeder.sim.unique)){
+			intersection.between.feeders[i,j] <- length(which(match(inds.per.feeder.sim.unique[[i]], inds.per.feeder.sim.unique[[j]], nomatch=0) != 0))
+		}
 	}
+	union.between.feeders <- matrix(0, ncol=length(inds.per.feeder.sim.unique), nrow=length(inds.per.feeder.sim.unique)) 
+	for(i in 1:length(inds.per.feeder.sim.unique)){
+		for(j in 1:length(inds.per.feeder.sim.unique)){
+			union.between.feeders[i,j] <- feeder.size.sim[i] + feeder.size.sim[j] - intersection.between.feeders[i,j]
+		}
+	}
+	overlap.between.feeders <- intersection.between.feeders / union.between.feeders
+	diag(overlap.between.feeders) <- 0
+	overlap.between.feeders[which(overlap.between.feeders == "NaN")] <- 0
+	summary.statistic.spatial.sim[w] <- (sum(apply(D * overlap.between.feeders, 1, sum)) / 2) / (sum(apply(overlap.between.feeders, 1, sum)) / 2)
 	
-	attending.individuals[[event]] <- attending.ind
+	#Information transmission
+	SLR <- matrix(0, ncol=3, nrow=length(feeders))
+	colnames(SLR) <- c("S", "L", "R")
+	for(i in 1:length(feeders)){
+		SLR[i,1] = length(which(group_by_individual_weekend[which(event.location.weekend == i),] == "S"))
+		SLR[i,2] = length(which(group_by_individual_weekend[which(event.location.weekend == i),] == "L"))
+		SLR[i,3] = length(which(group_by_individual_weekend[which(event.location.weekend == i),] == "R"))
+	}
+	SLR.results[[w]] <- SLR
 	
-	FI[attending.ind, p] <- FI[attending.ind, p] + 1
-	CI[attending.ind, attending.ind] <- CI[attending.ind, attending.ind] + 1
-	diag(CI) <- 0
-	
+	contact = contact + weekend.number.of.events[w]		
 }
 
 
+#Plot the comparison of empirical and simulated summary statistics
+X = 1:14
+par(mfrow=c(2,2), mar=c(3,3,2,1), mgp=c(1.8,0.5,0))
+plot(1:14, summary.statistic.spatial.obs, pch=20, ylim= c(0,1000), xlab="Week-ends", ylab="D (spatial network)", main="Empirical data")
+abline(lm(summary.statistic.spatial.obs ~ X), col="red")
+plot(1:13, summary.statistic.spatial.sim, pch=20, ylim= c(0,1000), xlab="Week-ends", ylab="D (spatial network)", main="Model outputs")
+abline(lm(summary.statistic.spatial.sim ~ X[1:13]), col="red")
+plot(1:14, summary.statistic.social.obs, pch=20, ylim= c(0,1), xlab="Week-ends", ylab="C (social network)")
+abline(lm(summary.statistic.social.obs ~ X), col="red")
+plot(1:13, summary.statistic.social.sim, pch=20, ylim= c(0,1), xlab="Week-ends", ylab="C (social network)")
+abline(lm(summary.statistic.social.sim ~ X[1:13]), col="red")
 
-
-
+#Plot the information spread
+par(mfrow=c(3,4), mar=c(0.5,0.5,0.5,0.5), mgp=c(1.5,0.5,0))
+for(w in 1:12){
+	SLR.results.list <- as.list(as.data.frame(t(SLR.results[[w]])))
+	plot(poly.owin, main=paste("Week-end", w))
+	for(i in 1:65){
+		add.pie(z=SLR.results.list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("light grey", "red", "blue"))
+	}
+}
 
 
 

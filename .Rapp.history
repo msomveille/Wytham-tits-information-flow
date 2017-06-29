@@ -1,687 +1,2091 @@
-legend(topright)
-legend("topright", inset=.04, bg="grey", box.col="grey", title="Energy requirements", c("2.5","2", "1.5", "1"), fill=c("brown4", "red", "orange", "yellow"), cex=1.5)
-ER = 1#
- E = ER/EA#
- plot(EA, log(E), pch=20, type="l", xlab="Energy supply available", ylab="Energy-efficiency score (log)", col="yellow2")#
- ER = 1.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="orange")#
- ER = 2#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="red")#
- ER = 2.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="brown4")
-legend("topright", inset=.04, title="Energy requirements", c("2.5","2", "1.5", "1"), fill=c("brown4", "red", "orange", "yellow"), cex=1.5)
-legend("topright", box.col="white", title="Energy requirements", c("2.5","2", "1.5", "1"), fill=c("brown4", "red", "orange", "yellow"), cex=0.7)
-?legend
-ER = 1#
- E = ER/EA#
- plot(EA, log(E), pch=20, type="l", xlab="Energy supply available", ylab="Energy-efficiency score (log)", col="yellow2")#
- ER = 1.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="orange")#
- ER = 2#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="red")#
- ER = 2.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="brown4")
-legend("topright", box.col="white", title="Energy requirements", c("2.5","2", "1.5", "1"), fill=c("brown4", "red", "orange", "yellow"), cex=0.7, lty=1)
-ER = 1#
- E = ER/EA#
- plot(EA, log(E), pch=20, type="l", xlab="Energy supply available", ylab="Energy-efficiency score (log)", col="yellow2")#
- ER = 1.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="orange")#
- ER = 2#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="red")#
- ER = 2.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="brown4")
-legend("topright", box.col="white", title="Energy requirements", c("2.5","2", "1.5", "1"), fill=c("brown4", "red", "orange", "yellow"), cex=0.7, lty=2)
-ER = 1#
- E = ER/EA#
- plot(EA, log(E), pch=20, type="l", xlab="Energy supply available", ylab="Energy-efficiency score (log)", col="yellow2")#
- ER = 1.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="orange")#
- ER = 2#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="red")#
- ER = 2.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="brown4")
-legend("topright", box.col="white", title="Energy requirements", c("2.5","2", "1.5", "1"), fill=c("brown4", "red", "orange", "yellow"), cex=0.7, lty=c(1,2,3,4))
-ER = 1#
- E = ER/EA#
- plot(EA, log(E), pch=20, type="l", xlab="Energy supply available", ylab="Energy-efficiency score (log)", col="yellow2")#
- ER = 1.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="orange")#
- ER = 2#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="red")#
- ER = 2.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="brown4")
-legend("topright", box.col="white", title="Energy requirements", c("2.5","2", "1.5", "1"), fill=c("brown4", "red", "orange", "yellow"), cex=0.7, lty=c(1,3,2,1))
-ER = 1#
- E = ER/EA#
- plot(EA, log(E), pch=20, type="l", xlab="Energy supply available", ylab="Energy-efficiency score (log)", col="yellow2")#
- ER = 1.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="orange")#
- ER = 2#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="red")#
- ER = 2.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="brown4")
-legend("topright", box.col="white", title="Energy requirements", c("2.5","2", "1.5", "1"), fill=c("brown4", "red", "orange", "yellow"), cex=0.7, lty=c(4,3,2,1))
-legend("topright", box.col="white", title="Energy requirements", c("2.5","2", "1.5", "1"), fill=c("brown4", "red", "orange", "yellow"), cex=0.7, lty=c(4,3,2,1), pch=0)
-legend("topright", box.col="white", title="Energy requirements", c("2.5","2", "1.5", "1"), fill=c("brown4", "red", "orange", "yellow"), cex=0.7, lty=c(4,3,2,1))
-ER = 1#
- E = ER/EA#
- plot(EA, log(E), pch=20, type="l", xlab="Energy supply available", ylab="Energy-efficiency score (log)", col="yellow2")#
- ER = 1.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="orange")#
- ER = 2#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="red")#
- ER = 2.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="brown4")
-legend("topright", box.col="white", title="Energy requirements", c("2.5","2", "1.5", "1"), fill=c("brown4", "red", "orange", "yellow"), cex=0.7, lty=c(4,3,2,1))
-ER = 1#
- E = ER/EA#
- plot(EA, log(E), pch=20, type="l", xlab="Energy supply available", ylab="Energy-efficiency score (log)", col="yellow2")#
- ER = 1.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="orange")#
- ER = 2#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="red")#
- ER = 2.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="brown4")
-legend("topright", box.col="white", title="Energy requirements", c("2.5","2", "1.5", "1"), fill=c("brown4", "red", "orange", "yellow"), cex=0.7, lty=c(4,3,2,1), pch=0)
-ER = 1#
- E = ER/EA#
- plot(EA, log(E), pch=20, type="l", xlab="Energy supply available", ylab="Energy-efficiency score (log)", col="yellow2")#
- ER = 1.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="orange")#
- ER = 2#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="red")#
- ER = 2.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="brown4")
-legend("topright", box.col="white", title="Energy requirements", c("2.5","2", "1.5", "1"), cex=0.7, lty=c(4,3,2,1), pch=0)
-ER = 1#
- E = ER/EA#
- plot(EA, log(E), pch=20, type="l", xlab="Energy supply available", ylab="Energy-efficiency score (log)", col="yellow2")#
- ER = 1.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="orange")#
- ER = 2#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="red")#
- ER = 2.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="brown4")
-legend("topright", box.col="white", title="Energy requirements", c("2.5","2", "1.5", "1"), cex=0.7, lty=c(4,3,2,1))
-ER = 1#
- E = ER/EA#
- plot(EA, log(E), pch=20, type="l", xlab="Energy supply available", ylab="Energy-efficiency score (log)", col="yellow2")#
- ER = 1.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="orange")#
- ER = 2#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="red")#
- ER = 2.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", col="brown4")
-legend("topright", inset=0.1, box.col="white", title="Energy requirements", c("2.5","2", "1.5", "1"), cex=0.7, lty=c(4,3,2,1))
-ER = 1#
- E = ER/EA#
- plot(EA, log(E), pch=20, type="l", xlab="Energy supply available", ylab="Energy-efficiency score (log)", lty=1)#
- ER = 1.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", lty=2)#
- ER = 2#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", lty=3)#
- ER = 2.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", lty=4)
-legend("topright", inset=0.1, box.col="white", title="Energy requirements", c("2.5","2", "1.5", "1"), cex=0.7, lty=c(4,3,2,1))
-ER = 1#
- E = ER/EA#
- plot(EA, log(E), pch=20, type="l", xlab="Energy supply available", ylab="Energy-efficiency score (log)", lty=1)#
- ER = 1.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", lty=2)#
- ER = 2#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", lty=3)#
- ER = 2.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", lty=4)
-legend("topright", inset=0.1, box.col="white", title="Energy requirements", c("2.5","2", "1.5", "1"), cex=1, lty=c(4,3,2,1))
-ER = 1#
- E = ER/EA#
- plot(EA, log(E), pch=20, type="l", xlab="Energy supply available", ylab="Energy-efficiency score (log)", lty=1)#
- ER = 1.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", lty=2)#
- ER = 2#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", lty=3)#
- ER = 2.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", lty=4)
-legend("topright", inset=0.1, box.col="grey", title="Energy requirements", c("2.5","2", "1.5", "1"), cex=1, lty=c(4,3,2,1))
-ER = 1#
- E = ER/EA#
- plot(EA, log(E), pch=20, type="l", xlab="Energy supply available", ylab="Energy-efficiency score (log)", lty=1)#
- ER = 1.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", lty=2)#
- ER = 2#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", lty=3)#
- ER = 2.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", lty=4)
-legend("topright", inset=0.1, box.col="dark grey", title="Energy requirements", c("2.5","2", "1.5", "1"), cex=1, lty=c(4,3,2,1))
-ER = 1#
- E = ER/EA#
- plot(EA, log(E), pch=20, type="l", xlab="Energy supply available", ylab="Energy-efficiency score (log)", lty=1)#
- ER = 1.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", lty=2)#
- ER = 2#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", lty=3)#
- ER = 2.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", lty=4)
-legend("topright", inset=0.1, box.col="dark grey", title="Energy\nrequirements", c("2.5","2", "1.5", "1"), cex=1, lty=c(4,3,2,1))
-ER = 1#
- E = ER/EA#
- plot(EA, log(E), pch=20, type="l", xlab="Energy supply available", ylab="Energy-efficiency score (log)", lty=1)#
- ER = 1.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", lty=2)#
- ER = 2#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", lty=3)#
- ER = 2.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", lty=4)
-legend("topright", inset=0.1, box.col="white", title="Energy\nrequirements", c("2.5","2", "1.5", "1"), cex=1, lty=c(4,3,2,1))
-ER = 1#
- E = ER/EA#
- plot(EA, log(E), pch=20, type="l", xlab="Energy supply available", ylab="Energy-efficiency score (log)", lty=1)#
- ER = 1.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", lty=2)#
- ER = 2#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", lty=3)#
- ER = 2.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", xlab="Energy supply", ylab="Energy-efficiency score (log)", lty=4)
-legend("topright", inset=0.1, box.col="white", title="Energetic\nrequirements", c("2.5","2", "1.5", "1"), cex=1, lty=c(4,3,2,1))
-ER = 1#
- E = ER/EA#
- plot(EA, log(E), pch=20, type="l", xlab="Energy supply available", ylab="Log energy-efficiency score", lty=1)#
- ER = 1.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", lty=2)#
- ER = 2#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", lty=3)#
- ER = 2.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", lty=4)
-legend("topright", inset=0.1, box.col="white", title="Energetic\nrequirements", c("2.5","2", "1.5", "1"), cex=1, lty=c(4,3,2,1))
-ER = 1#
- E = ER/EA#
- plot(EA, log(E), pch=20, type="l", xlab="Energy supply available", ylab="Log energy-efficiency score", lty=1)#
- ER = 1.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", lty=2)#
- ER = 2#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", lty=3)#
- ER = 2.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", lty=4)
-legend("topright", inset=0.1, box.col="white", title="Energetic\nrequirements", c("2.5","2", "1.5", "1"), cex=0.8, lty=c(4,3,2,1))
-ER = 1#
- E = ER/EA#
- plot(EA, log(E), pch=20, type="l", xlab="Energy supply available", ylab="Log energy-efficiency score", lty=1)#
- ER = 1.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", lty=2)#
- ER = 2#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", lty=3)#
- ER = 2.5#
- E = ER/EA#
- points(EA, log(E), pch=20, type="l", lty=4)
-legend("topright", inset=0.1, box.col="white", title="Energetic\nrequirements", c("2.5","2", "1.5", "1"), cex=0.9, lty=c(4,3,2,1))
-dataSibly <- read.csv("/Users/mariussomveille/Desktop/sd01.csv")
-head(dataSibly)
-plot(dataSibly$log10.mass, dataSibly$log10.productivity, pch=20)
-plot(dataSibly$log10.mass, dataSibly$log10.productivity + dataSibly$log10.mass, pch=20)
-0^4
-10^4
-10^3
-BMR = 6.7141 * (M^0.6452)
-M = 1:1000
-BMR = 6.7141 * (M^0.6452)
-M = 10^dataSibly$log10.mass
-BMR = 6.7141 * (M^0.6452)
-plot(dataSibly$log10.mass, log(BMR,base=10), pch=20)
-M2 = 10^dataSibly$log10.mass + 10^(dataSibly$log10.productivity + dataSibly$log10.mass)
-BMR2 = 6.7141 * (M2^0.6452)
-points(dataSibly$log10.mass, log(BMR2,base=10), pch=20)
-summary(lm(log(BMR2,base=10) ~ dataSibly$log10.mass))
-plot(dataSibly$log10.mass, BMR2/BMR, pch=20)
-plot(dataSibly$log10.mass, (BMR2/BMR)-1, pch=20)
-mean((BMR2/BMR)-1)
-log(38.6,base=10)
-summary(lm(((BMR2/BMR)-1) ~ dataSibly$log10.mass))
-0.656 - (0.168*log(38.6,base=10))
-plot(dataSibly$log10.mass, (BMR2/BMR)-1, pch=20, xlab="Log body mass", ylab="BMR of extra mass produced")
-abline(a= 0.656, b=-0.168, col="red")
-par(mfrow=c(1,2), mar=c(2.5,2.5,0.2,1.5), mgp=c(1.5,0.5,0))
-plot(dataSibly$log10.mass, (BMR2/BMR)-1, pch=20, xlab="Log body mass", ylab="BMR of extra mass produced")
-par(mfrow=c(1,2), mar=c(2.5,2.5,0.2,1.5), mgp=c(1.5,0.5,0))
-plot(dataSibly$log10.mass, dataSibly$log10.productivity + dataSibly$log10.mass, pch=20, xlab="Log body mass", ylab="Log extra mass produced")
-plot(dataSibly$log10.mass, (BMR2/BMR)-1, pch=20, xlab="Log body mass", ylab="BMR of extra mass produced")
-plot(dataSibly$log10.mass, ((BMR2/BMR)-1)/2, pch=20, xlab="Log body mass", ylab="BMR of extra mass produced")
-par(mfrow=c(1,2), mar=c(2.5,2.5,0.2,1.5), mgp=c(1.5,0.5,0))
-plot(dataSibly$log10.mass, dataSibly$log10.productivity + dataSibly$log10.mass, pch=20, xlab="Log body mass", ylab="Log extra mass produced")
-mtext("A", cex=1.8, side=3, line=-1.5, at=-50)
-mtext("A", cex=1.8, side=3, line=-1.5, at=0.5)
-plot(dataSibly$log10.mass, ((BMR2/BMR)-1)/2, pch=20, xlab="Log body mass", ylab="BMR of extra mass produced")
-mtext("B", cex=1.8, side=3, line=-1.5, at=0.5)
-6.45e-5
-0.0000645
-0.0002*1000
-0.0000645*1000
-library(geosphere)#
-library(fields)#
-library(raster)#
-library(sp)#
-library(rgdal)#
-library(SDMTools)#
-library(abc)#
-library(maptools)#
-library(move)#
-library(vioplot)
-latandseasEH <- read.csv("/Users/mariussomveille/Desktop/PhD/Chapter 4 – mechanistic model/Loading-data/Mecha-python/latandseasEH_new.csv")#
-latandseasWH <- read.csv("/Users/mariussomveille/Desktop/PhD/Chapter 4 – mechanistic model/Loading-data/Mecha-python/latandseasWH_new.csv")
-for(i in 1:length(latandseasEH[,1])){#
-	if(latandseasEH[i,1] == latandseasEH[i,2]){#
-		latandseasEH[i,4] <- 0#
-	}else{#
-		latandseasEH[i,4] <- 1#
-	}#
+mean.dist.sim.WTSP
+simulated.network.WTSP[1:5,1:5]
+paiwise_distance_winter_summer[1:5,1:5]
+simulated.network.WTSP[1,]
+paiwise_distance_winter_summer[1,]
+simulated.network.WTSP[1,] * paiwise_distance_winter_summer[1,]
+alpha = 1#
+beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))
+i=1
+sum(resource.supply.summer)
+sum(resource.supply.winter)
+for(i in 1:100){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}
+sum(resource.supply.summer)
+sum(resource.supply.winter)
+simulated.network.WTSP[1,]
+simulated.network.WTSP[2,]
+alpha = 1#
+beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+for(i in 1:1000){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}
+alpha = 1#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(resource.supply.winter > 1){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}
+warnings()
+mean.dist.sim.WTSP[1:5,1:5]
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))
+sum(resource.supply.winter)
+while(sum(resource.supply.winter) > 1){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}
+sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+alpha = 10#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
 }#
-for(i in 1:length(latandseasWH[,1])){#
-	if(latandseasWH[i,1] == latandseasWH[i,2]){#
-		latandseasWH[i,4] <- 0#
-	}else{#
-		latandseasWH[i,4] <- 1#
-	}#
-}
-simu.timeWH = 1:length(latandseasWH[,1])#
-simu.timeEH = 1:length(latandseasEH[,1])
-plot(1, latandseasEH[1,1], pch=20, xlim=c(0,length(latandseasEH[,1])), ylim=c(-60,80), col="white")#
-for(i in 1:length(latandseasEH[,1])){#
-	if(latandseasEH[i,4]==1){#
-		points(i, latandseasEH[i,1], pch=20, cex=0.5, col="red")#
-		points(i, latandseasEH[i,2], pch=20, cex=0.5, col="blue")#
-	}else{#
-		points(i, latandseasEH[i,1], pch=20, cex=0.5, col="green2")#
-	}#
-}
-plot(1, latandseasWH[1,1], pch=20, xlim=c(0,length(latandseasWH[,1])), ylim=c(-60,80), col="white")#
-for(i in 1:length(latandseasWH[,1])){#
-	if(latandseasWH[i,4]==1){#
-		points(i, latandseasWH[i,1], pch=20, cex=0.5, col="red")#
-		points(i, latandseasWH[i,2], pch=20, cex=0.5, col="blue")#
-		resmigrWH[i] = 0#
-	}else{#
-		points(i, latandseasWH[i,1], pch=20, cex=0.5, col="green2")#
-		resmigrWH[i] = 1#
-	}#
-}
-resmigrWH <- vector()#
-resmigrEH <- vector()
-plot(1, latandseasWH[1,1], pch=20, xlim=c(0,length(latandseasWH[,1])), ylim=c(-60,80), col="white")#
-for(i in 1:length(latandseasWH[,1])){#
-	if(latandseasWH[i,4]==1){#
-		points(i, latandseasWH[i,1], pch=20, cex=0.5, col="red")#
-		points(i, latandseasWH[i,2], pch=20, cex=0.5, col="blue")#
-		resmigrWH[i] = 0#
-	}else{#
-		points(i, latandseasWH[i,1], pch=20, cex=0.5, col="green2")#
-		resmigrWH[i] = 1#
-	}#
-}
-length(resmigrWH)
-sum(resmigrWH)
-sum(resmigrWH)/length(resmigrWH)
-1 - (sum(resmigrWH)/length(resmigrWH))
-plot(1, latandseasEH[1,1], pch=20, xlim=c(0,length(latandseasEH[,1])), ylim=c(-60,80), col="white")#
-for(i in 1:length(latandseasEH[,1])){#
-	if(latandseasEH[i,4]==1){#
-		points(i, latandseasEH[i,1], pch=20, cex=0.5, col="red")#
-		points(i, latandseasEH[i,2], pch=20, cex=0.5, col="blue")#
-		resmigrEH[i] = 1#
-	}else{#
-		points(i, latandseasEH[i,1], pch=20, cex=0.5, col="green2")#
-		resmigrEH[i] = 0#
-	}#
-}
-sum(resmigrEH) / length(resmigrEH)
-plot(1, latandseasWH[1,1], pch=20, xlim=c(0,length(latandseasWH[,1])), ylim=c(-60,80), col="white")#
-for(i in 1:length(latandseasWH[,1])){#
-	if(latandseasWH[i,4]==1){#
-		points(i, latandseasWH[i,1], pch=20, cex=0.5, col="red")#
-		points(i, latandseasWH[i,2], pch=20, cex=0.5, col="blue")#
-		resmigrWH[i] = 1#
-	}else{#
-		points(i, latandseasWH[i,1], pch=20, cex=0.5, col="green2")#
-		resmigrWH[i] = 0#
-	}#
-}
-(sum(resmigrWH) + sum(resmigrEH)) / (length(resmigrWH) + length(resmigrEH))
-pop <- read.csv("/Users/mariussomveille/Desktop/mecha_cluster/PythonModel/evolution/population212.csv")
-po
-pop
-plot(pop$migraCost, pop$emdDouble, pch=20)
-plot(pop$reproCost, pop$emdDouble, pch=20)
-plot(pop$thermoCost, pop$emdDouble, pch=20)
-plot(pop$thermoCost, pop$scalingNDVI, pch=20)
-plot(pop$scalingNDVI, pop$emdDouble, pch=20)
-pop1 <- read.csv("/Users/mariussomveille/Desktop/mecha_cluster/PythonModel/evolution/population212.csv")
-pop2 <- read.csv("/Users/mariussomveille/Desktop/mecha_cluster/PythonModel/evolution/population200.csv")
-pop3 <- read.csv("/Users/mariussomveille/Desktop/mecha_cluster/PythonModel/evolution/population180.csv")
-pop4 <- read.csv("/Users/mariussomveille/Desktop/mecha_cluster/PythonModel/evolution/population160.csv")
-pop5 <- read.csv("/Users/mariussomveille/Desktop/mecha_cluster/PythonModel/evolution/population140.csv")
-pop6 <- read.csv("/Users/mariussomveille/Desktop/mecha_cluster/PythonModel/evolution/population120.csv")
-plot(pop1$migraCost, pop1$emdDouble, pch=20)
-plot(pop5$migraCost, pop5$emdDouble, pch=20)
-plot(pop6$migraCost, pop6$emdDouble, pch=20)
-points(pop5$migraCost, pop5$emdDouble, pch=20, col=yellow)
-points(pop5$migraCost, pop5$emdDouble, pch=20, col="yellow")
-plot(pop6$migraCost, pop6$emdDouble, pch=20, col="yellow")
-points(pop5$migraCost, pop5$emdDouble, pch=20, col="orange")
-points(pop4$migraCost, pop4$emdDouble, pch=20, col="red")
-points(pop3$migraCost, pop3$emdDouble, pch=20, col="brown4")
-points(pop2$migraCost, pop2$emdDouble, pch=20, col="blue")
-points(pop1$migraCost, pop1$emdDouble, pch=20, col="dark blue")
-plot(pop6$reproCost, pop6$emdDouble, pch=20, col="yellow")
-points(pop5$reproCost, pop5$emdDouble, pch=20, col="orange")
-points(pop4$reproCost, pop4$emdDouble, pch=20, col="red")
-points(pop3$reproCost, pop3$emdDouble, pch=20, col="brown4")
-points(pop2$reproCost, pop2$emdDouble, pch=20, col="blue")
-points(pop1$reproCost, pop1$emdDouble, pch=20, col="dark blue")
-plot(pop6$thermoCost, pop6$emdDouble, pch=20, col="yellow")
-points(pop5$thermoCost, pop5$emdDouble, pch=20, col="orange")
-points(pop4$thermoCost, pop4$emdDouble, pch=20, col="red")
-points(pop3$thermoCost, pop3$emdDouble, pch=20, col="brown4")
-points(pop2$thermoCost, pop2$emdDouble, pch=20, col="blue")
-points(pop1$thermoCost, pop1$emdDouble, pch=20, col="dark blue")
-plot(pop6$scalingNDVI, pop6$emdDouble, pch=20, col="yellow")
-points(pop5$scalingNDVI, pop5$emdDouble, pch=20, col="orange")
-points(pop4$scalingNDVI, pop4$emdDouble, pch=20, col="red")
-points(pop3$scalingNDVI, pop3$emdDouble, pch=20, col="brown4")
-points(pop2$scalingNDVI, pop2$emdDouble, pch=20, col="blue")
-points(pop1$scalingNDVI, pop1$emdDouble, pch=20, col="dark blue")
-library(geosphere)#
-library(fields)#
-library(raster)#
-library(sp)#
-library(rgdal)#
-library(ncdf4)#
-library(raster)#
-library(maps)
-estives <- readOGR("/Users/mariussomveille/Desktop/Oxford/Transhumance/donnees_transhumance", "estives_collectives_ovines", verbose=FALSE)#
-exploitations <- readOGR("/Users/mariussomveille/Desktop/Oxford/Transhumance/donnees_transhumance", "sieges_exploitation", verbose=FALSE)#
-drailles <- readOGR("/Users/mariussomveille/Desktop/Oxford/Transhumance/donnees_transhumance", "drailles_troncons", verbose=FALSE)
-France_topology <- raster("/Users/mariussomveille/Desktop/Oxford/Transhumance/PIA03393.TIFF")#
-Europe_elevation_map <- raster("/Users/mariussomveille/Desktop/elevation1x1_new.tif")
-rbPal <- colorRampPalette(c("yellow", "red"))
-datcol <- rbPal(5)[as.numeric(cut(drailles@data$NB_BREBIS, breaks=c(-0.1,1000,2000,3000,4000,6000)))]
-plot(drailles, col= datcol, bg="grey")
-plot(estives, col="red", border="red")
-plot(exploitations, pch=20, col="blue", cex=0.6, add=T)
-plot(exploitations, pch=20, col="blue", cex=0.6)
-plot(estives, col="red", border="red", add=T)
-plot(estives, col="red", border="red")
-plot(exploitations, pch=20, col="blue", cex=0.6)
-plot(estives, col="red", border="red", add=T)
-observed_network <- matrix(rep(0,2369), ncol=dim(estives@data)[1], nrow=length(exploitations@coords[,2]))#
-for(i in 1:length(estiv_expl2[,1])){#
-	observed_network[which(exploitations@data$NoExploita == estiv_expl2[i,2]), which(estives@data$CODE_ESTIV == estiv_expl2[i,1])] <- 1#
-}
-dim()
-dim(observed_network)
-head(observed_network)
-observed_network
-dim(estiv_expl2)
-estiv_expl <- colnames(drailles@data)[3:109]#
-estiv_expl2 <- matrix(ncol=2, nrow=length(estiv_expl))#
-for(i in 1:length(estiv_expl)){#
-	estiv_expl2[i,1] <- substr(estiv_expl[i], 1, 3)#
-	estiv_expl2[i,2] <- substr(estiv_expl[i], 4, 6)#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+alpha = 0.1#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
 }#
-toremove <- which(is.na(match(estiv_expl2[,2], exploitations$NoExploita)))#
-estiv_expl2 <- estiv_expl2[-toremove,]
-observed_network <- matrix(rep(0,2369), ncol=dim(estives@data)[1], nrow=length(exploitations@coords[,2]))#
-for(i in 1:length(estiv_expl2[,1])){#
-	observed_network[which(exploitations@data$NoExploita == estiv_expl2[i,2]), which(estives@data$CODE_ESTIV == estiv_expl2[i,1])] <- 1#
-}
-observed_network
-plot(estives, col= datcol, border=datcol, add=T)#
-for(i in 1:length(observed_network[,1])){#
-	for(j in 1:length(observed_network[1,])){#
-		if(observed_network[i,j] == 1){#
-			lines(rbind(exploitations@coords[i,], estives@polygons[[j]]@Polygons[[1]]@labpt), col="red")#
-		}#
-	}#
-}
-plot(estives, col= "red", border="red", add=T)#
-for(i in 1:length(observed_network[,1])){#
-	for(j in 1:length(observed_network[1,])){#
-		if(observed_network[i,j] == 1){#
-			lines(rbind(exploitations@coords[i,], estives@polygons[[j]]@Polygons[[1]]@labpt), col="dark grey")#
-		}#
-	}#
-}
-plot(exploitations, pch=20, col="blue", cex=0.7)#
-plot(estives, col="red", border="red", add=T)#
-for(i in 1:length(observed_network[,1])){#
-	for(j in 1:length(observed_network[1,])){#
-		if(observed_network[i,j] == 1){#
-			lines(rbind(exploitations@coords[i,], estives@polygons[[j]]@Polygons[[1]]@labpt), col="dark grey")#
-		}#
-	}#
-}
-plot(France_topology, col="grey")
-dim(France_topology$)
-dim(France_topology)
-class(France_topology)
-plot(France_topology)
-plot(France_topology, col="grey")
-plot(France_topology)
-plot(exploitations, pch=20, col="blue", cex=0.7)
-plot(France_topology)
-plot(exploitations, pch=20, col="blue", cex=0.7, add=T)
-?countries()
-?country()
-plot(exploitations, pch=20, col="blue", cex=0.7, bg ="grey")#
-plot(estives, col="red", border="red", add=T)#
-for(i in 1:length(observed_network[,1])){#
-	for(j in 1:length(observed_network[1,])){#
-		if(observed_network[i,j] == 1){#
-			lines(rbind(exploitations@coords[i,], estives@polygons[[j]]@Polygons[[1]]@labpt), col="black")#
-		}#
-	}#
-}
-plot(exploitations, pch=20, col="blue", cex=0.7, bg ="light grey")#
-plot(estives, col="red", border="red", add=T)#
-for(i in 1:length(observed_network[,1])){#
-	for(j in 1:length(observed_network[1,])){#
-		if(observed_network[i,j] == 1){#
-			lines(rbind(exploitations@coords[i,], estives@polygons[[j]]@Polygons[[1]]@labpt), col="dark grey")#
-		}#
-	}#
-}
-plot(exploitations, pch=20, col="blue", cex=0.7, add=T)
-plot(estives, col="red", border="red", add=T)
-head(observed_network)
-dim(observed_network)
-random_network <- matrix(0, ncol=ncol(observed_network), nrow=nrow(observed_network))
-dim(random_network)
-head(random_network)
-random_network <- matrix(0, ncol=ncol(observed_network), nrow=nrow(observed_network))#
-for(i in 1:nrow(random_network)){#
-	random_network[i,sample(1:ncol(random_network), 1)] <- 1#
-}
-random_network
-apply(random_network, 1, sum)
-apply(observed_network, 1, sum)
-paiwise_distance_exploitations_estives <- matrix(nrow=length(exploitations@coords[,2]), ncol=dim(estives@data)[1])#
-for(i in 1:length(exploitations@coords[,2])){#
-	for(j in 1:dim(estives@data)[1]){#
-		paiwise_distance_exploitations_estives[i,j] <- dist(rbind(exploitations@coords[i,], estives@polygons[[j]]@Polygons[[1]]@labpt))#
-	}#
-}
-dim(paiwise_distance_exploitations_estives)
-head(paiwise_distance_exploitations_estives)
-dim(paiwise_distance_exploitations_estives)
-dim(random_network)
-random_network * paiwise_distance_exploitations_estives
-apply(random_network * paiwise_distance_exploitations_estives, 1, sum)
-mean(apply(random_network * paiwise_distance_exploitations_estives, 1, sum))
-mean(apply(observed_network * paiwise_distance_exploitations_estives, 1, sum))
-random_network <- matrix(0, ncol=ncol(observed_network), nrow=nrow(observed_network))#
-for(i in 1:nrow(random_network)){#
-	random_network[i,sample(1:ncol(random_network), 1)] <- 1#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+alpha = 0.01#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
 }#
-mean(apply(random_network * paiwise_distance_exploitations_estives, 1, sum))
-mean.dist.sim <- vector()#
-for(k = 1:100){#
-	random_network <- matrix(0, ncol=ncol(observed_network), nrow=nrow(observed_network))#
-	for(i in 1:nrow(random_network)){#
-		random_network[i,sample(1:ncol(random_network), 1)] <- 1#
-	}#
-	mean.dist.sim[k] <- mean(apply(random_network * paiwise_distance_exploitations_estives, 1, sum))#
-}
-mean.dist.sim <- vector()#
-for(k in 1:100){#
-	random_network <- matrix(0, ncol=ncol(observed_network), nrow=nrow(observed_network))#
-	for(i in 1:nrow(random_network)){#
-		random_network[i,sample(1:ncol(random_network), 1)] <- 1#
-	}#
-	mean.dist.sim[k] <- mean(apply(random_network * paiwise_distance_exploitations_estives, 1, sum))#
-}
-hist(mean.dist.sim)
-mean.dist.random <- vector()#
-for(k in 1:100){#
-	random_network <- matrix(0, ncol=ncol(observed_network), nrow=nrow(observed_network))#
-	for(i in 1:nrow(random_network)){#
-		random_network[i,sample(1:ncol(random_network), 1)] <- 1#
-	}#
-	mean.dist.random[k] <- mean(apply(random_network * paiwise_distance_exploitations_estives, 1, sum))#
-}
-min_network <- matrix(0, ncol=ncol(observed_network), nrow=nrow(observed_network))#
-for(i in 1:nrow(min_network)){#
-	min_network[i,which(paiwise_distance_exploitations_estives[i,] == min(paiwise_distance_exploitations_estives[i,])), 1)] <- 1#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+alpha = 0.05#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
 }#
-mean.dist.min <- mean(apply(min_network * paiwise_distance_exploitations_estives, 1, sum))
-mean.dist.random <- vector()#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+alpha = 0.5#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+alpha = 0.2#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+alpha = 0.09#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+alpha = 0.15#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+alpha = 0.12#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+alpha = 0.1#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+alpha = 0.1#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))
+while(sum(resource.supply.winter) > 1000){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}
+sum(resource.supply.winter)
+sum(resource.supply.summer)
+simulated.network.WTSP[1,]
+simulated.network.WTSP[2,]
+paiwise_distance_winter_summer[1,]
+simulated.network.WTSP[2,] * paiwise_distance_winter_summer[2,]
+sum(simulated.network.WTSP)
+sum(simulated.network.WTSP[2,] * paiwise_distance_winter_summer[2,])
+sum(simulated.network.WTSP[2,] * paiwise_distance_winter_summer[2,]) / sum(simulated.network.WTSP[2,])
+sum(simulated.network.WTSP[3,] * paiwise_distance_winter_summer[3,]) / sum(simulated.network.WTSP[2,])
+sum(simulated.network.WTSP[4,] * paiwise_distance_winter_summer[4,]) / sum(simulated.network.WTSP[2,])
+sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+rownames(observed_network) <- paste("W",1:nrow(observed_network), sep="")#
+colnames(observed_network) <- paste("S",1:ncol(observed_network), sep="")#
+observed_network_DF <- melt(t(observed_network))[which(melt(t(observed_network))[,3]==1),1:2]#
+net <- graph_from_data_frame(observed_network_DF, vertices=c(rownames(t(observed_network)), colnames(t(observed_network))), directed=F)#
+V(net)$type <- c(rep(FALSE, 23), rep(TRUE,103))#
+V(net)$size <- 3#
+V(net)$frame.color <- c(rep("red", 23), rep("blue",103))#
+V(net)$color <- c(rep("red", 23), rep("blue",103))#
+V(net)$label <- ""#
+plot(net, layout=layout_as_bipartite(net)[,2:1], main="Bipartite network")#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Bipartite network", pos=3, cex=1.5)
+hist(mean.dist.random, xlim=c(15000,60000), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+hist(mean.dist.compet, add=T, breaks=10, axes=F, col="light blue", border="dark grey")#
+text(x=mean(mean.dist.random), y=3500, "Null\ndistribution", pos=3)#
+text(x=mean(mean.dist.compet)+1000, y=2300, "Competition\nonly", pos=3, col="light blue")#
+lines(c(mean.dist.obs, mean.dist.obs), c(0,2000), col="dark green", lty=1, cex=2)#
+text(x=mean.dist.obs+1000, y=2500, "empirical", col="dark green", pos=3, srt=90)#
+lines(c(mean.dist.sim, mean.dist.sim), c(0,2000), col="orange", lty=1, cex=2)#
+text(x=mean.dist.sim+1000, y=2500, "simulated", col="orange", pos=3, srt=90)#
+lines(c(mean.dist.min, mean.dist.min), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.min+1000, y=2500, "nearest", col="dark grey", pos=3, srt=90)#
+lines(c(mean.dist.max, mean.dist.max), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.max+1000, y=2500, "furthest", col="dark grey", pos=3, srt=90)
+random_compet_network <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+	resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+	resource.supply.winter <- NDVI_winter_hexs#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))
+E = 1 / resource.supply
+best.link = which(E == min(E), arr.ind=T)
+best.link
+random_compet_network <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+	resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+	resource.supply.winter <- NDVI_winter_hexs#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+	while(sum(resource.supply.winter) > 1){#
+		E = 1 / resource.supply#
+		best.link = which(E == min(E), arr.ind=T)#
+		best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+		random_compet_network[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+		resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+		resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+		resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+	}
+sum(apply(random_compet_network * paiwise_distance_winter_summer, 1, sum)) / sum(random_compet_network)
+mean.dist.compet.WTSP <- vector()#
 for(k in 1:1000){#
-	random_network <- matrix(0, ncol=ncol(observed_network), nrow=nrow(observed_network))#
-	for(i in 1:nrow(random_network)){#
-		random_network[i,sample(1:ncol(random_network), 1)] <- 1#
+	random_compet_network <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+	resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+	resource.supply.winter <- NDVI_winter_hexs#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+	while(sum(resource.supply.winter) > 1){#
+		E = 1 / resource.supply#
+		best.link = which(E == min(E), arr.ind=T)#
+		best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+		random_compet_network[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+		resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+		resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+		resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
 	}#
-	mean.dist.random[k] <- mean(apply(random_network * paiwise_distance_exploitations_estives, 1, sum))#
+	mean.dist.compet.WTSP[k] <- sum(apply(random_compet_network * paiwise_distance_winter_summer, 1, sum)) / sum(random_compet_network)	#
 }
-hist(mean.dist.sim)
-hist(mean.dist.random)
-which(paiwise_distance_exploitations_estives[i,] == min(paiwise_distance_exploitations_estives[i,]))
-min_network <- matrix(0, ncol=ncol(observed_network), nrow=nrow(observed_network))#
-for(i in 1:nrow(min_network)){#
-	min_network[i,which(paiwise_distance_exploitations_estives[i,] == min(paiwise_distance_exploitations_estives[i,]))] <- 1#
+k
+hist(mean.dist.compet.WTSP)
+mean.dist.compet.WTSP <- vector()#
+for(k in 1:10000){#
+	random_compet_network <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+	resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+	resource.supply.winter <- NDVI_winter_hexs#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+	while(sum(resource.supply.winter) > 1){#
+		E = 1 / resource.supply#
+		best.link = which(E == min(E), arr.ind=T)#
+		best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+		random_compet_network[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+		resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+		resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+		resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+	}#
+	mean.dist.compet.WTSP[k] <- sum(apply(random_compet_network * paiwise_distance_winter_summer, 1, sum)) / sum(random_compet_network)	#
+}
+k
+hist(mean.dist.compet.WTSP)
+lines(c(mean.dist.obs.WTSP, mean.dist.obs.WTSP), c(0,2000), col="dark green", lty=1, cex=2)
+hist(mean.dist.random.WTSP, xlim=c(0,3500), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")
+axis(side=2)#
+axis(side=1)
+NDVI_summer_hexs <- NDVI_NS[match(summer_hexs, envData$ISEA7_ID)]#
+NDVI_winter_hexs <- NDVI_NW[match(winter_hexs, envData$ISEA7_ID)]
+random_compet_network <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+	resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+	resource.supply.winter <- NDVI_winter_hexs#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+	while(sum(resource.supply.winter) > 1){#
+		E = 1 / resource.supply#
+		best.link = which(E == min(E), arr.ind=T)#
+		best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+		random_compet_network[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+		resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+		resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+		resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+	}
+mean.dist.compet.WTSP <- vector()#
+for(k in 1:10000){#
+	random_compet_network <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+	resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+	resource.supply.winter <- NDVI_winter_hexs#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+	while(sum(resource.supply.winter) > 1){#
+		E = 1 / resource.supply#
+		best.link = which(E == min(E), arr.ind=T)#
+		best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+		random_compet_network[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+		resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+		resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+		resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+	}#
+	mean.dist.compet.WTSP[k] <- sum(apply(random_compet_network * paiwise_distance_winter_summer, 1, sum)) / sum(random_compet_network)	#
+}
+mean.dist.compet.WTSP
+compet_network <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+while(sum(resource.supply.winter) > 1){#
+	E = 1 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	compet_network[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
 }#
-mean.dist.min <- mean(apply(min_network * paiwise_distance_exploitations_estives, 1, sum))
-mean.dist.min
-hist(mean.dist.random, xlim=c(0,40000))#
-abline(v= mean.dist.obs, col="red")#
-abline(v= mean.dist.min, col="black")
-mean.dist.obs <- mean(apply(observed_network * paiwise_distance_exploitations_estives, 1, sum))
-abline(v= mean.dist.obs, col="red")
-hist(mean.dist.random, xlim=c(15000,40000))#
-abline(v= mean.dist.obs, col="red")#
-abline(v= mean.dist.min, col="black")
-max_network <- matrix(0, ncol=ncol(observed_network), nrow=nrow(observed_network))#
-for(i in 1:nrow(max_network)){#
-	max_network[i,which(paiwise_distance_exploitations_estives[i,] == max(paiwise_distance_exploitations_estives[i,]))] <- 1#
+mean.dist.compet.WTSP <- sum(apply(compet_network * paiwise_distance_winter_summer, 1, sum)) / sum(compet_network)
+mean.dist.compet.WTSP
+mean.dist.random.WTSP <- vector()#
+for(k in 1:10000){#
+	random_network <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+	for(i in 1:sum(observed.network.WTSP)){#
+		random_network[sample(1:nrow(random_network), 1),sample(1:ncol(random_network), 1)] <- random_network[sample(1:nrow(random_network), 1),sample(1:ncol(random_network), 1)] + 1#
+	}#
+	mean.dist.random.WTSP[k] <- sum(apply(random_network * paiwise_distance_winter_summer, 1, sum)) / sum(random_network)#
 }#
-mean.dist.max <- mean(apply(max_network * paiwise_distance_exploitations_estives, 1, sum))
-mean.dist.max
-hist(mean.dist.random, xlim=c(15000,60000))#
-abline(v= mean.dist.obs, col="red")#
-abline(v= mean.dist.min, col="black")#
-abline(v= max.dist.min, col="black")
-hist(mean.dist.random, xlim=c(15000,60000))#
-abline(v= mean.dist.obs, col="red")#
-abline(v= mean.dist.min, col="black")#
-abline(v= mean.dist.max, col="black")
-library(spatstat)#
-library(spdep)#
-library(maptools)#
-library(rgdal)#
-library(ncf)#
-library(png)#
-library(raster)#
+#
+mean.dist.min.WTSP <- vector()#
+for(k in 1:10000){#
+	min_network <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+	for(i in 1:sum(observed.network.WTSP)){#
+		s <- sample(1:2, 1)#
+		if(s==1){#
+			sel_row <- sample(1:nrow(min_network), 1)#
+			sel_col <- which(paiwise_distance_winter_summer[sel_row,] == min(paiwise_distance_winter_summer[sel_row,]))#
+			min_network[sel_row, sel_col] <- min_network[sel_row, sel_col] + 1#
+		}else{#
+			sel_col <- sample(1:ncol(min_network), 1)#
+			sel_row <- which(paiwise_distance_winter_summer[,sel_col] == min(paiwise_distance_winter_summer[,sel_col]))#
+			min_network[sel_row, sel_col] <- min_network[sel_row, sel_col] + 1#
+		}#
+	}#
+	mean.dist.min.WTSP[k] <- sum(apply(min_network * paiwise_distance_winter_summer, 1, sum)) / sum(min_network)#
+}#
+#
+mean.dist.max.WTSP <- vector()#
+for(k in 1:10000){#
+	max_network <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+	for(i in 1:sum(observed.network.WTSP)){#
+		s <- sample(1:2, 1)#
+		if(s==1){#
+			sel_row <- sample(1:nrow(max_network), 1)#
+			sel_col <- which(paiwise_distance_winter_summer[sel_row,] == max(paiwise_distance_winter_summer[sel_row,]))#
+			max_network[sel_row, sel_col] <- max_network[sel_row, sel_col] + 1#
+		}else{#
+			sel_col <- sample(1:ncol(max_network), 1)#
+			sel_row <- which(paiwise_distance_winter_summer[,sel_col] == max(paiwise_distance_winter_summer[,sel_col]))#
+			max_network[sel_row, sel_col] <- max_network[sel_row, sel_col] + 1#
+		}#
+	}#
+	mean.dist.max.WTSP[k] <- sum(apply(max_network * paiwise_distance_winter_summer, 1, sum)) / sum(max_network)#
+}
+par(mfrow=c(2,4), mar=c(0.1,0.1,0.1,0.1), mgp=c(1.5,0.5,0))#
+#
+#Transhumance Cevennes#
+#
+# Plot France#
+map("worldHires", "France", col="gray90", fill=T, xlim=c(-5,8.2), ylim=c(41,51))#
+rect(xleft=3.1, ybottom=43.7, xright=4.7, ytop=44.7, border="green4")#
+#text(x=mean(c(-5,8.2)), y=51.5, "Geographical location", pos=3, cex=1.5)#
+#
+par(new=F, mar=c(2.5,0.5,1.8,0.5), mgp=c(1.5,0.5,0))#
+# Plot the empirical spatial network#
+plot(exploitations, pch=20, col="blue", cex=0.6, main="Spatial network")#
+plot(estives, col="red", border="red", add=T)#
+for(i in 1:length(observed_network[,1])){#
+	for(j in 1:length(observed_network[1,])){#
+		if(observed_network[i,j] == 1){#
+			lines(rbind(exploitations@coords[i,], estives@polygons[[j]]@Polygons[[1]]@labpt), col="dark grey")#
+		}#
+	}#
+}#
+plot(exploitations, pch=20, col="blue", cex=0.6, add=T)#
+plot(estives, col="red", border="red", add=T)#
+rect(xleft=708000, ybottom=6273000, xright=842000, ytop=6385000, border="green4")#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Spatial network", pos=3, cex=1.5)#
+#
+# Plot the empirical bipartite network#
+rownames(observed_network) <- paste("W",1:nrow(observed_network), sep="")#
+colnames(observed_network) <- paste("S",1:ncol(observed_network), sep="")#
+observed_network_DF <- melt(t(observed_network))[which(melt(t(observed_network))[,3]==1),1:2]#
+net <- graph_from_data_frame(observed_network_DF, vertices=c(rownames(t(observed_network)), colnames(t(observed_network))), directed=F)#
+V(net)$type <- c(rep(FALSE, 23), rep(TRUE,103))#
+V(net)$size <- 3#
+V(net)$frame.color <- c(rep("red", 23), rep("blue",103))#
+V(net)$color <- c(rep("red", 23), rep("blue",103))#
+V(net)$label <- ""#
+plot(net, layout=layout_as_bipartite(net)[,2:1], main="Bipartite network")#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Bipartite network", pos=3, cex=1.5)#
+# Empirical and simulated versus random distribution#
+#
+hist(mean.dist.random, xlim=c(15000,60000), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+hist(mean.dist.compet, add=T, breaks=10, axes=F, col="light blue", border="dark grey")#
+text(x=mean(mean.dist.random), y=3500, "Null\ndistribution", pos=3)#
+text(x=mean(mean.dist.compet)+1000, y=2300, "Competition\nonly", pos=3, col="light blue")#
+lines(c(mean.dist.obs, mean.dist.obs), c(0,2000), col="dark green", lty=1, cex=2)#
+text(x=mean.dist.obs+1000, y=2500, "empirical", col="dark green", pos=3, srt=90)#
+lines(c(mean.dist.sim, mean.dist.sim), c(0,2000), col="orange", lty=1, cex=2)#
+text(x=mean.dist.sim+1000, y=2500, "simulated", col="orange", pos=3, srt=90)#
+lines(c(mean.dist.min, mean.dist.min), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.min+1000, y=2500, "nearest", col="dark grey", pos=3, srt=90)#
+lines(c(mean.dist.max, mean.dist.max), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.max+1000, y=2500, "furthest", col="dark grey", pos=3, srt=90)#
+#WTSP#
+#
+# Plot North America#
+map("worldHires", c("USA", "Canada", "Mexico"), col="gray90", fill=T, xlim=c(-120,-70), ylim=c(25,70))#
+rect(xleft=-115, ybottom=29, xright=-50, ytop=55, border="green4")#
+points(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, cex=0.5, col="blue")#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, pch=20, cex=0.5, col="red")#
+#
+# Plot spatial network#
+par(new=F, mar=c(2.5,0.5,1.8,0.5), mgp=c(1.5,0.5,0))#
+# Plot the empirical spatial network#
+plot(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, col="blue", cex=0.6, axes=NULL, xlim=c(-115,-50), ylim=c(29,55))#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, col="red", border="red", pch=20, cex=0.6)#
+for(i in 1:length(WTSP_data$LON_winter)){#
+	lines(rbind(c(WTSP_data$LON_winter[i], WTSP_data$LAT_winter[i]), c(WTSP_data$LON_summer[i], WTSP_data$LAT_summer[i])), col="dark grey", type="l")#
+}#
+points(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, col="blue", cex=0.6, axes=NULL, xlim=c(-115,-50), ylim=c(29,55))#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, col="red", border="red", pch=20, cex=0.6)#
+rect(xleft=-115, ybottom=29, xright=-50, ytop=55, border="green4")
+par(mfrow=c(2,4), mar=c(0.1,0.1,0.1,0.1), mgp=c(1.5,0.5,0))
+par(mfrow=c(2,4), mar=c(0.1,0.1,0.1,0.1), mgp=c(1.5,0.5,0))#
+#
+#Transhumance Cevennes#
+#
+# Plot France#
+map("worldHires", "France", col="gray90", fill=T, xlim=c(-5,8.2), ylim=c(41,51))#
+rect(xleft=3.1, ybottom=43.7, xright=4.7, ytop=44.7, border="green4")#
+#text(x=mean(c(-5,8.2)), y=51.5, "Geographical location", pos=3, cex=1.5)#
+#
+par(new=F, mar=c(2.5,0.5,1.8,0.5), mgp=c(1.5,0.5,0))#
+# Plot the empirical spatial network#
+plot(exploitations, pch=20, col="blue", cex=0.6, main="Spatial network")#
+plot(estives, col="red", border="red", add=T)#
+for(i in 1:length(observed_network[,1])){#
+	for(j in 1:length(observed_network[1,])){#
+		if(observed_network[i,j] == 1){#
+			lines(rbind(exploitations@coords[i,], estives@polygons[[j]]@Polygons[[1]]@labpt), col="dark grey")#
+		}#
+	}#
+}#
+plot(exploitations, pch=20, col="blue", cex=0.6, add=T)#
+plot(estives, col="red", border="red", add=T)#
+rect(xleft=708000, ybottom=6273000, xright=842000, ytop=6385000, border="green4")#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Spatial network", pos=3, cex=1.5)#
+#
+# Plot the empirical bipartite network#
+rownames(observed_network) <- paste("W",1:nrow(observed_network), sep="")#
+colnames(observed_network) <- paste("S",1:ncol(observed_network), sep="")#
+observed_network_DF <- melt(t(observed_network))[which(melt(t(observed_network))[,3]==1),1:2]#
+net <- graph_from_data_frame(observed_network_DF, vertices=c(rownames(t(observed_network)), colnames(t(observed_network))), directed=F)#
+V(net)$type <- c(rep(FALSE, 23), rep(TRUE,103))#
+V(net)$size <- 3#
+V(net)$frame.color <- c(rep("red", 23), rep("blue",103))#
+V(net)$color <- c(rep("red", 23), rep("blue",103))#
+V(net)$label <- ""#
+plot(net, layout=layout_as_bipartite(net)[,2:1], main="Bipartite network")#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Bipartite network", pos=3, cex=1.5)#
+# Empirical and simulated versus random distribution#
+#
+hist(mean.dist.random, xlim=c(15000,60000), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+hist(mean.dist.compet, add=T, breaks=10, axes=F, col="light blue", border="dark grey")#
+text(x=mean(mean.dist.random), y=3500, "Null\ndistribution", pos=3)#
+text(x=mean(mean.dist.compet)+1000, y=2300, "Competition\nonly", pos=3, col="light blue")#
+lines(c(mean.dist.obs, mean.dist.obs), c(0,2000), col="dark green", lty=1, cex=2)#
+text(x=mean.dist.obs+1000, y=2500, "empirical", col="dark green", pos=3, srt=90)#
+lines(c(mean.dist.sim, mean.dist.sim), c(0,2000), col="orange", lty=1, cex=2)#
+text(x=mean.dist.sim+1000, y=2500, "simulated", col="orange", pos=3, srt=90)#
+lines(c(mean.dist.min, mean.dist.min), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.min+1000, y=2500, "nearest", col="dark grey", pos=3, srt=90)#
+lines(c(mean.dist.max, mean.dist.max), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.max+1000, y=2500, "furthest", col="dark grey", pos=3, srt=90)#
+#WTSP#
+#
+# Plot North America#
+map("worldHires", c("USA", "Canada", "Mexico"), col="gray90", fill=T, xlim=c(-120,-70), ylim=c(25,70))#
+rect(xleft=-115, ybottom=29, xright=-50, ytop=55, border="green4")#
+points(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, cex=0.5, col="blue")#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, pch=20, cex=0.5, col="red")#
+#
+# Plot spatial network#
+par(new=F, mar=c(2.5,0.5,1.8,0.5), mgp=c(1.5,0.5,0))#
+# Plot the empirical spatial network#
+plot(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, col="blue", cex=0.6, axes=NULL, xlim=c(-115,-50), ylim=c(29,55))#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, col="red", border="red", pch=20, cex=0.6)#
+for(i in 1:length(WTSP_data$LON_winter)){#
+	lines(rbind(c(WTSP_data$LON_winter[i], WTSP_data$LAT_winter[i]), c(WTSP_data$LON_summer[i], WTSP_data$LAT_summer[i])), col="dark grey", type="l")#
+}#
+points(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, col="blue", cex=0.6, axes=NULL, xlim=c(-115,-50), ylim=c(29,55))#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, col="red", border="red", pch=20, cex=0.6)#
+rect(xleft=-115, ybottom=29, xright=-50, ytop=55, border="green4")
+rownames(observed.network.WTSP) <- paste("W",1:nrow(observed.network.WTSP), sep="")#
+colnames(observed.network.WTSP) <- paste("S",1:ncol(observed.network.WTSP), sep="")
+observed.network.WTSP_DF <- melt(t(observed.network.WTSP))[which(melt(t(observed.network.WTSP))[,3]==1),1:2]
+net <- graph_from_data_frame(observed.network.WTSP_DF, vertices=c(rownames(t(observed.network.WTSP)), colnames(t(observed.network.WTSP))), directed=F)
+dim(observed.network.WTSP)[2]
+V(net)$type <- c(rep(FALSE, dim(observed.network.WTSP)[2]), rep(TRUE,dim(observed.network.WTSP)[1]))#
+V(net)$size <- 3
+V(net)$frame.color <- c(rep("red", dim(observed.network.WTSP)[2]), rep("blue",dim(observed.network.WTSP)[1]))#
+V(net)$color <- c(rep("red", dim(observed.network.WTSP)[2]), rep("blue",dim(observed.network.WTSP)[1]))#
+V(net)$label <- ""
+plot(net, layout=layout_as_bipartite(net)[,2:1])
+hist(mean.dist.random.WTSP, xlim=c(0,3500), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)
+hist(mean.dist.min.WTSP, add=T, breaks=10, axes=F, col="light blue", border="dark grey")
+hist(mean.dist.max.WTSP, add=T, breaks=5, axes=F, col="orange", border="dark grey")
+hist(mean.dist.random.WTSP, xlim=c(0,3500), ylim=c(0,1800), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)
+hist(mean.dist.random.WTSP, xlim=c(0,1800), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)
+hist(mean.dist.random.WTSP, xlim=c(0,2000), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)
+hist(mean.dist.min.WTSP, add=T, breaks=10, axes=F, col="light blue", border="dark grey")
+hist(mean.dist.min.WTSP, add=T, breaks=5, axes=F, col="light blue", border="dark grey")
+lines(c(mean.dist.compet.WTSP, mean.dist.obs.WTSP), c(0,2000), col="light blue", lty=1, cex=2)#
+lines(c(mean.dist.obs.WTSP, mean.dist.obs.WTSP), c(0,2000), col="dark green", lty=1, cex=2)
+lines(c(mean.dist.compet.WTSP, mean.dist.compet.WTSP), c(0,2000), col="light blue", lty=1, cex=2)#
+lines(c(mean.dist.obs.WTSP, mean.dist.obs.WTSP), c(0,2000), col="dark green", lty=1, cex=2)
+hist(mean.dist.random.WTSP, xlim=c(0,1800), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+hist(mean.dist.min.WTSP, add=T, breaks=5, axes=F, col="light blue", border="dark grey")#
+#hist(mean.dist.max.WTSP, add=T, breaks=5, axes=F, col="orange", border="dark grey")#
+#
+lines(c(mean.dist.compet.WTSP, mean.dist.compet.WTSP), c(0,2000), col="light blue", lty=1, cex=2)#
+lines(c(mean.dist.obs.WTSP, mean.dist.obs.WTSP), c(0,2000), col="dark green", lty=1, cex=2)
+hist(mean.dist.random.WTSP, xlim=c(0,1800), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+hist(mean.dist.min.WTSP, add=T, breaks=5, axes=F, col="dark grey", border="dark grey")#
+#hist(mean.dist.max.WTSP, add=T, breaks=5, axes=F, col="orange", border="dark grey")#
+lines(c(mean.dist.compet.WTSP, mean.dist.compet.WTSP), c(0,2000), col="light blue", lty=1, cex=2)#
+lines(c(mean.dist.obs.WTSP, mean.dist.obs.WTSP), c(0,2000), col="dark green", lty=1, cex=2)
+text(x=mean(mean.dist.random.WTSP), y=3500, "Null\ndistribution", pos=3)
+text(x=mean.dist.obs+1000, y=2500, "empirical", col="dark green", pos=3, srt=90)
+text(x= mean.dist.obs.WTSP+1000, y=2500, "empirical", col="dark green", pos=3, srt=90)
+text(x= mean.dist.obs.WTSP, y=2500, "empirical", col="dark green", pos=3, srt=90)
+text(x= mean.dist.obs.WTSP+10, y=2500, "empirical", col="dark green", pos=3, srt=90)
+text(x= mean.dist.obs.WTSP+100, y=2500, "empirical", col="dark green", pos=3, srt=90)
+text(x= mean.dist.obs.WTSP+25, y=2500, "empirical", col="dark green", pos=3, srt=90)
+hist(mean.dist.random.WTSP, xlim=c(0,1800), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+text(x=mean(mean.dist.random.WTSP), y=3500, "Null\ndistribution", pos=3)#
+hist(mean.dist.min.WTSP, add=T, breaks=5, axes=F, col="dark grey", border="dark grey")#
+#hist(mean.dist.max.WTSP, add=T, breaks=5, axes=F, col="orange", border="dark grey")#
+lines(c(mean.dist.compet.WTSP, mean.dist.compet.WTSP), c(0,2000), col="light blue", lty=1, cex=2)#
+text(x= mean.dist.compet.WTSP+25, y=2500, "Competition only", col="light blue", pos=3, srt=90)#
+lines(c(mean.dist.obs.WTSP, mean.dist.obs.WTSP), c(0,2000), col="dark green", lty=1, cex=2)#
+text(x= mean.dist.obs.WTSP+25, y=2500, "empirical", col="dark green", pos=3, srt=90)
+hist(mean.dist.random.WTSP, xlim=c(0,1800), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+text(x=mean(mean.dist.random.WTSP), y=3500, "Null\ndistribution", pos=3)#
+hist(mean.dist.min.WTSP, add=T, breaks=5, axes=F, col="dark grey", border="dark grey")#
+#hist(mean.dist.max.WTSP, add=T, breaks=5, axes=F, col="orange", border="dark grey")#
+lines(c(mean.dist.compet.WTSP, mean.dist.compet.WTSP), c(0,2000), col="light blue", lty=1, cex=2)#
+text(x= mean.dist.compet.WTSP+25, y=2900, "Competition only", col="light blue", pos=3, srt=90)#
+lines(c(mean.dist.obs.WTSP, mean.dist.obs.WTSP), c(0,2000), col="dark green", lty=1, cex=2)#
+text(x= mean.dist.obs.WTSP+25, y=2500, "empirical", col="dark green", pos=3, srt=90)
+text(x= mean.dist.compet.WTSP+25, y=2700, "Competition only", col="light blue", pos=3, srt=90)
+text(x=mean.dist.min, y=4100, "nearest", col="dark grey", pos=3, srt=90)
+text(x=mean.dist.min, y=3100, "nearest", col="dark grey", pos=3, srt=90)
+text(x=mean.dist.min.WTSP, y=3100, "nearest", col="dark grey", pos=3, srt=90)
+text(x=mean(mean.dist.min.WTSP), y=4100, "nearest", pos=3)
+hist(mean.dist.random.WTSP, xlim=c(0,1800), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+text(x=mean(mean.dist.random.WTSP), y=3500, "Null\ndistribution", pos=3)#
+hist(mean.dist.min.WTSP, add=T, breaks=5, axes=F, col="light grey", border="dark grey")#
+text(x=mean(mean.dist.min.WTSP), y=4000, "nearest", pos=3)#
+#hist(mean.dist.max.WTSP, add=T, breaks=5, axes=F, col="orange", border="dark grey")#
+lines(c(mean.dist.compet.WTSP, mean.dist.compet.WTSP), c(0,2000), col="light blue", lty=1, cex=2)#
+text(x= mean.dist.compet.WTSP+25, y=2700, "Competition only", col="light blue", pos=3, srt=90)#
+lines(c(mean.dist.obs.WTSP, mean.dist.obs.WTSP), c(0,2000), col="dark green", lty=1, cex=2)#
+text(x= mean.dist.obs.WTSP+25, y=2500, "empirical", col="dark green", pos=3, srt=90)
+hist(mean.dist.random.WTSP, xlim=c(0,1800), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+text(x=mean(mean.dist.random.WTSP), y=3500, "Null\ndistribution", pos=3)#
+hist(mean.dist.min.WTSP, add=T, breaks=5, axes=F, col="grey", border="dark grey")#
+text(x=mean(mean.dist.min.WTSP), y=4000, "nearest", pos=3)#
+#hist(mean.dist.max.WTSP, add=T, breaks=5, axes=F, col="orange", border="dark grey")#
+lines(c(mean.dist.compet.WTSP, mean.dist.compet.WTSP), c(0,2000), col="light blue", lty=1, cex=2)#
+text(x= mean.dist.compet.WTSP+25, y=2700, "Competition only", col="light blue", pos=3, srt=90)#
+lines(c(mean.dist.obs.WTSP, mean.dist.obs.WTSP), c(0,2000), col="dark green", lty=1, cex=2)#
+text(x= mean.dist.obs.WTSP+25, y=2500, "empirical", col="dark green", pos=3, srt=90)
+par(mfrow=c(2,4), mar=c(0.1,0.1,0.1,0.1), mgp=c(1.5,0.5,0))#
+#
+#Transhumance Cevennes#
+#
+# Plot France#
+map("worldHires", "France", col="gray90", fill=T, xlim=c(-5,8.2), ylim=c(41,51))#
+rect(xleft=3.1, ybottom=43.7, xright=4.7, ytop=44.7, border="green4")#
+#text(x=mean(c(-5,8.2)), y=51.5, "Geographical location", pos=3, cex=1.5)#
+#
+par(new=F, mar=c(2.5,0.5,1.8,0.5), mgp=c(1.5,0.5,0))#
+# Plot the empirical spatial network#
+plot(exploitations, pch=20, col="blue", cex=0.6, main="Spatial network")#
+plot(estives, col="red", border="red", add=T)#
+for(i in 1:length(observed_network[,1])){#
+	for(j in 1:length(observed_network[1,])){#
+		if(observed_network[i,j] == 1){#
+			lines(rbind(exploitations@coords[i,], estives@polygons[[j]]@Polygons[[1]]@labpt), col="dark grey")#
+		}#
+	}#
+}#
+plot(exploitations, pch=20, col="blue", cex=0.6, add=T)#
+plot(estives, col="red", border="red", add=T)#
+rect(xleft=708000, ybottom=6273000, xright=842000, ytop=6385000, border="green4")#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Spatial network", pos=3, cex=1.5)#
+#
+# Plot the empirical bipartite network#
+rownames(observed_network) <- paste("W",1:nrow(observed_network), sep="")#
+colnames(observed_network) <- paste("S",1:ncol(observed_network), sep="")#
+observed_network_DF <- melt(t(observed_network))[which(melt(t(observed_network))[,3]==1),1:2]#
+net <- graph_from_data_frame(observed_network_DF, vertices=c(rownames(t(observed_network)), colnames(t(observed_network))), directed=F)#
+V(net)$type <- c(rep(FALSE, 23), rep(TRUE,103))#
+V(net)$size <- 3#
+V(net)$frame.color <- c(rep("red", 23), rep("blue",103))#
+V(net)$color <- c(rep("red", 23), rep("blue",103))#
+V(net)$label <- ""#
+plot(net, layout=layout_as_bipartite(net)[,2:1], main="Bipartite network")#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Bipartite network", pos=3, cex=1.5)#
+# Empirical and simulated versus random distribution#
+#
+hist(mean.dist.random, xlim=c(15000,60000), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+hist(mean.dist.compet, add=T, breaks=10, axes=F, col="light blue", border="dark grey")#
+text(x=mean(mean.dist.random), y=3500, "Null\ndistribution", pos=3)#
+text(x=mean(mean.dist.compet)+1000, y=2300, "Competition\nonly", pos=3, col="light blue")#
+lines(c(mean.dist.obs, mean.dist.obs), c(0,2000), col="dark green", lty=1, cex=2)#
+text(x=mean.dist.obs+1000, y=2500, "empirical", col="dark green", pos=3, srt=90)#
+lines(c(mean.dist.sim, mean.dist.sim), c(0,2000), col="orange", lty=1, cex=2)#
+text(x=mean.dist.sim+1000, y=2500, "simulated", col="orange", pos=3, srt=90)#
+lines(c(mean.dist.min, mean.dist.min), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.min+1000, y=2500, "nearest", col="dark grey", pos=3, srt=90)#
+lines(c(mean.dist.max, mean.dist.max), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.max+1000, y=2500, "furthest", col="dark grey", pos=3, srt=90)#
+#WTSP#
+#
+# Plot North America#
+map("worldHires", c("USA", "Canada", "Mexico"), col="gray90", fill=T, xlim=c(-120,-70), ylim=c(25,70))#
+rect(xleft=-115, ybottom=29, xright=-50, ytop=55, border="green4")#
+points(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, cex=0.5, col="blue")#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, pch=20, cex=0.5, col="red")#
+#
+# Plot spatial network#
+par(new=F, mar=c(2.5,0.5,1.8,0.5), mgp=c(1.5,0.5,0))#
+# Plot the empirical spatial network#
+plot(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, col="blue", cex=0.6, axes=NULL, xlim=c(-115,-50), ylim=c(29,55))#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, col="red", border="red", pch=20, cex=0.6)#
+for(i in 1:length(WTSP_data$LON_winter)){#
+	lines(rbind(c(WTSP_data$LON_winter[i], WTSP_data$LAT_winter[i]), c(WTSP_data$LON_summer[i], WTSP_data$LAT_summer[i])), col="dark grey", type="l")#
+}#
+points(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, col="blue", cex=0.6, axes=NULL, xlim=c(-115,-50), ylim=c(29,55))#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, col="red", border="red", pch=20, cex=0.6)#
+rect(xleft=-115, ybottom=29, xright=-50, ytop=55, border="green4")#
+# Plot the empirical bipartite network#
+rownames(observed.network.WTSP) <- paste("W",1:nrow(observed.network.WTSP), sep="")#
+colnames(observed.network.WTSP) <- paste("S",1:ncol(observed.network.WTSP), sep="")#
+observed.network.WTSP_DF <- melt(t(observed.network.WTSP))[which(melt(t(observed.network.WTSP))[,3]==1),1:2]#
+net <- graph_from_data_frame(observed.network.WTSP_DF, vertices=c(rownames(t(observed.network.WTSP)), colnames(t(observed.network.WTSP))), directed=F)#
+V(net)$type <- c(rep(FALSE, dim(observed.network.WTSP)[2]), rep(TRUE,dim(observed.network.WTSP)[1]))#
+V(net)$size <- 3#
+V(net)$frame.color <- c(rep("red", dim(observed.network.WTSP)[2]), rep("blue",dim(observed.network.WTSP)[1]))#
+V(net)$color <- c(rep("red", dim(observed.network.WTSP)[2]), rep("blue",dim(observed.network.WTSP)[1]))#
+V(net)$label <- ""#
+plot(net, layout=layout_as_bipartite(net)[,2:1])#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Bipartite network", pos=3, cex=1.5)#
+# Empirical and simulated versus random distribution#
+#
+hist(mean.dist.random.WTSP, xlim=c(0,1800), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+text(x=mean(mean.dist.random.WTSP), y=3500, "Null\ndistribution", pos=3)#
+hist(mean.dist.min.WTSP, add=T, breaks=5, axes=F, col="grey", border="dark grey")#
+text(x=mean(mean.dist.min.WTSP), y=4000, "nearest", pos=3)#
+#hist(mean.dist.max.WTSP, add=T, breaks=5, axes=F, col="orange", border="dark grey")#
+lines(c(mean.dist.compet.WTSP, mean.dist.compet.WTSP), c(0,2000), col="light blue", lty=1, cex=2)#
+text(x= mean.dist.compet.WTSP+25, y=2700, "Competition only", col="light blue", pos=3, srt=90)#
+lines(c(mean.dist.obs.WTSP, mean.dist.obs.WTSP), c(0,2000), col="dark green", lty=1, cex=2)#
+text(x= mean.dist.obs.WTSP+25, y=2500, "empirical", col="dark green", pos=3, srt=90)
+alpha = 0.01#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+hist(mean.dist.random.WTSP, xlim=c(0,200), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+text(x=mean(mean.dist.random.WTSP), y=3500, "Null\ndistribution", pos=3)#
+hist(mean.dist.min.WTSP, add=T, breaks=5, axes=F, col="light grey", border="grey")#
+text(x=mean(mean.dist.min.WTSP), y=4000, "nearest", pos=3, col="light grey")#
+#hist(mean.dist.max.WTSP, add=T, breaks=5, axes=F, col="orange", border="dark grey")#
+lines(c(mean.dist.compet.WTSP, mean.dist.compet.WTSP), c(0,2000), col="light blue", lty=1, cex=2)#
+text(x= mean.dist.compet.WTSP+25, y=2700, "Competition only", col="light blue", pos=3, srt=90)#
+lines(c(mean.dist.obs.WTSP, mean.dist.obs.WTSP), c(0,2000), col="dark green", lty=1, cex=2)#
+text(x= mean.dist.obs.WTSP+25, y=2500, "empirical", col="dark green", pos=3, srt=90)
+hist(mean.dist.random.WTSP, xlim=c(0,2000), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+text(x=mean(mean.dist.random.WTSP), y=3500, "Null\ndistribution", pos=3)#
+hist(mean.dist.min.WTSP, add=T, breaks=5, axes=F, col="light grey", border="grey")#
+text(x=mean(mean.dist.min.WTSP), y=4000, "nearest", pos=3, col="light grey")#
+#hist(mean.dist.max.WTSP, add=T, breaks=5, axes=F, col="orange", border="dark grey")#
+lines(c(mean.dist.compet.WTSP, mean.dist.compet.WTSP), c(0,2000), col="light blue", lty=1, cex=2)#
+text(x= mean.dist.compet.WTSP+25, y=2700, "Competition only", col="light blue", pos=3, srt=90)#
+lines(c(mean.dist.obs.WTSP, mean.dist.obs.WTSP), c(0,2000), col="dark green", lty=1, cex=2)#
+text(x= mean.dist.obs.WTSP+25, y=2500, "empirical", col="dark green", pos=3, srt=90)
+hist(mean.dist.random.WTSP, xlim=c(0,2000), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+text(x=mean(mean.dist.random.WTSP), y=3500, "Null\ndistribution", pos=3)#
+hist(mean.dist.min.WTSP, add=T, breaks=5, axes=F, col="light grey", border="grey")#
+text(x=mean(mean.dist.min.WTSP), y=4000, "nearest", pos=3, col="dark grey")#
+#hist(mean.dist.max.WTSP, add=T, breaks=5, axes=F, col="orange", border="dark grey")#
+lines(c(mean.dist.compet.WTSP, mean.dist.compet.WTSP), c(0,2000), col="light blue", lty=1, cex=2)#
+text(x= mean.dist.compet.WTSP+25, y=2700, "Competition only", col="light blue", pos=3, srt=90)#
+lines(c(mean.dist.obs.WTSP, mean.dist.obs.WTSP), c(0,2000), col="dark green", lty=1, cex=2)#
+text(x= mean.dist.obs.WTSP+25, y=2500, "empirical", col="dark green", pos=3, srt=90)
+lines(c(mean.dist.sim.WTSP, mean.dist.sim.WTSP), c(0,2000), col="orange", lty=1, cex=2)
+mean.dist.sim.WTSP
+alpha = 0.001#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+alpha = 1#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+dim(paiwise_distance_winter_summer2)
+paiwise_distance_winter_summer2[1:5,1:5]
+alpha * paiwise_distance_winter_summer2
+alpha = 0.001
+alpha * paiwise_distance_winter_summer2
+alpha = 0.001#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))
+while(sum(resource.supply.winter) > 1000){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}
+sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+while(sum(resource.supply.winter) > 500){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}
+sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+E
+which(resource.supply.summer < 0)
+which(resource.supply.winter < 0)
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.summer[which(resource.supply.summer < 0)] <- 0#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply.winter[which(resource.supply.winter < 0)] <- 0#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}
+sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+alpha = 1#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.summer[which(resource.supply.summer < 0)] <- 0#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply.winter[which(resource.supply.winter < 0)] <- 0#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}
+sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+resource.supply
+E
+min(E)
+alpha = 1#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.summer[which(resource.supply.summer < 0)] <- 0#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply.winter[which(resource.supply.winter < 0)] <- 0#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}
+alpha = 1#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1000){#
+	E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.summer[which(resource.supply.summer < 0)] <- 0#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply.winter[which(resource.supply.winter < 0)] <- 0#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}
+sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+alpha = 1#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	#E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	E = exp(-alpha * resource.supply / paiwise_distance_winter_summer2)#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.summer[which(resource.supply.summer < 0)] <- 0#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply.winter[which(resource.supply.winter < 0)] <- 0#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+alpha = 0.0001#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	#E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	E = exp(-alpha * resource.supply / paiwise_distance_winter_summer2)#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.summer[which(resource.supply.summer < 0)] <- 0#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply.winter[which(resource.supply.winter < 0)] <- 0#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+alpha = 0.01#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))
+while(sum(resource.supply.winter) > 1){#
+	#E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	E = (alpha * paiwise_distance_winter_summer2) - resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	resource.supply.summer[which(resource.supply.summer < 0)] <- 0#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	resource.supply.winter[which(resource.supply.winter < 0)] <- 0#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+resource.supply
+E = (alpha * paiwise_distance_winter_summer2) - resource.supply
+E
+min(E)
+alpha = 0.01#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	#E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	E = (alpha * paiwise_distance_winter_summer2) - resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	#resource.supply.summer[which(resource.supply.summer < 0)] <- 0#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	#resource.supply.winter[which(resource.supply.winter < 0)] <- 0#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+alpha = 0.1#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	#E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	E = (alpha * paiwise_distance_winter_summer2) - resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	#resource.supply.summer[which(resource.supply.summer < 0)] <- 0#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	#resource.supply.winter[which(resource.supply.winter < 0)] <- 0#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+alpha = 0.001#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	#E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	E = (alpha * paiwise_distance_winter_summer2) - resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	#resource.supply.summer[which(resource.supply.summer < 0)] <- 0#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	#resource.supply.winter[which(resource.supply.winter < 0)] <- 0#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+alpha = 0.0005#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	#E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	E = (alpha * paiwise_distance_winter_summer2) - resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	#resource.supply.summer[which(resource.supply.summer < 0)] <- 0#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	#resource.supply.winter[which(resource.supply.winter < 0)] <- 0#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+alpha = 0.0001#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	#E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	E = (alpha * paiwise_distance_winter_summer2) - resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	#resource.supply.summer[which(resource.supply.summer < 0)] <- 0#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	#resource.supply.winter[which(resource.supply.winter < 0)] <- 0#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+simulated.network.WTSP[1:5,1:5]
+simulated.network.WTSP[1:25,1:25]
+alpha = 0.0002#
+#beta = sum(NDVI_winter_hexs) / sum(NDVI_summer_hexs)#
+paiwise_distance_winter_summer2 <- paiwise_distance_winter_summer#
+paiwise_distance_winter_summer2[which(paiwise_distance_winter_summer2 == 0)] <- 1#
+simulated.network.WTSP <- matrix(0, ncol=ncol(observed.network.WTSP), nrow=nrow(observed.network.WTSP))#
+resource.supply.summer <- NDVI_summer_hexs #round(beta * NDVI_summer_hexs)#
+resource.supply.winter <- NDVI_winter_hexs#
+resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+#exploits <- 1:nrow(observed_network)#
+while(sum(resource.supply.winter) > 1){#
+	#E = alpha * paiwise_distance_winter_summer2 / resource.supply#
+	E = (alpha * paiwise_distance_winter_summer2) - resource.supply#
+	best.link = which(E == min(E), arr.ind=T)#
+	best.link = best.link[sample(1:length(best.link[,1]), 1),]#
+	simulated.network.WTSP[best.link[1],best.link[2]] <- simulated.network.WTSP[best.link[1],best.link[2]] + 1#
+	resource.supply.summer[best.link[2]] <- resource.supply.summer[best.link[2]] - 1#
+	#resource.supply.summer[which(resource.supply.summer < 0)] <- 0#
+	resource.supply.winter[best.link[1]] <- resource.supply.winter[best.link[1]] - 1#
+	#resource.supply.winter[which(resource.supply.winter < 0)] <- 0#
+	resource.supply <- t(sapply(resource.supply.winter, function(x) x + resource.supply.summer))#
+}#
+mean.dist.sim.WTSP <- sum(apply(simulated.network.WTSP * paiwise_distance_winter_summer, 1, sum)) / sum(simulated.network.WTSP)
+mean.dist.sim.WTSP
+alpha = 10 #0.00000001#
+beta = nrow(random_compet_network) / sum(estives$SURFACE_HA)#
+paiwise_distance_exploitations_estives2 <- paiwise_distance_exploitations_estives#
+simulated_network <- matrix(0, ncol=ncol(observed_network), nrow=nrow(observed_network))#
+#estives.occupancy <- rep(0, length(estives$SURFACE_HA))#
+estives.supply <- round(beta * estives$SURFACE_HA)#
+exploits <- 1:nrow(observed_network)#
+while(length(exploits) > 1){#
+	#E = t(apply(paiwise_distance_exploitations_estives2, 1, function(x) (alpha*x) / estives.supply))#
+	#E = t(apply(paiwise_distance_exploitations_estives2, 1, function(x) (alpha*x) - estives.supply))#
+	best.link = which(E == min(E), arr.ind=T)#
+	simulated_network[exploits[best.link[1]],best.link[2]] <- simulated_network[exploits[best.link[1]],best.link[2]] + 1#
+	exploits = exploits[-best.link[1]]#
+	estives.supply[best.link[2]] <- estives.supply[best.link[2]] - 1#
+	estives.supply[which(estives.supply == 0)] <- 0.1#
+	paiwise_distance_exploitations_estives2 = paiwise_distance_exploitations_estives2[-best.link[1],]#
+}#
+E = (alpha * paiwise_distance_exploitations_estives2) / estives.supply#
+best.link = which(E == min(E))#
+simulated_network[exploits,best.link] <- simulated_network[exploits,best.link] + 1#
+#
+mean.dist.sim <- mean(apply(simulated_network * paiwise_distance_exploitations_estives, 1, sum))
+dim(simulated_network)
+simulated_network
+alpha = 10 #0.00000001#
+beta = nrow(random_compet_network) / sum(estives$SURFACE_HA)#
+paiwise_distance_exploitations_estives2 <- paiwise_distance_exploitations_estives#
+simulated_network <- matrix(0, ncol=ncol(observed_network), nrow=nrow(observed_network))#
+#estives.occupancy <- rep(0, length(estives$SURFACE_HA))#
+estives.supply <- round(beta * estives$SURFACE_HA)#
+exploits <- 1:nrow(observed_network)
+while(length(exploits) > 1){#
+	#E = t(apply(paiwise_distance_exploitations_estives2, 1, function(x) (alpha*x) / estives.supply))#
+	E = t(apply(paiwise_distance_exploitations_estives2, 1, function(x) (alpha*x) - estives.supply))#
+	best.link = which(E == min(E), arr.ind=T)#
+	simulated_network[exploits[best.link[1]],best.link[2]] <- simulated_network[exploits[best.link[1]],best.link[2]] + 1#
+	exploits = exploits[-best.link[1]]#
+	estives.supply[best.link[2]] <- estives.supply[best.link[2]] - 1#
+	estives.supply[which(estives.supply == 0)] <- 0.1#
+	paiwise_distance_exploitations_estives2 = paiwise_distance_exploitations_estives2[-best.link[1],]#
+}
+E = (alpha * paiwise_distance_exploitations_estives2) / estives.supply#
+best.link = which(E == min(E))#
+simulated_network[exploits,best.link] <- simulated_network[exploits,best.link] + 1#
+#
+mean.dist.sim <- mean(apply(simulated_network * paiwise_distance_exploitations_estives, 1, sum))
+mean.dist.sim
+hist(mean.dist.random, xlim=c(15000,60000), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+hist(mean.dist.compet, add=T, breaks=10, axes=F, col="light blue", border="dark grey")#
+text(x=mean(mean.dist.random), y=3500, "Null\ndistribution", pos=3)#
+text(x=mean(mean.dist.compet)+1000, y=2300, "Competition\nonly", pos=3, col="light blue")#
+lines(c(mean.dist.obs, mean.dist.obs), c(0,2000), col="dark green", lty=1, cex=2)#
+text(x=mean.dist.obs+1000, y=2500, "empirical", col="dark green", pos=3, srt=90)#
+lines(c(mean.dist.sim, mean.dist.sim), c(0,2000), col="orange", lty=1, cex=2)#
+text(x=mean.dist.sim+1000, y=2500, "simulated", col="orange", pos=3, srt=90)#
+lines(c(mean.dist.min, mean.dist.min), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.min+1000, y=2500, "nearest", col="dark grey", pos=3, srt=90)#
+lines(c(mean.dist.max, mean.dist.max), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.max+1000, y=2500, "furthest", col="dark grey", pos=3, srt=90)
+alpha = 0.1 #0.00000001#
+beta = nrow(random_compet_network) / sum(estives$SURFACE_HA)#
+paiwise_distance_exploitations_estives2 <- paiwise_distance_exploitations_estives#
+simulated_network <- matrix(0, ncol=ncol(observed_network), nrow=nrow(observed_network))#
+#estives.occupancy <- rep(0, length(estives$SURFACE_HA))#
+estives.supply <- round(beta * estives$SURFACE_HA)#
+exploits <- 1:nrow(observed_network)#
+while(length(exploits) > 1){#
+	#E = t(apply(paiwise_distance_exploitations_estives2, 1, function(x) (alpha*x) / estives.supply))#
+	E = t(apply(paiwise_distance_exploitations_estives2, 1, function(x) (alpha*x) - estives.supply))#
+	best.link = which(E == min(E), arr.ind=T)#
+	simulated_network[exploits[best.link[1]],best.link[2]] <- simulated_network[exploits[best.link[1]],best.link[2]] + 1#
+	exploits = exploits[-best.link[1]]#
+	estives.supply[best.link[2]] <- estives.supply[best.link[2]] - 1#
+	estives.supply[which(estives.supply == 0)] <- 0.1#
+	paiwise_distance_exploitations_estives2 = paiwise_distance_exploitations_estives2[-best.link[1],]#
+}#
+E = (alpha * paiwise_distance_exploitations_estives2) / estives.supply#
+best.link = which(E == min(E))#
+simulated_network[exploits,best.link] <- simulated_network[exploits,best.link] + 1#
+#
+mean.dist.sim <- mean(apply(simulated_network * paiwise_distance_exploitations_estives, 1, sum))
+mean.dist.sim
+alpha = 0.000001 #0.00000001#
+beta = nrow(random_compet_network) / sum(estives$SURFACE_HA)#
+paiwise_distance_exploitations_estives2 <- paiwise_distance_exploitations_estives#
+simulated_network <- matrix(0, ncol=ncol(observed_network), nrow=nrow(observed_network))#
+#estives.occupancy <- rep(0, length(estives$SURFACE_HA))#
+estives.supply <- round(beta * estives$SURFACE_HA)#
+exploits <- 1:nrow(observed_network)#
+while(length(exploits) > 1){#
+	#E = t(apply(paiwise_distance_exploitations_estives2, 1, function(x) (alpha*x) / estives.supply))#
+	E = t(apply(paiwise_distance_exploitations_estives2, 1, function(x) (alpha*x) - estives.supply))#
+	best.link = which(E == min(E), arr.ind=T)#
+	simulated_network[exploits[best.link[1]],best.link[2]] <- simulated_network[exploits[best.link[1]],best.link[2]] + 1#
+	exploits = exploits[-best.link[1]]#
+	estives.supply[best.link[2]] <- estives.supply[best.link[2]] - 1#
+	estives.supply[which(estives.supply == 0)] <- 0.1#
+	paiwise_distance_exploitations_estives2 = paiwise_distance_exploitations_estives2[-best.link[1],]#
+}#
+E = (alpha * paiwise_distance_exploitations_estives2) / estives.supply#
+best.link = which(E == min(E))#
+simulated_network[exploits,best.link] <- simulated_network[exploits,best.link] + 1#
+#
+mean.dist.sim <- mean(apply(simulated_network * paiwise_distance_exploitations_estives, 1, sum))
+mean.dist.sim
+alpha = 0.00000001 #0.00000001#
+beta = nrow(random_compet_network) / sum(estives$SURFACE_HA)#
+paiwise_distance_exploitations_estives2 <- paiwise_distance_exploitations_estives#
+simulated_network <- matrix(0, ncol=ncol(observed_network), nrow=nrow(observed_network))#
+#estives.occupancy <- rep(0, length(estives$SURFACE_HA))#
+estives.supply <- round(beta * estives$SURFACE_HA)#
+exploits <- 1:nrow(observed_network)#
+while(length(exploits) > 1){#
+	#E = t(apply(paiwise_distance_exploitations_estives2, 1, function(x) (alpha*x) / estives.supply))#
+	E = t(apply(paiwise_distance_exploitations_estives2, 1, function(x) (alpha*x) - estives.supply))#
+	best.link = which(E == min(E), arr.ind=T)#
+	simulated_network[exploits[best.link[1]],best.link[2]] <- simulated_network[exploits[best.link[1]],best.link[2]] + 1#
+	exploits = exploits[-best.link[1]]#
+	estives.supply[best.link[2]] <- estives.supply[best.link[2]] - 1#
+	estives.supply[which(estives.supply == 0)] <- 0.1#
+	paiwise_distance_exploitations_estives2 = paiwise_distance_exploitations_estives2[-best.link[1],]#
+}#
+E = (alpha * paiwise_distance_exploitations_estives2) / estives.supply#
+best.link = which(E == min(E))#
+simulated_network[exploits,best.link] <- simulated_network[exploits,best.link] + 1#
+#
+mean.dist.sim <- mean(apply(simulated_network * paiwise_distance_exploitations_estives, 1, sum))
+mean.dist.sim
+par(mfrow=c(2,4), mar=c(0.1,0.1,0.1,0.1), mgp=c(1.5,0.5,0))#
+#
+#Transhumance Cevennes#
+#
+# Plot France#
+map("worldHires", "France", col="gray90", fill=T, xlim=c(-5,8.2), ylim=c(41,51))#
+rect(xleft=3.1, ybottom=43.7, xright=4.7, ytop=44.7, border="green4")#
+#text(x=mean(c(-5,8.2)), y=51.5, "Geographical location", pos=3, cex=1.5)#
+#
+par(new=F, mar=c(2.5,0.5,1.8,0.5), mgp=c(1.5,0.5,0))#
+# Plot the empirical spatial network#
+plot(exploitations, pch=20, col="blue", cex=0.6, main="Spatial network")#
+plot(estives, col="red", border="red", add=T)#
+for(i in 1:length(observed_network[,1])){#
+	for(j in 1:length(observed_network[1,])){#
+		if(observed_network[i,j] == 1){#
+			lines(rbind(exploitations@coords[i,], estives@polygons[[j]]@Polygons[[1]]@labpt), col="dark grey")#
+		}#
+	}#
+}#
+plot(exploitations, pch=20, col="blue", cex=0.6, add=T)#
+plot(estives, col="red", border="red", add=T)#
+rect(xleft=708000, ybottom=6273000, xright=842000, ytop=6385000, border="green4")#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Spatial network", pos=3, cex=1.5)#
+#
+# Plot the empirical bipartite network#
+rownames(observed_network) <- paste("W",1:nrow(observed_network), sep="")#
+colnames(observed_network) <- paste("S",1:ncol(observed_network), sep="")#
+observed_network_DF <- melt(t(observed_network))[which(melt(t(observed_network))[,3]==1),1:2]#
+net <- graph_from_data_frame(observed_network_DF, vertices=c(rownames(t(observed_network)), colnames(t(observed_network))), directed=F)#
+V(net)$type <- c(rep(FALSE, 23), rep(TRUE,103))#
+V(net)$size <- 3#
+V(net)$frame.color <- c(rep("red", 23), rep("blue",103))#
+V(net)$color <- c(rep("red", 23), rep("blue",103))#
+V(net)$label <- ""#
+plot(net, layout=layout_as_bipartite(net)[,2:1], main="Bipartite network")#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Bipartite network", pos=3, cex=1.5)#
+# Empirical and simulated versus random distribution#
+#
+hist(mean.dist.random, xlim=c(15000,60000), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+hist(mean.dist.compet, add=T, breaks=10, axes=F, col="light blue", border="dark grey")#
+text(x=mean(mean.dist.random), y=3500, "Null\ndistribution", pos=3)#
+text(x=mean(mean.dist.compet)+1000, y=2300, "Competition\nonly", pos=3, col="light blue")#
+lines(c(mean.dist.obs, mean.dist.obs), c(0,2000), col="orange", lty=1, cex=2)#
+text(x=mean.dist.obs+1000, y=2500, "empirical", col="orange", pos=3, srt=90)#
+#lines(c(mean.dist.sim, mean.dist.sim), c(0,2000), col="orange", lty=1, cex=2)#
+#text(x=mean.dist.sim+1000, y=2500, "simulated", col="orange", pos=3, srt=90)#
+lines(c(mean.dist.min, mean.dist.min), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.min+1000, y=2500, "nearest", col="dark grey", pos=3, srt=90)#
+lines(c(mean.dist.max, mean.dist.max), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.max+1000, y=2500, "furthest", col="dark grey", pos=3, srt=90)#
+#WTSP#
+#
+# Plot North America#
+map("worldHires", c("USA", "Canada", "Mexico"), col="gray90", fill=T, xlim=c(-120,-70), ylim=c(25,70))#
+rect(xleft=-115, ybottom=29, xright=-50, ytop=55, border="green4")#
+points(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, cex=0.5, col="blue")#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, pch=20, cex=0.5, col="red")#
+#
+# Plot spatial network#
+par(new=F, mar=c(2.5,0.5,1.8,0.5), mgp=c(1.5,0.5,0))#
+# Plot the empirical spatial network#
+plot(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, col="blue", cex=0.6, axes=NULL, xlim=c(-115,-50), ylim=c(29,55))#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, col="red", border="red", pch=20, cex=0.6)#
+for(i in 1:length(WTSP_data$LON_winter)){#
+	lines(rbind(c(WTSP_data$LON_winter[i], WTSP_data$LAT_winter[i]), c(WTSP_data$LON_summer[i], WTSP_data$LAT_summer[i])), col="dark grey", type="l")#
+}#
+points(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, col="blue", cex=0.6, axes=NULL, xlim=c(-115,-50), ylim=c(29,55))#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, col="red", border="red", pch=20, cex=0.6)#
+rect(xleft=-115, ybottom=29, xright=-50, ytop=55, border="green4")#
+# Plot the empirical bipartite network#
+rownames(observed.network.WTSP) <- paste("W",1:nrow(observed.network.WTSP), sep="")#
+colnames(observed.network.WTSP) <- paste("S",1:ncol(observed.network.WTSP), sep="")#
+observed.network.WTSP_DF <- melt(t(observed.network.WTSP))[which(melt(t(observed.network.WTSP))[,3]==1),1:2]#
+net <- graph_from_data_frame(observed.network.WTSP_DF, vertices=c(rownames(t(observed.network.WTSP)), colnames(t(observed.network.WTSP))), directed=F)#
+V(net)$type <- c(rep(FALSE, dim(observed.network.WTSP)[2]), rep(TRUE,dim(observed.network.WTSP)[1]))#
+V(net)$size <- 3#
+V(net)$frame.color <- c(rep("red", dim(observed.network.WTSP)[2]), rep("blue",dim(observed.network.WTSP)[1]))#
+V(net)$color <- c(rep("red", dim(observed.network.WTSP)[2]), rep("blue",dim(observed.network.WTSP)[1]))#
+V(net)$label <- ""#
+plot(net, layout=layout_as_bipartite(net)[,2:1])#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Bipartite network", pos=3, cex=1.5)#
+# Empirical and simulated versus random distribution#
+#
+hist(mean.dist.random.WTSP, xlim=c(0,2000), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+text(x=mean(mean.dist.random.WTSP), y=3500, "Null\ndistribution", pos=3)#
+hist(mean.dist.min.WTSP, add=T, breaks=5, axes=F, col="light grey", border="grey")#
+text(x=mean(mean.dist.min.WTSP), y=4000, "nearest", pos=3, col="dark grey")#
+#hist(mean.dist.max.WTSP, add=T, breaks=5, axes=F, col="orange", border="dark grey")#
+lines(c(mean.dist.compet.WTSP, mean.dist.compet.WTSP), c(0,2000), col="light blue", lty=1, cex=2)#
+text(x= mean.dist.compet.WTSP+25, y=2700, "Competition only", col="light blue", pos=3, srt=90)#
+lines(c(mean.dist.obs.WTSP, mean.dist.obs.WTSP), c(0,2000), col="orange", lty=1, cex=2)#
+text(x= mean.dist.obs.WTSP+25, y=2500, "empirical", col="orange", pos=3, srt=90)
+par(mfrow=c(2,4), mar=c(0.1,0.1,0.1,0.1), mgp=c(1.5,0.5,0))
+# Plot France#
+map("worldHires", "France", col="gray90", fill=T, xlim=c(-5,8.2), ylim=c(41,51))#
+rect(xleft=3.1, ybottom=43.7, xright=4.7, ytop=44.7, border="green4")#
+#text(x=mean(c(-5,8.2)), y=51.5, "Geographical location", pos=3, cex=1.5)#
+#
+par(new=F, mar=c(2.5,0.5,1.8,0.5), mgp=c(1.5,0.5,0))#
+# Plot the empirical spatial network#
+plot(exploitations, pch=20, col="blue", cex=0.6, main="Spatial network")#
+plot(estives, col="red", border="red", add=T)#
+for(i in 1:length(observed_network[,1])){#
+	for(j in 1:length(observed_network[1,])){#
+		if(observed_network[i,j] == 1){#
+			lines(rbind(exploitations@coords[i,], estives@polygons[[j]]@Polygons[[1]]@labpt), col="dark grey")#
+		}#
+	}#
+}#
+plot(exploitations, pch=20, col="blue", cex=0.6, add=T)#
+plot(estives, col="red", border="red", add=T)#
+rect(xleft=708000, ybottom=6273000, xright=842000, ytop=6385000, border="green4")#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Spatial network", pos=3, cex=1.5)#
+#
+# Plot the empirical bipartite network#
+rownames(observed_network) <- paste("W",1:nrow(observed_network), sep="")#
+colnames(observed_network) <- paste("S",1:ncol(observed_network), sep="")#
+observed_network_DF <- melt(t(observed_network))[which(melt(t(observed_network))[,3]==1),1:2]#
+net <- graph_from_data_frame(observed_network_DF, vertices=c(rownames(t(observed_network)), colnames(t(observed_network))), directed=F)#
+V(net)$type <- c(rep(FALSE, 23), rep(TRUE,103))#
+V(net)$size <- 3#
+V(net)$frame.color <- c(rep("red", 23), rep("blue",103))#
+V(net)$color <- c(rep("red", 23), rep("blue",103))#
+V(net)$label <- ""#
+plot(net, layout=layout_as_bipartite(net)[,2:1], main="Bipartite network")#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Bipartite network", pos=3, cex=1.5)#
+# Empirical and simulated versus random distribution#
+#
+hist(mean.dist.random, xlim=c(15000,60000), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+hist(mean.dist.compet, add=T, breaks=10, axes=F, col="light blue", border="dark grey")#
+text(x=mean(mean.dist.random), y=3500, "Null\ndistribution", pos=3)#
+text(x=mean(mean.dist.compet)+1000, y=2300, "Competition\nonly", pos=3, col="light blue")#
+lines(c(mean.dist.obs, mean.dist.obs), c(0,2000), col="orange", lty=1, cex=2)#
+text(x=mean.dist.obs+1000, y=2500, "empirical", col="orange", pos=3, srt=90)#
+#lines(c(mean.dist.sim, mean.dist.sim), c(0,2000), col="orange", lty=1, cex=2)#
+#text(x=mean.dist.sim+1000, y=2500, "simulated", col="orange", pos=3, srt=90)#
+lines(c(mean.dist.min, mean.dist.min), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.min+1000, y=2500, "nearest", col="dark grey", pos=3, srt=90)#
+lines(c(mean.dist.max, mean.dist.max), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.max+1000, y=2500, "furthest", col="dark grey", pos=3, srt=90)#
+#WTSP#
+#
+# Plot North America#
+map("worldHires", c("USA", "Canada", "Mexico"), col="gray90", fill=T, xlim=c(-120,-70), ylim=c(25,70))#
+rect(xleft=-115, ybottom=29, xright=-50, ytop=55, border="green4")#
+points(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, cex=0.5, col="blue")#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, pch=20, cex=0.5, col="red")#
+#
+# Plot spatial network#
+par(new=F, mar=c(2.5,0.5,1.8,0.5), mgp=c(1.5,0.5,0))#
+# Plot the empirical spatial network#
+plot(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, col="blue", cex=0.6, axes=NULL, xlim=c(-115,-50), ylim=c(29,55))#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, col="red", border="red", pch=20, cex=0.6)#
+for(i in 1:length(WTSP_data$LON_winter)){#
+	lines(rbind(c(WTSP_data$LON_winter[i], WTSP_data$LAT_winter[i]), c(WTSP_data$LON_summer[i], WTSP_data$LAT_summer[i])), col="dark grey", type="l")#
+}#
+points(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, col="blue", cex=0.6, axes=NULL, xlim=c(-115,-50), ylim=c(29,55))#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, col="red", border="red", pch=20, cex=0.6)#
+rect(xleft=-115, ybottom=29, xright=-50, ytop=55, border="green4")#
+# Plot the empirical bipartite network#
+rownames(observed.network.WTSP) <- paste("W",1:nrow(observed.network.WTSP), sep="")#
+colnames(observed.network.WTSP) <- paste("S",1:ncol(observed.network.WTSP), sep="")#
+observed.network.WTSP_DF <- melt(t(observed.network.WTSP))[which(melt(t(observed.network.WTSP))[,3]==1),1:2]#
+net <- graph_from_data_frame(observed.network.WTSP_DF, vertices=c(rownames(t(observed.network.WTSP)), colnames(t(observed.network.WTSP))), directed=F)#
+V(net)$type <- c(rep(FALSE, dim(observed.network.WTSP)[2]), rep(TRUE,dim(observed.network.WTSP)[1]))#
+V(net)$size <- 3#
+V(net)$frame.color <- c(rep("red", dim(observed.network.WTSP)[2]), rep("blue",dim(observed.network.WTSP)[1]))#
+V(net)$color <- c(rep("red", dim(observed.network.WTSP)[2]), rep("blue",dim(observed.network.WTSP)[1]))#
+V(net)$label <- ""#
+plot(net, layout=layout_as_bipartite(net)[,2:1])#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Bipartite network", pos=3, cex=1.5)#
+# Empirical and simulated versus random distribution#
+#
+hist(mean.dist.random.WTSP, xlim=c(0,2000), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+text(x=mean(mean.dist.random.WTSP), y=3500, "Null\ndistribution", pos=3)#
+hist(mean.dist.min.WTSP, add=T, breaks=5, axes=F, col="light grey", border="grey")#
+text(x=mean(mean.dist.min.WTSP), y=4000, "nearest", pos=3, col="dark grey")#
+#hist(mean.dist.max.WTSP, add=T, breaks=5, axes=F, col="orange", border="dark grey")#
+lines(c(mean.dist.compet.WTSP, mean.dist.compet.WTSP), c(0,2000), col="light blue", lty=1, cex=2)#
+text(x= mean.dist.compet.WTSP+25, y=2700, "Competition only", col="light blue", pos=3, srt=90)#
+lines(c(mean.dist.obs.WTSP, mean.dist.obs.WTSP), c(0,2000), col="orange", lty=1, cex=2)#
+text(x= mean.dist.obs.WTSP+25, y=2500, "empirical", col="orange", pos=3, srt=90)
+# Plot France#
+map("worldHires", "France", col="gray90", fill=T, xlim=c(-5,8.2), ylim=c(41,51))#
+rect(xleft=3.1, ybottom=43.7, xright=4.7, ytop=44.7, border="green4")#
+#text(x=mean(c(-5,8.2)), y=51.5, "Geographical location", pos=3, cex=1.5)#
+#
+par(new=F, mar=c(2.5,0.5,1.8,0.5), mgp=c(1.5,0.5,0))#
+# Plot the empirical spatial network#
+plot(exploitations, pch=20, col="blue", cex=0.6, main="Spatial network")#
+plot(estives, col="red", border="red", add=T)#
+for(i in 1:length(observed_network[,1])){#
+	for(j in 1:length(observed_network[1,])){#
+		if(observed_network[i,j] == 1){#
+			lines(rbind(exploitations@coords[i,], estives@polygons[[j]]@Polygons[[1]]@labpt), col="dark grey")#
+		}#
+	}#
+}#
+plot(exploitations, pch=20, col="blue", cex=0.6, add=T)#
+plot(estives, col="red", border="red", add=T)
+rect(xleft=708000, ybottom=6273000, xright=842000, ytop=6385000, border="green4")
+par(mfrow=c(2,4), mar=c(0.1,0.1,0.1,0.1), mgp=c(1.5,0.5,0))#
+#
+#Transhumance Cevennes#
+#
+# Plot France#
+map("worldHires", "France", col="gray90", fill=T, xlim=c(-5,8.2), ylim=c(41,51))#
+rect(xleft=3.1, ybottom=43.7, xright=4.7, ytop=44.7, border="green4")#
+#text(x=mean(c(-5,8.2)), y=51.5, "Geographical location", pos=3, cex=1.5)#
+#
+par(new=F, mar=c(2.5,0.5,1.8,0.5), mgp=c(1.5,0.5,0))#
+# Plot the empirical spatial network#
+plot(exploitations, pch=20, col="blue", cex=0.6, main="Spatial network")#
+plot(estives, col="red", border="red", add=T)#
+for(i in 1:length(observed_network[,1])){#
+	for(j in 1:length(observed_network[1,])){#
+		if(observed_network[i,j] == 1){#
+			lines(rbind(exploitations@coords[i,], estives@polygons[[j]]@Polygons[[1]]@labpt), col="dark grey")#
+		}#
+	}#
+}#
+plot(exploitations, pch=20, col="blue", cex=0.6, add=T)#
+plot(estives, col="red", border="red", add=T)#
+rect(xleft=708000, ybottom=6273000, xright=842000, ytop=6385000, border="green4")#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Spatial network", pos=3, cex=1.5)#
+#
+# Plot the empirical bipartite network#
+rownames(observed_network) <- paste("W",1:nrow(observed_network), sep="")#
+colnames(observed_network) <- paste("S",1:ncol(observed_network), sep="")#
+observed_network_DF <- melt(t(observed_network))[which(melt(t(observed_network))[,3]==1),1:2]#
+net <- graph_from_data_frame(observed_network_DF, vertices=c(rownames(t(observed_network)), colnames(t(observed_network))), directed=F)#
+V(net)$type <- c(rep(FALSE, 23), rep(TRUE,103))#
+V(net)$size <- 3#
+V(net)$frame.color <- c(rep("red", 23), rep("blue",103))#
+V(net)$color <- c(rep("red", 23), rep("blue",103))#
+V(net)$label <- ""#
+plot(net, layout=layout_as_bipartite(net)[,2:1], main="Bipartite network")#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Bipartite network", pos=3, cex=1.5)#
+# Empirical and simulated versus random distribution#
+#
+hist(mean.dist.random, xlim=c(15000,60000), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+hist(mean.dist.compet, add=T, breaks=10, axes=F, col="light blue", border="dark grey")#
+text(x=mean(mean.dist.random), y=3500, "Null\ndistribution", pos=3)#
+text(x=mean(mean.dist.compet)+1000, y=2300, "Competition\nonly", pos=3, col="light blue")#
+lines(c(mean.dist.obs, mean.dist.obs), c(0,2000), col="orange", lty=1, cex=2)#
+text(x=mean.dist.obs+1000, y=2500, "empirical", col="orange", pos=3, srt=90)#
+#lines(c(mean.dist.sim, mean.dist.sim), c(0,2000), col="orange", lty=1, cex=2)#
+#text(x=mean.dist.sim+1000, y=2500, "simulated", col="orange", pos=3, srt=90)#
+lines(c(mean.dist.min, mean.dist.min), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.min+1000, y=2500, "nearest", col="dark grey", pos=3, srt=90)#
+lines(c(mean.dist.max, mean.dist.max), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.max+1000, y=2500, "furthest", col="dark grey", pos=3, srt=90)#
+#WTSP#
+#
+# Plot North America#
+map("worldHires", c("USA", "Canada", "Mexico"), col="gray90", fill=T, xlim=c(-120,-70), ylim=c(25,70))#
+rect(xleft=-115, ybottom=29, xright=-50, ytop=55, border="green4")#
+points(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, cex=0.5, col="blue")#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, pch=20, cex=0.5, col="red")#
+#
+# Plot spatial network#
+par(new=F, mar=c(2.5,0.5,1.8,0.5), mgp=c(1.5,0.5,0))#
+# Plot the empirical spatial network#
+plot(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, col="blue", cex=0.6, axes=NULL, xlim=c(-115,-50), ylim=c(29,55))#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, col="red", border="red", pch=20, cex=0.6)#
+for(i in 1:length(WTSP_data$LON_winter)){#
+	lines(rbind(c(WTSP_data$LON_winter[i], WTSP_data$LAT_winter[i]), c(WTSP_data$LON_summer[i], WTSP_data$LAT_summer[i])), col="dark grey", type="l")#
+}#
+points(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, col="blue", cex=0.6, axes=NULL, xlim=c(-115,-50), ylim=c(29,55))#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, col="red", border="red", pch=20, cex=0.6)#
+rect(xleft=-115, ybottom=29, xright=-50, ytop=55, border="green4")#
+# Plot the empirical bipartite network#
+rownames(observed.network.WTSP) <- paste("W",1:nrow(observed.network.WTSP), sep="")#
+colnames(observed.network.WTSP) <- paste("S",1:ncol(observed.network.WTSP), sep="")#
+observed.network.WTSP_DF <- melt(t(observed.network.WTSP))[which(melt(t(observed.network.WTSP))[,3]==1),1:2]#
+net <- graph_from_data_frame(observed.network.WTSP_DF, vertices=c(rownames(t(observed.network.WTSP)), colnames(t(observed.network.WTSP))), directed=F)#
+V(net)$type <- c(rep(FALSE, dim(observed.network.WTSP)[2]), rep(TRUE,dim(observed.network.WTSP)[1]))#
+V(net)$size <- 3#
+V(net)$frame.color <- c(rep("red", dim(observed.network.WTSP)[2]), rep("blue",dim(observed.network.WTSP)[1]))#
+V(net)$color <- c(rep("red", dim(observed.network.WTSP)[2]), rep("blue",dim(observed.network.WTSP)[1]))#
+V(net)$label <- ""#
+plot(net, layout=layout_as_bipartite(net)[,2:1])#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Bipartite network", pos=3, cex=1.5)#
+# Empirical and simulated versus random distribution#
+#
+hist(mean.dist.random.WTSP, xlim=c(0,2000), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+text(x=mean(mean.dist.random.WTSP), y=3500, "Null\ndistribution", pos=3)#
+hist(mean.dist.min.WTSP, add=T, breaks=5, axes=F, col="light grey", border="grey")#
+text(x=mean(mean.dist.min.WTSP), y=4000, "nearest", pos=3, col="dark grey")#
+#hist(mean.dist.max.WTSP, add=T, breaks=5, axes=F, col="orange", border="dark grey")#
+lines(c(mean.dist.compet.WTSP, mean.dist.compet.WTSP), c(0,2000), col="light blue", lty=1, cex=2)#
+text(x= mean.dist.compet.WTSP+25, y=2700, "Competition only", col="light blue", pos=3, srt=90)#
+lines(c(mean.dist.obs.WTSP, mean.dist.obs.WTSP), c(0,2000), col="orange", lty=1, cex=2)#
+text(x= mean.dist.obs.WTSP+25, y=2500, "empirical", col="orange", pos=3, srt=90)
+par(mfrow=c(2,4), mar=c(0.1,0.1,0.1,0.1), mgp=c(1.5,0.5,0))#
+#
+#Transhumance Cevennes#
+#
+# Plot France#
+map("worldHires", "France", col="gray90", fill=T, xlim=c(-5,8.2), ylim=c(41,51))#
+rect(xleft=3.1, ybottom=43.7, xright=4.7, ytop=44.7, border="green4")#
+#text(x=mean(c(-5,8.2)), y=51.5, "Geographical location", pos=3, cex=1.5)#
+#
+par(new=F, mar=c(2.5,0.5,1.8,0.5), mgp=c(1.5,0.5,0))#
+# Plot the empirical spatial network#
+plot(exploitations, pch=20, col="blue", cex=0.6, main="Spatial network")#
+plot(estives, col="red", border="red", add=T)#
+for(i in 1:length(observed_network[,1])){#
+	for(j in 1:length(observed_network[1,])){#
+		if(observed_network[i,j] == 1){#
+			lines(rbind(exploitations@coords[i,], estives@polygons[[j]]@Polygons[[1]]@labpt), col="dark grey")#
+		}#
+	}#
+}#
+plot(exploitations, pch=20, col="blue", cex=0.6, add=T)#
+plot(estives, col="red", border="red", add=T)#
+rect(xleft=708000, ybottom=6273000, xright=842000, ytop=6385000, border="green4")#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Spatial network", pos=3, cex=1.5)#
+#
+# Plot the empirical bipartite network#
+rownames(observed_network) <- paste("W",1:nrow(observed_network), sep="")#
+colnames(observed_network) <- paste("S",1:ncol(observed_network), sep="")#
+observed_network_DF <- melt(t(observed_network))[which(melt(t(observed_network))[,3]==1),1:2]#
+net <- graph_from_data_frame(observed_network_DF, vertices=c(rownames(t(observed_network)), colnames(t(observed_network))), directed=F)#
+V(net)$type <- c(rep(FALSE, 23), rep(TRUE,103))#
+V(net)$size <- 3#
+V(net)$frame.color <- c(rep("red", 23), rep("blue",103))#
+V(net)$color <- c(rep("red", 23), rep("blue",103))#
+V(net)$label <- ""#
+plot(net, layout=layout_as_bipartite(net)[,2:1], main="Bipartite network")#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Bipartite network", pos=3, cex=1.5)#
+# Empirical and simulated versus random distribution#
+#
+hist(mean.dist.random, xlim=c(15000,60000), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+hist(mean.dist.compet, add=T, breaks=10, axes=F, col="light blue", border="dark grey")#
+text(x=mean(mean.dist.random), y=3500, "Null\ndistribution", pos=3)#
+text(x=mean(mean.dist.compet)+1000, y=2300, "Competition\nonly", pos=3, col="light blue")#
+lines(c(mean.dist.obs, mean.dist.obs), c(0,2000), col="orange", lty=1, cex=2)#
+text(x=mean.dist.obs+800, y=2500, "empirical", col="orange", pos=3, srt=90)#
+#lines(c(mean.dist.sim, mean.dist.sim), c(0,2000), col="orange", lty=1, cex=2)#
+#text(x=mean.dist.sim+1000, y=2500, "simulated", col="orange", pos=3, srt=90)#
+lines(c(mean.dist.min, mean.dist.min), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.min+800, y=2500, "nearest", col="dark grey", pos=3, srt=90)#
+lines(c(mean.dist.max, mean.dist.max), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.max+800, y=2500, "furthest", col="dark grey", pos=3, srt=90)#
+#WTSP#
+#
+# Plot North America#
+map("worldHires", c("USA", "Canada", "Mexico"), col="gray90", fill=T, xlim=c(-120,-70), ylim=c(25,70))#
+rect(xleft=-115, ybottom=29, xright=-50, ytop=55, border="green4")#
+points(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, cex=0.5, col="blue")#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, pch=20, cex=0.5, col="red")#
+#
+# Plot spatial network#
+par(new=F, mar=c(2.5,0.5,1.8,0.5), mgp=c(1.5,0.5,0))#
+# Plot the empirical spatial network#
+plot(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, col="blue", cex=0.6, axes=NULL, xlim=c(-115,-50), ylim=c(29,55))#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, col="red", border="red", pch=20, cex=0.6)#
+for(i in 1:length(WTSP_data$LON_winter)){#
+	lines(rbind(c(WTSP_data$LON_winter[i], WTSP_data$LAT_winter[i]), c(WTSP_data$LON_summer[i], WTSP_data$LAT_summer[i])), col="dark grey", type="l")#
+}#
+points(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, col="blue", cex=0.6, axes=NULL, xlim=c(-115,-50), ylim=c(29,55))#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, col="red", border="red", pch=20, cex=0.6)#
+rect(xleft=-115, ybottom=29, xright=-50, ytop=55, border="green4")#
+# Plot the empirical bipartite network#
+rownames(observed.network.WTSP) <- paste("W",1:nrow(observed.network.WTSP), sep="")#
+colnames(observed.network.WTSP) <- paste("S",1:ncol(observed.network.WTSP), sep="")#
+observed.network.WTSP_DF <- melt(t(observed.network.WTSP))[which(melt(t(observed.network.WTSP))[,3]==1),1:2]#
+net <- graph_from_data_frame(observed.network.WTSP_DF, vertices=c(rownames(t(observed.network.WTSP)), colnames(t(observed.network.WTSP))), directed=F)#
+V(net)$type <- c(rep(FALSE, dim(observed.network.WTSP)[2]), rep(TRUE,dim(observed.network.WTSP)[1]))#
+V(net)$size <- 3#
+V(net)$frame.color <- c(rep("red", dim(observed.network.WTSP)[2]), rep("blue",dim(observed.network.WTSP)[1]))#
+V(net)$color <- c(rep("red", dim(observed.network.WTSP)[2]), rep("blue",dim(observed.network.WTSP)[1]))#
+V(net)$label <- ""#
+plot(net, layout=layout_as_bipartite(net)[,2:1])#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Bipartite network", pos=3, cex=1.5)#
+# Empirical and simulated versus random distribution#
+#
+hist(mean.dist.random.WTSP, xlim=c(0,2000), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+text(x=mean(mean.dist.random.WTSP), y=3500, "Null\ndistribution", pos=3)#
+hist(mean.dist.min.WTSP, add=T, breaks=5, axes=F, col="light grey", border="grey")#
+text(x=mean(mean.dist.min.WTSP), y=4000, "nearest", pos=3, col="dark grey")#
+#hist(mean.dist.max.WTSP, add=T, breaks=5, axes=F, col="orange", border="dark grey")#
+lines(c(mean.dist.compet.WTSP, mean.dist.compet.WTSP), c(0,2000), col="light blue", lty=1, cex=2)#
+text(x= mean.dist.compet.WTSP+25, y=2750, "Competition only", col="light blue", pos=3, srt=90)#
+lines(c(mean.dist.obs.WTSP, mean.dist.obs.WTSP), c(0,2000), col="orange", lty=1, cex=2)#
+text(x= mean.dist.obs.WTSP+25, y=2500, "empirical", col="orange", pos=3, srt=90)
+map("worldHires", c("USA", "Canada", "Mexico"), col="gray90", fill=T, xlim=c(-105,-70), ylim=c(25,70))#
+rect(xleft=-115, ybottom=29, xright=-50, ytop=55, border="green4")#
+points(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, cex=0.5, col="blue")#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, pch=20, cex=0.5, col="red")
+par(mfrow=c(2,4), mar=c(0.1,2,0.1,0.1), mgp=c(1.5,0.5,0))
+map("worldHires", "France", col="gray90", fill=T, xlim=c(-5,8.2), ylim=c(41,51))#
+rect(xleft=3.1, ybottom=43.7, xright=4.7, ytop=44.7, border="green4")#
+#text(x=mean(c(-5,8.2)), y=51.5, "Geographical location", pos=3, cex=1.5)#
+#
+par(new=F, mar=c(2.5,0.5,1.8,0.5), mgp=c(1.5,0.5,0))#
+# Plot the empirical spatial network#
+plot(exploitations, pch=20, col="blue", cex=0.6, main="Spatial network")#
+plot(estives, col="red", border="red", add=T)#
+for(i in 1:length(observed_network[,1])){#
+	for(j in 1:length(observed_network[1,])){#
+		if(observed_network[i,j] == 1){#
+			lines(rbind(exploitations@coords[i,], estives@polygons[[j]]@Polygons[[1]]@labpt), col="dark grey")#
+		}#
+	}#
+}#
+plot(exploitations, pch=20, col="blue", cex=0.6, add=T)#
+plot(estives, col="red", border="red", add=T)#
+rect(xleft=708000, ybottom=6273000, xright=842000, ytop=6385000, border="green4")#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Spatial network", pos=3, cex=1.5)
+rownames(observed_network) <- paste("W",1:nrow(observed_network), sep="")#
+colnames(observed_network) <- paste("S",1:ncol(observed_network), sep="")#
+observed_network_DF <- melt(t(observed_network))[which(melt(t(observed_network))[,3]==1),1:2]#
+net <- graph_from_data_frame(observed_network_DF, vertices=c(rownames(t(observed_network)), colnames(t(observed_network))), directed=F)#
+V(net)$type <- c(rep(FALSE, 23), rep(TRUE,103))#
+V(net)$size <- 3#
+V(net)$frame.color <- c(rep("red", 23), rep("blue",103))#
+V(net)$color <- c(rep("red", 23), rep("blue",103))#
+V(net)$label <- ""#
+plot(net, layout=layout_as_bipartite(net)[,2:1], main="Bipartite network")#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Bipartite network", pos=3, cex=1.5)#
+# Empirical and simulated versus random distribution#
+#
+hist(mean.dist.random, xlim=c(15000,60000), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+hist(mean.dist.compet, add=T, breaks=10, axes=F, col="light blue", border="dark grey")#
+text(x=mean(mean.dist.random), y=3500, "Null\ndistribution", pos=3)#
+text(x=mean(mean.dist.compet)+1000, y=2300, "Competition\nonly", pos=3, col="light blue")#
+lines(c(mean.dist.obs, mean.dist.obs), c(0,2000), col="orange", lty=1, cex=2)#
+text(x=mean.dist.obs+600, y=2500, "empirical", col="orange", pos=3, srt=90)#
+#lines(c(mean.dist.sim, mean.dist.sim), c(0,2000), col="orange", lty=1, cex=2)#
+#text(x=mean.dist.sim+1000, y=2500, "simulated", col="orange", pos=3, srt=90)#
+lines(c(mean.dist.min, mean.dist.min), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.min+600, y=2500, "nearest", col="dark grey", pos=3, srt=90)#
+lines(c(mean.dist.max, mean.dist.max), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.max+600, y=2500, "furthest", col="dark grey", pos=3, srt=90)
+par(new=F, mar=c(0.1,2,0.1,0.1), mgp=c(1.5,0.5,0))#
+map("worldHires", c("USA", "Canada", "Mexico"), col="gray90", fill=T, xlim=c(-120,-70), ylim=c(25,70))#
+rect(xleft=-115, ybottom=29, xright=-50, ytop=55, border="green4")#
+points(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, cex=0.5, col="blue")#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, pch=20, cex=0.5, col="red")
+par(new=F, mar=c(2,5,2,2), mgp=c(1.5,0.5,0))#
+map("worldHires", c("USA", "Canada", "Mexico"), col="gray90", fill=T, xlim=c(-120,-70), ylim=c(25,70))#
+rect(xleft=-115, ybottom=29, xright=-50, ytop=55, border="green4")#
+points(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, cex=0.5, col="blue")#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, pch=20, cex=0.5, col="red")
+par(mfrow=c(2,4), mar=c(0.1,2,0.1,0.1), mgp=c(1.5,0.5,0))#
+#
+#Transhumance Cevennes#
+#
+# Plot France#
+map("worldHires", "France", col="gray90", fill=T, xlim=c(-5,8.2), ylim=c(41,51))#
+rect(xleft=3.1, ybottom=43.7, xright=4.7, ytop=44.7, border="green4")#
+#text(x=mean(c(-5,8.2)), y=51.5, "Geographical location", pos=3, cex=1.5)#
+#
+par(new=F, mar=c(2.5,0.5,1.8,0.5), mgp=c(1.5,0.5,0))#
+# Plot the empirical spatial network#
+plot(exploitations, pch=20, col="blue", cex=0.6, main="Spatial network")#
+plot(estives, col="red", border="red", add=T)#
+for(i in 1:length(observed_network[,1])){#
+	for(j in 1:length(observed_network[1,])){#
+		if(observed_network[i,j] == 1){#
+			lines(rbind(exploitations@coords[i,], estives@polygons[[j]]@Polygons[[1]]@labpt), col="dark grey")#
+		}#
+	}#
+}#
+plot(exploitations, pch=20, col="blue", cex=0.6, add=T)#
+plot(estives, col="red", border="red", add=T)#
+rect(xleft=708000, ybottom=6273000, xright=842000, ytop=6385000, border="green4")#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Spatial network", pos=3, cex=1.5)#
+#
+# Plot the empirical bipartite network#
+rownames(observed_network) <- paste("W",1:nrow(observed_network), sep="")#
+colnames(observed_network) <- paste("S",1:ncol(observed_network), sep="")#
+observed_network_DF <- melt(t(observed_network))[which(melt(t(observed_network))[,3]==1),1:2]#
+net <- graph_from_data_frame(observed_network_DF, vertices=c(rownames(t(observed_network)), colnames(t(observed_network))), directed=F)#
+V(net)$type <- c(rep(FALSE, 23), rep(TRUE,103))#
+V(net)$size <- 3#
+V(net)$frame.color <- c(rep("red", 23), rep("blue",103))#
+V(net)$color <- c(rep("red", 23), rep("blue",103))#
+V(net)$label <- ""#
+plot(net, layout=layout_as_bipartite(net)[,2:1], main="Bipartite network")#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Bipartite network", pos=3, cex=1.5)#
+# Empirical and simulated versus random distribution#
+#
+hist(mean.dist.random, xlim=c(15000,60000), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+hist(mean.dist.compet, add=T, breaks=10, axes=F, col="light blue", border="dark grey")#
+text(x=mean(mean.dist.random), y=3500, "Null\ndistribution", pos=3)#
+text(x=mean(mean.dist.compet)+1000, y=2300, "Competition\nonly", pos=3, col="light blue")#
+lines(c(mean.dist.obs, mean.dist.obs), c(0,2000), col="orange", lty=1, cex=2)#
+text(x=mean.dist.obs+600, y=2500, "empirical", col="orange", pos=3, srt=90)#
+#lines(c(mean.dist.sim, mean.dist.sim), c(0,2000), col="orange", lty=1, cex=2)#
+#text(x=mean.dist.sim+1000, y=2500, "simulated", col="orange", pos=3, srt=90)#
+lines(c(mean.dist.min, mean.dist.min), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.min+600, y=2500, "nearest", col="dark grey", pos=3, srt=90)#
+lines(c(mean.dist.max, mean.dist.max), c(0,2000), col="dark grey", lty=1, cex=2)#
+text(x=mean.dist.max+600, y=2500, "furthest", col="dark grey", pos=3, srt=90)#
+#WTSP#
+#
+# Plot North America#
+par(new=F, mar=c(2,5,2,2), mgp=c(1.5,0.5,0))#
+map("worldHires", c("USA", "Canada", "Mexico"), col="gray90", fill=T, xlim=c(-120,-70), ylim=c(25,70))#
+rect(xleft=-115, ybottom=29, xright=-50, ytop=55, border="green4")#
+points(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, cex=0.5, col="blue")#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, pch=20, cex=0.5, col="red")#
+#
+# Plot spatial network#
+par(new=F, mar=c(2.5,0.5,1.8,0.5), mgp=c(1.5,0.5,0))#
+# Plot the empirical spatial network#
+plot(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, col="blue", cex=0.6, axes=NULL, xlim=c(-115,-50), ylim=c(29,55))#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, col="red", border="red", pch=20, cex=0.6)#
+for(i in 1:length(WTSP_data$LON_winter)){#
+	lines(rbind(c(WTSP_data$LON_winter[i], WTSP_data$LAT_winter[i]), c(WTSP_data$LON_summer[i], WTSP_data$LAT_summer[i])), col="dark grey", type="l")#
+}#
+points(WTSP_data$LON_winter, WTSP_data$LAT_winter, pch=20, col="blue", cex=0.6, axes=NULL, xlim=c(-115,-50), ylim=c(29,55))#
+points(WTSP_data$LON_summer, WTSP_data$LAT_summer, col="red", border="red", pch=20, cex=0.6)#
+rect(xleft=-115, ybottom=29, xright=-50, ytop=55, border="green4")#
+# Plot the empirical bipartite network#
+rownames(observed.network.WTSP) <- paste("W",1:nrow(observed.network.WTSP), sep="")#
+colnames(observed.network.WTSP) <- paste("S",1:ncol(observed.network.WTSP), sep="")#
+observed.network.WTSP_DF <- melt(t(observed.network.WTSP))[which(melt(t(observed.network.WTSP))[,3]==1),1:2]#
+net <- graph_from_data_frame(observed.network.WTSP_DF, vertices=c(rownames(t(observed.network.WTSP)), colnames(t(observed.network.WTSP))), directed=F)#
+V(net)$type <- c(rep(FALSE, dim(observed.network.WTSP)[2]), rep(TRUE,dim(observed.network.WTSP)[1]))#
+V(net)$size <- 3#
+V(net)$frame.color <- c(rep("red", dim(observed.network.WTSP)[2]), rep("blue",dim(observed.network.WTSP)[1]))#
+V(net)$color <- c(rep("red", dim(observed.network.WTSP)[2]), rep("blue",dim(observed.network.WTSP)[1]))#
+V(net)$label <- ""#
+plot(net, layout=layout_as_bipartite(net)[,2:1])#
+#text(x=mean(c(708000, 842000)), y= 6385000, "Bipartite network", pos=3, cex=1.5)#
+# Empirical and simulated versus random distribution#
+#
+hist(mean.dist.random.WTSP, xlim=c(0,2000), ylim=c(0,4000), main="", xlab="Average distance", breaks=10, axes=F, col="grey", border="dark grey")#
+axis(side=2)#
+axis(side=1)#
+text(x=mean(mean.dist.random.WTSP), y=3500, "Null\ndistribution", pos=3)#
+hist(mean.dist.min.WTSP, add=T, breaks=5, axes=F, col="light grey", border="grey")#
+text(x=mean(mean.dist.min.WTSP), y=4000, "nearest", pos=3, col="dark grey")#
+#hist(mean.dist.max.WTSP, add=T, breaks=5, axes=F, col="orange", border="dark grey")#
+lines(c(mean.dist.compet.WTSP, mean.dist.compet.WTSP), c(0,2000), col="light blue", lty=1, cex=2)#
+text(x= mean.dist.compet.WTSP+25, y=2800, "Competition only", col="light blue", pos=3, srt=90)#
+lines(c(mean.dist.obs.WTSP, mean.dist.obs.WTSP), c(0,2000), col="orange", lty=1, cex=2)#
+text(x= mean.dist.obs.WTSP+25, y=2500, "empirical", col="orange", pos=3, srt=90)
+exp(-0.5 * 1)
+exp(-0.7 * 1)
+x = seq(0, 1, 0.01)
+y = exp(-x)
+plot(x, y)
+plot(x, y, pch=20)
+plot(x, y, pch=20, type="l")
+plot(x, y, pch=20, type="l", ylim=c(0,1))
+y2 = exp(-x * 2)
+points(x, y, pch=20, type="l", ylim=c(0,1))
+points(x, y2, pch=20, type="l", ylim=c(0,1))
+y3 = exp(-x * 4)
+points(x, y3, pch=20, type="l", ylim=c(0,1))
+y3 = exp(-x * 8)
+points(x, y4, pch=20, type="l", ylim=c(0,1))
+y4 = exp(-x * 8)
+points(x, y4, pch=20, type="l", ylim=c(0,1))
+plot(x, y, pch=20, type="l", ylim=c(0,1), xlab="Proportion of solvers", ylab="Pnot")
+points(x, y2, pch=20, type="l")#
+points(x, y3, pch=20, type="l")#
+points(x, y4, pch=20, type="l")
+y = exp(-x * 1)#
+y2 = exp(-x * 2)#
+y3 = exp(-x * 4)#
+y4 = exp(-x * 8)
+plot(x, y, pch=20, type="l", ylim=c(0,1), xlab="Proportion of solvers", ylab="Pnot")#
+points(x, y2, pch=20, type="l")#
+points(x, y3, pch=20, type="l")#
+points(x, y4, pch=20, type="l")
+y = exp(-0.1*x * 1)#
+y2 = exp(-0.1*x * 2)#
+y3 = exp(-0.1*x * 4)#
+y4 = exp(-0.1*x * 8)#
+points(x, y, pch=20, type="l", col="red")#
+points(x, y2, pch=20, type="l", col="red")#
+points(x, y3, pch=20, type="l", col="red")#
+points(x, y4, pch=20, type="l", col="red")
+x = seq(0, 1, 0.01)#
+#
+y = exp(-x * 1)#
+y2 = exp(-x * 2)#
+y3 = exp(-x * 4)#
+y4 = exp(-x * 8)#
+plot(x, y, pch=20, type="l", ylim=c(0,1), xlab="Proportion of solvers", ylab="Pnot")#
+points(x, y2, pch=20, type="l")#
+points(x, y3, pch=20, type="l")#
+points(x, y4, pch=20, type="l")#
+y = exp(-0.5*x * 1)#
+y2 = exp(-0.5*x * 2)#
+y3 = exp(-0.5*x * 4)#
+y4 = exp(-0.5*x * 8)#
+points(x, y, pch=20, type="l", col="red")#
+points(x, y2, pch=20, type="l", col="red")#
+points(x, y3, pch=20, type="l", col="red")#
+points(x, y4, pch=20, type="l", col="red")
+x = seq(0, 1, 0.01)#
+#
+y = exp(-x * 1)#
+y2 = exp(-x * 2)#
+y3 = exp(-x * 4)#
+y4 = exp(-x * 8)#
+plot(x, y, pch=20, type="l", ylim=c(0,1), xlab="Proportion of solvers", ylab="Pnot")#
+points(x, y2, pch=20, type="l")#
+points(x, y3, pch=20, type="l")#
+points(x, y4, pch=20, type="l")#
+y = exp(-0.3*x * 1)#
+y2 = exp(-0.3*x * 2)#
+y3 = exp(-0.3*x * 4)#
+y4 = exp(-0.3*x * 8)#
+points(x, y, pch=20, type="l", col="red")#
+points(x, y2, pch=20, type="l", col="red")#
+points(x, y3, pch=20, type="l", col="red")#
+points(x, y4, pch=20, type="l", col="red")
+x = seq(0, 1, 0.01)#
+#
+y = exp(-x * 1)#
+y2 = exp(-x * 2)#
+y3 = exp(-x * 4)#
+y4 = exp(-x * 8)#
+plot(x, y, pch=20, type="l", ylim=c(0,1), xlab="Proportion of solvers", ylab="Pnot")#
+points(x, y2, pch=20, type="l")#
+points(x, y3, pch=20, type="l")#
+points(x, y4, pch=20, type="l")#
+y = exp(-0.8*x * 1)#
+y2 = exp(-0.8*x * 2)#
+y3 = exp(-0.8*x * 4)#
+y4 = exp(-0.8*x * 8)#
+points(x, y, pch=20, type="l", col="red")#
+points(x, y2, pch=20, type="l", col="red")#
+points(x, y3, pch=20, type="l", col="red")#
+points(x, y4, pch=20, type="l", col="red")
 library(sp)#
-library(sna)#
-library(mapplots)#
+library(rgdal)#
+library(spatstat)#
+library(maptools)#
 library(igraph)#
-library(MASS)#
 library(tnet)#
+library(MASS)#
+library(mapplots)#
 #
-setwd("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-information-flow")#
+setwd("~/Wytham-tits-information-flow")#
 #
-# Load data#
-#
-load("Group_by_individual_all_winter_2013.RData")#
-load("Group_by_individual_data_all_winter_2013.RData")#
-#
-loggers_coords <- read.csv("Wytham_loggers_coordinates.csv")#
-#
-wyt <-readOGR("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-information-flow", "perimeter poly with clearings_region")#
+#Load data#
+load("data/Group_by_individual_all_winter_2013.RData")#
+load("data/Group_by_individual_data_all_winter_2013.RData")#
+load("data/movements_data.RData")#
+loggers_coords <- read.csv("data/Wytham_loggers_coordinates.csv")#
+wyt <-readOGR("~/Wytham-tits-information-flow/data", "perimeter poly with clearings_region")#
 poly.sp<-SpatialPolygons(list(wyt@polygons[[1]]))#
 poly.owin<-as(poly.sp,"owin")#
-# Change site label to match loggers coordinates#
 #
+#Change site label to match loggers coordinates#
 group_data[,1] <- as.character(group_data[,1])#
-#
 group_data$Location[which(group_data$Location == "1A")] <- "1a"#
 group_data$Location[which(group_data$Location == "1B")] <- "1b"#
 group_data$Location[which(group_data$Location == "1C")] <- "1c"#
@@ -747,345 +2151,269 @@ group_data$Location[which(group_data$Location == "8C")] <- "8c"#
 group_data$Location[which(group_data$Location == "8D")] <- "8d"#
 group_data$Location[which(group_data$Location == "8")] <- "8e"#
 group_data$Location[which(group_data$Location == "8F")] <- "8f"#
+group_by_individual = group_by_individual[do.call(order, group_data),] # A 1/0 table with feeding events in row (68057) and individuals in column (729)#
+group_data = group_data[do.call(order, group_data),]  # A table giving details for each feeding events (location, date and duration)#
+feeders.id <- unique(group_data[,1])
+setwd("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-information-flow")
+load("data/Group_by_individual_all_winter_2013.RData")#
+load("data/Group_by_individual_data_all_winter_2013.RData")#
+load("data/movements_data.RData")#
+loggers_coords <- read.csv("data/Wytham_loggers_coordinates.csv")#
+wyt <-readOGR("~/Wytham-tits-information-flow/data", "perimeter poly with clearings_region")#
+poly.sp<-SpatialPolygons(list(wyt@polygons[[1]]))#
+poly.owin<-as(poly.sp,"owin")
+group_data[,1] <- as.character(group_data[,1])#
+group_data$Location[which(group_data$Location == "1A")] <- "1a"#
+group_data$Location[which(group_data$Location == "1B")] <- "1b"#
+group_data$Location[which(group_data$Location == "1C")] <- "1c"#
+group_data$Location[which(group_data$Location == "1D")] <- "1d"#
+group_data$Location[which(group_data$Location == "1")] <- "1e"#
+group_data$Location[which(group_data$Location == "1F")] <- "1f"#
+group_data$Location[which(group_data$Location == "1G")] <- "1g"#
+group_data$Location[which(group_data$Location == "1H")] <- "1h"#
+group_data$Location[which(group_data$Location == "2A")] <- "2a"#
+group_data$Location[which(group_data$Location == "2B")] <- "2b"#
+group_data$Location[which(group_data$Location == "2C")] <- "2c"#
+group_data$Location[which(group_data$Location == "2D")] <- "2d"#
+group_data$Location[which(group_data$Location == "2")] <- "2e"#
+group_data$Location[which(group_data$Location == "2F")] <- "2f"#
+group_data$Location[which(group_data$Location == "2G")] <- "2g"#
+group_data$Location[which(group_data$Location == "2H")] <- "2h"#
+group_data$Location[which(group_data$Location == "2I")] <- "2i"#
+group_data$Location[which(group_data$Location == "3A")] <- "3a"#
+group_data$Location[which(group_data$Location == "3B")] <- "3b"#
+group_data$Location[which(group_data$Location == "3C")] <- "3c"#
+group_data$Location[which(group_data$Location == "3D")] <- "3d"#
+group_data$Location[which(group_data$Location == "3")] <- "3e"#
+group_data$Location[which(group_data$Location == "3F")] <- "3f"#
+group_data$Location[which(group_data$Location == "3G")] <- "3g"#
+group_data$Location[which(group_data$Location == "3H")] <- "3h"#
+group_data$Location[which(group_data$Location == "4A")] <- "4a"#
+group_data$Location[which(group_data$Location == "4B")] <- "4b"#
+group_data$Location[which(group_data$Location == "4C")] <- "4c"#
+group_data$Location[which(group_data$Location == "4D")] <- "4d"#
+group_data$Location[which(group_data$Location == "4")] <- "4e"#
+group_data$Location[which(group_data$Location == "4F")] <- "4f"#
+group_data$Location[which(group_data$Location == "4G")] <- "4g"#
+group_data$Location[which(group_data$Location == "4H")] <- "4h"#
+group_data$Location[which(group_data$Location == "4I")] <- "4i"#
+group_data$Location[which(group_data$Location == "5A")] <- "5a"#
+group_data$Location[which(group_data$Location == "5B")] <- "5b"#
+group_data$Location[which(group_data$Location == "5C")] <- "5c"#
+group_data$Location[which(group_data$Location == "5D")] <- "5d"#
+group_data$Location[which(group_data$Location == "5")] <- "5e"#
+group_data$Location[which(group_data$Location == "5F")] <- "5f"#
+group_data$Location[which(group_data$Location == "5G")] <- "5g"#
+group_data$Location[which(group_data$Location == "5H")] <- "5h"#
+group_data$Location[which(group_data$Location == "5I")] <- "5i"#
+group_data$Location[which(group_data$Location == "6A")] <- "6a"#
+group_data$Location[which(group_data$Location == "6B")] <- "6b"#
+group_data$Location[which(group_data$Location == "6C")] <- "6c"#
+group_data$Location[which(group_data$Location == "6D")] <- "6d"#
+group_data$Location[which(group_data$Location == "6")] <- "6e"#
+group_data$Location[which(group_data$Location == "6F")] <- "6f"#
+group_data$Location[which(group_data$Location == "6G")] <- "6g"#
+group_data$Location[which(group_data$Location == "6H")] <- "6h"#
+group_data$Location[which(group_data$Location == "6I")] <- "6i"#
+group_data$Location[which(group_data$Location == "7A")] <- "7a"#
+group_data$Location[which(group_data$Location == "7B")] <- "7b"#
+group_data$Location[which(group_data$Location == "7C")] <- "7c"#
+group_data$Location[which(group_data$Location == "7D")] <- "7d"#
+group_data$Location[which(group_data$Location == "7")] <- "7e"#
+group_data$Location[which(group_data$Location == "7F")] <- "7f"#
+group_data$Location[which(group_data$Location == "7G")] <- "7g"#
+group_data$Location[which(group_data$Location == "7H")] <- "7h"#
+group_data$Location[which(group_data$Location == "8B")] <- "8b"#
+group_data$Location[which(group_data$Location == "8C")] <- "8c"#
+group_data$Location[which(group_data$Location == "8D")] <- "8d"#
+group_data$Location[which(group_data$Location == "8")] <- "8e"#
+group_data$Location[which(group_data$Location == "8F")] <- "8f"#
+group_by_individual = group_by_individual[do.call(order, group_data),] # A 1/0 table with feeding events in row (68057) and individuals in column (729)#
+group_data = group_data[do.call(order, group_data),]  # A table giving details for each feeding events (location, date and duration)#
+feeders.id <- unique(group_data[,1])
+feeding.duration.obs <- group_data[,4] - group_data[,3]#
+group_data <- group_data[-which(feeding.duration.obs == 0),]#
+group_by_individual <- group_by_individual[-which(feeding.duration.obs == 0),]#
+feeding.duration.obs <- feeding.duration.obs[-which(feeding.duration.obs == 0)]#
 #
-group_by_individual = group_by_individual[do.call(order, group_data),]#
-group_data = group_data[do.call(order, group_data),]#
-Nb.contacts.per.ind <- apply(group_by_individual, 2, sum)#
-Nb.ind.per.contacts <- apply(group_by_individual, 1, sum)#
+#Get the total number of feeding events attended by each individual and the number of individuals per feeding event#
+Nb.events.per.ind <- as.vector(apply(group_by_individual, 2, sum))#
+Nb.inds.per.event <- as.vector(apply(group_by_individual, 1, sum))#
 #
-Nb.patches.per.ind <- vector()#
-for(i in 1:dim(group_by_individual)[2]){#
-	Nb.patches.per.ind[i] <- length(unique(group_data[which(group_by_individual[,i] == 1),1]))#
-}#
-#
-## Number of contact per patch#
-Nb.contacts.per.patch <- vector()#
+#Get the number of feeding events per feeder#
+Nb.events.per.feeder <- vector()#
 for(i in 1:length(unique(group_data$Location))){#
-	Nb.contacts.per.patch[i] <- length(which(group_data$Location == unique(group_data$Location)[i]))#
+	Nb.events.per.feeder[i] <- length(which(group_data$Location == unique(group_data$Location)[i]))#
 }#
-Nb.contacts.per.patch <- data.frame(unique(group_data$Location), as.numeric(Nb.contacts.per.patch))#
-#Nb.contacts.per.patch = Nb.contacts.per.patch[do.call(order, Nb.contacts.per.patch),]#
-## Number of individual per contact in each patch#
-Nb.ind.per.contact.per.patch <- list()#
+Nb.events.per.feeder <- data.frame(unique(group_data$Location), as.numeric(Nb.events.per.feeder))#
+#
+##Get the number of individuals per feeding events for each feeder #
+Nb.inds.per.event.per.feeder <- list()#
 for(i in 1:length(unique(group_data$Location))){#
-	Nb.ind.per.contact.per.patch[[i]] <- Nb.ind.per.contacts[which(group_data$Location == unique(group_data$Location)[i])]#
+	Nb.inds.per.event.per.feeder[[i]] <- Nb.inds.per.event[which(group_data$Location == unique(group_data$Location)[i])]#
 }#
-### THE MODEL#
 #
-# Modelling the frequency and "size" of contact events at each feeder#
+#Get the distance between each pair of feeder #
+feeders.dists = as.matrix(dist(loggers_coords[,2:3], upper=T, diag=T))#
 #
-# 1 weekend = 1350 minutes, and there are 14 week-ends#
-#
-contact.events <- list()#
-for(i in 1:length(Nb.contacts.per.patch[,1])){#
-	contact.events[[i]] <- unique(round(runif(Nb.contacts.per.patch[i,2], 0, 1350*14)))#
+#Get the number of feeding events per day and per week-end#
+daily.number.of.events <- vector()#
+for(i in 1:length(unique(group_data$Date))){#
+	daily.number.of.events[i] <- length(which(group_data$Date == unique(group_data$Date)[i]))#
 }#
-ind.per.contact <- list()#
-for(i in 1:length(contact.events)){#
-	ipc <- rep(0,length(contact.events[[i]]))#
-	for(j in 1:length(contact.events[[i]])){#
-		while(ipc[j] < 1){#
-			ipc[j] <- rpois(1, fitdistr(Nb.ind.per.contact.per.patch[[i]], "Poisson")$estimate)#
+weekend.number.of.events <- daily.number.of.events[seq(1, 28, 2)] + daily.number.of.events[seq(2, 28, 2)]#
+weekend.id <- c(1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12,13,13,14,14)#
+#
+#Compute the summary statistics (clustering coeficient of the weighted social network, and weigthed average distance on the spatial network) for the empirical data#
+summary.statistic.social.obs <- vector()#
+summary.statistic.spatial.obs <- vector()#
+for(w in 1:14){#
+	dates <- unique(group_data$Date)[which(weekend.id == w)]#
+	group_data_weekend <- group_data[which(group_data$Date == dates[1] | group_data$Date == dates[2]),]#
+	group_by_individual_weekend <- group_by_individual[which(group_data$Date == dates[1] | group_data$Date == dates[2]),]	#
+	#weighted spatial network	#
+	number.of.events.per.ind <- as.vector(apply(group_by_individual_weekend, 2, sum))	#
+	intersection.between.inds <- matrix(0, ncol=length(number.of.events.per.ind), nrow=length(number.of.events.per.ind)) #
+	for(i in 1:length(number.of.events.per.ind)){#
+		if(length(which(group_by_individual_weekend[,i] == 1)) > 1){#
+			intersection.between.inds[i,] <- as.vector(apply(group_by_individual_weekend[which(group_by_individual_weekend[,i] == 1), ], 2, sum))#
+		}else if(length(which(group_by_individual_weekend[,i] == 1)) == 1){#
+			intersection.between.inds[i,] <- as.vector(group_by_individual_weekend[which(group_by_individual_weekend[,i] == 1), ])#
+		}#
+	}	#
+	union.between.inds <- matrix(0, ncol=length(number.of.events.per.ind), nrow=length(number.of.events.per.ind)) #
+	for(i in 1:length(number.of.events.per.ind)){#
+		for(j in 1:length(number.of.events.per.ind)){#
+			union.between.inds[i,j] <- number.of.events.per.ind[i] + number.of.events.per.ind[j] - intersection.between.inds[i,j]#
+		}#
+	}	#
+	overlap.between.inds <- intersection.between.inds / union.between.inds#
+	diag(overlap.between.inds) <- 0	#
+	overlap.between.inds[which(overlap.between.inds == "NaN")] <- 0#
+	g <- graph.adjacency(overlap.between.inds, weighted=T)#
+	net <- get.data.frame(g)#
+	summary.statistic.social.obs[w] <- clustering_w(net, measure="am")#
+	#weighted spatial network#
+	inds.per.feeder <- list()#
+	for(i in 1:length(feeders.id)){#
+		indss <- vector()#
+		if(length(group_by_individual_weekend[which(group_data_weekend[,1] == feeders.id[i]),1]) > 0){#
+			for(j in 1:length(group_by_individual_weekend[which(group_data_weekend[,1] == feeders.id[i]),1])){#
+				indss <- c(indss, which(group_by_individual_weekend[which(group_data_weekend[,1] == feeders.id[i]),][j,] == 1))#
+			}#
+			inds.per.feeder[[i]] <- as.vector(indss)#
+		}#
+	}	#
+	inds.per.feeder.unique <- lapply(inds.per.feeder, unique)#
+	feeder.size <- unlist(lapply(inds.per.feeder.unique, length))#
+	intersection.between.feeders <- matrix(0, ncol=length(inds.per.feeder.unique), nrow=length(inds.per.feeder.unique)) #
+	for(i in 1:length(inds.per.feeder.unique)){#
+		for(j in 1:length(inds.per.feeder.unique)){#
+			intersection.between.feeders[i,j] <- length(which(match(inds.per.feeder.unique[[i]], inds.per.feeder.unique[[j]], nomatch=0) != 0))#
 		}#
 	}#
-	ind.per.contact[[i]] <- ipc#
+	union.between.feeders <- matrix(0, ncol=length(inds.per.feeder), nrow=length(inds.per.feeder)) #
+	for(i in 1:length(inds.per.feeder)){#
+		for(j in 1:length(inds.per.feeder)){#
+			union.between.feeders[i,j] <- feeder.size[i] + feeder.size[j] - intersection.between.feeders[i,j]#
+		}#
+	}#
+	overlap.between.feeders <- intersection.between.feeders / union.between.feeders#
+	diag(overlap.between.feeders) <- 0#
+	overlap.between.feeders[which(overlap.between.feeders == "NaN")] <- 0#
+	summary.statistic.spatial.obs[w] <- (sum(apply(D * overlap.between.feeders, 1, sum)) / 2) / (sum(apply(overlap.between.feeders, 1, sum)) / 2)#
+}
+feeding.events <- list()#
+for(i in 1:length(Nb.events.per.feeder[,1])){#
+	feeding.events[[i]] <- unique(round(runif(Nb.events.per.feeder[i,2], 0, 1350*14)))#
 }#
-#
-contact.events.feeder <- vector()#
-contact.events.numberindividuals <- vector()#
-for(i in 1:max(unlist(contact.events))){#
-	events.locations <- unlist(lapply(contact.events, function(x) match(i, x)))#
+inds.per.event <- list()#
+for(i in 1:length(feeding.events)){#
+	ipc <- rep(0,length(feeding.events[[i]]))#
+	for(j in 1:length(feeding.events[[i]])){#
+		while(ipc[j] < 1){#
+			ipc[j] <- rpois(1, fitdistr(Nb.inds.per.event.per.feeder[[i]], "Poisson")$estimate)#
+		}#
+	}#
+	inds.per.event[[i]] <- ipc#
+}#
+events.feederlocation <- vector()#
+events.numberindividuals <- vector()#
+for(i in 1:max(unlist(feeding.events))){#
+	events.locations <- unlist(lapply(feeding.events, function(x) match(i, x)))#
 	if(length(which(events.locations > 0)) > 1){#
 		events.feeder <- sample(which(events.locations > 0))#
 	}else{#
 		events.feeder <- which(events.locations > 0)#
 	}#
 	if(length(events.feeder > 0)){#
-		events.numberindividuals <- vector()#
+		events.nb.ind <- vector()#
 		for(j in 1:length(events.feeder)){#
-			events.numberindividuals[j] <- ind.per.contact[[events.feeder[j]]][events.locations[events.feeder[j]]]#
+			events.nb.ind[j] <- inds.per.event[[events.feeder[j]]][events.locations[events.feeder[j]]]#
 		}#
-		contact.events.feeder <- c(contact.events.feeder, events.feeder)#
-		contact.events.numberindividuals <- c(contact.events.numberindividuals, events.numberindividuals)#
+		events.feederlocation <- c(events.feederlocation, events.feeder)#
+		events.numberindividuals <- c(events.numberindividuals, events.nb.ind)#
 	}#
 }#
-contact.events.table <- data.frame(contact.events.feeder, contact.events.numberindividuals)#
-colnames(contact.events.table) <- c("Feeder", "No of individuals")#
-#
-# unique(group_data$Location)[contact.events.table[,1]]#
-D = as.matrix(dist(loggers_coords[,2:3], upper=T, diag=T)) # Matrix of distances between each pair of patches
-alpha = 0.05#
-#
-inds = 1:729  # individuals #
-P = 65  # total number of patches#
-#
-# Initiation: match every individual to a patch#
-inds.patch = round(unlist(lapply(Nb.ind.per.contact.per.patch, sum)) / sum(unlist(lapply(Nb.ind.per.contact.per.patch, sum))) * length(inds))#
-N = sum(inds.patch) # total number of individuals#
-#CI = matrix(0, ncol=N, nrow=N)  # Matrix of number of contact that each individual had with each other individual#
-#
-EI = matrix(0, ncol=N, nrow=dim(contact.events.table)[1])#
-FI = matrix(0, ncol=P, nrow=N)  # Matrix of number of events previously attended by each individual in each patch#
-#
+events.table <- data.frame(events.feederlocation, events.numberindividuals)#
+colnames(events.table) <- c("Feeder", "No_individuals")#
+events.table[,3] <- rep(0, length(events.table[,1]))#
+colnames(events.table)[3] <- "Duration"#
+for(i in 1:length(events.table$Duration)){#
+	events.table[i,3] <- sample(feeding.duration.obs[which(Nb.inds.per.event==events.table[i,2])], 1)#
+}
+alpha = 0.017  # Related to the movement of birds  #
+beta = 0.0015   # Related to the infection rate    #
+#Initiation: match every individual to a feeder#
+inds = 1:729  # individuals#
+feeders = 1:length(feeders.id) # feeders#
+inds.feeder = round(unlist(lapply(Nb.inds.per.event.per.feeder, sum)) / sum(unlist(lapply(Nb.inds.per.event.per.feeder, sum))) * length(inds))#
+N = sum(inds.feeder) # total number of individuals#
+EI = matrix(0, ncol=N, nrow=dim(events.table)[1])  # Table of 1/0 with feeding event in row (in simulation order) and individual in column#
+FI = matrix(0, ncol=length(feeders), nrow=N)  # Table of number of feeding events previously attended by each individual at each feeder#
 inds2 <- 1:N#
-for(i in 1:length(inds.patch)){#
-	ind.sampled <- sample(inds2, inds.patch[i])#
+for(i in 1:length(inds.feeder)){#
+	ind.sampled <- sample(inds2, inds.feeder[i])#
 	FI[ind.sampled, i] <- 1#
 	inds2 <- inds2[-match(ind.sampled, inds2)]#
 }#
 #
-#FI2 <- FI#
+#All individuals set to susceptible#
+individual.status <- rep("S", N)#
 #
-# For each event Ept (occuring in patch p at time t), compute the probability of each individual i being sampled to attend#
-#attending.individuals <- list()#
-for(event in 1:dim(contact.events.table)[1]){#
-	p = contact.events.table[event,1]  # in which patch does the event occur#
-	weights.ip <- vector()#
+#Release some Ls and some Rs#
+individual.status[sample(which(FI[,3] == 1), 2)] <- "R"#
+individual.status[sample(which(FI[,7] == 1), 2)] <- "R"#
+individual.status[sample(which(FI[,11] == 1), 2)] <- "L"#
+individual.status[sample(which(FI[,50] == 1), 2)] <- "L"#
+individual.status[sample(which(FI[,59] == 1), 2)] <- "L"
+for(event in 1:dim(events.table)[1]){#
+	f = events.table[event,1]  # at which feeder does the event take place#
+	Pie <- vector()#
 	for(i in 1:N){#
-		weights.ip[i] = sum(exp( - alpha * sum(FI[i,]*(1+D[p,])) / sum(FI[i,]) ))#
+		Pie[i] = sum(exp( - alpha * sum(FI[i,]*(1+feeders.dists[f,])) / sum(FI[i,]) ))#
 	}#
-	#weights.ip[which(weights.ip < 0.00000001)] <- 0.00000001#
-	PiEpt = weights.ip / sum(weights.ip)#
-	attending.ind <- sample(1:N, contact.events.table[event,2], prob=PiEpt)	#
-	#attending.individuals[[event]] <- attending.ind#
-	FI[attending.ind, p] <- FI[attending.ind, p] + 1#
-	EI[event,attending.ind] <- 1#
+	Pie = Pie / sum(Pie)#
+	attending.inds <- sample(1:N, events.table[event,2], prob=Pie)	#
+	FI[attending.inds, f] <- FI[attending.inds, f] + 1#
+	#Spread of information#
+	Pr.nothing.happens = exp(- beta * ((sum(individual.status[attending.inds] == "L") + sum(individual.status[attending.inds] == "R")) * events.table[event,3]) / (sum(individual.status[attending.inds] == "L") + sum(individual.status[attending.inds] == "R") + sum(individual.status[attending.inds] == "S")))#
+	if(Pr.nothing.happens < 1){#
+		Pr.becomes.L = (sum(individual.status[attending.inds] == "L") / (sum(individual.status[attending.inds] == "L") + sum(individual.status[attending.inds] == "R"))) * (1-Pr.nothing.happens)#
+		Pr.becomes.R = (sum(individual.status[attending.inds] == "R") / (sum(individual.status[attending.inds] == "L") + sum(individual.status[attending.inds] == "R"))) * (1-Pr.nothing.happens)#
+	}else{#
+		Pr.becomes.L = 0#
+		Pr.becomes.R = 0#
+	}#
+	for(a in length(attending.inds)){#
+		individual.status[attending.inds[a]] <- sample(c(individual.status[attending.inds[a]], "L", "R"), 1, prob=c(Pr.nothing.happens, Pr.becomes.L, Pr.becomes.R))#
+	}#
+	EI[event,attending.inds] <- individual.status[attending.inds]#
 }
-daily.number.of.events <- vector()#
-for(i in 1:length(unique(group_data$Date))){#
-	daily.number.of.events[i] <- length(which(group_data$Date == unique(group_data$Date)[i]))#
-}#
-weekend.number.of.events <- daily.number.of.events[seq(1, 28, 2)] + daily.number.of.events[seq(2, 28, 2)]#
-#
-weekend.id <- c(1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12,13,13,14,14)#
-#
-patches <- unique(group_data[,1])
-contact = 1#
-#weekend.number.of.events.simu <- c(1, weekend.number.of.events) #
-#
-summary.statistic.social.sim <- list()#
-summary.statistic.spatial.sim <- vector()#
-for(w in 1:14){#
-	group_by_individual_weekend <- EI[contact:(contact+weekend.number.of.events[w]),]#
-	#weighted social network	#
-	ind.number.of.events <- as.vector(apply(group_by_individual_weekend, 2, sum))	#
-	intersection.between.inds <- matrix(0, ncol=length(ind.number.of.events), nrow=length(ind.number.of.events)) #
-	for(i in 1:length(ind.number.of.events)){#
-		if(length(which(group_by_individual_weekend[,i] == 1)) > 1){#
-			intersection.between.inds[i,] <- as.vector(apply(group_by_individual_weekend[which(group_by_individual_weekend[,i] == 1), ], 2, sum))#
-		}else if(length(which(group_by_individual_weekend[,i] == 1)) == 1){#
-			intersection.between.inds[i,] <- as.vector(group_by_individual_weekend[which(group_by_individual_weekend[,i] == 1), ])#
-		}#
-	}#
-	union.between.inds <- matrix(0, ncol=length(ind.number.of.events), nrow=length(ind.number.of.events)) #
-	for(i in 1:length(ind.number.of.events)){#
-		for(j in 1:length(ind.number.of.events)){#
-			union.between.inds[i,j] <- ind.number.of.events[i] + ind.number.of.events[j] - intersection.between.inds[i,j]#
-		}#
-	}	#
-	overlap.between.inds <- intersection.between.inds / union.between.inds#
-	diag(overlap.between.inds) <- 0	#
-	overlap.between.inds[which(overlap.between.inds == "NaN")] <- 0#
-	g <- graph.adjacency(overlap.between.inds, weighted=T)#
-	net <- get.data.frame(g)#
-	summary.statistic.social.sim[[w]] <- clustering_w(net, measure=c("am")) #"gm", "ma", "mi"#
-	#weighted spatial network#
-	contact.location.weekend <- contact.events.table[contact:(contact+weekend.number.of.events[w]),1]#
-	patches <- 1:65#
-	inds.per.patch <- list()#
-	for(i in 1:length(patches)){#
-		indss <- vector()#
-		if(length(group_by_individual_weekend[which(contact.location.weekend == i),1]) > 0){#
-			for(j in 1:length(group_by_individual_weekend[which(contact.location.weekend == i),1])){#
-				indss <- c(indss, which(group_by_individual_weekend[which(contact.location.weekend == i),][j,] == 1))#
-			}#
-			inds.per.patch[[i]] <- as.vector(indss)#
-		}#
-	}	#
-	inds.per.patch.unique <- lapply(inds.per.patch, unique)#
-	patch.size <- unlist(lapply(inds.per.patch.unique, length))#
-	intersection.between.patches <- matrix(0, ncol=length(inds.per.patch.unique), nrow=length(inds.per.patch.unique)) #
-	for(i in 1:length(inds.per.patch.unique)){#
-		for(j in 1:length(inds.per.patch.unique)){#
-			intersection.between.patches[i,j] <- length(which(match(inds.per.patch.unique[[i]], inds.per.patch.unique[[j]], nomatch=0) != 0))#
-		}#
-	}#
-#
-	union.between.patches <- matrix(0, ncol=length(inds.per.patch.unique), nrow=length(inds.per.patch.unique)) #
-	for(i in 1:length(inds.per.patch.unique)){#
-		for(j in 1:length(inds.per.patch.unique)){#
-			union.between.patches[i,j] <- patch.size[i] + patch.size[j] - intersection.between.patches[i,j]#
-		}#
-	}#
-	overlap.between.patches <- intersection.between.patches / union.between.patches#
-	diag(overlap.between.patches) <- 0#
-	overlap.between.patches[which(overlap.between.patches == "NaN")] <- 0#
-	summary.statistic.spatial.sim[w] <- (sum(apply(D * overlap.between.patches, 1, sum)) / 2) / (sum(apply(overlap.between.patches, 1, sum)) / 2)#
-	contact = contact + weekend.number.of.events[w]#
-}#
-summary.statistic.social.sim <- unlist(summary.statistic.social.sim) #matrix(unlist(summary.statistic.social.sim), ncol=4, byrow=T)
-par(mfrow=c(1,2), mar=c(3,3,1,1), mgp=c(1.5,0.5,0))#
-plot(1:13, summary.statistic.spatial.sim, pch=20, ylim= c(0,2000), type="l")#
-plot(1:13, summary.statistic.social.sim, pch=20, ylim= c(0,1), type="l")
-alpha
-mean(summary.statistic.spatial.sim)
-mean(summary.statistic.social.sim)
-alpha = 0.07#
-#
-inds = 1:729  # individuals #
-P = 65  # total number of patches#
-#
-# Initiation: match every individual to a patch#
-inds.patch = round(unlist(lapply(Nb.ind.per.contact.per.patch, sum)) / sum(unlist(lapply(Nb.ind.per.contact.per.patch, sum))) * length(inds))#
-N = sum(inds.patch) # total number of individuals#
-#CI = matrix(0, ncol=N, nrow=N)  # Matrix of number of contact that each individual had with each other individual#
-#
-EI = matrix(0, ncol=N, nrow=dim(contact.events.table)[1])#
-FI = matrix(0, ncol=P, nrow=N)  # Matrix of number of events previously attended by each individual in each patch#
-#
-inds2 <- 1:N#
-for(i in 1:length(inds.patch)){#
-	ind.sampled <- sample(inds2, inds.patch[i])#
-	FI[ind.sampled, i] <- 1#
-	inds2 <- inds2[-match(ind.sampled, inds2)]#
-}#
-#
-#FI2 <- FI#
-#
-# For each event Ept (occuring in patch p at time t), compute the probability of each individual i being sampled to attend#
-#attending.individuals <- list()#
-for(event in 1:dim(contact.events.table)[1]){#
-	p = contact.events.table[event,1]  # in which patch does the event occur#
-	weights.ip <- vector()#
-	for(i in 1:N){#
-		weights.ip[i] = sum(exp( - alpha * sum(FI[i,]*(1+D[p,])) / sum(FI[i,]) ))#
-	}#
-	#weights.ip[which(weights.ip < 0.00000001)] <- 0.00000001#
-	PiEpt = weights.ip / sum(weights.ip)#
-	attending.ind <- sample(1:N, contact.events.table[event,2], prob=PiEpt)	#
-	#attending.individuals[[event]] <- attending.ind#
-	FI[attending.ind, p] <- FI[attending.ind, p] + 1#
-	EI[event,attending.ind] <- 1#
-}
-alpha = 0.03#
-#
-inds = 1:729  # individuals #
-P = 65  # total number of patches#
-#
-# Initiation: match every individual to a patch#
-inds.patch = round(unlist(lapply(Nb.ind.per.contact.per.patch, sum)) / sum(unlist(lapply(Nb.ind.per.contact.per.patch, sum))) * length(inds))#
-N = sum(inds.patch) # total number of individuals#
-#CI = matrix(0, ncol=N, nrow=N)  # Matrix of number of contact that each individual had with each other individual#
-#
-EI = matrix(0, ncol=N, nrow=dim(contact.events.table)[1])#
-FI = matrix(0, ncol=P, nrow=N)  # Matrix of number of events previously attended by each individual in each patch#
-#
-inds2 <- 1:N#
-for(i in 1:length(inds.patch)){#
-	ind.sampled <- sample(inds2, inds.patch[i])#
-	FI[ind.sampled, i] <- 1#
-	inds2 <- inds2[-match(ind.sampled, inds2)]#
-}#
-#
-#FI2 <- FI#
-#
-# For each event Ept (occuring in patch p at time t), compute the probability of each individual i being sampled to attend#
-#attending.individuals <- list()#
-for(event in 1:dim(contact.events.table)[1]){#
-	p = contact.events.table[event,1]  # in which patch does the event occur#
-	weights.ip <- vector()#
-	for(i in 1:N){#
-		weights.ip[i] = sum(exp( - alpha * sum(FI[i,]*(1+D[p,])) / sum(FI[i,]) ))#
-	}#
-	#weights.ip[which(weights.ip < 0.00000001)] <- 0.00000001#
-	PiEpt = weights.ip / sum(weights.ip)#
-	attending.ind <- sample(1:N, contact.events.table[event,2], prob=PiEpt)	#
-	#attending.individuals[[event]] <- attending.ind#
-	FI[attending.ind, p] <- FI[attending.ind, p] + 1#
-	EI[event,attending.ind] <- 1#
-}
-contact = 1#
-#weekend.number.of.events.simu <- c(1, weekend.number.of.events) #
-#
-summary.statistic.social.sim <- list()#
-summary.statistic.spatial.sim <- vector()#
-for(w in 1:14){#
-	group_by_individual_weekend <- EI[contact:(contact+weekend.number.of.events[w]),]#
-	#weighted social network	#
-	ind.number.of.events <- as.vector(apply(group_by_individual_weekend, 2, sum))	#
-	intersection.between.inds <- matrix(0, ncol=length(ind.number.of.events), nrow=length(ind.number.of.events)) #
-	for(i in 1:length(ind.number.of.events)){#
-		if(length(which(group_by_individual_weekend[,i] == 1)) > 1){#
-			intersection.between.inds[i,] <- as.vector(apply(group_by_individual_weekend[which(group_by_individual_weekend[,i] == 1), ], 2, sum))#
-		}else if(length(which(group_by_individual_weekend[,i] == 1)) == 1){#
-			intersection.between.inds[i,] <- as.vector(group_by_individual_weekend[which(group_by_individual_weekend[,i] == 1), ])#
-		}#
-	}#
-	union.between.inds <- matrix(0, ncol=length(ind.number.of.events), nrow=length(ind.number.of.events)) #
-	for(i in 1:length(ind.number.of.events)){#
-		for(j in 1:length(ind.number.of.events)){#
-			union.between.inds[i,j] <- ind.number.of.events[i] + ind.number.of.events[j] - intersection.between.inds[i,j]#
-		}#
-	}	#
-	overlap.between.inds <- intersection.between.inds / union.between.inds#
-	diag(overlap.between.inds) <- 0	#
-	overlap.between.inds[which(overlap.between.inds == "NaN")] <- 0#
-	g <- graph.adjacency(overlap.between.inds, weighted=T)#
-	net <- get.data.frame(g)#
-	summary.statistic.social.sim[[w]] <- clustering_w(net, measure=c("am")) #"gm", "ma", "mi"#
-	#weighted spatial network#
-	contact.location.weekend <- contact.events.table[contact:(contact+weekend.number.of.events[w]),1]#
-	patches <- 1:65#
-	inds.per.patch <- list()#
-	for(i in 1:length(patches)){#
-		indss <- vector()#
-		if(length(group_by_individual_weekend[which(contact.location.weekend == i),1]) > 0){#
-			for(j in 1:length(group_by_individual_weekend[which(contact.location.weekend == i),1])){#
-				indss <- c(indss, which(group_by_individual_weekend[which(contact.location.weekend == i),][j,] == 1))#
-			}#
-			inds.per.patch[[i]] <- as.vector(indss)#
-		}#
-	}	#
-	inds.per.patch.unique <- lapply(inds.per.patch, unique)#
-	patch.size <- unlist(lapply(inds.per.patch.unique, length))#
-	intersection.between.patches <- matrix(0, ncol=length(inds.per.patch.unique), nrow=length(inds.per.patch.unique)) #
-	for(i in 1:length(inds.per.patch.unique)){#
-		for(j in 1:length(inds.per.patch.unique)){#
-			intersection.between.patches[i,j] <- length(which(match(inds.per.patch.unique[[i]], inds.per.patch.unique[[j]], nomatch=0) != 0))#
-		}#
-	}#
-#
-	union.between.patches <- matrix(0, ncol=length(inds.per.patch.unique), nrow=length(inds.per.patch.unique)) #
-	for(i in 1:length(inds.per.patch.unique)){#
-		for(j in 1:length(inds.per.patch.unique)){#
-			union.between.patches[i,j] <- patch.size[i] + patch.size[j] - intersection.between.patches[i,j]#
-		}#
-	}#
-	overlap.between.patches <- intersection.between.patches / union.between.patches#
-	diag(overlap.between.patches) <- 0#
-	overlap.between.patches[which(overlap.between.patches == "NaN")] <- 0#
-	summary.statistic.spatial.sim[w] <- (sum(apply(D * overlap.between.patches, 1, sum)) / 2) / (sum(apply(overlap.between.patches, 1, sum)) / 2)#
-	contact = contact + weekend.number.of.events[w]#
-}#
-summary.statistic.social.sim <- unlist(summary.statistic.social.sim) #matrix(unlist(summary.statistic.social.sim), ncol=4, byrow=T)
-alpha
-par(mfrow=c(1,2), mar=c(3,3,1,1), mgp=c(1.5,0.5,0))#
-plot(1:13, summary.statistic.spatial.sim, pch=20, ylim= c(0,2000), type="l")#
-plot(1:13, summary.statistic.social.sim, pch=20, ylim= c(0,1), type="l")#
-#points(1:13, summary.statistic.social.sim[2], pch=20, ylim= c(0,1), type="l", col="red")#
-#points(1:13, summary.statistic.social.sim[3], pch=20, ylim= c(0,1), type="l", col="green")#
-#points(1:13, summary.statistic.social.sim[4], pch=20, ylim= c(0,1), type="l", col="blue")
-par(mfrow=c(1,2), mar=c(3,3,1,1), mgp=c(1.5,0.5,0))#
-plot(1:13, summary.statistic.spatial.sim, pch=20, ylim= c(0,2000), type="l")#
-plot(1:13, summary.statistic.social.sim, pch=20, ylim= c(0,1), type="l")#
-#points(1:13, summary.statistic.social.sim[2], pch=20, ylim= c(0,1), type="l", col="red")#
-#points(1:13, summary.statistic.social.sim[3], pch=20, ylim= c(0,1), type="l", col="green")#
-#points(1:13, summary.statistic.social.sim[4], pch=20, ylim= c(0,1), type="l", col="blue")
-mean(summary.statistic.social.sim)#
- mean(summary.statistic.social.obs)#
- mean(summary.statistic.spatial.sim)#
- mean(summary.statistic.spatial.obs)
-summary.statistic.social.sim
-mean(summary.statistic.social.sim)
-alpha
-mean(summary.statistic.spatial.sim)
+event
+70/9.5
+dim(EI)
+dim(individual.status)
+length(individual.status)
+19.5-13
+70/6.5

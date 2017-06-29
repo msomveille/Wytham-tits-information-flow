@@ -238,7 +238,7 @@ for(i in 1:length(events.table$Duration)){
 
 #Parameters
 alpha = 0.017  # Related to the movement of birds  
-beta = 0.001   # Related to the infection rate    
+beta = 0.0015   # Related to the infection rate    
 
 
 #Initiation: match every individual to a feeder

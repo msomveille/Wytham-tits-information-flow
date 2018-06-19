@@ -1,4 +1,7 @@
 
+## Script to plot the results of 
+
+
 library(spatstat)
 library(spdep)
 library(maptools)
@@ -14,7 +17,7 @@ library(lattice)
 
 ## Plot the flow of information in wytham woods (i.e. results of the model)
 
-setwd("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-information-flow")
+setwd("~/Wytham-tits-information-flow") #setwd("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-information-flow")
 
 ## Import and process the data
 
@@ -34,7 +37,7 @@ feeders.distances <- dist(loggers_coords[,2:3], upper=T, diag=T)
 
 ## FIGURE 1 -- phase diagrams for 2 patches plus examples
 
-resultsModel_data <- read.csv("model/Old_model/resultsModel_2patches_SS.csv")
+resultsModel_data <- read.csv("outputs/resultsModel_2patches.csv")
 
 # first part
 par(mfrow=c(2,3), mar=c(2.8,3.5,0.5,0.5), mgp=c(1.75,0.5,0))
@@ -111,7 +114,6 @@ z = c(rep(3,21), z)
 rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
 datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
 plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab=substitute(paste("Conformity strength (", italic(λ), ")")), ylab=substitute(paste("Movement rate (", italic(m), ")")), cex.lab=1.3, cex=1.4)
-
 #mtext(substitute(paste("Intermediate learning rate (", italic(α), " = 0.005)")), side=3, line=0.3, at=3, cex=0.7)
 
 x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)]
@@ -205,7 +207,7 @@ mtext(expression("P"[2]*""), side=3, at=75, cex=1.2, line=-0.75)
 
 ## FIGURE 2 -- phase diagrams for 3 patches plus examples
 
-resultsModel_data <- read.csv("model/Old_model/resultsModel_3patches_SS.csv")
+resultsModel_data <- read.csv("outputs/resultsModel_3patches.csv")
 
 # first part
 par(mfrow=c(2,4), mar=c(2.8,3,0.5,0.1), mgp=c(1.75,0.5,0))
@@ -471,7 +473,7 @@ mtext(expression("P"[3]*""), side=3, at=75, cex=1.15, line=-0.75)
 
 ## FIGURE 3 -- phase diagrams for Wytham plus examples
 
-resultsModel_data <- read.csv("model/Old_model/resultsModel_wytham_SS.csv")
+resultsModel_data <- read.csv("outputs/resultsModel_wytham.csv")
 
 # first part
 par(mfrow=c(3,1), mar=c(2.8,3,3,0.5), mgp=c(1.75,0.5,0))
@@ -549,7 +551,7 @@ plot(x, y, col=datcol, pch=15, ylim=c(0,0.1), xlim=c(1,5), xlab=substitute(paste
 par(mfrow=c(3,3), mar=c(2.5,2.75,0.3,0.3), mgp=c(1.5,0.5,0))
 
 # Mixture of traditions
-resultsModel <- read.csv("model/Old_model/resultsModel_wytham1.csv")
+resultsModel <- read.csv("model/Old_model/resultsModel_wytham1.csv", header=F)
 resultsModel <- abs(resultsModel)
 ## Plot the map after 20 days
 time.point <- 20
@@ -576,7 +578,7 @@ for(i in 1:final.time.point){
 	prop[i,] <- apply(model_res[[i]], 1, function(x) (x[2]+x[3])/sum(x))
 	propL[i,] <- apply(model_res[[i]], 1, function(x) x[2]/(x[2]+x[3]))
 }
-plot(1:final.time.point, propL[,1], col="dark grey", pch=3, xlab="", ylab=expression("Prevalence of behaviour s"[1]*""), ylim=c(0,1), type="l", axes=F, cex.lab=1.4, lwd=1.2)
+plot(1:final.time.point, propL[,1], col="dark grey", pch=3, xlab="", ylab=expression("Prevalence of solution s"[1]*""), ylim=c(0,1), type="l", axes=F, cex.lab=1.4, lwd=1.2)
 for(i in 2:65){
 	points(1:final.time.point, propL[,i], col="dark grey", pch=3, ylim=c(0,1), type="l", lwd=1.2)
 }
@@ -585,7 +587,7 @@ axis(side=2)
 
 
 # Behaviour s1 dominates
-resultsModel <- read.csv("model/Old_model/resultsModel_wytham2.csv")
+resultsModel <- read.csv("model/Old_model/resultsModel_wytham2.csv", header=F)
 resultsModel <- abs(resultsModel)
 ## Plot the map after 20 days
 time.point <- 20
@@ -612,7 +614,7 @@ for(i in 1:final.time.point){
 	prop[i,] <- apply(model_res[[i]], 1, function(x) (x[2]+x[3])/sum(x))
 	propL[i,] <- apply(model_res[[i]], 1, function(x) x[2]/(x[2]+x[3]))
 }
-plot(1:final.time.point, propL[,1], col="dark grey", pch=3, xlab="", ylab=expression("Prevalence of behaviour s"[1]*""), ylim=c(0,1), type="l", axes=F, cex.lab=1.4, lwd=1.2)
+plot(1:final.time.point, propL[,1], col="dark grey", pch=3, xlab="", ylab=expression("Prevalence of solution s"[1]*""), ylim=c(0,1), type="l", axes=F, cex.lab=1.4, lwd=1.2)
 for(i in 2:65){
 	points(1:final.time.point, propL[,i], col="dark grey", pch=3, ylim=c(0,1), type="l", lwd=1.2)
 }
@@ -621,7 +623,7 @@ axis(side=2)
 
 
 # Local traditions
-resultsModel <- read.csv("model/Old_model/resultsModel_wytham3.csv")
+resultsModel <- read.csv("model/Old_model/resultsModel_wytham3.csv", header=F)
 resultsModel <- abs(resultsModel)
 ## Plot the map after 20 days
 time.point <- 20
@@ -648,7 +650,7 @@ for(i in 1:final.time.point){
 	prop[i,] <- apply(model_res[[i]], 1, function(x) (x[2]+x[3])/sum(x))
 	propL[i,] <- apply(model_res[[i]], 1, function(x) x[2]/(x[2]+x[3]))
 }
-plot(1:final.time.point, propL[,1], col="dark grey", pch=3, xlab="Time (days)", ylab=expression("Prevalence of behaviour s"[1]*""), ylim=c(0,1), type="l", axes=F, cex.lab=1.4, lwd=1.2)
+plot(1:final.time.point, propL[,1], col="dark grey", pch=3, xlab="Time (days)", ylab=expression("Prevalence of solution s"[1]*""), ylim=c(0,1), type="l", axes=F, cex.lab=1.4, lwd=1.2)
 for(i in 2:65){
 	points(1:final.time.point, propL[,i], col="dark grey", pch=3, ylim=c(0,1), type="l", lwd=1.2)
 }
@@ -690,7 +692,7 @@ length(which(resultsModel_random_forestDist_data_conf4[,1] < 0.01 & resultsModel
 
 par(mfrow=c(3,3), mar=c(2.5,2.5,2.5,0.1), mgp=c(1.5,0.5,0))
 
-plot(resultsModel_random_forestDist_data_conf1[,2], resultsModel_random_forestDist_data_conf1[,1], pch=20, xlim=c(0,1), ylim=c(0,0.12), xlab="", ylab=expression("Variance in prevalence of behaviour s"[1]*""), axes=F, col="green", cex.lab=1.1, main=substitute(paste("No conformity (", italic(λ), " = 1)")))
+plot(resultsModel_random_forestDist_data_conf1[,2], resultsModel_random_forestDist_data_conf1[,1], pch=20, xlim=c(0,1), ylim=c(0,0.12), xlab="", ylab=expression("Variance in prevalence of solution s"[1]*""), axes=F, col="green", cex.lab=1.1, main=substitute(paste("No conformity (", italic(λ), " = 1)")))
 points(resultsModel_random_forestDist_data_conf1[,2][which(resultsModel_random_forestDist_data_conf1[,1] > 0.1)], resultsModel_random_forestDist_data_conf1[,1][which(resultsModel_random_forestDist_data_conf1[,1] > 0.1)], pch=20, col="dark green")
 points(resultsModel_random_forestDist_data_conf1[,2][which(resultsModel_random_forestDist_data_conf1[,1] < 0.01 & resultsModel_random_forestDist_data_conf1[,2] < 0.33)], resultsModel_random_forestDist_data_conf1[,1][which(resultsModel_random_forestDist_data_conf1[,1] < 0.01 & resultsModel_random_forestDist_data_conf1[,2] < 0.33)], pch=20, col="blue")
 points(resultsModel_random_forestDist_data_conf1[,2][which(resultsModel_random_forestDist_data_conf1[,1] < 0.01 & resultsModel_random_forestDist_data_conf1[,2] > 0.33)], resultsModel_random_forestDist_data_conf1[,1][which(resultsModel_random_forestDist_data_conf1[,1] < 0.01 & resultsModel_random_forestDist_data_conf1[,2] > 0.33)], pch=20, col="orange")
@@ -698,6 +700,7 @@ points(resultsModel_random_forestDist_data_conf1[,2][which(resultsModel_random_f
 abline(h=0.01)
 axis(side=1)
 axis(side=2)
+legend("topright", inset=.02, box.col="black", c("Mixture of solutions",expression("Solution s"[1]*" dominates"), expression("Solution s"[2]*" dominates"), "Weak local traditions", "Strong local traditions"), col=c("dark grey", "orange", "blue", "green", "dark green"), pch=20)
 
 plot(resultsModel_random_forestDist_data_conf1.2[,2], resultsModel_random_forestDist_data_conf1.2[,1], pch=20, xlim=c(0,1), ylim=c(0,0.15), xlab="", ylab="", axes=F, col="green", cex.lab=1.1, main=substitute(paste("Weak conformity (", italic(λ), " = 1.2)")))
 points(resultsModel_random_forestDist_data_conf1.2[,2][which(resultsModel_random_forestDist_data_conf1.2[,1] > 0.1)], resultsModel_random_forestDist_data_conf1.2[,1][which(resultsModel_random_forestDist_data_conf1.2[,1] > 0.1)], pch=20, col="dark green")
@@ -744,7 +747,7 @@ axis(side=1)
 axis(side=2)
 
 
-plot(resultsModel_random_forestDist_data_conf1[,2], diff_centr_conf1, pch=20, ylab="Difference in centrality of initial patches", xlab=expression("Total prevalence of behaviour s"[1]*""), axes=F, col="green", cex.lab=1.1, xlim=c(0,1))
+plot(resultsModel_random_forestDist_data_conf1[,2], diff_centr_conf1, pch=20, ylab="Difference in centrality of initial patches", xlab=expression("Total prevalence of solution s"[1]*""), axes=F, col="green", cex.lab=1.1, xlim=c(0,1))
 points(resultsModel_random_forestDist_data_conf1[,2][which(resultsModel_random_forestDist_data_conf1[,1] > 0.1)], diff_centr_conf1[which(resultsModel_random_forestDist_data_conf1[,1] > 0.1)], pch=20, col="dark green")
 points(resultsModel_random_forestDist_data_conf1[,2][which(resultsModel_random_forestDist_data_conf1[,1] < 0.01 & resultsModel_random_forestDist_data_conf1[,2] < 0.33)], diff_centr_conf1[which(resultsModel_random_forestDist_data_conf1[,1] < 0.01 & resultsModel_random_forestDist_data_conf1[,2] < 0.33)], pch=20, col="blue")
 points(resultsModel_random_forestDist_data_conf1[,2][which(resultsModel_random_forestDist_data_conf1[,1] < 0.01 & resultsModel_random_forestDist_data_conf1[,2] > 0.33)], diff_centr_conf1[which(resultsModel_random_forestDist_data_conf1[,1] < 0.01 & resultsModel_random_forestDist_data_conf1[,2] > 0.33)], pch=20, col="orange")
@@ -752,7 +755,7 @@ points(resultsModel_random_forestDist_data_conf1[,2][which(resultsModel_random_f
 axis(side=1)
 axis(side=2)
 
-plot(resultsModel_random_forestDist_data_conf1.2[,2], diff_centr_conf1.2, pch=20, xlab=expression("Total prevalence of behaviour s"[1]*""), ylab="", axes=F, col="green", cex.lab=1.1, xlim=c(0,1))
+plot(resultsModel_random_forestDist_data_conf1.2[,2], diff_centr_conf1.2, pch=20, xlab=expression("Total prevalence of solution s"[1]*""), ylab="", axes=F, col="green", cex.lab=1.1, xlim=c(0,1))
 points(resultsModel_random_forestDist_data_conf1.2[,2][which(resultsModel_random_forestDist_data_conf1.2[,1] > 0.1)], diff_centr_conf1.2[which(resultsModel_random_forestDist_data_conf1.2[,1] > 0.1)], pch=20, col="dark green")
 points(resultsModel_random_forestDist_data_conf1.2[,2][which(resultsModel_random_forestDist_data_conf1.2[,1] < 0.01 & resultsModel_random_forestDist_data_conf1.2[,2] < 0.33)], diff_centr_conf1.2[which(resultsModel_random_forestDist_data_conf1.2[,1] < 0.01 & resultsModel_random_forestDist_data_conf1.2[,2] < 0.33)], pch=20, col="blue")
 points(resultsModel_random_forestDist_data_conf1.2[,2][which(resultsModel_random_forestDist_data_conf1.2[,1] < 0.01 & resultsModel_random_forestDist_data_conf1.2[,2] > 0.33)], diff_centr_conf1.2[which(resultsModel_random_forestDist_data_conf1.2[,1] < 0.01 & resultsModel_random_forestDist_data_conf1.2[,2] > 0.33)], pch=20, col="orange")
@@ -760,7 +763,7 @@ points(resultsModel_random_forestDist_data_conf1.2[,2][which(resultsModel_random
 axis(side=1)
 axis(side=2)
 
-plot(resultsModel_random_forestDist_data_conf4[,2], diff_centr_conf4, pch=20, xlab=expression("Total prevalence of behaviour s"[1]*""), ylab="", axes=F, col="green", cex.lab=1.1, xlim=c(0,1))
+plot(resultsModel_random_forestDist_data_conf4[,2], diff_centr_conf4, pch=20, xlab=expression("Total prevalence of solution s"[1]*""), ylab="", axes=F, col="green", cex.lab=1.1, xlim=c(0,1))
 points(resultsModel_random_forestDist_data_conf4[,2][which(resultsModel_random_forestDist_data_conf4[,1] > 0.1)], diff_centr_conf4[which(resultsModel_random_forestDist_data_conf4[,1] > 0.1)], pch=20, col="dark green")
 points(resultsModel_random_forestDist_data_conf4[,2][which(resultsModel_random_forestDist_data_conf4[,1] < 0.01 & resultsModel_random_forestDist_data_conf4[,2] < 0.33)], diff_centr_conf4[which(resultsModel_random_forestDist_data_conf4[,1] < 0.01 & resultsModel_random_forestDist_data_conf4[,2] < 0.33)], pch=20, col="blue")
 points(resultsModel_random_forestDist_data_conf4[,2][which(resultsModel_random_forestDist_data_conf4[,1] < 0.01 & resultsModel_random_forestDist_data_conf4[,2] > 0.33)], diff_centr_conf4[which(resultsModel_random_forestDist_data_conf4[,1] < 0.01 & resultsModel_random_forestDist_data_conf4[,2] > 0.33)], pch=20, col="orange")
@@ -775,6 +778,1093 @@ axis(side=2)
 
 
 
+
+
+## Animated figures of spread
+
+patch.distances <- as.matrix(dist(loggers_coords[,c(2,3)], upper=T))[1:60,1:60]
+diag(patch.distances) <- NA
+nn <- apply(patch.distances, 2, function(x) order(x)[1:4])
+
+slopes = vector()
+for(i in 1:60){		
+	slopes[i] = (loggers_coords[nn[1,i],3] - loggers_coords[i,3]) / (loggers_coords[nn[1,i],2] - loggers_coords[i,2])
+	if((loggers_coords[nn[1,i],2] - loggers_coords[i,2]) == 0){
+		slopes[i] = 0
+	}
+}
+
+
+resultsModel <- read.csv("outputs/resultsModel_wytham2.csv", header=F)
+resultsModel <- abs(resultsModel)
+tmax = 150
+for(time.point in 1:tmax){
+	if (time.point < 10) {name = paste("plot_wytham_00", time.point,'.png', sep="")}
+	if (time.point >= 10 && time.point < 100) {name = paste("plot_wytham_0", time.point,'.png', sep="")}
+	if (time.point >= 100) {name = paste("plot_wytham_", time.point,'.png', sep="")}
+	model_res <- cbind(as.matrix(resultsModel)[time.point,1:65], as.matrix(resultsModel)[time.point,66:130], as.matrix(resultsModel)[time.point,131:195])
+	model_res_list <- as.list(as.data.frame(t(model_res)))
+	png(name, width = 1500, height=500)
+	par(mfrow=c(1,3), mar=c(0.1,0.1,0.1,0.1), mgp=c(1.5,0.5,0))
+	
+	plot(poly.owin, main="")	
+	if(is.element(time.point, seq(1,tmax,2))){
+		for(i in 1:60){
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[1,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[1,i],3], col="grey", lwd=(1 * model_res_list[[i]][1] * model_res_list[[nn[1,i]]][1] / dist(loggers_coords[c(i,nn[1,i]),c(2,3)], upper=T)), lty="11")
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[2,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[2,i],3], col="grey", lwd=(1 * model_res_list[[i]][1] * model_res_list[[nn[2,i]]][1] / dist(loggers_coords[c(i,nn[2,i]),c(2,3)], upper=T)), lty="11")
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[3,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[3,i],3], col="grey", lwd=(1 * model_res_list[[i]][1] * model_res_list[[nn[3,i]]][1] / dist(loggers_coords[c(i,nn[3,i]),c(2,3)], upper=T)), lty="11")
+			#segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[4,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[4,i],3], col="grey", lwd=(1 * model_res_list[[i]][1] * model_res_list[[nn[3,i]]][1] / dist(loggers_coords[c(i,nn[4,i]),c(2,3)], upper=T)), lty=2)
+		}
+	}
+	if(is.element(time.point, seq(2,tmax,2))){
+		for(i in 1:60){
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[1,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[1,i],3], col="grey", lwd=(1 * model_res_list[[i]][1] * model_res_list[[nn[1,i]]][1] / dist(loggers_coords[c(i,nn[1,i]),c(2,3)], upper=T)), lty="22")
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[2,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[2,i],3], col="grey", lwd=(1 * model_res_list[[i]][1] * model_res_list[[nn[2,i]]][1] / dist(loggers_coords[c(i,nn[2,i]),c(2,3)], upper=T)), lty="22")
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[3,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[3,i],3], col="grey", lwd=(1 * model_res_list[[i]][1] * model_res_list[[nn[3,i]]][1] / dist(loggers_coords[c(i,nn[3,i]),c(2,3)], upper=T)), lty="22")
+			#segments(x0=loggers_coords[i,2]+40, x1=loggers_coords[nn[4,i],2]+40, y0=loggers_coords[i,3]+(40*slopes[i]), y1=loggers_coords[nn[4,i],3]+(40*slopes[i]), col="grey", lwd=(1 * model_res_list[[i]][1] * model_res_list[[nn[3,i]]][1] / dist(loggers_coords[c(i,nn[4,i]),c(2,3)], upper=T)), lty=2)
+		}
+	}
+	for(i in 1:60){
+		add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*1.2, col=c("grey", "orange", "blue"))
+	}
+	mtext(expression("Movements of naïves"), side=3, line=-2.8, cex=1.8)
+	
+	plot(poly.owin, main="")
+	if(is.element(time.point, seq(1,tmax,2))){
+		for(i in 1:60){
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[1,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[1,i],3], col="orange", lwd=(1 * model_res_list[[i]][2] * model_res_list[[nn[1,i]]][2] / dist(loggers_coords[c(i,nn[1,i]),c(2,3)], upper=T)), lty="11")
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[2,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[2,i],3], col="orange", lwd=(1 * model_res_list[[i]][2] * model_res_list[[nn[2,i]]][2] / dist(loggers_coords[c(i,nn[2,i]),c(2,3)], upper=T)), lty="11")
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[3,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[3,i],3], col="orange", lwd=(1 * model_res_list[[i]][2] * model_res_list[[nn[3,i]]][2] / dist(loggers_coords[c(i,nn[3,i]),c(2,3)], upper=T)), lty="11")
+		}
+	}
+	if(is.element(time.point, seq(2,tmax,2))){
+		for(i in 1:60){
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[1,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[1,i],3], col="orange", lwd=(1 * model_res_list[[i]][2] * model_res_list[[nn[1,i]]][2] / dist(loggers_coords[c(i,nn[1,i]),c(2,3)], upper=T)), lty="22")
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[2,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[2,i],3], col="orange", lwd=(1 * model_res_list[[i]][2] * model_res_list[[nn[2,i]]][2] / dist(loggers_coords[c(i,nn[2,i]),c(2,3)], upper=T)), lty="22")
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[3,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[3,i],3], col="orange", lwd=(1 * model_res_list[[i]][2] * model_res_list[[nn[3,i]]][2] / dist(loggers_coords[c(i,nn[3,i]),c(2,3)], upper=T)), lty="22")
+		}
+	}
+	for(i in 1:60){
+		add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*1.2, col=c("grey", "orange", "blue"))
+	}
+	mtext(expression("Movements of solvers s"[1]*""), side=3, line=-3.2, cex=1.8)
+	mtext(paste("Day", time.point), side=1, line=-1.5, cex=2.5)
+	
+	plot(poly.owin, main="")
+	if(is.element(time.point, seq(1,tmax,2))){
+		for(i in 1:60){
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[1,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[1,i],3], col="blue", lwd=(1 * model_res_list[[i]][3] * model_res_list[[nn[1,i]]][3] / dist(loggers_coords[c(i,nn[1,i]),c(2,3)], upper=T)), lty="11")
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[2,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[2,i],3], col="blue", lwd=(1 * model_res_list[[i]][3] * model_res_list[[nn[2,i]]][3] / dist(loggers_coords[c(i,nn[2,i]),c(2,3)], upper=T)), lty="11")
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[3,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[3,i],3], col="blue", lwd=(1 * model_res_list[[i]][3] * model_res_list[[nn[3,i]]][3] / dist(loggers_coords[c(i,nn[3,i]),c(2,3)], upper=T)), lty="11")
+		}
+	}
+	if(is.element(time.point, seq(2,tmax,2))){
+		for(i in 1:60){
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[1,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[1,i],3], col="blue", lwd=(1 * model_res_list[[i]][3] * model_res_list[[nn[1,i]]][3] / dist(loggers_coords[c(i,nn[1,i]),c(2,3)], upper=T)), lty="22")
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[2,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[2,i],3], col="blue", lwd=(1 * model_res_list[[i]][3] * model_res_list[[nn[2,i]]][3] / dist(loggers_coords[c(i,nn[2,i]),c(2,3)], upper=T)), lty="22")
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[3,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[3,i],3], col="blue", lwd=(1 * model_res_list[[i]][3] * model_res_list[[nn[3,i]]][3] / dist(loggers_coords[c(i,nn[3,i]),c(2,3)], upper=T)), lty="22")
+		}
+	}
+	for(i in 1:60){
+		add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*1.2, col=c("grey", "orange", "blue"))
+	}
+	mtext(expression("Movements of solvers s"[2]*""), side=3, line=-3.2, cex=1.8)
+	
+	dev.off()
+}
+my_command <- 'convert -delay 19 *.png animation_WythamWoods_dominanceS1.gif'
+system(my_command)
+
+
+
+
+
+
+for(time.point in 1:tmax){
+	if (time.point < 10) {name = paste("plot_wytham_00", time.point,'.png', sep="")}
+	if (time.point >= 10 && time.point < 100) {name = paste("plot_wytham_0", time.point,'.png', sep="")}
+	if (time.point >= 100) {name = paste("plot_wytham_", time.point,'.png', sep="")}
+	model_res <- cbind(as.matrix(resultsModel)[time.point,1:65], as.matrix(resultsModel)[time.point,66:130], as.matrix(resultsModel)[time.point,131:195])
+	model_res_list <- as.list(as.data.frame(t(model_res)))
+	png(name)
+	par(mfrow=c(1,1), mar=c(0.1,0.1,0.1,0.1), mgp=c(1.5,0.5,0))
+
+	plot(poly.owin, main="")
+	if(is.element(time.point, seq(1,tmax,2))){
+		for(i in 1:60){
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[1,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[1,i],3], col="orange", lwd=(1 * model_res_list[[i]][2] * model_res_list[[nn[1,i]]][2] / dist(loggers_coords[c(i,nn[1,i]),c(2,3)], upper=T)), lty="11")
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[2,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[2,i],3], col="orange", lwd=(1 * model_res_list[[i]][2] * model_res_list[[nn[2,i]]][2] / dist(loggers_coords[c(i,nn[2,i]),c(2,3)], upper=T)), lty="11")
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[3,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[3,i],3], col="orange", lwd=(1 * model_res_list[[i]][2] * model_res_list[[nn[3,i]]][2] / dist(loggers_coords[c(i,nn[3,i]),c(2,3)], upper=T)), lty="11")
+		}
+	}
+	if(is.element(time.point, seq(2,tmax,2))){
+		for(i in 1:60){
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[1,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[1,i],3], col="orange", lwd=(1 * model_res_list[[i]][2] * model_res_list[[nn[1,i]]][2] / dist(loggers_coords[c(i,nn[1,i]),c(2,3)], upper=T)), lty="22")
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[2,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[2,i],3], col="orange", lwd=(1 * model_res_list[[i]][2] * model_res_list[[nn[2,i]]][2] / dist(loggers_coords[c(i,nn[2,i]),c(2,3)], upper=T)), lty="22")
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[3,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[3,i],3], col="orange", lwd=(1 * model_res_list[[i]][2] * model_res_list[[nn[3,i]]][2] / dist(loggers_coords[c(i,nn[3,i]),c(2,3)], upper=T)), lty="22")
+		}
+	}
+	for(i in 1:60){
+		add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*1.2, col=c("grey", "orange", "blue"))
+	}
+	
+	dev.off()
+}
+my_command <- 'convert -delay 19 *.png plot_wytham_tryL.gif'
+system(my_command)
+
+
+for(time.point in 1:tmax){
+	if (time.point < 10) {name = paste("plot_wytham_00", time.point,'.png', sep="")}
+	if (time.point >= 10 && time.point < 100) {name = paste("plot_wytham_0", time.point,'.png', sep="")}
+	if (time.point >= 100) {name = paste("plot_wytham_", time.point,'.png', sep="")}
+	model_res <- cbind(as.matrix(resultsModel)[time.point,1:65], as.matrix(resultsModel)[time.point,66:130], as.matrix(resultsModel)[time.point,131:195])
+	model_res_list <- as.list(as.data.frame(t(model_res)))
+	png(name)
+	par(mfrow=c(1,1), mar=c(0.1,0.1,0.1,0.1), mgp=c(1.5,0.5,0))
+
+	plot(poly.owin, main="")
+	if(is.element(time.point, seq(1,tmax,2))){
+		for(i in 1:60){
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[1,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[1,i],3], col="blue", lwd=(1 * model_res_list[[i]][3] * model_res_list[[nn[1,i]]][3] / dist(loggers_coords[c(i,nn[1,i]),c(2,3)], upper=T)), lty="11")
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[2,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[2,i],3], col="blue", lwd=(1 * model_res_list[[i]][3] * model_res_list[[nn[2,i]]][3] / dist(loggers_coords[c(i,nn[2,i]),c(2,3)], upper=T)), lty="11")
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[3,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[3,i],3], col="blue", lwd=(1 * model_res_list[[i]][3] * model_res_list[[nn[3,i]]][3] / dist(loggers_coords[c(i,nn[3,i]),c(2,3)], upper=T)), lty="11")
+		}
+	}
+	if(is.element(time.point, seq(2,tmax,2))){
+		for(i in 1:60){
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[1,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[1,i],3], col="blue", lwd=(1 * model_res_list[[i]][3] * model_res_list[[nn[1,i]]][3] / dist(loggers_coords[c(i,nn[1,i]),c(2,3)], upper=T)), lty="22")
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[2,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[2,i],3], col="blue", lwd=(1 * model_res_list[[i]][3] * model_res_list[[nn[2,i]]][3] / dist(loggers_coords[c(i,nn[2,i]),c(2,3)], upper=T)), lty="22")
+			segments(x0=loggers_coords[i,2], x1=loggers_coords[nn[3,i],2], y0=loggers_coords[i,3], y1=loggers_coords[nn[3,i],3], col="blue", lwd=(1 * model_res_list[[i]][3] * model_res_list[[nn[3,i]]][3] / dist(loggers_coords[c(i,nn[3,i]),c(2,3)], upper=T)), lty="22")
+		}
+	}
+	for(i in 1:60){
+		add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*1.2, col=c("grey", "orange", "blue"))
+	}
+	
+	dev.off()
+}
+my_command <- 'convert -delay 19 *.png plot_wytham_tryR.gif'
+system(my_command)
+
+
+
+
+
+
+
+# in terminal : convert *.png -delay 4 -loop 0 plot_wytham_mixture.gif
+
+resultsModel <- read.csv("model/Old_model/resultsModel_wytham2.csv", header=F)
+resultsModel <- abs(resultsModel)
+for(time.point in 1:150){
+	if (time.point < 10) {name = paste("plot_wytham_00", time.point,'.png', sep="")}
+	if (time.point >= 10 && time.point < 100) {name = paste("plot_wytham_0", time.point,'.png', sep="")}
+	if (time.point >= 100) {name = paste("plot_wytham_", time.point,'.png', sep="")}
+	model_res <- cbind(as.matrix(resultsModel)[time.point,1:65], as.matrix(resultsModel)[time.point,66:130], as.matrix(resultsModel)[time.point,131:195])
+	model_res_list <- as.list(as.data.frame(t(model_res)))
+	png(name)
+	par(mfrow=c(1,1), mar=c(0.1,0.1,0.1,0.1), mgp=c(1.5,0.5,0))
+	plot(poly.owin, main="")
+	for(i in 1:60){
+		add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("grey", "orange", "blue"))
+	}
+	dev.off()
+}
+# in terminal : convert *.png -delay 4 -loop 0 plot_wytham_dominationS1.gif
+
+
+resultsModel <- read.csv("model/Old_model/resultsModel_wytham3.csv", header=F)
+resultsModel <- abs(resultsModel)
+for(time.point in 1:150){
+	if (time.point < 10) {name = paste("plot_wytham_00", time.point,'.png', sep="")}
+	if (time.point >= 10 && time.point < 100) {name = paste("plot_wytham_0", time.point,'.png', sep="")}
+	if (time.point >= 100) {name = paste("plot_wytham_", time.point,'.png', sep="")}
+	model_res <- cbind(as.matrix(resultsModel)[time.point,1:65], as.matrix(resultsModel)[time.point,66:130], as.matrix(resultsModel)[time.point,131:195])
+	model_res_list <- as.list(as.data.frame(t(model_res)))
+	png(name)
+	par(mfrow=c(1,1), mar=c(0.1,0.1,0.1,0.1), mgp=c(1.5,0.5,0))
+	plot(poly.owin, main="")
+	for(i in 1:60){
+		add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("grey", "orange", "blue"))
+	}
+	dev.off()
+}
+# in terminal : convert *.png -delay 4 -loop 0 plot_wytham_localtraditions.gif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## FIGURE S1 -- phase diagrams for 2 patches
+
+resultsModel_data <- read.csv("model/Old_model/resultsModel_2patches_SS.csv")
+
+par(mfrow=c(5,3), mar=c(2.8,3.5,0.5,0.5), mgp=c(1.75,0.5,0))
+
+UP1 = 25
+
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab=substitute(paste("Movement rate (", italic(m), ")")), cex.lab=1.3, cex=1.4)
+
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab="", cex.lab=1.3, cex=1.4)
+
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab="", cex.lab=1.3, cex=1.4)
+
+
+
+
+UP1 = 40
+
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab=substitute(paste("Movement rate (", italic(m), ")")), cex.lab=1.3, cex=1.4)
+
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab="", cex.lab=1.3, cex=1.4)
+
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab="", cex.lab=1.3, cex=1.4)
+
+
+
+
+
+UP1 = 49
+
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab=substitute(paste("Movement rate (", italic(m), ")")), cex.lab=1.3, cex=1.4)
+
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab="", cex.lab=1.3, cex=1.4)
+
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab="", cex.lab=1.3, cex=1.4)
+
+
+UP1 = 50
+
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab=substitute(paste("Movement rate (", italic(m), ")")), cex.lab=1.3, cex=1.4)
+
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab="", cex.lab=1.3, cex=1.4)
+
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab="", cex.lab=1.3, cex=1.4)
+
+
+
+UP1 = 51
+
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.001)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab=substitute(paste("Conformity strength (", italic(λ), ")")), ylab=substitute(paste("Movement rate (", italic(m), ")")), cex.lab=1.3, cex=1.4)
+
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab=substitute(paste("Conformity strength (", italic(λ), ")")), ylab="", cex.lab=1.3, cex=1.4)
+
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab=substitute(paste("Conformity strength (", italic(λ), ")")), ylab="", cex.lab=1.3, cex=1.4)
+
+
+
+
+
+
+
+
+
+## FIGURE S2 -- phase diagrams for 3 patches
+
+resultsModel_data <- read.csv("model/Old_model/resultsModel_3patches_SS.csv")
+
+par(mfrow=c(5,3), mar=c(2.8,3.5,0.5,0.5), mgp=c(1.75,0.5,0))
+
+# 50/50  & dist = 1
+UP1 = 50
+UP2 = 50
+distt = 1
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab=substitute(paste("Movement rate (", italic(m), ")")), cex.lab=1.3, cex=1.4)
+
+# 50/50  & dist = 1.5
+UP1 = 50
+UP2 = 50
+distt = 1.5
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab="", cex.lab=1.3, cex=1.4)
+
+# 50/50  & dist = 5
+UP1 = 50
+UP2 = 50
+distt = 5
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab="", cex.lab=1.3, cex=1.4)
+
+
+# 45/55  & dist = 1
+UP1 = 45
+UP2 = 55
+distt = 1
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab=substitute(paste("Movement rate (", italic(m), ")")), cex.lab=1.3, cex=1.4)
+
+# 45/55  & dist = 1.5
+UP1 = 45
+UP2 = 55
+distt = 1.5
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab="", cex.lab=1.3, cex=1.4)
+
+# 45/55  & dist = 5
+UP1 = 45
+UP2 = 55
+distt = 5
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab="", cex.lab=1.3, cex=1.4)
+
+
+
+# 55/45  & dist = 1
+UP1 = 55
+UP2 = 45
+distt = 1
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab=substitute(paste("Movement rate (", italic(m), ")")), cex.lab=1.3, cex=1.4)
+
+# 55/45  & dist = 1.5
+UP1 = 55
+UP2 = 45
+distt = 1.5
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab="", cex.lab=1.3, cex=1.4)
+
+# 55/45  &  dist = 5
+UP1 = 55
+UP2 = 45
+distt = 5
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab="", cex.lab=1.3, cex=1.4)
+
+
+# 55/55  & dist = 1
+UP1 = 55
+UP2 = 55
+distt = 1
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab=substitute(paste("Movement rate (", italic(m), ")")), cex.lab=1.3, cex=1.4)
+
+# 55/55  & dist = 1.5
+UP1 = 55
+UP2 = 55
+distt = 1.5
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab="", cex.lab=1.3, cex=1.4)
+
+# 55/55  &  dist = 5
+UP1 = 55
+UP2 = 55
+distt = 5
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab="", cex.lab=1.3, cex=1.4)
+
+
+# 45/45  & dist = 1
+UP1 = 45
+UP2 = 45
+distt = 1
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab=substitute(paste("Conformity strength (", italic(λ), ")")), ylab=substitute(paste("Movement rate (", italic(m), ")")), cex.lab=1.3, cex=1.4)
+
+# 45/45  & dist = 1.5
+UP1 = 45
+UP2 = 45
+distt = 1.5
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab=substitute(paste("Conformity strength (", italic(λ), ")")), ylab="", cex.lab=1.3, cex=1.4)
+
+# 45/45  &  dist = 5
+UP1 = 45
+UP2 = 45
+distt = 5
+x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
+z = rep(0, length(x))
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.33 & resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 1
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.01)] <- 2
+z[which(resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] >= 0.1)] <- 3
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] > 0.66 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 4
+z[which(resultsModel_data$Total_prop_Ls[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.33 & resultsModel_data$Var[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)] < 0.01)] <- 5
+xx <- seq(1.0, 5, 0.2)
+yy <- seq(0, 0.0100, 0.0005)
+z = z[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = y[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+x = x[which(match(as.character(x), as.character(xx), nomatch=0) > 0)]
+y = c(rep(0,21), y)
+x = c(xx, x)
+z = c(rep(3,21), z)
+rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
+datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
+plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab=substitute(paste("Conformity strength (", italic(λ), ")")), ylab="", cex.lab=1.3, cex=1.4)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## FIGURE S3 : sigmoidal acquisition curves for different values of beta
+
+beta=1
+x = seq(0,1,0.01)
+y = 1 / (1 + exp(-log(x/(1-x))*beta))
+plot(x, y, type="l", xlab="Prevalence of the behavioural preference", ylab="Probability of adoption of the behavioural preference", col="grey")
+beta=1.2
+y = 1 / (1 + exp(-log(x/(1-x))*beta))
+points(x, y, type="l", col="yellow2")
+beta=1.5
+y = 1 / (1 + exp(-log(x/(1-x))*beta))
+points(x, y, type="l", col="gold1")
+beta=2
+y = 1 / (1 + exp(-log(x/(1-x))*beta))
+points(x, y, type="l", col="gold2")
+beta=5
+y = 1 / (1 + exp(-log(x/(1-x))*beta))
+points(x, y, type="l", col="gold3")
+beta=10
+y = 1 / (1 + exp(-log(x/(1-x))*beta))
+points(x, y, type="l", col="gold4")
+legend("topleft", inset=.04, box.col="white", title="", c("λ = 10","λ = 5", "λ = 2", "λ = 1.5", "λ = 1.2", "λ = 1"), col=c("gold4", "gold3", "gold2", "gold1", "yellow2", "grey"), lty=c(1,1))
+
+
+
+
+## FIGURE S3 -- Plot the dynamic over time for the feeders from Lucy's paper
+
+par(mfrow=c(3,1), mar=c(3,3,0.3,0.3), mgp=c(1.8,0.5,0))
+
+# Mixture of traditions
+resultsModel <- read.csv("model/Old_model/resultsModel_wytham1.csv", header=F)
+resultsModel <- abs(resultsModel)
+nonsolvers = as.matrix(resultsModel)[,c(11,59,50,3,7,36,34,45)]
+left = as.matrix(resultsModel)[,65+c(11,59,50,3,7,36,34,45)]
+right = as.matrix(resultsModel)[,130+c(11,59,50,3,7,36,34,45)]
+prop = (left + right) / (nonsolvers + left + right)
+plot(1:151, prop[,1], col="orange", type="l", xlab="", ylab="Proportion of solvers", ylim=c(0,1), axes=F, cex.lab=1.5)
+axis(side=1)
+axis(side=2)
+points(1:151, prop[,2], col="orange", type="l")
+points(1:151, prop[,3], col="orange", type="l")
+points(1:151, prop[,4], col="blue", type="l")
+points(1:151, prop[,5], col="blue", type="l")
+points(1:151, prop[,6], col="green", type="l")
+points(1:151, prop[,7], col="green", type="l")
+points(1:151, prop[,8], col="green", type="l")
+abline(v=20)
+mtext("Mixture of solutions", side=1, at=100, cex=1.15, line=-6)
+
+# Solution s1 dominates
+resultsModel <- read.csv("model/Old_model/resultsModel_wytham2.csv", header=F)
+resultsModel <- abs(resultsModel)
+nonsolvers = as.matrix(resultsModel)[,c(11,59,50,3,7,36,34,45)]
+left = as.matrix(resultsModel)[,65+c(11,59,50,3,7,36,34,45)]
+right = as.matrix(resultsModel)[,130+c(11,59,50,3,7,36,34,45)]
+prop = (left + right) / (nonsolvers + left + right)
+plot(1:151, prop[,1], col="orange", type="l", xlab="", ylab="Proportion of solvers", ylim=c(0,1), axes=F, cex.lab=1.5)
+axis(side=1)
+axis(side=2)
+points(1:151, prop[,2], col="orange", type="l")
+points(1:151, prop[,3], col="orange", type="l")
+points(1:151, prop[,4], col="blue", type="l")
+points(1:151, prop[,5], col="blue", type="l")
+points(1:151, prop[,6], col="green", type="l")
+points(1:151, prop[,7], col="green", type="l")
+points(1:151, prop[,8], col="green", type="l")
+abline(v=20)
+mtext(expression("Solution s"[1]*" dominates"), side=1, at=100, cex=1.15, line=-6)
+
+# Local traditions
+resultsModel <- read.csv("model/Old_model/resultsModel_wytham3.csv", header=F)
+resultsModel <- abs(resultsModel)
+nonsolvers = as.matrix(resultsModel)[,c(11,59,50,3,7,36,34,45)]
+left = as.matrix(resultsModel)[,65+c(11,59,50,3,7,36,34,45)]
+right = as.matrix(resultsModel)[,130+c(11,59,50,3,7,36,34,45)]
+prop = (left + right) / (nonsolvers + left + right)
+plot(1:151, prop[,1], col="orange", type="l", xlab="Time (days)", ylab="Proportion of solvers", ylim=c(0,1), axes=F, cex.lab=1.5)
+axis(side=1)
+axis(side=2)
+points(1:151, prop[,2], col="orange", type="l")
+points(1:151, prop[,3], col="orange", type="l")
+points(1:151, prop[,4], col="blue", type="l")
+points(1:151, prop[,5], col="blue", type="l")
+points(1:151, prop[,6], col="green", type="l")
+points(1:151, prop[,7], col="green", type="l")
+points(1:151, prop[,8], col="green", type="l")
+abline(v=20)
+mtext("Local traditions", side=1, at=100, cex=1.15, line=-6)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Mechanism for generating sigmoidal acquisiation curves
+
+prevalenceL <- seq(0,1,0.1)
+plot(prevalenceL, prevalenceL, type="l", xlab="Prevalence of L", ylab="Proportion of learning that is L")
+rbPal <- colorRampPalette(c("yellow", "red"))
+datcol <- rbPal(length(seq(1, 30, 2)))
+for(subset_size in seq(1, 30, 2)){
+	copyL <- vector()
+	for(i in 1:length(prevalenceL)){
+		Pop <- c(rep("U", 10), rep("L", 10*prevalenceL[i]), rep("R", 10-(10*prevalenceL[i])))
+		new_preference <- vector()
+		for(j in 1:1000){
+			Pop_subset <- sample(Pop, subset_size)
+			if(length(which(Pop_subset == "L")) > length(which(Pop_subset == "R"))){
+				new_preference[j] <- "L"
+			}else if(length(which(Pop_subset == "L")) < length(which(Pop_subset == "R"))){
+				new_preference[j] <- "R"
+			}else if(length(which(Pop_subset == "L")) + length(which(Pop_subset == "R")) == 0){
+				new_preference[j] <- "U"
+			}else{
+				new_preference[j] <- sample(c("L","R"),1)
+			}
+		}
+		copyL[i] <- length(which(new_preference =="L")) / length(which(new_preference =="L" | new_preference =="R"))
+	}
+	points(prevalenceL, copyL, type="l", col=datcol[subset_size])
+}
 
 
 
@@ -1430,31 +2520,6 @@ points(resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == 25 & resultsM
 
 
 
-
-
-
-## FIGURE S1 : sigmoidal acquisition curves for different values of beta
-
-beta=1
-x = seq(0,1,0.01)
-y = 1 / (1 + exp(-log(x/(1-x))*beta))
-plot(x, y, type="l", xlab="Prevalence of the behavioural solution (prevS1 / prevS2)", ylab="Rate of adoption of the behavioural solution (LS1 / LS2)", col="grey")
-beta=1.2
-y = 1 / (1 + exp(-log(x/(1-x))*beta))
-points(x, y, type="l", col="yellow2")
-beta=1.5
-y = 1 / (1 + exp(-log(x/(1-x))*beta))
-points(x, y, type="l", col="gold1")
-beta=2
-y = 1 / (1 + exp(-log(x/(1-x))*beta))
-points(x, y, type="l", col="gold2")
-beta=5
-y = 1 / (1 + exp(-log(x/(1-x))*beta))
-points(x, y, type="l", col="gold3")
-beta=10
-y = 1 / (1 + exp(-log(x/(1-x))*beta))
-points(x, y, type="l", col="gold4")
-legend("topleft", inset=.04, box.col="white", title="", c("β = 10","β = 5", "β = 2", "β = 1.5", "β = 1.2", "β = 1"), col=c("gold4", "gold3", "gold2", "gold1", "yellow2", "grey"), lty=c(1,1))
 
 
 

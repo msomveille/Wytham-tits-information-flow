@@ -1,48 +1,61 @@
 
-## Script to plot the results of 
+####   Script to plot the figure of Somveille et al (2018) Movement and conformity interact to establish local behavioural tradtions in animal populations. bioRxiv (dx.doi.org/10.1101/338657)    #####
 
 
+
+## Load required libraries
+
+library(rgdal)
 library(spatstat)
+library(sp)
 library(spdep)
 library(maptools)
-library(rgdal)
 library(ncf)
 library(png)
 library(raster)
-library(sp)
 library(sna)
 library(mapplots)
 library(igraph)
 library(lattice)
 
-## Plot the flow of information in wytham woods (i.e. results of the model)
 
 setwd("~/Wytham-tits-information-flow") #setwd("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-information-flow")
 
-## Import and process the data
 
-load("data/movements_data.RData")
+##  Import and process the data for Wytham Woods' great tits 
+
+# Data on the movement of birds across Wytham Woods
+load("data/movements_data.RData")		
+
+# Coordinates of the feeders across Wytham Woods
 loggers_coords <- read.csv("data/Wytham_loggers_coordinates.csv")
 
-wyt <-readOGR("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-information-flow/data", "perimeter poly with clearings_region")
+# Shapefile of Wytham Woods
+wyt <-readOGR("data", "perimeter poly with clearings_region")
 poly.sp<-SpatialPolygons(list(wyt@polygons[[1]]))
 poly.owin<-as(poly.sp,"owin")
 
 
-## Compute distance between feeders
+##  Compute direct euclidean distance between feeders
+
 feeders.distances <- dist(loggers_coords[,2:3], upper=T, diag=T)
 
 
 
-
-## FIGURE 1 -- phase diagrams for 2 patches plus examples
+###  FIGURE 1: Local traditions emerge when conformity is strong relative to the movement rate  ###
 
 resultsModel_data <- read.csv("outputs/resultsModel_2patches.csv")
 
-# first part
+
+## Plot the phase diagrams
+
 par(mfrow=c(2,3), mar=c(2.8,3.5,0.5,0.5), mgp=c(1.75,0.5,0))
 
-UP1 = 40
+
+# Initial conditions: 40 naive individuals in P1 and 60 naive individuals in P2; intermediate learning rate (alpha = 0.005)
+
+UP1 = 40  # Number of naive individuals in patch P1 at the start of the simulation
+
 x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)]
 y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)]
 z = rep(0, length(x))
@@ -63,7 +76,8 @@ rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
 datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
 plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab=substitute(paste("Movement rate (", italic(m), ")")), cex.lab=1.3, cex=1.4)
 
-#mtext(substitute(paste("Intermediate learning rate (", italic(α), " = 0.005)")), side=3, line=0.3, at=3, cex=0.7)
+
+# Initial conditions: 40 naive individuals in P1 and 60 naive individuals in P2; fast learning rate (alpha = 0.01)
 
 x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)]
 y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)]
@@ -85,8 +99,7 @@ rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
 datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
 plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab="", cex.lab=1.3, cex=1.4)
 
-#mtext(substitute(paste("Fast learning rate (", italic(α), " = 0.01)")), side=3, line=0.3, at=3, cex=0.8)
-
+# Illustrate initial conditions
 plot(c(1,1), c(1,2), cex=c(6,4)*1.2, xlab="", ylab="", xlim=c(0.97,1.03), ylim=c(0.5,2.5), col=c("blue","orange"), axes=F)
 arrows(1, 1.31, 1, 1.79, length=0.05, col="dark grey", lwd=1.3, code=3)
 mtext(expression("P"[1]*": 40 inds"), side=3, line=-3.4, at=0.97, cex=0.8)
@@ -94,7 +107,10 @@ mtext(expression("P"[2]*": 60 inds"), side=1, line=-2.9, at=0.97, cex=0.8)
 
 
 
-UP1 = 49
+# Initial conditions: 49 naive individuals in P1 and 51 naive individuals in P2; intermediate learning rate (alpha = 0.005)
+
+UP1 = 49		# Number of naive individuals in patch P1 at the start of the simulation
+
 x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)]
 y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.005)]
 z = rep(0, length(x))
@@ -114,7 +130,9 @@ z = c(rep(3,21), z)
 rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
 datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
 plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab=substitute(paste("Conformity strength (", italic(λ), ")")), ylab=substitute(paste("Movement rate (", italic(m), ")")), cex.lab=1.3, cex=1.4)
-#mtext(substitute(paste("Intermediate learning rate (", italic(α), " = 0.005)")), side=3, line=0.3, at=3, cex=0.7)
+
+
+# Initial conditions: 49 naive individuals in P1 and 51 naive individuals in P2; fast learning rate (alpha = 0.01)
 
 x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)]
 y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Alpha == 0.01)]
@@ -136,8 +154,7 @@ rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
 datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
 plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab=substitute(paste("Conformity strength (", italic(λ), ")")), ylab="", cex.lab=1.3, cex=1.4)
 
-#mtext(substitute(paste("Fast learning rate (", italic(α), " = 0.01)")), side=3, line=0.3, at=3, cex=0.8)
-
+# Illustrate initial conditions
 plot(c(1,1), c(1,2), cex=c(5.1,4.9)*1.2, xlab="", ylab="", xlim=c(0.97,1.03), ylim=c(0.5,2.5), col=c("blue","orange"), axes=F)
 arrows(1, 1.27, 1, 1.74, length=0.05, col="dark grey", lwd=1.3, code=3)
 mtext(expression("P"[1]*": 49 inds"), side=3, line=-3.4, at=0.97, cex=0.8)
@@ -146,11 +163,16 @@ mtext(expression("P"[2]*": 51 inds"), side=1, line=-2.9, at=0.97, cex=0.8)
 
 
 
-# Second parts with examples
-#par(mfrow=c(2,3), mar=c(2.5,1,0.5,0.1), mgp=c(1.5,0.5,0))
+## Plot examples of the evolution of the number of naive individuals (black curve) and number of solvers using solution s1 (orange curve) and solution s2 (blue curve)
+
+
+# Example of model run resulting in mixture of solutions in every patches (lambda=1 – no conformity bias included; m=0.003; alpha=0.01)
 
 par(mfrow=c(2,1), mar=c(2.5,3,0.5,0.4), mgp=c(1.5,0.5,0))
-resultsModel <- read.csv("model/Old_model/resultsModel_2patches1.csv", header =F)
+
+resultsModel <- read.csv("outputs/resultsModel_2patches1.csv", header =F)
+
+# Patch 1
 plot(1:151, resultsModel[,1], col="black", type="l", ylim=c(0,max(resultsModel[1,1]+resultsModel[1,3]+resultsModel[1,5],resultsModel[1,2]+resultsModel[1,4]+resultsModel[1,6])), xlab="", ylab="Number of individuals", axes=F, cex.lab=1.2, lwd=1.5)
 axis(side=1)
 axis(side=2)
@@ -158,6 +180,7 @@ points(1:151, resultsModel[,3], col="orange", type="l", lwd=1.5)
 points(1:151, resultsModel[,5], col="blue", type="l", lwd=1.5)
 mtext(expression("P"[1]*""), side=3, at=75, cex=1.2, line=-0.75)
 
+# Patch 2
 plot(1:151, resultsModel[,1], col="black", type="l", ylim=c(0,max(resultsModel[1,1]+resultsModel[1,3]+resultsModel[1,5],resultsModel[1,2]+resultsModel[1,4]+resultsModel[1,6])), xlab="Time (days)", ylab="Number of individuals", axes=F, cex.lab=1.2, lwd=1.5)
 axis(side=1)
 axis(side=2)
@@ -166,8 +189,13 @@ points(1:151, resultsModel[,6], col="blue", type="l", lwd=1.5)
 mtext(expression("P"[2]*""), side=3, at=75, cex=1.2, line=-0.75)
 
 
+# Example of model run resulting in solution s2 dominating the system (lambda=1.5 – relatively weak conformity; m=0.003; alpha=0.01)
+
 par(mfrow=c(2,1), mar=c(2.5,3,0.5,0.4), mgp=c(1.5,0.5,0))
-resultsModel <- read.csv("model/Old_model/resultsModel_2patches2.csv", header =F)
+
+resultsModel <- read.csv("outputs/resultsModel_2patches2.csv", header =F)
+
+# Patch 1
 plot(1:151, resultsModel[,1], col="black", type="l", ylim=c(0,max(resultsModel[1,1]+resultsModel[1,3]+resultsModel[1,5],resultsModel[1,2]+resultsModel[1,4]+resultsModel[1,6])), xlab="", ylab="Number of individuals", axes=F, cex.lab=1.2, lwd=1.5)
 axis(side=1)
 axis(side=2)
@@ -175,6 +203,7 @@ points(1:151, resultsModel[,3], col="orange", type="l", lwd=1.5)
 points(1:151, resultsModel[,5], col="blue", type="l", lwd=1.5)
 mtext(expression("P"[1]*""), side=3, at=75, cex=1.2, line=-0.75)
 
+# Patch 2
 plot(1:151, resultsModel[,1], col="black", type="l", ylim=c(0,max(resultsModel[1,1]+resultsModel[1,3]+resultsModel[1,5],resultsModel[1,2]+resultsModel[1,4]+resultsModel[1,6])), xlab="Time (days)", ylab="Number of individuals", axes=F, cex.lab=1.2, lwd=1.5)
 axis(side=1)
 axis(side=2)
@@ -183,8 +212,13 @@ points(1:151, resultsModel[,6], col="blue", type="l", lwd=1.5)
 mtext(expression("P"[2]*""), side=3, at=75, cex=1.2, line=-0.25)
 
 
+# Example of model run resulting in strong local traditions (lambda=3.5 – relatively strong conformity; m=0.003; alpha=0.01)
+
 par(mfrow=c(2,1), mar=c(2.5,3,0.5,0.4), mgp=c(1.5,0.5,0))
-resultsModel <- read.csv("model/Old_model/resultsModel_2patches3.csv", header =F)
+
+resultsModel <- read.csv("outputs/resultsModel_2patches3.csv", header =F)
+
+# Patch 1
 plot(1:151, resultsModel[,1], col="black", type="l", ylim=c(0,max(resultsModel[1,1]+resultsModel[1,3]+resultsModel[1,5],resultsModel[1,2]+resultsModel[1,4]+resultsModel[1,6])), xlab="", ylab="Number of individuals", axes=F, cex.lab=1.2, lwd=1.5)
 axis(side=1)
 axis(side=2)
@@ -192,6 +226,7 @@ points(1:151, resultsModel[,3], col="orange", type="l", lwd=1.5)
 points(1:151, resultsModel[,5], col="blue", type="l", lwd=1.5)
 mtext(expression("P"[1]*""), side=3, at=75, cex=1.2, line=-0.75)
 
+# Patch 2
 plot(1:151, resultsModel[,1], col="black", type="l", ylim=c(0,max(resultsModel[1,1]+resultsModel[1,3]+resultsModel[1,5],resultsModel[1,2]+resultsModel[1,4]+resultsModel[1,6])), xlab="Time (days)", ylab="Number of individuals", axes=F, cex.lab=1.2, lwd=1.5)
 axis(side=1)
 axis(side=2)
@@ -205,15 +240,20 @@ mtext(expression("P"[2]*""), side=3, at=75, cex=1.2, line=-0.75)
 
 
 
-## FIGURE 2 -- phase diagrams for 3 patches plus examples
+###  FIGURE 2: Space has a complex effect on how conformity and movement lead to either the emergence of local traditions or the domination of a single solution  ###
+
 
 resultsModel_data <- read.csv("outputs/resultsModel_3patches.csv")
 
-# first part
+
+## Plot the phase diagrams
+
 par(mfrow=c(2,4), mar=c(2.8,3,0.5,0.1), mgp=c(1.75,0.5,0))
 
-# 55/45  & dist = 1.5
 
+# Initial conditions: 55 naive individuals in P1, 45 naive individuals in P2 and 50 naive individuals in P3; distance separating P2 from the two other patches is 1.5
+
+# Illustrate initial conditions
 plot(c(1,1,2.414214), c(1,2,1.5), cex=c(5,5.5,4.5)*1.2, xlab="", ylab="", xlim=c(0.5,3.5), ylim=c(0.5,2.5), col=c("black","orange","blue"), axes=F)
 arrows(1, 1.26, 1, 1.74, length=0.05, col="dark grey", lwd=1.3, code=3)
 arrows(1.3, 1.1, 2.15, 1.4, length=0.05, col="dark grey", lwd=1.3, code=3)
@@ -225,9 +265,10 @@ mtext(expression("P"[1]*": 55 inds"), side=3, line=-1.5, at=1, cex=0.75)
 mtext(expression("P"[2]*": 45 inds"), side=3, line=-4, at=2.45, cex=0.75)
 mtext(expression("P"[3]*": 50 inds"), side=1, line=-1, at=1, cex=0.75)
 
-UP1 = 55
-UP2 = 45
-distt = 1.5
+UP1 = 55		 # Number of naive individuals in patch P1 at the start of the simulation
+UP2 = 45		 # Number of naive individuals in patch P2 at the start of the simulation
+distt = 1.5	 # Distance separating patch P2 from the two other patches
+
 x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
 y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
 z = rep(0, length(x))
@@ -249,11 +290,12 @@ datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
 plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab=substitute(paste("Movement rate (", italic(m), ")")), cex.lab=1.3, cex=1.4)
 
 
-# 55/45  &  dist = 5
+# Initial conditions: 55 naive individuals in P1, 45 naive individuals in P2 and 50 naive individuals in P3; distance separating P2 from the two other patches is 5
 
-UP1 = 55
-UP2 = 45
-distt = 5
+UP1 = 55	# Number of naive individuals in patch P1 at the start of the simulation
+UP2 = 45	# Number of naive individuals in patch P2 at the start of the simulation
+distt = 5	# Distance separating patch P2 from the two other patches
+
 x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
 y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
 z = rep(0, length(x))
@@ -274,6 +316,7 @@ rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
 datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
 plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab="", ylab="", cex.lab=1.3, cex=1.4)
 
+# Illustrate initial conditions
 plot(c(1,1,5.974937), c(1,2,1.5), cex=c(5,5.5,4.5)*1.2, xlab="", ylab="", xlim=c(0.44,7.14), ylim=c(0.5,2.5), col=c("black","orange","blue"), axes=F)
 arrows(1, 1.26, 1, 1.74, length=0.05, col="dark grey", lwd=1.3, code=3)
 arrows(1.8, 1.06, 5.4, 1.4, length=0.05, col="dark grey", lwd=1.3, code=3)
@@ -286,8 +329,9 @@ mtext(expression("P"[2]*": 45 inds"), side=3, line=-4, at= 5.974937, cex=0.75)
 mtext(expression("P"[3]*": 50 inds"), side=1, line=-1, at=1, cex=0.75)
 
 
-# 45/55  & dist = 1.5
+# Initial conditions: 45 naive individuals in P1, 55 naive individuals in P2 and 50 naive individuals in P3; distance separating P2 from the two other patches is 1.5
 
+# Illustrate initial conditions
 plot(c(1,1,2.414214), c(1,2,1.5), cex=c(5,4.5,5.5)*1.2, xlab="", ylab="", xlim=c(0.5,3.5), ylim=c(0.5,2.5), col=c("black","orange","blue"), axes=F)
 arrows(1, 1.26, 1, 1.77, length=0.05, col="dark grey", lwd=1.3, code=3)
 arrows(1.3, 1.1, 2.08, 1.4, length=0.05, col="dark grey", lwd=1.3, code=3)
@@ -299,9 +343,10 @@ mtext(expression("P"[1]*": 45 inds"), side=3, line=-1.5, at=1, cex=0.75)
 mtext(expression("P"[2]*": 55 inds"), side=3, line=-4, at=2.45, cex=0.75)
 mtext(expression("P"[3]*": 50 inds"), side=1, line=-1, at=1, cex=0.75)
 
-UP1 = 45
-UP2 = 55
-distt = 1.5
+UP1 = 45	# Number of naive individuals in patch P1 at the start of the simulation
+UP2 = 55	# Number of naive individuals in patch P2 at the start of the simulation
+distt = 1.5	# Distance separating patch P2 from the two other patches
+
 x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
 y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
 z = rep(0, length(x))
@@ -323,11 +368,12 @@ datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
 plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab=substitute(paste("Conformity strength (", italic(λ), ")")), ylab=substitute(paste("Movement rate (", italic(m), ")")), cex.lab=1.3, cex=1.4)
 
 
-# 45/55  & dist = 5
+# Initial conditions: 45 naive individuals in P1, 55 naive individuals in P2 and 50 naive individuals in P3; distance separating P2 from the two other patches is 5
 
-UP1 = 45
-UP2 = 55
-distt = 5
+UP1 = 45	# Number of naive individuals in patch P1 at the start of the simulation
+UP2 = 55	# Number of naive individuals in patch P2 at the start of the simulation
+distt = 5	# Distance separating patch P2 from the two other patches
+
 x = resultsModel_data$Beta[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
 y = resultsModel_data$Lambda[which(resultsModel_data$Patch1_Us == UP1 & resultsModel_data$Patch2_Us == UP2 & resultsModel_data$Distance == distt & resultsModel_data$Alpha == 0.01)]
 z = rep(0, length(x))
@@ -348,6 +394,7 @@ rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
 datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
 plot(x, y, col=datcol, pch=15, ylim=c(0,0.01), xlim=c(1,5), xlab=substitute(paste("Conformity strength (", italic(λ), ")")), ylab="", cex.lab=1.3, cex=1.4)
 
+# Illustrate initial conditions
 plot(c(1,1,5.974937), c(1,2,1.5), cex=c(5,4.5,5.5)*1.2, xlab="", ylab="", xlim=c(0.44,7.14), ylim=c(0.5,2.5), col=c("black","orange","blue"), axes=F)
 arrows(1, 1.26, 1, 1.77, length=0.05, col="dark grey", lwd=1.3, code=3)
 arrows(1.8, 1.06, 5.2, 1.4, length=0.05, col="dark grey", lwd=1.3, code=3)
@@ -362,12 +409,16 @@ mtext(expression("P"[3]*": 50 inds"), side=1, line=-1, at=1, cex=0.75)
 
 
 
-# Second parts with examples
-#par(mfrow=c(2,3), mar=c(2.5,2.5,0.5,0.1), mgp=c(1.5,0.5,0))
+## Plot examples of the evolution of the number of naive individuals (black curve) and number of solvers using solution s1 (orange curve) and solution s2 (blue curve)
 
-# Mixture of traditions
+
+# Example of model run resulting in a mixture of solutions in every patches (lambda=1 – no conformity bias; m=0.007)
+
 par(mfrow=c(3,1), mar=c(2.8,2.8,1,0.3), mgp=c(1.5,0.5,0))
-resultsModel <- read.csv("model/Old_model/resultsModel_3patches1.csv", header =F)
+
+resultsModel <- read.csv("outputs/resultsModel_3patches1.csv", header =F)
+
+# Patch 1
 plot(1:151, resultsModel[,1], col="black", type="l", ylim=c(0,max(resultsModel[1,1]+resultsModel[1,4]+resultsModel[1,7], resultsModel[1,2]+resultsModel[1,5]+resultsModel[1,8], resultsModel[1,3]+resultsModel[1,6]+resultsModel[1,9])), xlab="", ylab="Number of individuals", axes=F, cex.lab=1.3, lwd=1.5)
 axis(side=1)
 axis(side=2)
@@ -375,6 +426,7 @@ points(1:151, resultsModel[,4], col="orange", type="l", lwd=1.5)
 points(1:151, resultsModel[,7], col="blue", type="l", lwd=1.5)
 mtext(expression("P"[1]*""), side=3, at=75, cex=1.15, line=-0.75)
 
+# Patch 2
 plot(1:151, resultsModel[,2], col="black", type="l", ylim=c(0,max(resultsModel[1,1]+resultsModel[1,4]+resultsModel[1,7], resultsModel[1,2]+resultsModel[1,5]+resultsModel[1,8], resultsModel[1,3]+resultsModel[1,6]+resultsModel[1,9])), xlab="", ylab="Number of individuals", axes=F, cex.lab=1.3, lwd=1.5)
 axis(side=1)
 axis(side=2)
@@ -382,6 +434,7 @@ points(1:151, resultsModel[,5], col="orange", type="l", lwd=1.5)
 points(1:151, resultsModel[,8], col="blue", type="l", lwd=1.5)
 mtext(expression("P"[2]*""), side=3, at=75, cex=1.15, line=-0.75)
 
+# Patch 3
 plot(1:151, resultsModel[,3], col="black", type="l", ylim=c(0,max(resultsModel[1,1]+resultsModel[1,4]+resultsModel[1,7], resultsModel[1,2]+resultsModel[1,5]+resultsModel[1,8], resultsModel[1,3]+resultsModel[1,6]+resultsModel[1,9])), xlab="Time (days)", ylab="Number of individuals", axes=F, cex.lab=1.3, lwd=1.5)
 axis(side=1)
 axis(side=2)
@@ -390,9 +443,13 @@ points(1:151, resultsModel[,9], col="blue", type="l", lwd=1.5)
 mtext(expression("P"[3]*""), side=3, at=75, cex=1.15, line=-0.75)
 
 
-# Domination of blue
+# Example of model run resulting in solution s2 dominating the system (lambda=2 – relatively weak conformity; m=0.007)
+
 par(mfrow=c(3,1), mar=c(2.8,2.8,1,0.3), mgp=c(1.5,0.5,0))
-resultsModel <- read.csv("model/Old_model/resultsModel_3patches2.csv", header =F)
+
+resultsModel <- read.csv("outputs/resultsModel_3patches2.csv", header =F)
+
+# Patch 1
 plot(1:151, resultsModel[,1], col="black", type="l", ylim=c(0,max(resultsModel[1,1]+resultsModel[1,4]+resultsModel[1,7], resultsModel[1,2]+resultsModel[1,5]+resultsModel[1,8], resultsModel[1,3]+resultsModel[1,6]+resultsModel[1,9])), xlab="", ylab="Number of individuals", axes=F, cex.lab=1.3, lwd=1.5)
 axis(side=1)
 axis(side=2)
@@ -400,6 +457,7 @@ points(1:151, resultsModel[,4], col="orange", type="l", lwd=1.5)
 points(1:151, resultsModel[,7], col="blue", type="l", lwd=1.5)
 mtext(expression("P"[1]*""), side=3, at=75, cex=1.15, line=-0.75)
 
+# Patch 2
 plot(1:151, resultsModel[,2], col="black", type="l", ylim=c(0,max(resultsModel[1,1]+resultsModel[1,4]+resultsModel[1,7], resultsModel[1,2]+resultsModel[1,5]+resultsModel[1,8], resultsModel[1,3]+resultsModel[1,6]+resultsModel[1,9])), xlab="", ylab="Number of individuals", axes=F, cex.lab=1.3, lwd=1.5)
 axis(side=1)
 axis(side=2)
@@ -407,6 +465,7 @@ points(1:151, resultsModel[,5], col="orange", type="l", lwd=1.5)
 points(1:151, resultsModel[,8], col="blue", type="l", lwd=1.5)
 mtext(expression("P"[2]*""), side=3, at=75, cex=1.15, line=-0.25)
 
+# Patch 3
 plot(1:151, resultsModel[,3], col="black", type="l", ylim=c(0,max(resultsModel[1,1]+resultsModel[1,4]+resultsModel[1,7], resultsModel[1,2]+resultsModel[1,5]+resultsModel[1,8], resultsModel[1,3]+resultsModel[1,6]+resultsModel[1,9])), xlab="Time (days)", ylab="Number of individuals", axes=F, cex.lab=1.3, lwd=1.5)
 axis(side=1)
 axis(side=2)
@@ -416,9 +475,13 @@ mtext(expression("P"[3]*""), side=3, at=75, cex=1.15, line=-0.75)
 
 
 
-# Domination of orange
+# Example of model run resulting in solution s1 dominating the system (lambda=3 – intermediate conformity; m=0.007)
+
 par(mfrow=c(3,1), mar=c(2.8,2.8,1,0.3), mgp=c(1.5,0.5,0))
-resultsModel <- read.csv("model/Old_model/resultsModel_3patches3.csv", header =F)
+
+resultsModel <- read.csv("outputs/resultsModel_3patches3.csv", header =F)
+
+# Patch 1
 plot(1:151, resultsModel[,1], col="black", type="l", ylim=c(0,max(resultsModel[1,1]+resultsModel[1,4]+resultsModel[1,7], resultsModel[1,2]+resultsModel[1,5]+resultsModel[1,8], resultsModel[1,3]+resultsModel[1,6]+resultsModel[1,9])), xlab="", ylab="Number of individuals", axes=F, cex.lab=1.3, lwd=1.5)
 axis(side=1)
 axis(side=2)
@@ -426,6 +489,7 @@ points(1:151, resultsModel[,4], col="orange", type="l", lwd=1.5)
 points(1:151, resultsModel[,7], col="blue", type="l", lwd=1.5)
 mtext(expression("P"[1]*""), side=3, at=75, cex=1.15, line=-0.75)
 
+# Patch 2
 plot(1:151, resultsModel[,2], col="black", type="l", ylim=c(0,max(resultsModel[1,1]+resultsModel[1,4]+resultsModel[1,7], resultsModel[1,2]+resultsModel[1,5]+resultsModel[1,8], resultsModel[1,3]+resultsModel[1,6]+resultsModel[1,9])), xlab="", ylab="Number of individuals", axes=F, cex.lab=1.3, lwd=1.5)
 axis(side=1)
 axis(side=2)
@@ -433,6 +497,7 @@ points(1:151, resultsModel[,5], col="orange", type="l", lwd=1.5)
 points(1:151, resultsModel[,8], col="blue", type="l", lwd=1.5)
 mtext(expression("P"[2]*""), side=3, at=75, cex=1.15, line=-0.25)
 
+# Patch 3
 plot(1:151, resultsModel[,3], col="black", type="l", ylim=c(0,max(resultsModel[1,1]+resultsModel[1,4]+resultsModel[1,7], resultsModel[1,2]+resultsModel[1,5]+resultsModel[1,8], resultsModel[1,3]+resultsModel[1,6]+resultsModel[1,9])), xlab="Time (days)", ylab="Number of individuals", axes=F, cex.lab=1.3, lwd=1.5)
 axis(side=1)
 axis(side=2)
@@ -442,9 +507,13 @@ mtext(expression("P"[3]*""), side=3, at=75, cex=1.15, line=-0.75)
 
 
 
-# Local traditions
+# Example of model run resulting in strong local traditions (lambda=4 – relatively strong conformity; m=0.007)
+
 par(mfrow=c(3,1), mar=c(2.8,2.8,1,0.3), mgp=c(1.5,0.5,0))
-resultsModel <- read.csv("model/Old_model/resultsModel_3patches4.csv", header =F)
+
+resultsModel <- read.csv("outputs/resultsModel_3patches4.csv", header =F)
+
+# Patch 1
 plot(1:151, resultsModel[,1], col="black", type="l", ylim=c(0,max(resultsModel[1,1]+resultsModel[1,4]+resultsModel[1,7], resultsModel[1,2]+resultsModel[1,5]+resultsModel[1,8], resultsModel[1,3]+resultsModel[1,6]+resultsModel[1,9])), xlab="", ylab="Number of individuals", axes=F, cex.lab=1.3, lwd=1.5)
 axis(side=1)
 axis(side=2)
@@ -452,6 +521,7 @@ points(1:151, resultsModel[,4], col="orange", type="l", lwd=1.5)
 points(1:151, resultsModel[,7], col="blue", type="l", lwd=1.5)
 mtext(expression("P"[1]*""), side=3, at=75, cex=1.15, line=-0.75)
 
+# Patch 2
 plot(1:151, resultsModel[,2], col="black", type="l", ylim=c(0,max(resultsModel[1,1]+resultsModel[1,4]+resultsModel[1,7], resultsModel[1,2]+resultsModel[1,5]+resultsModel[1,8], resultsModel[1,3]+resultsModel[1,6]+resultsModel[1,9])), xlab="", ylab="Number of individuals", axes=F, cex.lab=1.3, lwd=1.5)
 axis(side=1)
 axis(side=2)
@@ -459,6 +529,7 @@ points(1:151, resultsModel[,5], col="orange", type="l", lwd=1.5)
 points(1:151, resultsModel[,8], col="blue", type="l", lwd=1.5)
 mtext(expression("P"[2]*""), side=3, at=75, cex=1.15, line=-0.75)
 
+# Patch 3
 plot(1:151, resultsModel[,3], col="black", type="l", ylim=c(0,max(resultsModel[1,1]+resultsModel[1,4]+resultsModel[1,7], resultsModel[1,2]+resultsModel[1,5]+resultsModel[1,8], resultsModel[1,3]+resultsModel[1,6]+resultsModel[1,9])), xlab="Time (days)", ylab="Number of individuals", axes=F, cex.lab=1.3, lwd=1.5)
 axis(side=1)
 axis(side=2)
@@ -470,15 +541,17 @@ mtext(expression("P"[3]*""), side=3, at=75, cex=1.15, line=-0.75)
 
 
 
-
-## FIGURE 3 -- phase diagrams for Wytham plus examples
+###  FIGURE 3: Preditions for the spread of information in great tit cultural diffusion experiment in in Wytham Woods  ###
 
 resultsModel_data <- read.csv("outputs/resultsModel_wytham.csv")
 
-# first part
+## Plot phase diagrams
+
 par(mfrow=c(3,1), mar=c(2.8,3,3,0.5), mgp=c(1.75,0.5,0))
 
-# Direct distance 
+
+# Initial conditions: direct distance between feeders and intermediate learning rate (alpha = 0.005)
+
 alph = 0.005
 x = resultsModel_data$Beta[which(resultsModel_data$Alpha == alph & resultsModel_data$Environment == "directDist")]
 y = resultsModel_data$Lambda[which(resultsModel_data$Alpha == alph & resultsModel_data$Environment == "directDist")]
@@ -500,7 +573,9 @@ rbPal <- colorRampPalette(c("grey", "green", "dark green", "orange", "blue"))
 datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
 plot(x, y, col=datcol, pch=15, ylim=c(0,0.1), xlim=c(1,5), xlab="", ylab=substitute(paste("Movement rate (", italic(m), ")")), cex.lab=1.3, cex=1.4)
 
-alph = 0.01
+
+# Initial conditions: direct distance between feeders and fast learning rate (alpha = 0.01)
+
 x = resultsModel_data$Beta[which(resultsModel_data$Alpha == alph & resultsModel_data$Environment == "directDist")]
 y = resultsModel_data$Lambda[which(resultsModel_data$Alpha == alph & resultsModel_data$Environment == "directDist")]
 z = rep(0, length(x))
@@ -522,7 +597,8 @@ datcol <- rbPal(5)[as.numeric(cut(z, breaks=c(0.9,1.9,2.9,3.9,4.9,5.9)))]
 plot(x, y, col=datcol, pch=15, ylim=c(0,0.1), xlim=c(1,5), xlab="", ylab=substitute(paste("Movement rate (", italic(m), ")")), cex.lab=1.3, cex=1.4)
 
 
-# Forest distance
+# Initial conditions: forest distance (i.e. shortest route through the forest) between feeders and intermediate learning rate (alpha = 0.005)
+
 alph = 0.005
 x = resultsModel_data$Beta[which(resultsModel_data$Alpha == alph & resultsModel_data$Environment == "forestDist")]
 y = resultsModel_data$Lambda[which(resultsModel_data$Alpha == alph & resultsModel_data$Environment == "forestDist")]
@@ -546,14 +622,19 @@ plot(x, y, col=datcol, pch=15, ylim=c(0,0.1), xlim=c(1,5), xlab=substitute(paste
 
 
 
-# Second parts with examples
+
+## Plot examples of the emerging pattern across Wytham Woods at the end of the simulation 
+
 
 par(mfrow=c(3,3), mar=c(2.5,2.75,0.3,0.3), mgp=c(1.5,0.5,0))
 
-# Mixture of traditions
-resultsModel <- read.csv("model/Old_model/resultsModel_wytham1.csv", header=F)
+
+# Example of model run resulting in a mixture of solutions in every patches (lambda=1 – no conformity bias; m=0.003)
+
+resultsModel <- read.csv("outputs/resultsModel_wytham1.csv", header=F)
 resultsModel <- abs(resultsModel)
-## Plot the map after 20 days
+
+# Plot the map after 20 days
 time.point <- 20
 model_res <- cbind(as.matrix(resultsModel)[time.point,1:65], as.matrix(resultsModel)[time.point,66:130], as.matrix(resultsModel)[time.point,131:195])
 model_res_list <- as.list(as.data.frame(t(model_res)))
@@ -561,7 +642,8 @@ plot(poly.owin, main="")
 for(i in 1:60){
 	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("grey", "orange", "blue"))
 }
-## Plot the map after 150 days
+
+# Plot the map after 150 days
 final.time.point <- 150
 model_res <- cbind(as.matrix(resultsModel)[final.time.point,1:65], as.matrix(resultsModel)[final.time.point,66:130], as.matrix(resultsModel)[final.time.point,131:195])
 model_res_list <- as.list(as.data.frame(t(model_res)))
@@ -569,7 +651,8 @@ plot(poly.owin, main="")
 for(i in 1:60){
 	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("grey", "orange", "blue"))
 }
-## Plot the proportion of lefts among solvers over time
+
+# Plot the evolution of the proportion of solvers with solution s1 among all solvers over simulation time
 model_res <- list()
 prop <- matrix(nrow=final.time.point, ncol=65)
 propL <- matrix(nrow=final.time.point, ncol=65)
@@ -586,10 +669,12 @@ axis(side=1)
 axis(side=2)
 
 
-# Behaviour s1 dominates
-resultsModel <- read.csv("model/Old_model/resultsModel_wytham2.csv", header=F)
+# Example of model run resulting in solution s1 dominating the system (lambda=1.3 – relatively weak conformity bias; m=0.003)
+
+resultsModel <- read.csv("outputs/resultsModel_wytham2.csv", header=F)
 resultsModel <- abs(resultsModel)
-## Plot the map after 20 days
+
+# Plot the map after 20 days
 time.point <- 20
 model_res <- cbind(as.matrix(resultsModel)[time.point,1:65], as.matrix(resultsModel)[time.point,66:130], as.matrix(resultsModel)[time.point,131:195])
 model_res_list <- as.list(as.data.frame(t(model_res)))
@@ -597,7 +682,8 @@ plot(poly.owin, main="")
 for(i in 1:60){
 	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("grey", "orange", "blue"))
 }
-## Plot the map after 150 days
+
+# Plot the map after 150 days
 final.time.point <- 150
 model_res <- cbind(as.matrix(resultsModel)[final.time.point,1:65], as.matrix(resultsModel)[final.time.point,66:130], as.matrix(resultsModel)[final.time.point,131:195])
 model_res_list <- as.list(as.data.frame(t(model_res)))
@@ -605,7 +691,8 @@ plot(poly.owin, main="")
 for(i in 1:60){
 	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("grey", "orange", "blue"))
 }
-## Plot the proportion of lefts among solvers over time
+
+# Plot the evolution of the proportion of solvers with solution s1 among all solvers over simulation time
 model_res <- list()
 prop <- matrix(nrow=final.time.point, ncol=65)
 propL <- matrix(nrow=final.time.point, ncol=65)
@@ -622,10 +709,12 @@ axis(side=1)
 axis(side=2)
 
 
-# Local traditions
-resultsModel <- read.csv("model/Old_model/resultsModel_wytham3.csv", header=F)
+# Example of model run resulting in strong local traditions (lambda=4.5 – relatively strong conformity bias; m=0.003)
+
+resultsModel <- read.csv("outputs/resultsModel_wytham3.csv", header=F)
 resultsModel <- abs(resultsModel)
-## Plot the map after 20 days
+
+# Plot the map after 20 days
 time.point <- 20
 model_res <- cbind(as.matrix(resultsModel)[time.point,1:65], as.matrix(resultsModel)[time.point,66:130], as.matrix(resultsModel)[time.point,131:195])
 model_res_list <- as.list(as.data.frame(t(model_res)))
@@ -633,7 +722,8 @@ plot(poly.owin, main="")
 for(i in 1:60){
 	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("grey", "orange", "blue"))
 }
-## Plot the map after 150 days
+
+# Plot the map after 150 days
 final.time.point <- 150
 model_res <- cbind(as.matrix(resultsModel)[final.time.point,1:65], as.matrix(resultsModel)[final.time.point,66:130], as.matrix(resultsModel)[final.time.point,131:195])
 model_res_list <- as.list(as.data.frame(t(model_res)))
@@ -641,7 +731,8 @@ plot(poly.owin, main="")
 for(i in 1:60){
 	add.pie(z=model_res_list[[i]], x=loggers_coords[i,"x"], y=loggers_coords[i,"y"], labels="", radius=loggers[i,5]*2, col=c("grey", "orange", "blue"))
 }
-## Plot the proportion of lefts among solvers over time
+
+# Plot the evolution of the proportion of solvers with solution s1 among all solvers over simulation time
 model_res <- list()
 prop <- matrix(nrow=final.time.point, ncol=65)
 propL <- matrix(nrow=final.time.point, ncol=65)
@@ -660,7 +751,7 @@ axis(side=2)
 
 
 
-## FIGURE 4 -- randomization analysis Wytham
+###  FIGURE 4: The outcome of the spread of information is sensitive to the initial conditions  ###
 
 # conformity = 1
 resultsModel_random_forestDist_data_conf1 <- read.csv("model/Old_model/resultsModel_wytham_sumstats_random_conformity1.csv", header=F)
@@ -770,6 +861,8 @@ points(resultsModel_random_forestDist_data_conf4[,2][which(resultsModel_random_f
 points(resultsModel_random_forestDist_data_conf4[,2][which(resultsModel_random_forestDist_data_conf4[,1] < 0.01 & resultsModel_random_forestDist_data_conf4[,2] > 0.33 & resultsModel_random_forestDist_data_conf4[,2] < 0.66)], diff_centr_conf4[which(resultsModel_random_forestDist_data_conf4[,1] < 0.01 & resultsModel_random_forestDist_data_conf4[,2] > 0.33 & resultsModel_random_forestDist_data_conf4[,2] < 0.66)], pch=20, col="dark grey")
 axis(side=1)
 axis(side=2)
+
+
 
 
 

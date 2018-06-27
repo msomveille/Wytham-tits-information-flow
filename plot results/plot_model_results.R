@@ -19,7 +19,7 @@ library(igraph)
 library(lattice)
 
 
-setwd("~/Wytham-tits-information-flow") #setwd("/Users/mariussomveille/Desktop/Oxford/Project_Ben_Robin/Wytham-tits-information-flow")
+setwd("~/Wytham-tits-information-flow")
 
 
 ##  Import and process the data for Wytham Woods' great tits 
